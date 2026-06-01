@@ -1,0 +1,51 @@
+# Program Studi Pradita University
+
+## JENJANG SARJANA (S1) - BACHELOR'S DEGREE
+
+Pradita University menawarkan program studi S1 berikut:
+
+### 1. Architecture (Arsitektur)
+Website: https://www.pradita.ac.id/programs/architecture
+
+### 2. Urban Planning (Perencanaan Kota)
+Website: https://www.pradita.ac.id/programs/urban-planning
+
+### 3. Civil Engineering (Teknik Sipil)
+Website: https://www.pradita.ac.id/programs/civil-enginer
+
+### 4. Interior Design (Desain Interior)
+Website: https://www.pradita.ac.id/programs/interior-design
+
+### 5. Visual Communication Design (Desain Komunikasi Visual / DKV)
+Website: https://www.pradita.ac.id/programs/visual-communication-design
+
+### 6. Accounting (Akuntansi)
+Website: https://www.pradita.ac.id/programs/accounting
+
+### 7. Management (Manajemen)
+Website: https://www.pradita.ac.id/programs/bussiness-management
+
+### 8. Informatics (Informatika / Teknik Informatika)
+Website: https://www.pradita.ac.id/programs/information-technology
+
+### 9. Business Information System (Sistem Informasi Bisnis)
+Website: https://www.pradita.ac.id/programs/business-information-system
+
+### 10. Hospitality & Tourism (Perhotelan & Pariwisata)
+Website: https://www.pradita.ac.id/programs/hospitality-tourism
+
+## JENJANG DIPLOMA (D3) - DIPLOMA DEGREE
+
+### 1. Culinary Arts (Seni Kuliner)
+Website: https://www.pradita.ac.id/programs/culinary-arts
+
+## JENJANG MAGISTER (S2) - MASTER DEGREE
+
+### 1. Information Technology (Teknologi Informasi)
+Website: https://www.pradita.ac.id/programs/information-technology-s2
+
+## TOTAL PROGRAM STUDI
+- S1 (Bachelor's): 10 program studi
+- D3 (Diploma): 1 program studi
+- S2 (Master): 1 program studi
+- Total: 12 program studi

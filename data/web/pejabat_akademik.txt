@@ -1,0 +1,46 @@
+# Informasi Pejabat Akademik Pradita University
+
+## REKTOR
+
+**Prof. Dr. Ir. Richardus Eko Indrajit, M.Sc., M.B.A., M.Phil., M.A.** adalah Rektor Universitas Pradita saat ini.
+
+Beliau merupakan pakar teknologi informasi dan tokoh pendidikan terkemuka di Indonesia.
+
+### Poin Penting:
+* **Jabatan:** Rektor Universitas Pradita.
+* **Keahlian:** Pakar Teknologi Informasi, Pendidikan, dan Manajemen.
+* **Kegiatan Lain:** Aktif memimpin Asosiasi Pendidikan Tinggi Informatika dan Komputer (APTIKOM) dan Smart Learning and Character Center (PSLCC) di PGRI.
+
+Universitas Pradita sendiri merupakan perguruan tinggi yang didirikan oleh Summarecon Agung Group.
+
+---
+
+## DEKAN
+
+**Dr. Eng. Handri Santoso, S.Si., M.Eng.** adalah Dekan di Pradita University (per Februari 2025).
+
+### Poin Penting:
+* **Jabatan Saat Ini:** Dekan Pradita University.
+* **Keahlian:** Pattern recognition, machine learning, deep learning.
+* **Riwayat:** Sebelumnya pernah menjabat sebagai Ketua Program Studi Informatika di Pradita University.
+* **Catatan:** Beliau adalah Dekan, bukan Rektor.
+
+---
+
+## KETUA PROGRAM STUDI INFORMATIKA (KAPRODI)
+
+**Erick Dazki** adalah Ketua Program Studi (Kaprodi) Informatika di Pradita University.
+
+### Poin Penting:
+* **Jabatan:** Ketua Program Studi Informatika (Kaprodi Informatika).
+* **Institusi:** Pradita University, Program Studi Teknik Informatika (INF).
+
+---
+
+## KETUA PROGRAM STUDI SISTEM INFORMASI (KAPRODI)
+
+**Wahyu Tisno** adalah Ketua Program Studi (Kaprodi) Sistem Informasi sekaligus Dosen Sistem Informasi (SI) di Pradita University.
+
+### Poin Penting:
+* **Jabatan:** Ketua Program Studi Sistem Informasi (Kaprodi SI) dan Dosen SI.
+* **Institusi:** Pradita University, Program Studi Sistem Informasi (SI).

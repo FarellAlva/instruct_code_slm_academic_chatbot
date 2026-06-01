@@ -1,0 +1,780 @@
+model,question_id,question,category,complexity,answer,raw_answer,reference_answer,semantic_similarity,llm_judge_score,llm_judge_reasoning,context_has_answer,context_similarity,num_chunks_retrieved,context_preview,latency_s,throughput_tps,prompt_tokens,completion_tokens,vram_mb_before,vram_mb_after,vram_peak_mb,thinking_tokens,error,claude_judge_score,claude_judge_reasoning,llm_answer
+gemma2:2b,1,Di mana lokasi kampus Pradita University?,Informasi Kampus,Sederhana,"Kampus Pradita University ada di dua lokasi: Jakarta Campus dan Gading Serpong Campus (Kampus Utama). 
+* **Jakarta Campus:** Menara Satu Building, Jl. Boulevard Raya LA 3 No.1, Sentra Kelapa Gading, Jakarta Utara, DKI Jakarta 14240
+* **Gading Serpong Campus (Kampus Utama):** Scientia Business Park, Tower 1, Jalan Raya Boulevard Blok 0/1, Summarecon Serpong, Kabupaten Tangerang, Banten 15810.","Kampus Pradita University ada di dua lokasi: Jakarta Campus dan Gading Serpong Campus (Kampus Utama). 
+* **Jakarta Campus:** Menara Satu Building, Jl. Boulevard Raya LA 3 No.1, Sentra Kelapa Gading, Jakarta Utara, DKI Jakarta 14240
+* **Gading Serpong Campus (Kampus Utama):** Scientia Business Park, Tower 1, Jalan Raya Boulevard Blok 0/1, Summarecon Serpong, Kabupaten Tangerang, Banten 15810.","Pradita University memiliki dua kampus. Kampus utama (Gading Serpong) berlokasi di Scientia Business Park, Tower 1, Jalan Raya Boulevard Blok O/1, Summarecon Serpong, Kabupaten Tangerang, Banten 15810. Kampus Jakarta berlokasi di Menara Satu Building, Jl. Boulevard Raya LA 3 No.1, Sentra Kelapa Gading, Jakarta Utara, DKI Jakarta 14240.",0.9709,100,,True,0.9038,6,[Dokumen #1 | Source: web:about_pradita.txt | Relevance: 0.998] ### 5. Holistic Learning Infrastructure Lingkungan sekitar kampus harus nyaman dan fasilitasnya dapat menunjang kegiatan mahasiswa. Kawa,15.406,13.85,1568,116,2343.0,3502.0,3502.0,0,,100.0,,
+gemma2:2b,2,Apa saja program studi yang tersedia di Pradita University?,Informasi Akademik,Sederhana,"Berikut adalah daftar program studi yang tersedia di Pradita University:
+
+**JENJANG SARJANA (S1) - BACHELOR'S DEGREE:**
+
+* Architecture (Arsitektur)
+* Urban Planning (Perencanaan Kota)
+* Civil Engineering (Teknik Sipil)
+* Interior Design (Desain Interior)
+* Visual Communication Design (Desain Komunikasi Visual / DKV)
+* Accounting (Akuntansi)
+* Management (Manajemen)
+* Informatics (Informatika / Teknik Informatika)
+* Business Information System (Sistem Informasi Bisnis)
+* Hospitality & Tourism (Perhotelan & Pariwisata)
+
+**JENJANG DIPLOMA (D3) - DIPLOMA DEGREE:**
+
+* Culinary Arts (Seni Kuliner)
+
+**JENJANG MAGISTER (S2) - MASTER DEGREE:**
+
+* Information Technology (Teknologi Informasi)","Berikut adalah daftar program studi yang tersedia di Pradita University:
+
+**JENJANG SARJANA (S1) - BACHELOR'S DEGREE:**
+
+* Architecture (Arsitektur)
+* Urban Planning (Perencanaan Kota)
+* Civil Engineering (Teknik Sipil)
+* Interior Design (Desain Interior)
+* Visual Communication Design (Desain Komunikasi Visual / DKV)
+* Accounting (Akuntansi)
+* Management (Manajemen)
+* Informatics (Informatika / Teknik Informatika)
+* Business Information System (Sistem Informasi Bisnis)
+* Hospitality & Tourism (Perhotelan & Pariwisata)
+
+**JENJANG DIPLOMA (D3) - DIPLOMA DEGREE:**
+
+* Culinary Arts (Seni Kuliner)
+
+**JENJANG MAGISTER (S2) - MASTER DEGREE:**
+
+* Information Technology (Teknologi Informasi)","Pradita University menawarkan berbagai program studi, antara lain: Teknik Informatika, Sistem Informasi, Pariwisata, Perencanaan Wilayah dan Kota, Arsitektur, Teknik Sipil, Desain Komunikasi Visual, Desain Interior, Seni Kuliner, Manajemen Bisnis, Akuntansi, dan Food & Beverage.",0.9187,95,,True,0.8823,6,[Dokumen #1 | Source: web:programs.txt | Relevance: 0.999] # Program Studi Pradita University  ## JENJANG SARJANA (S1) - BACHELOR'S DEGREE  Pradita University menawarkan program studi S1 berikut:  ###,16.322,12.39,1371,184,3506.0,3506.0,3506.0,0,,85.0,,
+gemma2:2b,3,Bagaimana cara mendaftar masuk ke Pradita University?,Penerimaan Mahasiswa,Sederhana,"Untuk mendaftar masuk ke Pradita University, kamu bisa kunjungi website Pendaftaran: https://www.pradita.ac.id/admission/enrollment-information atau hubungi info@pradita.ac.id.","Untuk mendaftar masuk ke Pradita University, kamu bisa kunjungi website Pendaftaran: https://www.pradita.ac.id/admission/enrollment-information atau hubungi info@pradita.ac.id.","Untuk mendaftar ke Pradita University, calon mahasiswa dapat mengunjungi website resmi pradita.ac.id atau menghubungi pihak kampus melalui email info@pradita.ac.id. Pendaftaran dilakukan secara online melalui portal penerimaan mahasiswa baru.",0.9426,100,,True,0.8787,6,[Dokumen #1 | Source: web:biaya_pradita.txt | Relevance: 1.000] ## PROSEDUR PENDAFTARAN (HOW TO ENROLL) 1. Membeli dan mengisi Formulir Pendaftaran. 2. Menyerahkan dokumen dan data yang dibutuhkan ke ,5.372,12.36,1294,50,3506.0,3506.0,3506.0,0,,100.0,,
+gemma2:2b,4,Berapa harga biaya kuliah per semester untuk program Information Technology & Business Information System di Pradita University?,Informasi Keuangan,Sederhana,"Rp 7.500.000,-","Rp 7.500.000,-","Biaya kuliah per semester untuk program Information Technology & Business Information System adalah Rp 7.500.000 (BPP), ditambah Rp 350.000 per SKS (untuk 20 SKS = Rp 7.000.000), dan Student Service Rp 750.000. Total keseluruhan per semester bisa mencapai sekitar Rp 15.250.000, belum termasuk uang pangkal di awal.",0.7991,40,,True,0.8515,6,"[Dokumen #1 | Source: web:biaya_pradita.txt | Relevance: 0.997] ### 3. Visual Communication Design * Total Biaya Pendaftaran: Rp 48.700.000,-. * Satu Kali Pembayaran di Awal: Formulir Rp 200.000,-, Ua",2.628,12.07,1493,15,3506.0,3506.0,3506.0,0,,35.0,,
+gemma2:2b,5,Apa saja fasilitas yang tersedia di kampus Pradita?,Fasilitas Kampus,Sederhana,"Fasilitas yang tersedia di kampus Pradita University antara lain:
+
+* Ruang kelas dengan kapasitas 50-80 orang (fasilitas AC, LCD dan sound system)
+* Lab komputer
+* Studio green screen
+* Studio e-learning
+* Auditorium dengan kapasitas lebih dari 350 kursi
+* Perpustakaan dengan koleksi lebih dari 2000 buku
+* Fasilitas Student Club (mulai dari sarana olahraga hingga aktivitas peminatan)
+* High-speed wi-fi connectivity
+* Green environment, lingkungan kampus yang hijau dengan taman dan danau
+* Shuttle bus
+* Workshop Lab - Pradita Research & Innovation Center
+* Podcast Room - Pradita University","Fasilitas yang tersedia di kampus Pradita University antara lain:
+
+* Ruang kelas dengan kapasitas 50-80 orang (fasilitas AC, LCD dan sound system)
+* Lab komputer
+* Studio green screen
+* Studio e-learning
+* Auditorium dengan kapasitas lebih dari 350 kursi
+* Perpustakaan dengan koleksi lebih dari 2000 buku
+* Fasilitas Student Club (mulai dari sarana olahraga hingga aktivitas peminatan)
+* High-speed wi-fi connectivity
+* Green environment, lingkungan kampus yang hijau dengan taman dan danau
+* Shuttle bus
+* Workshop Lab - Pradita Research & Innovation Center
+* Podcast Room - Pradita University","Pradita University memiliki berbagai fasilitas lengkap, antara lain: auditorium, laboratorium komputer, studio desain, Front Office Practice Area (Hospitality & Tourism Lab), Student Boarding House District - Cluster Alloggio (asrama mahasiswa), Sport Court, ruang kelas modern, dan kawasan Summarecon Serpong yang luas sebagai lingkungan belajar.",0.9196,100,,True,0.8977,6,[Dokumen #1 | Source: web:facilities.txt | Relevance: 0.999] # Pradita University Student Facilities  Pradita University menyediakan berbagai fasilitas lengkap untuk menunjang kegiatan belajar dan keh,12.643,12.96,1356,143,3506.0,3506.0,3506.0,0,,100.0,,
+gemma2:2b,6,Apakah ada beasiswa yang tersedia di Pradita University?,Informasi Keuangan,Sederhana,"Ya, Pradita University menyediakan beasiswa berupa keringanan biaya kuliah melalui jalur USM, RAPOR, dan JALUR PRESTASI.","Ya, Pradita University menyediakan beasiswa berupa keringanan biaya kuliah melalui jalur USM, RAPOR, dan JALUR PRESTASI.","Ya, Pradita University menyediakan program beasiswa untuk mahasiswa berprestasi. Informasi detail mengenai jenis beasiswa, persyaratan, dan cara pengajuan dapat diperoleh melalui website pradita.ac.id atau dengan menghubungi bagian kemahasiswaan kampus.",0.9262,100,,True,0.8729,6,[Dokumen #1 | Source: web:scholarship.txt | Relevance: 0.964] # Beasiswa Pradita University  Pradita University memberikan BEASISWA berupa keringanan biaya kuliah kepada calon mahasiswa melalui jalur ,3.652,13.57,1366,31,3506.0,3506.0,3506.0,0,,95.0,,
+gemma2:2b,7,Kapan jadwal kuliah program Informatika semester 2 pada hari Senin?,Jadwal Kuliah,Sederhana,"Jadwal kuliah program Informatika semester 2 pada hari Senin adalah sebagai berikut:
+
+* **13.55 - 15.40:** Sistem Basis Data (IS31012), Kelas A, Ruang A216
+* **15.45 - 17.30:** Lab. Sistem Basis Data (IS31021), Kelas A, Ruang A216 
+* **08.25 - 11.05:** Interaksi Manusia dan Komputer (IS31713), Kelas A+B, Ruang A306","Jadwal kuliah program Informatika semester 2 pada hari Senin adalah sebagai berikut:
+
+* **13.55 - 15.40:** Sistem Basis Data (IS31012), Kelas A, Ruang A216
+* **15.45 - 17.30:** Lab. Sistem Basis Data (IS31021), Kelas A, Ruang A216 
+* **08.25 - 11.05:** Interaksi Manusia dan Komputer (IS31713), Kelas A+B, Ruang A306","Jadwal kuliah program Informatika (INF) semester 2 pada hari Senin mencakup beberapa mata kuliah seperti Interaksi Manusia dan Komputer (08.25-11.05), Sistem Basis Data (13.55-15.40), dan Lab. Sistem Basis Data (15.45-17.30) yang diampu oleh Theresia Herlina, S.Kom., M.T.",0.9359,100,,True,0.9287,3,[Dokumen #1 | Prodi: Informatika | Sem: II | Hari: Senin | Relevance: 0.988] Entri jadwal kuliah resmi. Program studi: Informatika (kode: INF). Semester: II. Periode: Genap 2025/2026. Hari: Senin. Jam,11.406,12.73,680,132,3506.0,3506.0,3506.0,0,,100.0,,
+gemma2:2b,8,Apa visi dan misi Pradita University?,Informasi Institusi,Sederhana,"Visi dan misi Pradita University adalah: 
+
+* **Menjadi perguruan tinggi berwawasan global yang mampu mencetak lulusan berbudi pekerti luhur dan berkompetensi di bidangnya.** 
+* **Mendidik mahasiswa dengan prinsip integritas, disiplin, berpikir kritis, bertanggung jawab, dan menghormati keberagaman.**
+* **Mengembangkan penelitian tepat guna yang berkontribusi positif bagi industri dan masyarakat.**
+* **Melakukan pengabdian masyarakat untuk membentuk lulusan yang memiliki kepedulian sosial.**","Visi dan misi Pradita University adalah: 
+
+* **Menjadi perguruan tinggi berwawasan global yang mampu mencetak lulusan berbudi pekerti luhur dan berkompetensi di bidangnya.** 
+* **Mendidik mahasiswa dengan prinsip integritas, disiplin, berpikir kritis, bertanggung jawab, dan menghormati keberagaman.**
+* **Mengembangkan penelitian tepat guna yang berkontribusi positif bagi industri dan masyarakat.**
+* **Melakukan pengabdian masyarakat untuk membentuk lulusan yang memiliki kepedulian sosial.**",Visi Pradita University adalah menjadi perguruan tinggi berwawasan global yang mampu mencetak lulusan berbudi pekerti luhur dan berkompetensi di bidangnya. Misinya mencakup: mendidik mahasiswa dengan prinsip integritas dan berpikir kritis; menyelenggarakan pendidikan tinggi dengan sarana terkini; mengembangkan penelitian tepat guna; dan melakukan pengabdian masyarakat.,0.9659,100,,True,0.9065,6,"[Dokumen #1 | Source: web:about_pradita.txt | Relevance: 0.999] ## MISI 1. Mendidik mahasiswa dengan prinsip integritas, disiplin, berpikir kritis, bertanggung jawab, dan menghormati keberagaman. 2. M",10.919,11.6,1421,113,3506.0,3508.0,3508.0,0,,100.0,,
+gemma2:2b,9,Bagaimana cara menghubungi Pradita University?,Informasi Kontak,Sederhana,"Untuk menghubungi Pradita University, silakan hubungi:
+
+* **Email:** info@pradita.ac.id
+* **Website:** https://www.pradita.ac.id 
+* **Facebook:** f/pradita.info
+* **Sosial Media:** @pradita.info 
+* **Telepon:** 021 5568 9999","Untuk menghubungi Pradita University, silakan hubungi:
+
+* **Email:** info@pradita.ac.id
+* **Website:** https://www.pradita.ac.id 
+* **Facebook:** f/pradita.info
+* **Sosial Media:** @pradita.info 
+* **Telepon:** 021 5568 9999","Pradita University dapat dihubungi melalui email resmi: info@pradita.ac.id, atau melalui website: https://www.pradita.ac.id. Alamat kampus utama: Scientia Business Park, Tower 1, Summarecon Serpong, Tangerang.",0.9085,100,,True,0.9,6,[Dokumen #1 | Source: web:biaya_pradita.txt | Relevance: 0.976] ## PROSEDUR PENDAFTARAN (HOW TO ENROLL) 1. Membeli dan mengisi Formulir Pendaftaran. 2. Menyerahkan dokumen dan data yang dibutuhkan ke ,7.754,14.18,1200,91,3508.0,3508.0,3508.0,0,,100.0,,
+gemma2:2b,10,Berapa biaya kuliah per semester untuk program Business Management & Accounting di Pradita University?,Informasi Keuangan,Sederhana,"Maaf, sobat, saya tidak memiliki informasi tersebut.","Maaf, sobat, saya tidak memiliki informasi tersebut.","Biaya kuliah per semester untuk program Business Management & Accounting adalah BPP sebesar Rp 6.500.000, biaya per SKS Rp 350.000 (misal 20 SKS = Rp 7.000.000), dan Student Service Rp 750.000. Sehingga total per semester sekitar Rp 14.250.000 (belum termasuk uang pangkal di awal).",0.9279,80,,True,0.7939,6,[Dokumen #1 | Source: web:biaya_pradita.txt | Relevance: 0.046] # Informasi Biaya Kuliah dan Pendaftaran Pradita University (Tahun Ajaran 2022/2023)  # Sumber Dokumen Informasi di bawah ini merupakan ,2.353,14.48,1450,15,3508.0,3508.0,3508.0,0,,80.0,,
+gemma2:2b,11,Bandingkan keunggulan program studi Teknik Informatika dengan Sistem Informasi di Pradita University dari sisi kurikulum dan prospek karir.,Analitik Akademik,Kompleks,"Maaf, saya tidak memiliki informasi tentang keunggulan program studi Teknik Informatika dan Sistem Informasi di Pradita University.","Maaf, saya tidak memiliki informasi tentang keunggulan program studi Teknik Informatika dan Sistem Informasi di Pradita University.","Teknik Informatika dan Sistem Informasi di Pradita University keduanya merupakan program di bidang teknologi digital. Teknik Informatika lebih berfokus pada pengembangan perangkat lunak, algoritma, dan rekayasa sistem komputer. Sistem Informasi lebih berorientasi pada integrasi teknologi informasi dengan proses bisnis organisasi. Keduanya menyiapkan lulusan untuk industri teknologi dengan pendekatan yang berbeda: Informatika lebih teknis-engineering, SI lebih business-technology oriented.",0.8007,80,"Penjelasan perbandingan cukup terstruktur dan menyoroti perbedaan utama secara konseptual, meskipun penyajian prospek karir bersifat general dan tidak merujuk pada poin spesifik RAG.",True,0.8321,6,[Dokumen #1 | Prodi: Informatika | Sem: VIII | Hari: Kamis | Relevance: 0.000] Entri jadwal kuliah resmi. Program studi: Informatika (kode: INF). Semester: VIII. Periode: Genap 2025/2026. Hari: Kamis.,3.141,13.48,1380,26,3508.0,3508.0,3508.0,0,,80.0,,"Teknik Informatika di Pradita University berfokus pada pengembangan perangkat lunak, algoritma, dan rekayasa sistem. Sementara Sistem Informasi lebih berfokus pada penerapan teknologi informasi dalam konteks bisnis dan manajemen. Kedua program studi memiliki prospek karir yang cerah di era digital saat ini, di mana lulusan TI dapat menjadi software engineer, dan lulusan SI dapat menjadi analis sistem atau manajer proyek IT."
+gemma2:2b,12,Jelaskan keunggulan utama Pradita University dibandingkan perguruan tinggi lain berdasarkan pendekatan pembelajaran dan fasilitas yang dimiliki.,Analitik Institusi,Kompleks,"Pradita University unggul dalam dua hal utama: 
+
+**1. Pendekatan Pembelajaran:** Pradita menggabungkan teori dengan keahlian lapangan melalui konsep ""Conceptual Study, Action Learning"". Mahasiswa belajar langsung dengan situasi kerja nyata, sehingga ilmu yang diajarkan relevan dan praktis.  
+
+**2. Fasilitas dan Lingkungan:** Pradita menyediakan fasilitas lengkap untuk mendukung pembelajaran dan kehidupan mahasiswa. Fasilitas seperti ruang kelas modern, lab komputer, studio green screen, studio e-learning, auditorium, perpustakaan, dan fasilitas Student Club, menciptakan lingkungan belajar yang optimal. 
+
+
+Selain itu, Pradita memiliki lokasi kampus yang strategis di Summarecon Serpong dengan berbagai fasilitas pendukung, seperti shuttle bus dan Cluster Allogio yang dilengkapi dengan kolam renang dan fasilitas lainnya.","Pradita University unggul dalam dua hal utama: 
+
+**1. Pendekatan Pembelajaran:** Pradita menggabungkan teori dengan keahlian lapangan melalui konsep ""Conceptual Study, Action Learning"". Mahasiswa belajar langsung dengan situasi kerja nyata, sehingga ilmu yang diajarkan relevan dan praktis.  
+
+**2. Fasilitas dan Lingkungan:** Pradita menyediakan fasilitas lengkap untuk mendukung pembelajaran dan kehidupan mahasiswa. Fasilitas seperti ruang kelas modern, lab komputer, studio green screen, studio e-learning, auditorium, perpustakaan, dan fasilitas Student Club, menciptakan lingkungan belajar yang optimal. 
+
+
+Selain itu, Pradita memiliki lokasi kampus yang strategis di Summarecon Serpong dengan berbagai fasilitas pendukung, seperti shuttle bus dan Cluster Allogio yang dilengkapi dengan kolam renang dan fasilitas lainnya.","Pradita University memiliki beberapa keunggulan: (1) Conceptual Study + Action Learning yang memadukan teori dan praktik lapangan; (2) Real Case, Real Experience melalui kemitraan industri; (3) pengajar kombinasi akademisi dan praktisi aktif; (4) Direct Access to Industry; (5) Holistic Learning Infrastructure di kawasan Summarecon Serpong seluas ratusan hektar. Fasilitas mencakup auditorium, lab komputer, studio, asrama, dan sport court.",0.9359,100,,True,0.883,6,[Dokumen #1 | Source: web:about_pradita.txt | Relevance: 0.965] # Tentang Pradita University  ## SEJARAH DAN LATAR BELAKANG Pradita University lahir dari jaringan korporasi berbagai industri yang dipr,12.812,13.78,1189,157,3508.0,3508.0,3508.0,0,,95.0,,
+gemma2:2b,13,Jika biaya per SKS adalah Rp 500.000 dan mahasiswa mengambil rata-rata 20 SKS per semester selama 8 semester, berapa total biaya studi keseluruhan?,Kalkulasi Keuangan,"Total biaya per semester adalah: Rp 500.000 x 20 SKS = Rp 10.000.000,-
+
+Jumlah total biaya selama 8 semester adalah: Rp 10.000.000 x 8 = **Rp 80.000.000,-**","Total biaya per semester adalah: Rp 500.000 x 20 SKS = Rp 10.000.000,-
+
+Jumlah total biaya selama 8 semester adalah: Rp 10.000.000 x 8 = **Rp 80.000.000,-**",Numerik,0.9381,100,,True,0.7335,6,"[Dokumen #1 | Source: web:biaya_pradita.txt | Relevance: 0.969] ### 1. Architecture & Interior Design * Total Biaya Pendaftaran: Rp 47.700.000,-. * Satu Kali Pembayaran di Awal: Formulir Rp 200.000,-,",7.671,12.95,1747,78,3508.0,3508.0,3508.0,0,,100.0,,
+gemma2:2b,14,Apa saja mata kuliah yang diajarkan oleh Theresia Herlina di program Informatika?,Informasi Jadwal,Moderat,"Berikut mata kuliah yang diajarkan oleh Theresia Herlina di program Informatika:
+
+* **Interaksi Manusia dan Komputer** (Semester II)
+* **Lab. Sistem Basis Data** (Semester II) 
+* **Sistem Basis Data** (Semester II)","Berikut mata kuliah yang diajarkan oleh Theresia Herlina di program Informatika:
+
+* **Interaksi Manusia dan Komputer** (Semester II)
+* **Lab. Sistem Basis Data** (Semester II) 
+* **Sistem Basis Data** (Semester II)","Berdasarkan jadwal perkuliahan Genap 2025/2026, Theresia Herlina, S.Kom., M.T. mengajar di program Informatika (INF) semester II, antara lain: Interaksi Manusia dan Komputer (Senin 08.25-11.05), Sistem Basis Data (Senin 13.55-15.40), dan Lab. Sistem Basis Data (Senin 15.45-17.30).",0.9312,100,,True,0.9261,5,[INSTRUKSI KONTEKS] Berikut adalah data jadwal yang ditemukan. HANYA gunakan informasi yang TERTULIS EKSPLISIT di bawah. Fokus pencarian: dosen 'Theresia Herlina'.  ---  [Dokumen #1 | Prodi: Sistem In,5.738,14.49,1133,58,3508.0,3508.0,3508.0,0,,100.0,,
+gemma2:2b,15,Apakah ada asrama atau tempat tinggal yang disediakan oleh Pradita University untuk mahasiswanya?,Fasilitas Kampus,Moderat,"Ya, Pradita University menyediakan asrama bagi mahasiswa dengan Cluster Allogio.  Cluster Allogio memiliki 382 unit dengan kisaran harga sewa Rp 1.500.000,00 sampai Rp 2.000.000,00. Unit dilengkapi fasilitas seperti kolam renang dan shuttle bus.","Ya, Pradita University menyediakan asrama bagi mahasiswa dengan Cluster Allogio.  Cluster Allogio memiliki 382 unit dengan kisaran harga sewa Rp 1.500.000,00 sampai Rp 2.000.000,00. Unit dilengkapi fasilitas seperti kolam renang dan shuttle bus.","Ya, Pradita University menyediakan fasilitas Student Boarding House District - Cluster Alloggio, yaitu hunian/asrama mahasiswa yang berlokasi di kawasan kampus Summarecon Serpong. Fasilitas ini dirancang untuk mendukung kebutuhan tempat tinggal mahasiswa selama masa studi.",0.9254,100,,True,0.9073,6,[Dokumen #1 | Source: web:about_pradita.txt | Relevance: 0.368] ### 5. Holistic Learning Infrastructure Lingkungan sekitar kampus harus nyaman dan fasilitasnya dapat menunjang kegiatan mahasiswa. Kawa,6.728,14.01,1362,75,3508.0,3508.0,3508.0,0,,100.0,,
+qwen3:1.7B,1,Di mana lokasi kampus Pradita University?,Informasi Kampus,Sederhana,"Lokasi kampus Pradita University terdiri dari dua kampus:  
+1. **Kampus Utama** di **Gading Serpong, Summarecon Serpong, Tangerang, Banten** (alamat: Jl. Boulevard Gading Serpong Blok 0/1, Scientia Business Park, Tower 1).  
+2. **Kampus Jakarta** di **Menara Satu Building, Jl. Boulevard Raya LA 3 No.1, Sentra Kelapa Gading, Jakarta Utara**.  
+
+Pertanyaan mengarah pada kampus utama, jawaban adalah **Gading Serpong, Tangerang**.","Lokasi kampus Pradita University terdiri dari dua kampus:  
+1. **Kampus Utama** di **Gading Serpong, Summarecon Serpong, Tangerang, Banten** (alamat: Jl. Boulevard Gading Serpong Blok 0/1, Scientia Business Park, Tower 1).  
+2. **Kampus Jakarta** di **Menara Satu Building, Jl. Boulevard Raya LA 3 No.1, Sentra Kelapa Gading, Jakarta Utara**.  
+
+Pertanyaan mengarah pada kampus utama, jawaban adalah **Gading Serpong, Tangerang**.","Pradita University memiliki dua kampus. Kampus utama (Gading Serpong) berlokasi di Scientia Business Park, Tower 1, Jalan Raya Boulevard Blok O/1, Summarecon Serpong, Kabupaten Tangerang, Banten 15810. Kampus Jakarta berlokasi di Menara Satu Building, Jl. Boulevard Raya LA 3 No.1, Sentra Kelapa Gading, Jakarta Utara, DKI Jakarta 14240.",0.958,100,,True,0.9038,6,[Dokumen #1 | Source: web:about_pradita.txt | Relevance: 0.998] ### 5. Holistic Learning Infrastructure Lingkungan sekitar kampus harus nyaman dan fasilitasnya dapat menunjang kegiatan mahasiswa. Kawa,24.716,19.9,1573,384,3508.0,3502.0,3508.0,0,,100.0,,
+qwen3:1.7B,2,Apa saja program studi yang tersedia di Pradita University?,Informasi Akademik,Sederhana,"Berikut daftar program studi di Pradita University:
+
+### **Jenjang Sarjana (S1)**
+1. Arsitektur  
+2. Perencanaan Kota  
+3. Teknik Sipil  
+4. Desain Interior  
+5. Desain Komunikasi Visual (DKV)  
+6. Akuntansi  
+
+### **Jenjang Diploma (D3)**
+1. Seni Kuliner  
+2. Sistem Informasi Bisnis  
+3. Perhotelan & Pariwisata  
+
+### **Jenjang Magister (S2)**
+1. Teknologi Informasi  
+
+**Catatan:** Program Studi Informatika di Pradita University tercantum dalam dokumen #3.","Berikut daftar program studi di Pradita University:
+
+### **Jenjang Sarjana (S1)**
+1. Arsitektur  
+2. Perencanaan Kota  
+3. Teknik Sipil  
+4. Desain Interior  
+5. Desain Komunikasi Visual (DKV)  
+6. Akuntansi  
+
+### **Jenjang Diploma (D3)**
+1. Seni Kuliner  
+2. Sistem Informasi Bisnis  
+3. Perhotelan & Pariwisata  
+
+### **Jenjang Magister (S2)**
+1. Teknologi Informasi  
+
+**Catatan:** Program Studi Informatika di Pradita University tercantum dalam dokumen #3.","Pradita University menawarkan berbagai program studi, antara lain: Teknik Informatika, Sistem Informasi, Pariwisata, Perencanaan Wilayah dan Kota, Arsitektur, Teknik Sipil, Desain Komunikasi Visual, Desain Interior, Seni Kuliner, Manajemen Bisnis, Akuntansi, dan Food & Beverage.",0.9338,90,,True,0.8823,6,[Dokumen #1 | Source: web:programs.txt | Relevance: 0.999] # Program Studi Pradita University  ## JENJANG SARJANA (S1) - BACHELOR'S DEGREE  Pradita University menawarkan program studi S1 berikut:  ###,33.716,19.79,1541,645,3502.0,3506.0,3506.0,0,,95.0,,
+qwen3:1.7B,3,Bagaimana cara mendaftar masuk ke Pradita University?,Penerimaan Mahasiswa,Sederhana,"**Cara Mendaftar Masuk Pradita University:**  
+1. **Membeli dan mengisi Formulir Pendaftaran**  
+2. **Menyerahkan dokumen dan data ke bagian Admission**  
+3. **Mengikuti ujian saringan masuk (USM)**  
+4. **Mendapatkan Letter of Offering (LOO)**  
+5. **Membayar commitment fee**  
+6. **Daftar ulang dan menjadi mahasiswa**  
+
+**Link penting:**  
+- Website: [https://www.pradita.ac.id/admission/enrollment-information](https://www.pradita.ac.id/admission/enrollment-information)  
+- Email: info@pradita.ac.id  
+
+*Catatan: Proses tambahan seperti beasiswa atau jalur prestasi disebutkan dalam dokumen tambahan.*","**Cara Mendaftar Masuk Pradita University:**  
+1. **Membeli dan mengisi Formulir Pendaftaran**  
+2. **Menyerahkan dokumen dan data ke bagian Admission**  
+3. **Mengikuti ujian saringan masuk (USM)**  
+4. **Mendapatkan Letter of Offering (LOO)**  
+5. **Membayar commitment fee**  
+6. **Daftar ulang dan menjadi mahasiswa**  
+
+**Link penting:**  
+- Website: [https://www.pradita.ac.id/admission/enrollment-information](https://www.pradita.ac.id/admission/enrollment-information)  
+- Email: info@pradita.ac.id  
+
+*Catatan: Proses tambahan seperti beasiswa atau jalur prestasi disebutkan dalam dokumen tambahan.*","Untuk mendaftar ke Pradita University, calon mahasiswa dapat mengunjungi website resmi pradita.ac.id atau menghubungi pihak kampus melalui email info@pradita.ac.id. Pendaftaran dilakukan secara online melalui portal penerimaan mahasiswa baru.",0.9092,100,,True,0.8787,6,[Dokumen #1 | Source: web:biaya_pradita.txt | Relevance: 1.000] ## PROSEDUR PENDAFTARAN (HOW TO ENROLL) 1. Membeli dan mengisi Formulir Pendaftaran. 2. Menyerahkan dokumen dan data yang dibutuhkan ke ,27.193,19.69,1481,513,3506.0,3506.0,3506.0,0,,100.0,,
+qwen3:1.7B,4,Berapa harga biaya kuliah per semester untuk program Information Technology & Business Information System di Pradita University?,Informasi Keuangan,Sederhana,"**Harga Biaya Kuliah Per Semester untuk Program Information Technology & Business Information System:**  
+Rp 7.500.000,- (BPP) + Rp 750.000,- (Student Service) = **Rp 8.250.000,-** per semester.  
+
+**Penjelasan:**  
+Dari dokumen #2, biaya per semester untuk 20 SKS (BPP Rp 7.500.000,-) dan biaya tambahan Student Service Rp 750.000,-.","**Harga Biaya Kuliah Per Semester untuk Program Information Technology & Business Information System:**  
+Rp 7.500.000,- (BPP) + Rp 750.000,- (Student Service) = **Rp 8.250.000,-** per semester.  
+
+**Penjelasan:**  
+Dari dokumen #2, biaya per semester untuk 20 SKS (BPP Rp 7.500.000,-) dan biaya tambahan Student Service Rp 750.000,-.","Biaya kuliah per semester untuk program Information Technology & Business Information System adalah Rp 7.500.000 (BPP), ditambah Rp 350.000 per SKS (untuk 20 SKS = Rp 7.000.000), dan Student Service Rp 750.000. Total keseluruhan per semester bisa mencapai sekitar Rp 15.250.000, belum termasuk uang pangkal di awal.",0.8203,40,,True,0.8515,6,"[Dokumen #1 | Source: web:biaya_pradita.txt | Relevance: 0.997] ### 3. Visual Communication Design * Total Biaya Pendaftaran: Rp 48.700.000,-. * Satu Kali Pembayaran di Awal: Formulir Rp 200.000,-, Ua",24.494,21.03,1662,485,3506.0,3506.0,3506.0,0,,35.0,,
+qwen3:1.7B,5,Apa saja fasilitas yang tersedia di kampus Pradita?,Fasilitas Kampus,Sederhana,"Berikut adalah fasilitas yang tersedia di kampus Pradita University:
+
+| Kategori Fasilitas | Contoh Fasilitas |
+|-------------------|------------------|
+| **Fasilitas Belajar** | Ruang kelas (AC, LCD, sound), lab komputer, studio green screen, studio e-learning, auditorium, perpustakaan, student club, Wi-Fi, taman dan danau |
+| **Transportasi** | Shuttle bus, Cluster Allogio (382 unit dengan kolam renang, shuttle bus) |
+| **Housing** | Kamar mahasiswa, Cluster Allogio (sarana olahraga, peminatan) |
+| **Laboratorium & Karya Kreatif** | Workshop lab, podcast room, lab riset & inovasi |
+| **Lingkungan & Keamanan** | Lingkungan hijau, taman, danau, fasilitas student club |
+
+*Catatan: Data terkandung dalam dokumen #1, #3, #4, #5, dan #6.*","Berikut adalah fasilitas yang tersedia di kampus Pradita University:
+
+| Kategori Fasilitas | Contoh Fasilitas |
+|-------------------|------------------|
+| **Fasilitas Belajar** | Ruang kelas (AC, LCD, sound), lab komputer, studio green screen, studio e-learning, auditorium, perpustakaan, student club, Wi-Fi, taman dan danau |
+| **Transportasi** | Shuttle bus, Cluster Allogio (382 unit dengan kolam renang, shuttle bus) |
+| **Housing** | Kamar mahasiswa, Cluster Allogio (sarana olahraga, peminatan) |
+| **Laboratorium & Karya Kreatif** | Workshop lab, podcast room, lab riset & inovasi |
+| **Lingkungan & Keamanan** | Lingkungan hijau, taman, danau, fasilitas student club |
+
+*Catatan: Data terkandung dalam dokumen #1, #3, #4, #5, dan #6.*","Pradita University memiliki berbagai fasilitas lengkap, antara lain: auditorium, laboratorium komputer, studio desain, Front Office Practice Area (Hospitality & Tourism Lab), Student Boarding House District - Cluster Alloggio (asrama mahasiswa), Sport Court, ruang kelas modern, dan kawasan Summarecon Serpong yang luas sebagai lingkungan belajar.",0.9058,100,,True,0.8977,6,[Dokumen #1 | Source: web:facilities.txt | Relevance: 0.999] # Pradita University Student Facilities  Pradita University menyediakan berbagai fasilitas lengkap untuk menunjang kegiatan belajar dan keh,26.626,19.97,1437,514,3506.0,3506.0,3506.0,0,,100.0,,
+qwen3:1.7B,6,Apakah ada beasiswa yang tersedia di Pradita University?,Informasi Keuangan,Sederhana,"Ya, Pradita University menawarkan beasiswa melalui tiga jalur:  
+1. **Jalur USM** (Ujian Saringan Masuk): Mengikuti ujian Matematika, Logika, dan Bahasa Inggris.  
+2. **Jalur Raport**: Menyerahkan rapor dan memenuhi kriteria seleksi.  
+3. **Jalur Prestasi**: Berdasarkan penghargaan (sertifikat, medali, piala) nasional/internasional.  
+
+Beasiswa tersedia melalui prosedur pendaftaran dan kriteria yang dijelaskan dalam dokumen.","Ya, Pradita University menawarkan beasiswa melalui tiga jalur:  
+1. **Jalur USM** (Ujian Saringan Masuk): Mengikuti ujian Matematika, Logika, dan Bahasa Inggris.  
+2. **Jalur Raport**: Menyerahkan rapor dan memenuhi kriteria seleksi.  
+3. **Jalur Prestasi**: Berdasarkan penghargaan (sertifikat, medali, piala) nasional/internasional.  
+
+Beasiswa tersedia melalui prosedur pendaftaran dan kriteria yang dijelaskan dalam dokumen.","Ya, Pradita University menyediakan program beasiswa untuk mahasiswa berprestasi. Informasi detail mengenai jenis beasiswa, persyaratan, dan cara pengajuan dapat diperoleh melalui website pradita.ac.id atau dengan menghubungi bagian kemahasiswaan kampus.",0.9223,100,,True,0.8729,6,[Dokumen #1 | Source: web:scholarship.txt | Relevance: 0.964] # Beasiswa Pradita University  Pradita University memberikan BEASISWA berupa keringanan biaya kuliah kepada calon mahasiswa melalui jalur ,20.85,20.48,1513,406,3506.0,3506.0,3506.0,0,,100.0,,
+qwen3:1.7B,7,Kapan jadwal kuliah program Informatika semester 2 pada hari Senin?,Jadwal Kuliah,Sederhana,"```markdown
+| Hari     | Jam         | Mata Kuliah           | Kode Mata Kuliah | Kelas | Ruang     | Dosen         |
+|----------|--------------|------------------------|-------------------|-------|-------------|---------------|
+| Senin    | 13.55 - 15.40 | Sistem Basis Data      | IS31012           | A    | A216        | Theresia Herlina, S.Kom., M.T. |
+| Senin    | 15.45 - 17.30 | Lab. Sistem Basis Data  | IS31021           | A    | A216        | Theresia Herlina, S.Kom., M.T. |
+| Senin    | 08.25 - 11.05 | Interaksi Manusia dan Komputer | IS31713 | A+B | A306        | Theresia Herlina, S.Kom., M.T. |
+```","```markdown
+| Hari     | Jam         | Mata Kuliah           | Kode Mata Kuliah | Kelas | Ruang     | Dosen         |
+|----------|--------------|------------------------|-------------------|-------|-------------|---------------|
+| Senin    | 13.55 - 15.40 | Sistem Basis Data      | IS31012           | A    | A216        | Theresia Herlina, S.Kom., M.T. |
+| Senin    | 15.45 - 17.30 | Lab. Sistem Basis Data  | IS31021           | A    | A216        | Theresia Herlina, S.Kom., M.T. |
+| Senin    | 08.25 - 11.05 | Interaksi Manusia dan Komputer | IS31713 | A+B | A306        | Theresia Herlina, S.Kom., M.T. |
+```","Jadwal kuliah program Informatika (INF) semester 2 pada hari Senin mencakup beberapa mata kuliah seperti Interaksi Manusia dan Komputer (08.25-11.05), Sistem Basis Data (13.55-15.40), dan Lab. Sistem Basis Data (15.45-17.30) yang diampu oleh Theresia Herlina, S.Kom., M.T.",0.8924,100,,True,0.9287,3,[Dokumen #1 | Prodi: Informatika | Sem: II | Hari: Senin | Relevance: 0.988] Entri jadwal kuliah resmi. Program studi: Informatika (kode: INF). Semester: II. Periode: Genap 2025/2026. Hari: Senin. Jam,18.589,23.73,751,420,3506.0,3506.0,3506.0,0,,100.0,,
+qwen3:1.7B,8,Apa visi dan misi Pradita University?,Informasi Institusi,Sederhana,"**Visi dan Misi Pradita University:**  
+**Visi:** Menjadi perguruan tinggi berwawasan global yang mampu mencetak lulusan berbudi pekerti luhur dan berkompeten di bidangnya.  
+**Misi:**  
+1. Mendidik mahasiswa dengan prinsip integritas, disiplin, berpikir kritis, bertanggung jawab, dan menghormati keberagaman.  
+2. Menyelenggarakan pendidikan tinggi efektif, efisien, dan terkini sesuai perkembangan global.  
+3. Mengembangkan penelitian berkontribusi positif bagi industri dan masyarakat.  
+4. Melakukan pengabdian masyarakat untuk membentuk lulusan berkependulian sosial.  
+
+*Informasi tambahan:* Rektor Universitas Pradita adalah Prof. Dr. Ir. Richardus Eko Indrajit, sementara Dekan adalah Dr. Eng. Handri Santoso.","**Visi dan Misi Pradita University:**  
+**Visi:** Menjadi perguruan tinggi berwawasan global yang mampu mencetak lulusan berbudi pekerti luhur dan berkompeten di bidangnya.  
+**Misi:**  
+1. Mendidik mahasiswa dengan prinsip integritas, disiplin, berpikir kritis, bertanggung jawab, dan menghormati keberagaman.  
+2. Menyelenggarakan pendidikan tinggi efektif, efisien, dan terkini sesuai perkembangan global.  
+3. Mengembangkan penelitian berkontribusi positif bagi industri dan masyarakat.  
+4. Melakukan pengabdian masyarakat untuk membentuk lulusan berkependulian sosial.  
+
+*Informasi tambahan:* Rektor Universitas Pradita adalah Prof. Dr. Ir. Richardus Eko Indrajit, sementara Dekan adalah Dr. Eng. Handri Santoso.",Visi Pradita University adalah menjadi perguruan tinggi berwawasan global yang mampu mencetak lulusan berbudi pekerti luhur dan berkompetensi di bidangnya. Misinya mencakup: mendidik mahasiswa dengan prinsip integritas dan berpikir kritis; menyelenggarakan pendidikan tinggi dengan sarana terkini; mengembangkan penelitian tepat guna; dan melakukan pengabdian masyarakat.,0.9254,100,,True,0.9065,6,"[Dokumen #1 | Source: web:about_pradita.txt | Relevance: 0.999] ## MISI 1. Mendidik mahasiswa dengan prinsip integritas, disiplin, berpikir kritis, bertanggung jawab, dan menghormati keberagaman. 2. M",26.252,19.82,1644,498,3506.0,3506.0,3506.0,0,,100.0,,
+qwen3:1.7B,9,Bagaimana cara menghubungi Pradita University?,Informasi Kontak,Sederhana,"Maaf sobat, saya tidak memiliki informasi mengenai cara menghubungi Pradita University secara eksplisit. Namun, berikut adalah kontak yang tercantum dalam dokumen:  
+- **Telepon**: 021 5568 9999  
+- **Email**: info@pradita.ac.id  
+- **Website**: www.pradita.ac.id  
+- **Sosial Media**: Facebook @f/pradita.info, @pradita.info  
+
+Jika ingin menghubungi, gunakan salah satu cara di atas.","Maaf sobat, saya tidak memiliki informasi mengenai cara menghubungi Pradita University secara eksplisit. Namun, berikut adalah kontak yang tercantum dalam dokumen:  
+- **Telepon**: 021 5568 9999  
+- **Email**: info@pradita.ac.id  
+- **Website**: www.pradita.ac.id  
+- **Sosial Media**: Facebook @f/pradita.info, @pradita.info  
+
+Jika ingin menghubungi, gunakan salah satu cara di atas.","Pradita University dapat dihubungi melalui email resmi: info@pradita.ac.id, atau melalui website: https://www.pradita.ac.id. Alamat kampus utama: Scientia Business Park, Tower 1, Summarecon Serpong, Tangerang.",0.9093,100,,True,0.9,6,[Dokumen #1 | Source: web:biaya_pradita.txt | Relevance: 0.976] ## PROSEDUR PENDAFTARAN (HOW TO ENROLL) 1. Membeli dan mengisi Formulir Pendaftaran. 2. Menyerahkan dokumen dan data yang dibutuhkan ke ,14.168,22.17,1347,292,3506.0,3506.0,3506.0,0,,80.0,,
+qwen3:1.7B,10,Berapa biaya kuliah per semester untuk program Business Management & Accounting di Pradita University?,Informasi Keuangan,Sederhana,"Maaf sobat, saya tidak memiliki informasi tentang biaya kuliah per semester untuk program Business Management & Accounting di Pradita University berdasarkan konteks yang diberikan.","Maaf sobat, saya tidak memiliki informasi tentang biaya kuliah per semester untuk program Business Management & Accounting di Pradita University berdasarkan konteks yang diberikan.","Biaya kuliah per semester untuk program Business Management & Accounting adalah BPP sebesar Rp 6.500.000, biaya per SKS Rp 350.000 (misal 20 SKS = Rp 7.000.000), dan Student Service Rp 750.000. Sehingga total per semester sekitar Rp 14.250.000 (belum termasuk uang pangkal di awal).",0.9242,80,,True,0.7939,6,[Dokumen #1 | Source: web:biaya_pradita.txt | Relevance: 0.046] # Informasi Biaya Kuliah dan Pendaftaran Pradita University (Tahun Ajaran 2022/2023)  # Sumber Dokumen Informasi di bawah ini merupakan ,16.346,21.35,1576,327,3506.0,3506.0,3506.0,0,,80.0,,
+qwen3:1.7B,11,Bandingkan keunggulan program studi Teknik Informatika dengan Sistem Informasi di Pradita University dari sisi kurikulum dan prospek karir.,Analitik Akademik,Kompleks,"**Perbandingan Keunggulan Program Studi: Teknik Informatika vs. Sistem Informasi**  
+
+### **Kurikulum**  
+- **Teknik Informatika**:  
+  - Membekali siswa dengan mata kuliah modern seperti *Digital Transformation in Business and Industry* (IF141403) dan *Komputasi Kinerja Tinggi* (IF232103), yang relevan dengan industri teknologi dan AI.  
+  - Fokus pada kombinasi teori (misalnya, pemrograman berorientasi objek) dan praktik (praktikum struktur data, pemrograman berorientasi objek).  
+
+- **Sistem Informasi**:  
+  - Mempertahankan kurikulum praktik seperti *Praktikum Pemrograman Berorientasi Objek* (IF30821) dan *Praktikum Struktur Data* (IF30721), yang menekankan pengembangan solusi sistem dan penggunaan teknologi.  
+
+### **Prospek Karir**  
+- **Teknik Informatika**:  
+  - Dalam industri teknologi, AI, dan keuangan, keterampilan dalam *Digital Transformation* dan *Komputasi Kinerja Tinggi* sangat diminati.  
+
+- **Sistem Informasi**:  
+  - Memiliki keunggulan dalam bidang desain sistem, analisis data, dan penggunaan teknologi informasi (misalnya, *Praktikum Struktur Data*).  
+
+**Kesimpulan**:  
+Program Teknik Informatika lebih terfokus pada teknologi terkini (AI, kinerja tinggi), sementara Sistem Informasi menekankan pengembangan solusi sistem. Keduanya memiliki prospek karir yang baik, tetapi Teknik Informatika lebih relevan dengan industri teknologi modern.","**Perbandingan Keunggulan Program Studi: Teknik Informatika vs. Sistem Informasi**  
+
+### **Kurikulum**  
+- **Teknik Informatika**:  
+  - Membekali siswa dengan mata kuliah modern seperti *Digital Transformation in Business and Industry* (IF141403) dan *Komputasi Kinerja Tinggi* (IF232103), yang relevan dengan industri teknologi dan AI.  
+  - Fokus pada kombinasi teori (misalnya, pemrograman berorientasi objek) dan praktik (praktikum struktur data, pemrograman berorientasi objek).  
+
+- **Sistem Informasi**:  
+  - Mempertahankan kurikulum praktik seperti *Praktikum Pemrograman Berorientasi Objek* (IF30821) dan *Praktikum Struktur Data* (IF30721), yang menekankan pengembangan solusi sistem dan penggunaan teknologi.  
+
+### **Prospek Karir**  
+- **Teknik Informatika**:  
+  - Dalam industri teknologi, AI, dan keuangan, keterampilan dalam *Digital Transformation* dan *Komputasi Kinerja Tinggi* sangat diminati.  
+
+- **Sistem Informasi**:  
+  - Memiliki keunggulan dalam bidang desain sistem, analisis data, dan penggunaan teknologi informasi (misalnya, *Praktikum Struktur Data*).  
+
+**Kesimpulan**:  
+Program Teknik Informatika lebih terfokus pada teknologi terkini (AI, kinerja tinggi), sementara Sistem Informasi menekankan pengembangan solusi sistem. Keduanya memiliki prospek karir yang baik, tetapi Teknik Informatika lebih relevan dengan industri teknologi modern.","Teknik Informatika dan Sistem Informasi di Pradita University keduanya merupakan program di bidang teknologi digital. Teknik Informatika lebih berfokus pada pengembangan perangkat lunak, algoritma, dan rekayasa sistem komputer. Sistem Informasi lebih berorientasi pada integrasi teknologi informasi dengan proses bisnis organisasi. Keduanya menyiapkan lulusan untuk industri teknologi dengan pendekatan yang berbeda: Informatika lebih teknis-engineering, SI lebih business-technology oriented.",0.8759,90,,True,0.8321,6,[Dokumen #1 | Prodi: Informatika | Sem: VIII | Hari: Kamis | Relevance: 0.000] Entri jadwal kuliah resmi. Program studi: Informatika (kode: INF). Semester: VIII. Periode: Genap 2025/2026. Hari: Kamis.,50.822,19.16,1516,951,3506.0,3506.0,3506.0,0,,85.0,,
+qwen3:1.7B,12,Jelaskan keunggulan utama Pradita University dibandingkan perguruan tinggi lain berdasarkan pendekatan pembelajaran dan fasilitas yang dimiliki.,Analitik Institusi,Kompleks,"### Keunggulan Pradita University  
+**Pendekatan Pembelajaran:**  
+1. **Conceptual Study & Action Learning**  
+   - Kombinasi teori dan praktik, dengan laboratorium, studio e-learning, dan auditorium.  
+   - Fasilitas seperti ruang kelas AC, LCD, dan Wi-Fi.  
+
+2. **Real Case & Real Experience**  
+   - Kemitraan dengan perusahaan untuk pengalaman kerja nyata.  
+   - Pelatihan berbasis industri melalui praktisi aktif dan akademisi.  
+
+**Fasilitas:**  
+- Perpustakaan dengan 2000+ buku, studio green screen, dan student club (olahraga, peminatan).  
+- Kampus dengan lingkungan hijau, taman, dan fasilitas transportasi shuttle bus.  
+
+**Keunggulan Utama:**  
+- Pendekatan praktis (teori + kehidupan nyata),  
+- Akses langsung ke industri melalui kemitraan,  
+- Fasilitas lengkap untuk belajar dan hidup mahasiswa.","### Keunggulan Pradita University  
+**Pendekatan Pembelajaran:**  
+1. **Conceptual Study & Action Learning**  
+   - Kombinasi teori dan praktik, dengan laboratorium, studio e-learning, dan auditorium.  
+   - Fasilitas seperti ruang kelas AC, LCD, dan Wi-Fi.  
+
+2. **Real Case & Real Experience**  
+   - Kemitraan dengan perusahaan untuk pengalaman kerja nyata.  
+   - Pelatihan berbasis industri melalui praktisi aktif dan akademisi.  
+
+**Fasilitas:**  
+- Perpustakaan dengan 2000+ buku, studio green screen, dan student club (olahraga, peminatan).  
+- Kampus dengan lingkungan hijau, taman, dan fasilitas transportasi shuttle bus.  
+
+**Keunggulan Utama:**  
+- Pendekatan praktis (teori + kehidupan nyata),  
+- Akses langsung ke industri melalui kemitraan,  
+- Fasilitas lengkap untuk belajar dan hidup mahasiswa.","Pradita University memiliki beberapa keunggulan: (1) Conceptual Study + Action Learning yang memadukan teori dan praktik lapangan; (2) Real Case, Real Experience melalui kemitraan industri; (3) pengajar kombinasi akademisi dan praktisi aktif; (4) Direct Access to Industry; (5) Holistic Learning Infrastructure di kawasan Summarecon Serpong seluas ratusan hektar. Fasilitas mencakup auditorium, lab komputer, studio, asrama, dan sport court.",0.9066,100,,True,0.883,6,[Dokumen #1 | Source: web:about_pradita.txt | Relevance: 0.965] # Tentang Pradita University  ## SEJARAH DAN LATAR BELAKANG Pradita University lahir dari jaringan korporasi berbagai industri yang dipr,29.043,20.14,1493,563,3506.0,3506.0,3506.0,0,,100.0,,
+qwen3:1.7B,13,Jika biaya per SKS adalah Rp 500.000 dan mahasiswa mengambil rata-rata 20 SKS per semester selama 8 semester, berapa total biaya studi keseluruhan?,Kalkulasi Keuangan,"**Jawaban:**  
+Total biaya untuk 160 SKS (20 SKS/semester × 8 semester) dengan biaya per SKS Rp 350.000 adalah:  
+**Rp 56.000.000**.  
+
+**Penjelasan:**  
+- Total SKS = 20 × 8 = 160 SKS  
+- Biaya per SKS = Rp 350.000 (dari konteks)  
+- Total biaya = 160 × 350.000 = **Rp 56.000.000**.","**Jawaban:**  
+Total biaya untuk 160 SKS (20 SKS/semester × 8 semester) dengan biaya per SKS Rp 350.000 adalah:  
+**Rp 56.000.000**.  
+
+**Penjelasan:**  
+- Total SKS = 20 × 8 = 160 SKS  
+- Biaya per SKS = Rp 350.000 (dari konteks)  
+- Total biaya = 160 × 350.000 = **Rp 56.000.000**.",Numerik,0.9308,100,,True,0.7335,6,"[Dokumen #1 | Source: web:biaya_pradita.txt | Relevance: 0.969] ### 1. Architecture & Interior Design * Total Biaya Pendaftaran: Rp 47.700.000,-. * Satu Kali Pembayaran di Awal: Formulir Rp 200.000,-,",48.671,18.16,1939,857,3506.0,3506.0,3506.0,0,,100.0,,
+qwen3:1.7B,14,Apa saja mata kuliah yang diajarkan oleh Theresia Herlina di program Informatika?,Informasi Jadwal,Moderat,"Mata kuliah yang diajarkan oleh Theresia Herlina di Program Studi Informatika adalah:  
+1. Interaksi Manusia dan Komputer (IS31713)  
+2. Sistem Basis Data (IS31012)","Mata kuliah yang diajarkan oleh Theresia Herlina di Program Studi Informatika adalah:  
+1. Interaksi Manusia dan Komputer (IS31713)  
+2. Sistem Basis Data (IS31012)","Berdasarkan jadwal perkuliahan Genap 2025/2026, Theresia Herlina, S.Kom., M.T. mengajar di program Informatika (INF) semester II, antara lain: Interaksi Manusia dan Komputer (Senin 08.25-11.05), Sistem Basis Data (Senin 13.55-15.40), dan Lab. Sistem Basis Data (Senin 15.45-17.30).",0.9269,75,,True,0.9261,5,[INSTRUKSI KONTEKS] Berikut adalah data jadwal yang ditemukan. HANYA gunakan informasi yang TERTULIS EKSPLISIT di bawah. Fokus pencarian: dosen 'Theresia Herlina'.  ---  [Dokumen #1 | Prodi: Sistem In,9.26,24.39,1262,204,3506.0,3506.0,3506.0,0,,70.0,,
+qwen3:1.7B,15,Apakah ada asrama atau tempat tinggal yang disediakan oleh Pradita University untuk mahasiswanya?,Fasilitas Kampus,Moderat,"Ya, Pradita University menyediakan asrama (Cluster Allogio) untuk mahasiswa. Cluster Allogio terletak di Gading Serpong, berisi 382 unit dengan fasilitas seperti kolam renang dan shuttle bus.","Ya, Pradita University menyediakan asrama (Cluster Allogio) untuk mahasiswa. Cluster Allogio terletak di Gading Serpong, berisi 382 unit dengan fasilitas seperti kolam renang dan shuttle bus.","Ya, Pradita University menyediakan fasilitas Student Boarding House District - Cluster Alloggio, yaitu hunian/asrama mahasiswa yang berlokasi di kawasan kampus Summarecon Serpong. Fasilitas ini dirancang untuk mendukung kebutuhan tempat tinggal mahasiswa selama masa studi.",0.9277,100,,True,0.9073,6,[Dokumen #1 | Source: web:about_pradita.txt | Relevance: 0.368] ### 5. Holistic Learning Infrastructure Lingkungan sekitar kampus harus nyaman dan fasilitasnya dapat menunjang kegiatan mahasiswa. Kawa,12.455,22.36,1541,255,3506.0,3506.0,3506.0,0,,100.0,,
+llama3.2:1b,1,Di mana lokasi kampus Pradita University?,Informasi Kampus,Sederhana,"Lokasi kampus Pradita University terletak di Jakarta dan Gading Serpong, Banten.
+
+Dokumen #1 menunjukkan bahwa lingkungan sekitar kampus harus nyaman dan fasilitasnya dapat menunjang kegiatan mahasiswa.
+
+Dokumen #2 menjelaskan prosedur pendaftaran (HOW TO ENROLL) yang dilakukan oleh mahasiswa untuk masuk ke Pradita University.
+
+Dokumen #3 menyebutkan bahwa auditorium, classroom, workshop lab, podcast room, dan boarding house adalah fasilitas yang dimiliki oleh Pradita University.
+
+Dokumen #4 membahas tentang fasilitas lainnya seperti laboratorium, hotel, dan transportasi.
+
+Dokumen #5 menunjukkan bahwa kampus memiliki beberapa fasilitas untuk mengelola mahasiswa, seperti hotel, shuttle bus, dan sport, leisure & wellness.
+
+Dokumen #6 menyebutkan bahwa Pradita University menawarkan program studi S1 berikut:
+
+### 1. Architecture (Arsitektur)
+Website: https://www.pradita.ac.id/programs/architecture
+
+### 2. Urban Planning (Perencanaan Kota)
+Website: https://www.pradita.ac.id/programs/urban-planning
+
+### 3. Civil Engineering (Teknik Sipil)
+Website: https://www.pradita.ac.id/programs/civil-enginer
+
+### 4. Interior Design (Desain Interior)
+Website: https://www.pradita.ac.id/programs/interior-design
+
+### 5. Visual Communication Design (Desain Komunikasi Visual / DKV)
+Website: https://www.pradita.ac.id/programs/visual-communication-design
+
+### 6. Accounting (Akuntansi)
+Website: https://www.pradita.ac.id/programs/accounting","Lokasi kampus Pradita University terletak di Jakarta dan Gading Serpong, Banten.
+
+Dokumen #1 menunjukkan bahwa lingkungan sekitar kampus harus nyaman dan fasilitasnya dapat menunjang kegiatan mahasiswa.
+
+Dokumen #2 menjelaskan prosedur pendaftaran (HOW TO ENROLL) yang dilakukan oleh mahasiswa untuk masuk ke Pradita University.
+
+Dokumen #3 menyebutkan bahwa auditorium, classroom, workshop lab, podcast room, dan boarding house adalah fasilitas yang dimiliki oleh Pradita University.
+
+Dokumen #4 membahas tentang fasilitas lainnya seperti laboratorium, hotel, dan transportasi.
+
+Dokumen #5 menunjukkan bahwa kampus memiliki beberapa fasilitas untuk mengelola mahasiswa, seperti hotel, shuttle bus, dan sport, leisure & wellness.
+
+Dokumen #6 menyebutkan bahwa Pradita University menawarkan program studi S1 berikut:
+
+### 1. Architecture (Arsitektur)
+Website: https://www.pradita.ac.id/programs/architecture
+
+### 2. Urban Planning (Perencanaan Kota)
+Website: https://www.pradita.ac.id/programs/urban-planning
+
+### 3. Civil Engineering (Teknik Sipil)
+Website: https://www.pradita.ac.id/programs/civil-enginer
+
+### 4. Interior Design (Desain Interior)
+Website: https://www.pradita.ac.id/programs/interior-design
+
+### 5. Visual Communication Design (Desain Komunikasi Visual / DKV)
+Website: https://www.pradita.ac.id/programs/visual-communication-design
+
+### 6. Accounting (Akuntansi)
+Website: https://www.pradita.ac.id/programs/accounting","Pradita University memiliki dua kampus. Kampus utama (Gading Serpong) berlokasi di Scientia Business Park, Tower 1, Jalan Raya Boulevard Blok O/1, Summarecon Serpong, Kabupaten Tangerang, Banten 15810. Kampus Jakarta berlokasi di Menara Satu Building, Jl. Boulevard Raya LA 3 No.1, Sentra Kelapa Gading, Jakarta Utara, DKI Jakarta 14240.",0.8783,80,,True,0.9038,6,[Dokumen #1 | Source: web:about_pradita.txt | Relevance: 0.998] ### 5. Holistic Learning Infrastructure Lingkungan sekitar kampus harus nyaman dan fasilitasnya dapat menunjang kegiatan mahasiswa. Kawa,23.878,21.94,1551,388,3506.0,3454.0,3506.0,0,,75.0,,
+llama3.2:1b,2,Apa saja program studi yang tersedia di Pradita University?,Informasi Akademik,Sederhana,"Berikut adalah jawaban terpadu dari pertanyaan yang diajukan:
+
+Dokumen #1: Program Studi S1 Architecture (Arsitektur)
+Dokumen #2: Program Studi Bussiness Management
+Dokumen #3: Program Studi Culinary Arts (Seni Kuliner)
+Dokumen #4: Program Studi Information Technology (Teknologi Informasi)
+Dokumen #5: Program Studi Hospitality & Tourism (Perhotelan & Pariwisata)
+
+Dokumen #6: Program Studi Accounting (Akuntansi)","Berikut adalah jawaban terpadu dari pertanyaan yang diajukan:
+
+Dokumen #1: Program Studi S1 Architecture (Arsitektur)
+Dokumen #2: Program Studi Bussiness Management
+Dokumen #3: Program Studi Culinary Arts (Seni Kuliner)
+Dokumen #4: Program Studi Information Technology (Teknologi Informasi)
+Dokumen #5: Program Studi Hospitality & Tourism (Perhotelan & Pariwisata)
+
+Dokumen #6: Program Studi Accounting (Akuntansi)","Pradita University menawarkan berbagai program studi, antara lain: Teknik Informatika, Sistem Informasi, Pariwisata, Perencanaan Wilayah dan Kota, Arsitektur, Teknik Sipil, Desain Komunikasi Visual, Desain Interior, Seni Kuliner, Manajemen Bisnis, Akuntansi, dan Food & Beverage.",0.8428,85,,True,0.8823,6,[Dokumen #1 | Source: web:programs.txt | Relevance: 0.999] # Program Studi Pradita University  ## JENJANG SARJANA (S1) - BACHELOR'S DEGREE  Pradita University menawarkan program studi S1 berikut:  ###,5.704,24.96,1515,117,3454.0,3454.0,3454.0,0,,80.0,,
+llama3.2:1b,3,Bagaimana cara mendaftar masuk ke Pradita University?,Penerimaan Mahasiswa,Sederhana,"Berikut jawaban pertanyaan yang diajukan berdasarkan konteks yang diberikan:
+
+1. **Konteks Dokumen #1**: Proses pendaftaran Pradita University melalui prosedur enrollment.
+2. Jawabannya: Informasi tersebut tidak ada di dokumen tersebut, sehingga jawaban adalah ""Maaf sobat, saya tidak memiliki informasi tersebut.""
+3. **Dokumen #2**: Beasiswa jalur prestasi yang diberikan oleh Pradita University kepada calon mahasiswa berprestasi.
+4. Jawabannya: Informasi tentang beasiswa jalur prestasi dapat ditemukan di dokumen [sumber].
+5. **Dokumen #3**: Informasi pendaftaran Pradita University melalui website dan prosedur enrollment.
+6. Jawabannya: Informasi tersebut tidak ada di dokumen tersebut, sehingga jawaban adalah ""Maaf sobat, saya tidak memiliki informasi tersebut.""
+7. **Dokumen #4**: Beasiswa jalur prestasi yang diberikan oleh Pradita University kepada calon mahasiswa berprestasi.
+8. Jawabannya: Informasi tentang beasiswa jalur prestasi dapat ditemukan di dokumen [sumber].
+9. **Dokumen #5**: Misi dan keunggulan Pradita University.
+10. Jawabannya: Informasi tersebut tidak ada di dokumen tersebut, sehingga jawaban adalah ""Maaf sobat, saya tidak memiliki informasi tersebut.""
+11. **Dokumen #6**: Prodi Pariwisata dengan mata kuliah Registrasi Kantor Depan.
+12. Jawabannya: Informasi tentang prodi dan mata kuliah dapat ditemukan di dokumen [sumber].
+
+Jadi jawaban pertanyaan yang diajukan berdasarkan konteks yang diberikan adalah informasi tentang prosedur pendaftaran, beasiswa jalur prestasi, misi dan keunggulan Pradita University, serta prodi dan mata kuliah.","Berikut jawaban pertanyaan yang diajukan berdasarkan konteks yang diberikan:
+
+1. **Konteks Dokumen #1**: Proses pendaftaran Pradita University melalui prosedur enrollment.
+2. Jawabannya: Informasi tersebut tidak ada di dokumen tersebut, sehingga jawaban adalah ""Maaf sobat, saya tidak memiliki informasi tersebut.""
+3. **Dokumen #2**: Beasiswa jalur prestasi yang diberikan oleh Pradita University kepada calon mahasiswa berprestasi.
+4. Jawabannya: Informasi tentang beasiswa jalur prestasi dapat ditemukan di dokumen [sumber].
+5. **Dokumen #3**: Informasi pendaftaran Pradita University melalui website dan prosedur enrollment.
+6. Jawabannya: Informasi tersebut tidak ada di dokumen tersebut, sehingga jawaban adalah ""Maaf sobat, saya tidak memiliki informasi tersebut.""
+7. **Dokumen #4**: Beasiswa jalur prestasi yang diberikan oleh Pradita University kepada calon mahasiswa berprestasi.
+8. Jawabannya: Informasi tentang beasiswa jalur prestasi dapat ditemukan di dokumen [sumber].
+9. **Dokumen #5**: Misi dan keunggulan Pradita University.
+10. Jawabannya: Informasi tersebut tidak ada di dokumen tersebut, sehingga jawaban adalah ""Maaf sobat, saya tidak memiliki informasi tersebut.""
+11. **Dokumen #6**: Prodi Pariwisata dengan mata kuliah Registrasi Kantor Depan.
+12. Jawabannya: Informasi tentang prodi dan mata kuliah dapat ditemukan di dokumen [sumber].
+
+Jadi jawaban pertanyaan yang diajukan berdasarkan konteks yang diberikan adalah informasi tentang prosedur pendaftaran, beasiswa jalur prestasi, misi dan keunggulan Pradita University, serta prodi dan mata kuliah.","Untuk mendaftar ke Pradita University, calon mahasiswa dapat mengunjungi website resmi pradita.ac.id atau menghubungi pihak kampus melalui email info@pradita.ac.id. Pendaftaran dilakukan secara online melalui portal penerimaan mahasiswa baru.",0.8501,90,,True,0.8787,6,[Dokumen #1 | Source: web:biaya_pradita.txt | Relevance: 1.000] ## PROSEDUR PENDAFTARAN (HOW TO ENROLL) 1. Membeli dan mengisi Formulir Pendaftaran. 2. Menyerahkan dokumen dan data yang dibutuhkan ke ,23.276,19.98,1450,434,3454.0,3454.0,3454.0,0,,90.0,,
+llama3.2:1b,4,Berapa harga biaya kuliah per semester untuk program Information Technology & Business Information System di Pradita University?,Informasi Keuangan,Sederhana,"Harga biaya kuliah per semester untuk program Informasi Teknologi dan Sistem Informasi (ITS) di Pradita University adalah Rp 7.500.000,-.
+
+Namun, perlu diingat bahwa informasi tersebut tidak ada dalam dokumen yang disebutkan. Oleh karena itu, jawaban pertanyaan di atas harus ditambahkan dengan informasi tambahan.
+
+Dalam konteks yang diberikan, biaya per semester untuk program ITS adalah Rp 7.500.000,-.","Harga biaya kuliah per semester untuk program Informasi Teknologi dan Sistem Informasi (ITS) di Pradita University adalah Rp 7.500.000,-.
+
+Namun, perlu diingat bahwa informasi tersebut tidak ada dalam dokumen yang disebutkan. Oleh karena itu, jawaban pertanyaan di atas harus ditambahkan dengan informasi tambahan.
+
+Dalam konteks yang diberikan, biaya per semester untuk program ITS adalah Rp 7.500.000,-.","Biaya kuliah per semester untuk program Information Technology & Business Information System adalah Rp 7.500.000 (BPP), ditambah Rp 350.000 per SKS (untuk 20 SKS = Rp 7.000.000), dan Student Service Rp 750.000. Total keseluruhan per semester bisa mencapai sekitar Rp 15.250.000, belum termasuk uang pangkal di awal.",0.7899,40,,True,0.8515,6,"[Dokumen #1 | Source: web:biaya_pradita.txt | Relevance: 0.997] ### 3. Visual Communication Design * Total Biaya Pendaftaran: Rp 48.700.000,-. * Satu Kali Pembayaran di Awal: Formulir Rp 200.000,-, Ua",4.962,28.16,1567,109,3454.0,3454.0,3454.0,0,,35.0,,
+llama3.2:1b,5,Apa saja fasilitas yang tersedia di kampus Pradita?,Fasilitas Kampus,Sederhana,"Dokumen #1: Gedung Kampus Pradita University
+- Ruang kelas dengan kapasitas 50-80 orang (fasilitas AC, LCD dan sound system)
+- Lab komputer
+- Studio green screen
+- Studio e-learning
+- Auditorium dengan kapasitas lebih dari 350 kursi
+- Perpustakaan yang lengkap dengan koleksi lebih dari 2000 buku
+- Fasilitas Student Club (mulai dari sarana olahraga hingga aktivitas peminatan)
+- High-speed wi-fi connectivity
+- Green environment, lingkungan kampus yang hijau dengan taman dan danau
+
+Dokumen #2: LOKASI KAMPUS
+- Jakarta Campus
+  - Menara Satu Building
+  - Jl. Boulevard Raya LA 3 No.1, Sentra Kelapa Gading, Jakarta Utara, DKI Jakarta 14240
+- Gading Serpong Campus (Kampus Utama)
+  - Scientia Business Park, Tower 1
+  - Jalan Raya Boulevard Blok 0/1, Summarecon Serpong, Kabupaten Tangerang, Banten 15810
+
+Dokumen #3: TRANSPORTASI
+- Pradita University menyediakan shuttle bus untuk mahasiswa.
+- Distrik mahasiswa di Cluster Allogio yang didirikan oleh Summarecon Serpong dibangun khusus untuk sarana tempat tinggal bagi mahasiswa selama menempuh masa perkuliahan.
+- Cluster Allogio memiliki jumlah unit sebanyak 382 unit dengan kisaran harga sewa Rp 1.500.000,00 sampai Rp 2.000.000,00, yang dilengkapi dengan fasilitas cluster yaitu kolam renang dan shuttle bus.
+
+Dokumen #4: AUDITORIUM - Pradita University
+- Gambar fasilitas: auditorium_pradita_university.jpg
+- Path lokal: D:\LLM\instruct\data\images\auditorium_pradita_university.jpg
+- URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/auditorium-pradita-institute__Ceg30.jpg
+
+Dokumen #5: BEDROOM - Student Boarding House District
+- Gambar fasilitas: bedroom_student_boarding_house_district.jpg
+- Path lokal: D:\LLM\instruct\data\images\bedroom_student_boarding_house_district.jpg
+- URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/image/bedroom-student-boarding-house-district__bfnDR.jpg
+
+Dokumen #6: SPORT, LEISURE & WELLNESS
+- Gambar fasilitas: workshop_lab_pradita_research_innovation_center.jpg
+- Path lokal: D:\LLM\instruct\data\images\workshop_lab_pradita_research_innovation_center.jpg
+- URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/workshop-room-pradita-research-innovation-center__6ftRV.jpg
+
+Dokumen #7: HOSPITALITY & TOURISM LABS
+- Gambar fasilitas: podcast_room_pradita_university.jpg
+- Path lokal: D:\LLM\instruct\data\images\podcast_room_pradita_university.jpg
+- URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/podcast-room-pradita-university__fnlet.jpg","Dokumen #1: Gedung Kampus Pradita University
+- Ruang kelas dengan kapasitas 50-80 orang (fasilitas AC, LCD dan sound system)
+- Lab komputer
+- Studio green screen
+- Studio e-learning
+- Auditorium dengan kapasitas lebih dari 350 kursi
+- Perpustakaan yang lengkap dengan koleksi lebih dari 2000 buku
+- Fasilitas Student Club (mulai dari sarana olahraga hingga aktivitas peminatan)
+- High-speed wi-fi connectivity
+- Green environment, lingkungan kampus yang hijau dengan taman dan danau
+
+Dokumen #2: LOKASI KAMPUS
+- Jakarta Campus
+  - Menara Satu Building
+  - Jl. Boulevard Raya LA 3 No.1, Sentra Kelapa Gading, Jakarta Utara, DKI Jakarta 14240
+- Gading Serpong Campus (Kampus Utama)
+  - Scientia Business Park, Tower 1
+  - Jalan Raya Boulevard Blok 0/1, Summarecon Serpong, Kabupaten Tangerang, Banten 15810
+
+Dokumen #3: TRANSPORTASI
+- Pradita University menyediakan shuttle bus untuk mahasiswa.
+- Distrik mahasiswa di Cluster Allogio yang didirikan oleh Summarecon Serpong dibangun khusus untuk sarana tempat tinggal bagi mahasiswa selama menempuh masa perkuliahan.
+- Cluster Allogio memiliki jumlah unit sebanyak 382 unit dengan kisaran harga sewa Rp 1.500.000,00 sampai Rp 2.000.000,00, yang dilengkapi dengan fasilitas cluster yaitu kolam renang dan shuttle bus.
+
+Dokumen #4: AUDITORIUM - Pradita University
+- Gambar fasilitas: auditorium_pradita_university.jpg
+- Path lokal: D:\LLM\instruct\data\images\auditorium_pradita_university.jpg
+- URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/auditorium-pradita-institute__Ceg30.jpg
+
+Dokumen #5: BEDROOM - Student Boarding House District
+- Gambar fasilitas: bedroom_student_boarding_house_district.jpg
+- Path lokal: D:\LLM\instruct\data\images\bedroom_student_boarding_house_district.jpg
+- URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/image/bedroom-student-boarding-house-district__bfnDR.jpg
+
+Dokumen #6: SPORT, LEISURE & WELLNESS
+- Gambar fasilitas: workshop_lab_pradita_research_innovation_center.jpg
+- Path lokal: D:\LLM\instruct\data\images\workshop_lab_pradita_research_innovation_center.jpg
+- URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/workshop-room-pradita-research-innovation-center__6ftRV.jpg
+
+Dokumen #7: HOSPITALITY & TOURISM LABS
+- Gambar fasilitas: podcast_room_pradita_university.jpg
+- Path lokal: D:\LLM\instruct\data\images\podcast_room_pradita_university.jpg
+- URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/podcast-room-pradita-university__fnlet.jpg","Pradita University memiliki berbagai fasilitas lengkap, antara lain: auditorium, laboratorium komputer, studio desain, Front Office Practice Area (Hospitality & Tourism Lab), Student Boarding House District - Cluster Alloggio (asrama mahasiswa), Sport Court, ruang kelas modern, dan kawasan Summarecon Serpong yang luas sebagai lingkungan belajar.",0.9011,90,,True,0.8977,6,[Dokumen #1 | Source: web:facilities.txt | Relevance: 0.999] # Pradita University Student Facilities  Pradita University menyediakan berbagai fasilitas lengkap untuk menunjang kegiatan belajar dan keh,36.47,23.51,1403,794,3454.0,3454.0,3454.0,0,,85.0,,
+llama3.2:1b,6,Apakah ada beasiswa yang tersedia di Pradita University?,Informasi Keuangan,Sederhana,"Maaf sobat, saya tidak memiliki informasi tersebut. Jawaban pertanyaan Anda adalah ""Maaf"", karena tidak ada informasi tentang beasiswa di Pradita University yang dapat saya temukan dalam konteks yang diberikan.","Maaf sobat, saya tidak memiliki informasi tersebut. Jawaban pertanyaan Anda adalah ""Maaf"", karena tidak ada informasi tentang beasiswa di Pradita University yang dapat saya temukan dalam konteks yang diberikan.","Ya, Pradita University menyediakan program beasiswa untuk mahasiswa berprestasi. Informasi detail mengenai jenis beasiswa, persyaratan, dan cara pengajuan dapat diperoleh melalui website pradita.ac.id atau dengan menghubungi bagian kemahasiswaan kampus.",0.9097,100,,True,0.8729,6,[Dokumen #1 | Source: web:scholarship.txt | Relevance: 0.964] # Beasiswa Pradita University  Pradita University memberikan BEASISWA berupa keringanan biaya kuliah kepada calon mahasiswa melalui jalur ,2.614,28.96,1496,50,3454.0,3454.0,3454.0,0,,100.0,,
+llama3.2:1b,7,Kapan jadwal kuliah program Informatika semester 2 pada hari Senin?,Jadwal Kuliah,Sederhana,"Dokumen #1 menampilkan jadwal kuliah resmi untuk Program Studi Informatika semester II, dengan mata kuliah Sistem Basis Data dan Lab. Sistem Basis Data.
+
+Dokumen #2 menampilkan jadwal kuliah resmi untuk Program Studi Informatika semester II, dengan mata kuliah Lab. Sistem Basis Data dan Interaksi Manusia dan Komputer.
+
+Dokumen #3 menampilkan jadwal kuliah resmi untuk Program Studi Informatika semester II, dengan mata kuliah Interaksi Manusia dan Komputer.
+
+Jawab pertanyaan di atas adalah pada Dokumen #2, yaitu ""Hari: Senin.""","Dokumen #1 menampilkan jadwal kuliah resmi untuk Program Studi Informatika semester II, dengan mata kuliah Sistem Basis Data dan Lab. Sistem Basis Data.
+
+Dokumen #2 menampilkan jadwal kuliah resmi untuk Program Studi Informatika semester II, dengan mata kuliah Lab. Sistem Basis Data dan Interaksi Manusia dan Komputer.
+
+Dokumen #3 menampilkan jadwal kuliah resmi untuk Program Studi Informatika semester II, dengan mata kuliah Interaksi Manusia dan Komputer.
+
+Jawab pertanyaan di atas adalah pada Dokumen #2, yaitu ""Hari: Senin.""","Jadwal kuliah program Informatika (INF) semester 2 pada hari Senin mencakup beberapa mata kuliah seperti Interaksi Manusia dan Komputer (08.25-11.05), Sistem Basis Data (13.55-15.40), dan Lab. Sistem Basis Data (15.45-17.30) yang diampu oleh Theresia Herlina, S.Kom., M.T.",0.9261,80,,True,0.9287,3,[Dokumen #1 | Prodi: Informatika | Sem: II | Hari: Senin | Relevance: 0.988] Entri jadwal kuliah resmi. Program studi: Informatika (kode: INF). Semester: II. Periode: Genap 2025/2026. Hari: Senin. Jam,5.457,29.94,702,136,3454.0,3454.0,3454.0,0,,70.0,,
+llama3.2:1b,8,Apa visi dan misi Pradita University?,Informasi Institusi,Sederhana,"Dari konteks yang diberikan, dapat disimpulkan bahwa:
+
+1. **Misi**: Mendidik mahasiswa dengan prinsip integritas, disiplin, berpikir kritis, bertanggung jawab, dan menghormati keberagaman.
+2. **Keunungan Pradita University**:
+   - Menjadi perguruan tinggi berwawasan global yang mampu mencetak lulusan berbudi pekerti luhur dan berkompetensi di bidangnya.
+   - Mengkombinasikan pengajar dengan latar belakang praktisi yang masih aktif dan akademisi berpengalaman dengan berkolaborasi bersama mitra perusahaan untuk membekali mahasiswa dari sudut pandang praktisi.
+
+Dengan demikian, dapat disimpulkan bahwa visi Pradita University adalah menjadi perguruan tinggi yang memiliki nilai-nilai budi pekerti dan kompetensi yang tinggi di bidangnya.","Dari konteks yang diberikan, dapat disimpulkan bahwa:
+
+1. **Misi**: Mendidik mahasiswa dengan prinsip integritas, disiplin, berpikir kritis, bertanggung jawab, dan menghormati keberagaman.
+2. **Keunungan Pradita University**:
+   - Menjadi perguruan tinggi berwawasan global yang mampu mencetak lulusan berbudi pekerti luhur dan berkompetensi di bidangnya.
+   - Mengkombinasikan pengajar dengan latar belakang praktisi yang masih aktif dan akademisi berpengalaman dengan berkolaborasi bersama mitra perusahaan untuk membekali mahasiswa dari sudut pandang praktisi.
+
+Dengan demikian, dapat disimpulkan bahwa visi Pradita University adalah menjadi perguruan tinggi yang memiliki nilai-nilai budi pekerti dan kompetensi yang tinggi di bidangnya.",Visi Pradita University adalah menjadi perguruan tinggi berwawasan global yang mampu mencetak lulusan berbudi pekerti luhur dan berkompetensi di bidangnya. Misinya mencakup: mendidik mahasiswa dengan prinsip integritas dan berpikir kritis; menyelenggarakan pendidikan tinggi dengan sarana terkini; mengembangkan penelitian tepat guna; dan melakukan pengabdian masyarakat.,0.9362,100,,True,0.9065,6,"[Dokumen #1 | Source: web:about_pradita.txt | Relevance: 0.999] ## MISI 1. Mendidik mahasiswa dengan prinsip integritas, disiplin, berpikir kritis, bertanggung jawab, dan menghormati keberagaman. 2. M",9.535,26.0,1620,213,3454.0,3454.0,3454.0,0,,100.0,,
+llama3.2:1b,9,Bagaimana cara menghubungi Pradita University?,Informasi Kontak,Sederhana,"Dalam konteks yang diberikan, jawaban untuk pertanyaan ""Bagaimana cara menghubungi Pradita University?"" adalah:
+
+Untuk menghubungi Pradita University, Anda dapat mengunjungi website resmi mereka di [https://www.pradita.ac.id](https://www.pradita.ac.id) dan menemukan informasi kontak seperti email dan telepon.","Dalam konteks yang diberikan, jawaban untuk pertanyaan ""Bagaimana cara menghubungi Pradita University?"" adalah:
+
+Untuk menghubungi Pradita University, Anda dapat mengunjungi website resmi mereka di [https://www.pradita.ac.id](https://www.pradita.ac.id) dan menemukan informasi kontak seperti email dan telepon.","Pradita University dapat dihubungi melalui email resmi: info@pradita.ac.id, atau melalui website: https://www.pradita.ac.id. Alamat kampus utama: Scientia Business Park, Tower 1, Summarecon Serpong, Tangerang.",0.9153,100,,True,0.9,6,[Dokumen #1 | Source: web:biaya_pradita.txt | Relevance: 0.976] ## PROSEDUR PENDAFTARAN (HOW TO ENROLL) 1. Membeli dan mengisi Formulir Pendaftaran. 2. Menyerahkan dokumen dan data yang dibutuhkan ke ,3.845,29.46,1326,83,3454.0,3454.0,3454.0,0,,95.0,,
+llama3.2:1b,10,Berapa biaya kuliah per semester untuk program Business Management & Accounting di Pradita University?,Informasi Keuangan,Sederhana,"Biaya kuliah per semester untuk program Business Management dan Accounting di Pradita University dapat bervariasi tergantung pada beberapa faktor seperti jenis program, kampus, dan jadwal kuliah.
+
+Dalam dokumen #5, Program Studi Business Management & Accounting di Pradita University menawarkan beberapa program studi dengan biaya per semester sebagai berikut:
+
+* Program S1 (Bachelor of Science in Business Administration): Rp 2.500.000,00 - Rp 3.200.000,00 per semester
+* Program D3 (Master of Business Administration): Rp 4.000.000,00 - Rp 5.000.000,00 per semester
+
+Namun, perlu diingat bahwa biaya kuliah dapat berubah-ubah tergantung pada beberapa faktor seperti jadwal kuliah, kampus, dan jenis program.
+
+Dalam dokumen #6, Program Studi Business Management & Accounting di Pradita University menawarkan beberapa program studi dengan biaya per semester sebagai berikut:
+
+* Program S1 (Bachelor of Science in Business Administration): Rp 2.500.000,00 - Rp 3.200.000,00 per semester
+* Program D3 (Master of Business Administration): Rp 4.000.000,00 - Rp 5.000.000,00 per semester
+
+Jadi, biaya kuliah per semester untuk program Business Management dan Accounting di Pradita University dapat bervariasi tergantung pada jenis program dan kampus.
+
+Untuk mendapatkan informasi yang akurat dan terkini tentang biaya kuliah, sebaiknya Anda menghubungi tim pelatihan atau tim keuangan Pradita University.","Biaya kuliah per semester untuk program Business Management dan Accounting di Pradita University dapat bervariasi tergantung pada beberapa faktor seperti jenis program, kampus, dan jadwal kuliah.
+
+Dalam dokumen #5, Program Studi Business Management & Accounting di Pradita University menawarkan beberapa program studi dengan biaya per semester sebagai berikut:
+
+* Program S1 (Bachelor of Science in Business Administration): Rp 2.500.000,00 - Rp 3.200.000,00 per semester
+* Program D3 (Master of Business Administration): Rp 4.000.000,00 - Rp 5.000.000,00 per semester
+
+Namun, perlu diingat bahwa biaya kuliah dapat berubah-ubah tergantung pada beberapa faktor seperti jadwal kuliah, kampus, dan jenis program.
+
+Dalam dokumen #6, Program Studi Business Management & Accounting di Pradita University menawarkan beberapa program studi dengan biaya per semester sebagai berikut:
+
+* Program S1 (Bachelor of Science in Business Administration): Rp 2.500.000,00 - Rp 3.200.000,00 per semester
+* Program D3 (Master of Business Administration): Rp 4.000.000,00 - Rp 5.000.000,00 per semester
+
+Jadi, biaya kuliah per semester untuk program Business Management dan Accounting di Pradita University dapat bervariasi tergantung pada jenis program dan kampus.
+
+Untuk mendapatkan informasi yang akurat dan terkini tentang biaya kuliah, sebaiknya Anda menghubungi tim pelatihan atau tim keuangan Pradita University.","Biaya kuliah per semester untuk program Business Management & Accounting adalah BPP sebesar Rp 6.500.000, biaya per SKS Rp 350.000 (misal 20 SKS = Rp 7.000.000), dan Student Service Rp 750.000. Sehingga total per semester sekitar Rp 14.250.000 (belum termasuk uang pangkal di awal).",0.9121,80,,True,0.7939,6,[Dokumen #1 | Source: web:biaya_pradita.txt | Relevance: 0.046] # Informasi Biaya Kuliah dan Pendaftaran Pradita University (Tahun Ajaran 2022/2023)  # Sumber Dokumen Informasi di bawah ini merupakan ,16.198,25.01,1541,359,3454.0,3454.0,3454.0,0,,80.0,,
+llama3.2:1b,11,Bandingkan keunggulan program studi Teknik Informatika dengan Sistem Informasi di Pradita University dari sisi kurikulum dan prospek karir.,Analitik Akademik,Kompleks,"Berikut jawaban pertanyaan Anda:
+
+**Pertanyaan:** Bandingkan keunggulan program studi Teknik Informatika dengan Sistem Informasi di Pradita University dari sisi kurikulum dan prospek karir.
+
+**Jawab:**
+
+1. **Kurikulum:**
+   - Program Studi Teknik Informatika memiliki kurikulum yang lebih fleksibel dan adaptif terhadap perkembangan teknologi, sehingga dapat menyesuaikan diri dengan kebutuhan industri dan masyarakat.
+   - Sistem Informasi di Pradita University memiliki kurikulum yang lebih spesifik dan konsisten dalam hal penelitian dan pengembangan, sehingga dapat memberikan pelajaran yang lebih mendalam dan akurat.
+
+2. **Prospek Karir:**
+   - Teknik Informatika memiliki prospek karir yang lebih luas karena dapat diaplikasikan dalam berbagai bidang seperti manajemen, analisis data, sistem informasi, dan lain-lain.
+   - Sistem Informasi juga memiliki prospek karir yang lebih luas karena dapat digunakan dalam berbagai industri, termasuk manufaktur, keuangan, dan lain-lain.
+
+**Catatan:**
+
+- Informasi tidak ada di konteks tentang program studi Teknik Informatika atau Sistem Informasi di Pradita University.
+- Jawaban di atas hanya berdasarkan penjelasan singkat dari dokumen yang diberikan.","Berikut jawaban pertanyaan Anda:
+
+**Pertanyaan:** Bandingkan keunggulan program studi Teknik Informatika dengan Sistem Informasi di Pradita University dari sisi kurikulum dan prospek karir.
+
+**Jawab:**
+
+1. **Kurikulum:**
+   - Program Studi Teknik Informatika memiliki kurikulum yang lebih fleksibel dan adaptif terhadap perkembangan teknologi, sehingga dapat menyesuaikan diri dengan kebutuhan industri dan masyarakat.
+   - Sistem Informasi di Pradita University memiliki kurikulum yang lebih spesifik dan konsisten dalam hal penelitian dan pengembangan, sehingga dapat memberikan pelajaran yang lebih mendalam dan akurat.
+
+2. **Prospek Karir:**
+   - Teknik Informatika memiliki prospek karir yang lebih luas karena dapat diaplikasikan dalam berbagai bidang seperti manajemen, analisis data, sistem informasi, dan lain-lain.
+   - Sistem Informasi juga memiliki prospek karir yang lebih luas karena dapat digunakan dalam berbagai industri, termasuk manufaktur, keuangan, dan lain-lain.
+
+**Catatan:**
+
+- Informasi tidak ada di konteks tentang program studi Teknik Informatika atau Sistem Informasi di Pradita University.
+- Jawaban di atas hanya berdasarkan penjelasan singkat dari dokumen yang diberikan.","Teknik Informatika dan Sistem Informasi di Pradita University keduanya merupakan program di bidang teknologi digital. Teknik Informatika lebih berfokus pada pengembangan perangkat lunak, algoritma, dan rekayasa sistem komputer. Sistem Informasi lebih berorientasi pada integrasi teknologi informasi dengan proses bisnis organisasi. Keduanya menyiapkan lulusan untuk industri teknologi dengan pendekatan yang berbeda: Informatika lebih teknis-engineering, SI lebih business-technology oriented.",0.9116,85,,True,0.8321,6,[Dokumen #1 | Prodi: Informatika | Sem: VIII | Hari: Kamis | Relevance: 0.000] Entri jadwal kuliah resmi. Program studi: Informatika (kode: INF). Semester: VIII. Periode: Genap 2025/2026. Hari: Kamis.,13.748,25.61,1413,308,3454.0,3454.0,3454.0,0,,85.0,,
+llama3.2:1b,12,Jelaskan keunggulan utama Pradita University dibandingkan perguruan tinggi lain berdasarkan pendekatan pembelajaran dan fasilitas yang dimiliki.,Analitik Institusi,Kompleks,"Berikut jawaban untuk pertanyaan tentang keunggulan utama Pradita University dibandingkan perguruan tinggi lain:
+
+Pradita University memiliki beberapa keunggulan utama dibandingkan dengan perguruan tinggi lain, yaitu:
+
+1. **Pembelajaran yang efektif**: Pradita University menggunakan konsep ""belajar langsung sebagaimana sesungguhnya terjadi di kehidupan nyata"" untuk pembelajaran, sehingga mahasiswa dapat mendapatkan pengalaman kerja nyata dengan sejumlah mitra perusahaan.
+2. **Fasilitas yang lengkap**: Pradita University menyediakan berbagai fasilitas lengkap, seperti gedung kampus, laboratorium komputer, studio green screen, auditorium, dan lain-lain, untuk menunjang kegiatan belajar dan kehidupan mahasiswa.
+3. **Kolaborasi dengan industri**: Pradita University memiliki kolaborasi bersama mitra perusahaan yang masih aktif dan akademisi berpengalaman, sehingga mahasiswa dapat mendapatkan pengalaman kerja nyata dengan sejumlah mitra perusahaan.
+4. **Pengalaman kerja nyata**: Mahasiswa di Pradita University dapat mendapatkan pengalaman kerja nyata dengan sejumlah mitra perusahaan, yang membantu mereka dalam mencapai tujuan karir.
+
+Dengan demikian, Pradita University memiliki keunggulan utama dibandingkan perguruan tinggi lainnya dalam hal pembelajaran, fasilitas, kolaborasi, dan pengalaman kerja nyata.","Berikut jawaban untuk pertanyaan tentang keunggulan utama Pradita University dibandingkan perguruan tinggi lain:
+
+Pradita University memiliki beberapa keunggulan utama dibandingkan dengan perguruan tinggi lain, yaitu:
+
+1. **Pembelajaran yang efektif**: Pradita University menggunakan konsep ""belajar langsung sebagaimana sesungguhnya terjadi di kehidupan nyata"" untuk pembelajaran, sehingga mahasiswa dapat mendapatkan pengalaman kerja nyata dengan sejumlah mitra perusahaan.
+2. **Fasilitas yang lengkap**: Pradita University menyediakan berbagai fasilitas lengkap, seperti gedung kampus, laboratorium komputer, studio green screen, auditorium, dan lain-lain, untuk menunjang kegiatan belajar dan kehidupan mahasiswa.
+3. **Kolaborasi dengan industri**: Pradita University memiliki kolaborasi bersama mitra perusahaan yang masih aktif dan akademisi berpengalaman, sehingga mahasiswa dapat mendapatkan pengalaman kerja nyata dengan sejumlah mitra perusahaan.
+4. **Pengalaman kerja nyata**: Mahasiswa di Pradita University dapat mendapatkan pengalaman kerja nyata dengan sejumlah mitra perusahaan, yang membantu mereka dalam mencapai tujuan karir.
+
+Dengan demikian, Pradita University memiliki keunggulan utama dibandingkan perguruan tinggi lainnya dalam hal pembelajaran, fasilitas, kolaborasi, dan pengalaman kerja nyata.","Pradita University memiliki beberapa keunggulan: (1) Conceptual Study + Action Learning yang memadukan teori dan praktik lapangan; (2) Real Case, Real Experience melalui kemitraan industri; (3) pengajar kombinasi akademisi dan praktisi aktif; (4) Direct Access to Industry; (5) Holistic Learning Infrastructure di kawasan Summarecon Serpong seluas ratusan hektar. Fasilitas mencakup auditorium, lab komputer, studio, asrama, dan sport court.",0.8947,90,,True,0.883,6,[Dokumen #1 | Source: web:about_pradita.txt | Relevance: 0.965] # Tentang Pradita University  ## SEJARAH DAN LATAR BELAKANG Pradita University lahir dari jaringan korporasi berbagai industri yang dipr,15.54,25.41,1453,348,3454.0,3454.0,3454.0,0,,90.0,,
+llama3.2:1b,13,Jika biaya per SKS adalah Rp 500.000 dan mahasiswa mengambil rata-rata 20 SKS per semester selama 8 semester, berapa total biaya studi keseluruhan?,Kalkulasi Keuangan,"Dari informasi yang disediakan, dapat diketahui bahwa biaya per SKS adalah Rp 500.000.
+
+Untuk mengetahui rata-rata biaya per semester selama 8 semester, kita dapat menghitung total biaya per semester dan kemudian mengalokasikan data tersebut untuk mendapatkan rata-rata biaya per semester.
+
+Total biaya per semester = Biaya per SKS x Rata-rata SKS per semester
+= Rp 500.000 x 20 SKS
+= Rp 10.000.000
+
+Rata-rata biaya per semester selama 8 semester = Total biaya per semester / Jumlah semester
+= Rp 10.000.000 / 8
+= Rp 1.250.000
+
+Jadi, rata-rata biaya per semester selama 8 semester adalah Rp 1.250.000.
+
+Dengan demikian, jawaban pertanyaan di atas adalah bahwa mahasiswa mengambil rata-rata biaya per SKS sebesar Rp 1.250.000 selama 8 semester.","Dari informasi yang disediakan, dapat diketahui bahwa biaya per SKS adalah Rp 500.000.
+
+Untuk mengetahui rata-rata biaya per semester selama 8 semester, kita dapat menghitung total biaya per semester dan kemudian mengalokasikan data tersebut untuk mendapatkan rata-rata biaya per semester.
+
+Total biaya per semester = Biaya per SKS x Rata-rata SKS per semester
+= Rp 500.000 x 20 SKS
+= Rp 10.000.000
+
+Rata-rata biaya per semester selama 8 semester = Total biaya per semester / Jumlah semester
+= Rp 10.000.000 / 8
+= Rp 1.250.000
+
+Jadi, rata-rata biaya per semester selama 8 semester adalah Rp 1.250.000.
+
+Dengan demikian, jawaban pertanyaan di atas adalah bahwa mahasiswa mengambil rata-rata biaya per SKS sebesar Rp 1.250.000 selama 8 semester.",Numerik,0.9023,100,,True,0.7335,6,"[Dokumen #1 | Source: web:biaya_pradita.txt | Relevance: 0.969] ### 1. Architecture & Interior Design * Total Biaya Pendaftaran: Rp 47.700.000,-. * Satu Kali Pembayaran di Awal: Formulir Rp 200.000,-,",10.73,25.58,1646,237,3454.0,3454.0,3454.0,0,,100.0,,
+llama3.2:1b,14,Apa saja mata kuliah yang diajarkan oleh Theresia Herlina di program Informatika?,Informasi Jadwal,Moderat,"Dosen 'Theresia Herlina' mengajar mata kuliah-mata kuliah berikut:
+
+- Internet of Things, Konektivitas dan Keamanan (IF220403)
+- Interaksi Manusia dan Komputer (IS31713)
+- Lab. Sistem Basis Data (IS31021)
+- Sistem Basis Data (IS31012)
+
+Jadi jawaban pertanyaan Anda adalah: Theresia Herlina mengajar mata kuliah-mata kuliah berikut:
+
+| Mata Kuliah | Kode |
+| --- | --- |
+| Internet of Things, Konektivitas dan Keamanan | IF220403 |
+| Interaksi Manusia dan Komputer | IS31713 |
+| Lab. Sistem Basis Data | IS31021 |
+| Sistem Basis Data | IS31012 |
+
+Dokumen #5 tidak termasuk dalam konteks ini karena hanya menjelaskan tentang mata kuliah yang diajarkan oleh dosen, bukan tentang mata kuliah yang diajarakan oleh Theresia Herlina.","Dosen 'Theresia Herlina' mengajar mata kuliah-mata kuliah berikut:
+
+- Internet of Things, Konektivitas dan Keamanan (IF220403)
+- Interaksi Manusia dan Komputer (IS31713)
+- Lab. Sistem Basis Data (IS31021)
+- Sistem Basis Data (IS31012)
+
+Jadi jawaban pertanyaan Anda adalah: Theresia Herlina mengajar mata kuliah-mata kuliah berikut:
+
+| Mata Kuliah | Kode |
+| --- | --- |
+| Internet of Things, Konektivitas dan Keamanan | IF220403 |
+| Interaksi Manusia dan Komputer | IS31713 |
+| Lab. Sistem Basis Data | IS31021 |
+| Sistem Basis Data | IS31012 |
+
+Dokumen #5 tidak termasuk dalam konteks ini karena hanya menjelaskan tentang mata kuliah yang diajarkan oleh dosen, bukan tentang mata kuliah yang diajarakan oleh Theresia Herlina.","Berdasarkan jadwal perkuliahan Genap 2025/2026, Theresia Herlina, S.Kom., M.T. mengajar di program Informatika (INF) semester II, antara lain: Interaksi Manusia dan Komputer (Senin 08.25-11.05), Sistem Basis Data (Senin 13.55-15.40), dan Lab. Sistem Basis Data (Senin 15.45-17.30).",0.9089,70,,True,0.9261,5,[INSTRUKSI KONTEKS] Berikut adalah data jadwal yang ditemukan. HANYA gunakan informasi yang TERTULIS EKSPLISIT di bawah. Fokus pencarian: dosen 'Theresia Herlina'.  ---  [Dokumen #1 | Prodi: Sistem In,9.448,26.53,1172,216,3454.0,3454.0,3454.0,0,,60.0,,
+llama3.2:1b,15,Apakah ada asrama atau tempat tinggal yang disediakan oleh Pradita University untuk mahasiswanya?,Fasilitas Kampus,Moderat,Asrama atau tempat tinggal yang disediakan oleh Pradita University untuk mahasiswanya tidak ada dalam dokumen yang Anda tanyai.,Asrama atau tempat tinggal yang disediakan oleh Pradita University untuk mahasiswanya tidak ada dalam dokumen yang Anda tanyai.,"Ya, Pradita University menyediakan fasilitas Student Boarding House District - Cluster Alloggio, yaitu hunian/asrama mahasiswa yang berlokasi di kawasan kampus Summarecon Serpong. Fasilitas ini dirancang untuk mendukung kebutuhan tempat tinggal mahasiswa selama masa studi.",0.0,0,,True,0.9073,6,[Dokumen #1 | Source: web:about_pradita.txt | Relevance: 0.368] ### 5. Holistic Learning Infrastructure Lingkungan sekitar kampus harus nyaman dan fasilitasnya dapat menunjang kegiatan mahasiswa. Kawa,2.016,28.79,1499,33,3454.0,3454.0,3454.0,0,,0.0,,

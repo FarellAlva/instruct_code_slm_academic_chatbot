@@ -1,0 +1,65 @@
+--- Page 1 ---
+Jadwal Semester Genap 2025/2026
+Program Studi Arsitektur
+UNIVERSITAS PRADITA
+Jmlh
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+Mhs
+1  Senin  07.30 - 09.15  II  ARS  EGAP  A218  gabung TS+PWK
+2  Selasa  09.20 - 12.00  II  ARS  AR30813  Diakronik Arsitektur Indonesia  3  A  Marchelia Gupita Sari, ST., M.Arch.  B302
+3  Selasa  13.55 - 15.40  II  ARS  PR10212  Pancasila  2  A  Carolino Benedicto, S.Pd., M.Kom.  A304  gabung PWK25
+4  Rabu  09.20 - 12.00  II  ARS  AR31013  Inovasi Arsitektur Hijau  3  A  Anisza Ratnasari, ST., M.Sc.  B302
+5  Rabu  13.00 - 15.40  II  ARS  AR30913  Kelayakan Finansial dan Rencana Anggaran  3  A  Imaniar Sofia Asharhani, S.Ars., MT.  B302
+6  Kamis  07.30 - 08.20  II  ARS  AR30611  Desain Arsitektur 1  1  A  Hanugrah Adhi Buwono, ST., MA., IAI.  B302
+Hanugrah Adhi Buwono, ST., MA., IAI.
+Marchelia Gupita Sari, S.T., M.Arch.
+7  Kamis  08.25 - 18.25  II  ARS  AR30625  Studio Desain Arsitektur 1  5  A  B302
+Prima Surya Abdullah, ST., M.Arch., IAI
+Dr. Ir. Danang Harito Wibowo., M.T. IAI
+8  Jumat  07.30 - 09.15  II  ARS  EGAP  A218  gabung TS+PWK
+9  Jumat  09.20 - 11.05  II  ARS  AR30712  Sistem Bangunan 1  2  A  Dicke Nazzary Akbar, ST., MT.  B302
+10  Jumat  11.10 - 12.55  II  ARS  AR30721  Studio Sistem Bangunan 1  1  A  Dicke Nazzary Akbar, ST., MT.  B302
+Jmlh
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+Mhs
+1  Senin  07.30 - 09.15  IV  ARS  EGAP  A217  gabung TS+PWK
+2  Senin  09.20 - 11.05  IV  ARS  AR231602  Desain Universal  2  A  Hanugrah Adhi Buwono, ST., MA., IAI.  A201
+Abdullah Hibrawan Pratala W., ST., MT.  A301
+6  Selasa  07.30 - 18.25  IV  ARS  AR240406  Desain Arsitektur 4  6  A
+Dr. Aulina Adamy, ST., M.Sc., IPM.  St. Gbr
+4  Rabu  09.20 - 11.05  IV  ARS  PR011102  Proyek Terintegrasi  2  A  Abdullah Hibrawan Pratala W., ST., MT.  A201
+A211
+3  Rabu  13.00 - 14.45  IV  ARS  AR240502  Arsitektur Berkelanjutan  2  A  Anisza Ratnasari, ST., M.Sc.
+St. Gbr
+A211
+5  Rabu  14.50 - 16.35  IV  ARS  AR231502  Arsitektur dan Permukiman  2  A  Dr. Aulina Adamy, ST., M.Sc., IPM.
+St. Gbr
+7  Jumat  07.30 - 09.15  IV  ARS  EGAP  A217  gabung TS+PWK
+8  Jumat  09.20 - 12.00  IV  ARS  AR231403  Sistem Bangunan 3  3  A  Adriyan Kusuma, ST., MT.  A201
+A206
+9  Jumat  13.00 - 18.25  IV  ARS  AR140803  Pendekatan Arsitektur Komputasional  3  A  Dicke Nazzary Akbar, ST., MT.
+Lab Komp
+Jmlh
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+Mhs
+Imaniar Sofia Asharhani, S.Ars., MT.
+1  Senin  07.30 - 14.45  VI  ARS  AR242204  Arsitektur Kolaborasi  4  A  B302
+Dr. Ir. Danang Harito Wibowo., M.T. IAI
+2  Senin  14.50 - 16.35  VI  ARS  AR132202  Media Presentasi Visual  2  A  Marchelia Gupita Sari, ST., M.Arch.  A201
+3  Senin  16.40 - 18.25  VI  ARS  AR242602  Proyek Independen  2  A  Abdullah Hibrawan Pratala W., ST., MT.  F00
+4  Selasa  07.30 - 10.10  VI  ARS  PR010903  Kewirausahaan Mandiri  3  A  Hanugrah Adhi Buwono, ST., MA., IAI.  A205
+5  Rabu  09.20 - 11.05  VI  ARS  PR010402  Bahasa Indonesia  2  A  Friska Melani, M.Si.  A212  gabung DKV25-A
+6  Rabu  13.00 - 14.45  VI  ARS  PR010602  Etika dan Budaya  2  A  Dr. Aryaning Arya Kresna, M.Hum  A214
+7  Rabu  14.50 - 17.30  VI  ARS  AR232702  Perancangan Ruang Dalam  2  A  Abdullah Hibrawan Pratala W., ST., MT.  A201
+Adriyan Kusuma, ST., M.Arch.
+8  Kamis  07.30 - 18.25  VI  ARS  AR241106  Desain Arsitektur 6  6  A  A201
+Anisza Ratnasari, ST., M.Sc.
+9  Jumat  13.00 - 14.45  VI  ARS  PR010802  Metodologi Penelitian  2  A  Dr. Aulina Adamy, ST., M.Sc., IPM.  A205
+10  Jumat  14.50 - 16.35  VI  ARS  AR232302  Manajemen Proyek  2  A  Dr. Aulina Adamy, ST., M.Sc., IPM.  A205
+Jmlh
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+Mhs
+1  Senin  12.05 - 13.50  VIII  ARS  PR010502  Bahasa Inggris  3  A  Gufron, S.Pd., MHSc.  F00
+2  Rabu  15.45 - 17.30  VIII  ARS  AR242104  Kerja Praktek  4  A  Hanugrah Adhi Buwono, ST., MA., IAI.  F00
+3  Jumat  07.30 - 09.15  VIII  ARS  AR242502  Apresiasi Arsitektur  2  A  Adriyan Kusuma, ST., MT.  A201
+4  Jumat  14.50 - 18.25  VIII  ARS  AR242008  Tugas Akhir  8  A  Adriyan Kusuma, ST., MT.  A201

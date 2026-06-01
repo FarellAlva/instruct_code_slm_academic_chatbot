@@ -1,0 +1,74 @@
+--- Page 1 ---
+Jadwal Semester Genap 2025/2026
+Program Studi Akuntansi
+UNIVERSITAS PRADITA
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  07.30 - 09.15  II  AK  EGAP  A203  gabung F&B
+A105
+2  Senin  09.20 - 12.00  II  AK  MN60513  Manajemen Keuangan  3  A  Maulana Maliq Muhammad, S.E.,BA(Hons).,MIntlBus
+St. Gbr
+A105
+3  Senin  14.50 - 17.30  II  AK  AC30213  Pengantar Akuntansi 2  3  A  Dr. Wiwi Idawati, SE., M.Si., Ak., ASEAN CPA
+St. Gbr
+4  Selasa  08.25 -11.05  II  AK  IS60113  Manajemen Sistem Informasi  3  A  Wahyu Tisno Atmojo, S.Kom., M.Kom  AG04
+5  Selasa  11.10 - 12.00  II  AK  IS60121  Lab. Manajemen Sistem Informasi  1  A  Wahyu Tisno Atmojo, S.Kom., M.Kom  AG04
+6  Selasa  15.45 - 17.30  II  AK  PR10212  Pancasila  2  A+B Ubed Abdilah Syarif, M.A., Ph.D.  A304
+7  Rabu  13.55 - 16.35  II  AK  MN60413  Hukum dan Etika Bisnis  3  A  Michael, S.E.,Ak.,M.Ak.,BKP.,CBC.,A-CPA.,MT.BNSP  AG04
+A105
+8  Kamis  10.15 - 12.00  II  AK  AC30221  Lab. Pengantar Akuntansi 2  1  A  Asisten Lab
+St. Gbr
+9  Jumat  07.30 - 09.15  II  AK  EGAP  A203  gabung F&B
+10  Jumat  09.20 - 12.00  II  AK  MN31613  Analisis Data Bisnis  3  A  Henryanto Wijaya, S.E.Ak., M.M., C.A.  A215
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  07.30 - 09.15  II  AK  EGAP  A203  gabung F&B
+A105
+2  Selasa  08.25 - 11.05  II  AK  MN60513  Manajemen Keuangan  3  B  Michael, S.E.,Ak.,M.Ak.,BKP.,CBC.,A-CPA.,MT.BNSP
+St. Gbr
+3  Selasa  13.00 - 15.40  II  AK  IS60113  Manajemen Sistem Informasi  3  B  Wahyu Tisno Atmojo, S.Kom.,M.Kom  AG04
+4  Selasa  15.45 - 17.30  II  AK  PR10212  Pancasila  2  A+B Ubed Abdilah Syarif, M.A., Ph.D.  A304
+5  Selasa  17.35 - 18.25  II  AK  IS60121  Lab. Manajemen Sistem Informasi  1  B  Wahyu Tisno Atmojo, S.Kom.,M.Kom  AG04
+6  Rabu  08.25 - 11.05  II  AK  MN60413  Hukum dan Etika Bisnis  3  B  Michael, S.E.,Ak.,M.Ak.,BKP.,CBC.,A-CPA.,MT.BNSP  AG04
+7  Kamis  10.15 - 12.00  II  AK  AC30221  Lab. Pengantar Akuntansi 2  1  B  Asisten Lab  AG04
+A105
+8  Kamis  13.00 - 15.40  II  AK  AC30213  Pengantar Akuntansi 2  3  B  Prita Karina Diandra, S.Ak., M.M
+St. Gbr
+9  Jumat  07.30 - 09.15  II  AK  EGAP  A203  gabung F&B
+10  Jumat  13.00 - 15.40  II  AK  MN31613  Analisis Data Bisnis  3  B  Henryanto Wijaya, S.E.Ak., M.M., C.A.  AG04
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  07.30 - 09.15  IV  AK  EGAP  A222  gabung F&B
+3  Senin  09.20 - 12.00  IV  AK  AC231004  Akuntansi Manajemen  3  A  Prita Karina Diandra, S.Ak., M.M  AG04
+2  Senin  13.00 - 14.45  IV  AK  PR011102  Proyek Terintegrasi  2  A  Prita Karina Diandra, S.Ak., M.M  AG04
+4  Senin  14.50 - 17.30  IV  AK  AC231203  Pemeriksaan Keuangan 2  3  A  Yovita Ariani, S.E.,M.Ak.  AG04
+5  Selasa  10.15 - 12.00  IV  AK  PR010602  Etika dan Budaya  2  A  Dr. Aryaning Arya Kresna  A218
+A105
+6  Selasa  13.00 - 15.40  IV  AK  AC230904  Akuntansi Keuangan Lanjutan 1  3  A  Dr. Febryanti Simon, S.E.,M.B.A.,CPA
+St. Gbr
+7  Selasa  15.45 - 18.25  IV  AK  AC231103  Perpajakan Bisnis  3  A  Michael, S.E.,Ak.,M.Ak.,BKP.,CBC.,A-CPA.,MT.BNSP  A215
+A105
+8  Rabu  09.20 - 12.00  IV  AK  AC230804  Akuntansi Keuangan 2  3  A  Yovita Ariani, S.E.,M.Ak.
+St. Gbr
+A105
+9  Kamis  08.25 - 10.10  IV  AK  AC230804  Lab. Akuntansi Keuangan 2  1  A  Asisten Lab
+St. Gbr
+A105
+10  Kamis  15.45 - 17.30  IV  AK  AC231004  Lab. Akuntansi Manajemen  1  A  Asisten Lab
+St. Gbr
+11  Jumat  07.30 - 09.15  IV  AK  EGAP  A222  gabung F&B
+A105
+12  Jumat  13.00 - 14.45  IV  AK  AC230904  Lab. Akuntansi Keuangan Lanjutan 1  1  A  Asisten Lab
+St. Gbr
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Selasa  09.20 - 12.00  VI  AK  AC240803  Audit Sistem Informasi  3  A  Dr. Wiwi Idawati, SE., M.Si., Ak., ASEAN CPA  A215
+2  Selasa  13.00 - 14.45  VI  AK  PR010802  Metodologi Penelitian  2  A  Dr. Wiwi Idawati, SE., M.Si., Ak., ASEAN CPA  A217
+3  Selasa  14.50 - 17.30  VI  AK  AC240903  Akuntansi Perbankan  3  A  Luh Putu Puji Trisnawati, S.E.,M.Si.  A217
+4  Rabu  13.00 - 14.45  VI  AK  PR010402  Bahasa Indonesia  2  A  Friska Melani, M.Si.  A212
+5  Rabu  14.50 - 17.30  VI  AK  AC231703  Analisa Laporan Keuangan  3  A  Yovita Ariani, S.E.,M.Ak.  AG08
+6  Kamis  10.15 - 12.55  VI  AK  PR010903  Kewirausahaan Mandiri  3  A  Marco Ashadi, B.Bus., M.M.  A215
+A105
+7  Jumat  09.20 - 12.00  VI  AK  BM221703  Analisis Bisnis & Big Data  3  A  Januponsa Dio Firizqi, S.Kom., M.Kom.
+St. Gbr
+8  Sabtu  07.30 - 09.15  VI  AK  PR011002  Kuliah Kerja Nyata/KKN-PPM  2  A  Maulana Maliq Muhammad, S.E.,BA(Hons).,MIntlBus  F07
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Jumat  14.50 - 20.15  VIII  AK  AC141306  Tugas Akhir  6  A  Dr. Wiwi Idawati, SE., M.Si., Ak., ASEAN CPA  F01
+2  Sabtu  07.30 - 09.15  VIII  AK  PR010502  Bahasa Inggris  2  A  Gufron, S.Pd., MHSc.  F00
+3  Sabtu  09.20 - 14.45  VIII  AK  AC241206  Kerja Praktik  6  A  Dr. Wiwi Idawati, SE., M.Si., Ak., ASEAN CPA  F07

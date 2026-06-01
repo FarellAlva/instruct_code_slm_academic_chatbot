@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# ChromaDB (auto-generated, can be rebuilt)
+chroma_db/
+
+# Model cache (large files)
+.cache/
+*.bin
+*.safetensors
+
+# Logs
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data (PDFs may be confidential)
+# data/*.pdf   ← uncomment if you want to exclude PDFs from git
+
+# Fine-tuning output
+finetuning_colab/pradita-lora-output/
+finetuning_colab/pradita-lora-adapter/
+finetuning_colab/pradita-merged-model/
+finetuning_colab/pradita_dataset.jsonl

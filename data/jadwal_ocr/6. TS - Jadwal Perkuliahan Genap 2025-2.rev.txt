@@ -1,0 +1,50 @@
+--- Page 1 ---
+Jadwal Semester Genap 2025/2026
+Program Studi Teknik Sipil
+UNIVERSITAS PRADITA
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  07.30 - 09.15  II  TS  EGAP  A218  gabung AR, PWK
+2  Senin  09.20 - 11.05  II  TS  CE31212  Statistika dan Probabilitas  2  A  Nadia Diandra, S.T., M.T.  AG08
+3  Senin  15.45 - 17.30  II  TS  PR10212  Pancasila  2  A  Canggih Gumanky Farunik, M.Phil.  A212  gabung DI25
+Ir. Mulyadi Sugih Dharsono, M.M., M.Th.,
+4  Selasa  09.20 - 11.05  II  TS  CE30912  Statika  2  A  AG08
+M.Kom., D.M.S
+5  Selasa  14.50 - 16.35  II  TS  CE31312  Logika Matematika  2  A  Theresia Herlina, S.Kom., M.T  AG08
+6  Rabu  09.20 - 11.05  II  TS  CE31412  Mekanika Tanah I  2  A  Ir. Stephen Gunawan Handoko, S.T., M.T.  AG08
+7  Rabu  11.10 - 17.30  II  TS  CE31421  Praktikum Mekanika Tanah I  1  A  Laboratorium Teknik Sipil  Lab Sipil
+8  Kamis  09.20 - 11.05  II  TS  CE31112  Konstruksi Bangunan I  2  A  Ir. Tini Setiawati, M.Kom.  A205
+9  Kamis  11.10 - 13.50  II  TS  CE31121  Praktikum Konstruksi Bangunan I  1  A  Ir. Tini Setiawati, M.Kom.  A205
+10  Kamis  14.50 - 17.30  II  TS  CE30813  Kalkulus II  3  A  Muhammad Masri, S.Pd., M.Pd.  AG08
+11  Jumat  07.30 - 09.15  II  TS  EGAP  A218  gabung AR, PWK
+12  Jumat  13.00 - 14.45  II  TS  CE31012  Fisika 2  2  A  Dr. Joshua Vidi  AG08
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  07.30 - 09.15  IV  TS  EGAP  A217  gabung AR, PWK
+2  Senin  09.20 - 11.05  IV  TS  CE132502  Irigasi dan Bangunan Air  2  A  Elenora Gita Alamanda Sapan, S.T. M.eng.  A217
+3  Senin  13.00 - 15.40  IV  TS  CE232103  Struktur Baja 1  3  A  Dr. Ir. Pengki Suanto, S.T., M.T  AG08
+4  Selasa  10.15 - 12.00  IV  TS  PR011102  Proyek Terintegrasi  2  A  Dr. Van Basten, S.T., M.T.  A221
+5  Selasa  13.00 - 14.45  IV  TS  CE232003  Mekanika Tanah 2  2  A  Ir. Stephen Gunawan Handoko, S.T., M.T.  AG08
+6  Rabu  08.25 - 10.10  IV  TS  CE232203  Struktur Beton 1  2  A  Dr. Ir. Pengki Suanto, S.T., M.T  Lab Sipil  AG06
+7  Rabu  10.15 - 17.30  IV  TS  CE232203  Praktikum Struktur Beton 1  1  A  Laboratorium Teknik Sipil  Lab Sipil
+8  Kamis  09.20 - 11.05  IV  TS  CE231702  Analisa Numerik  2  A  Nadia Diandra, S.T., M.T.  AG07
+9  Kamis  11.10 - 17.30  IV  TS  CE232003  Praktikum Mekanika Tanah 2  1  A  Laboratorium Teknik Sipil  Lab Sipil
+10  Jumat  07.30 - 09.15  IV  TS  EGAP  A217  gabung AR, PWK
+Ir. Mulyadi Sugih Dharsono, M.M., M.Th.,
+11  Jumat  09.20 - 12.00  IV  TS  CE234202  Analisis Struktur dengan Matrix  2  A  AG08
+M.Kom., D.M.S
+12  Jumat  13.00 - 14.45  IV  TS  CE234302  Teknik Gempa  2  A  Prof. Ir. Ika Bali, M.Eng., Ph.D.  A221
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  07.30 - 09.15  VI  TS  CE133602  Teknik Lingkungan  2  A  Elenora Gita Alamanda Sapan, S.T. M.eng.  AG08
+2  Senin  09.20 - 17.30  VI  TS  CE233303  Praktikum Teknik Lalu Lintas  1  A  Laboratorium Teknik Sipil  Lab Sipil
+3  Selasa  09.20 - 11.05  VI  TS  CE234702  Perancangan Struktur Bangunan  2  A  Ir. Boby Culius, S.T.,M.T.,M.Eng  AG07
+4  Selasa  13.00 - 14.45  VI  TS  PR010802  Metodologi Penelitian  2  A  Dr. Van Basten, S.T., M.T.  A221
+5  Rabu  13.00 - 14.45  VI  TS  CE133702  Perencanaan Perbaikan Tanah  2  A  Ir. Stephen Gunawan Handoko, S.T., M.T.  AG08
+6  Kamis  09.20 - 11.05  VI  TS  CE141503  Proyek Kolaborasi  2  A  Dr. Ir. Pengki Suanto, S.T., M.T  AG01
+7  Kamis  13.00 - 14.45  VI  TS  CE233303  Teknik Lalu Lintas  2  A  Y (Teknik Lalu Lintas)  AG08
+A102
+8  Jumat  07.30 - 10.10  VI  TS  CE132403  Pengantar Estimasi Biaya  2  A  Nadia Diandra, S.T., M.T.
+St. Gbr
+9  Sabtu  07.30 - 09.15  VI  TS  PR011002  Kuliah Kerja Nyata/KKN-PPM  2  A  Dr. Ir. Pengki Suanto, S.T., M.T  F03
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  07.30 - 09.15  VIII  TS  PR010502  Bahasa Inggris  2  A  Gufron, S.Pd., MHSc.  F00
+2  Sabtu  07.30 - 10.10  VIII  TS  CE241304  Tugas Akhir  4  A  Dr. Van Basten, S.T., M.T.  F04
+3  Sabtu  10.15 - 15.40  VIII  TS  CE241403  Kuliah Praktik  3  A  Nadia Diandra, S.T., M.T.  F04

@@ -1,0 +1,24 @@
+# Panduan Membaca Data Jadwal & Kode Pradita University
+
+## KODE PROGRAM STUDI
+- INF: Informatika
+- TI: Teknik Informatika
+- SI: Sistem Informasi
+- PAR: Perhotelan & Pariwisata
+- PWK: Perencanaan Wilayah dan Kota (Urban Planning)
+- AR: Arsitektur
+- TS: Teknik Sipil
+- DKV: Desain Komunikasi Visual
+- DI: Desain Interior
+- SK: Seni Kuliner
+
+## KODE DAN SINGKATAN KELAS
+- KMK: Kode Mata Kuliah.
+- SKS: Bobot SKS matakuliah.
+- Kelas a + b: Artinya kelas A dan kelas B digabung karena mahasiswanya banyak.
+- Gabung (contoh: gabung SI + PAR): Artinya kelas tersebut digabung antara mahasiswa jurusan Sistem Informasi dan Pariwisata.
+
+## KODE RUANG (CONTOH: a306)
+- Huruf pertama (contoh 'a'): Merupakan penanda gedung atau tipe ruang.
+- Angka pertama (contoh '3'): Menunjukkan Lantai ruangan tersebut berada (contoh: Lantai 3).
+- Dua angka terakhir (contoh '06'): Menunjukkan nomor kelas di lantai tersebut.

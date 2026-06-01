@@ -1,0 +1,27 @@
+# Pradita University Facility Images Manifest
+# Total images: 24
+
+auditorium_pradita_university.jpg | Auditorium - Pradita University | Learning Facilities
+classroom_pradita_university.jpg | Classroom - Pradita University | Learning Facilities
+mac_laboratorium_pradita_university.jpg | Mac Laboratorium - Pradita University | Learning Facilities
+computer_laboratorium_pradita_university.jpg | Computer Laboratorium - Pradita University | Learning Facilities
+drawing_lab_pradita_university.jpg | Drawing Lab - Pradita University | Learning Facilities
+library_pradita_university.jpg | Library - Pradita University | Learning Facilities
+pradita_research_innovation_center.jpg | Pradita Research & Innovation Center | Learning Facilities
+photography_lab_pradita_research_innovation_center.jpg | Photography Lab - Pradita Research & Innovation Center | Learning Facilities
+workshop_lab_pradita_research_innovation_center.jpg | Workshop Lab - Pradita Research & Innovation Center | Learning Facilities
+podcast_room_pradita_university.jpg | Podcast Room - Pradita University | Learning Facilities
+front_office_practice_area_hospitality_tourism_lab.jpg | Front Office Practice Area - Hospitality & Tourism Lab | Hospitality & Tourism Labs
+hotel_practice_area_hospitality_tourism_lab.jpg | Hotel Practice Area - Hospitality & Tourism Lab | Hospitality & Tourism Labs
+kitchen_practice_area_hospitality_tourism_lab.jpg | Kitchen Practice Area - Hospitality & Tourism Lab | Hospitality & Tourism Labs
+kitchen_theater_hospitality_tourism_lab.jpg | Kitchen Theater - Hospitality & Tourism Lab | Hospitality & Tourism Labs
+mixology_laboratorium_hospitality_tourism_lab.jpg | Mixology Laboratorium - Hospitality & Tourism Lab | Hospitality & Tourism Labs
+wine_laboratory_hospitality_tourism_lab.jpg | Wine Laboratory - Hospitality & Tourism Lab | Hospitality & Tourism Labs
+coffee_and_tea_laboratory_hospitality_tourism_lab.jpg | Coffee and Tea Laboratory - Hospitality & Tourism Lab | Hospitality & Tourism Labs
+student_boarding_house_district_cluster_alloggio.jpg | Student Boarding House District - Cluster Alloggio | Housing & Transportation
+bedroom_student_boarding_house_district.jpg | Bedroom - Student Boarding House District | Housing & Transportation
+shuttle_bus_pradita_university.jpg | Shuttle Bus - Pradita University | Housing & Transportation
+sport_court_pradita_university.jpg | Sport Court - Pradita University | Sport, Leisure & Wellness
+summarecon_mall_serpong.jpg | Summarecon Mall Serpong | Sport, Leisure & Wellness
+scientia_square_park.jpg | Scientia Square Park | Sport, Leisure & Wellness
+swimming_pool_the_springs_club.jpg | Swimming Pool - The Springs Club | Sport, Leisure & Wellness

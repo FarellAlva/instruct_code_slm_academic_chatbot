@@ -1,0 +1,79 @@
+--- Page 1 ---
+Jadwal Semester Genap 2025/2026
+Program Studi Informatika
+UNIVERSITAS PRADITA
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  08.25 - 11.05  II  INF  IS31713  Interaksi Manusia dan Komputer  3  A+B  Theresia Herlina, S.Kom., M.T  A306
+2  Senin  13.55 - 15.40  II  INF  IS31012  Sistem Basis Data  2  A  Theresia Herlina, S.Kom., M.T  A216
+3  Senin  15.45 - 17.30  II  INF  IS31021  Lab. Sistem Basis Data  1  A  Theresia Herlina, S.Kom., M.T  A216
+4  Selasa  07.30 - 09.15  II  INF  EGAP  A217  gabung SI+PAR
+5  Selasa  12.05 - 13.50  II  INF  PR10212  Pancasila  2  A  Carolino Benedicto, S.Pd., M.Kom.  B301
+6  Selasa  14.50 - 17.30  II  INF  IF31013  Sistem Operasi  3  A+B  Januponsa Dio Firizqi, S.Kom., M.Kom.  B301
+7  Rabu  13.00 - 15.40  II  INF  IF30913  Aljabar Linier  3  A+B Muhammad Masri, S.Pd., M.Pd.  A306
+8  Kamis  07.30 - 09.15  II  INF  EGAP  A217  gabung SI+PAR
+9  Kamis  09.20 - 11.05  II  INF  IF30712  Struktur Data  2  A  Refgiufi Patria Avrianto, S.Kom., M.Kom.  A216
+10  Kamis  11.10 - 12.55  II  INF  IF30721  Praktikum Struktur Data  1  A  Refgiufi Patria Avrianto, S.Kom., M.Kom.  A216
+11  Kamis  13.55 - 15.40  II  INF  IF30812  Pemrograman Berorientasi Objek  2  A  Alfa Ryano Yohannis, S.T., M.T., Ph.D.  A216
+12  Kamis  15.45 - 17.30  II  INF  IF30821  Praktikum Pemrograman Berorientasi Objek  1  A  Alfa Ryano Yohannis, S.T., M.T., Ph.D.  A216
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  08.25 - 11.05  II  INF  IS31713  Interaksi Manusia dan Komputer  3  A+B  Theresia Herlina, S.Kom., M.T  A306
+2  Selasa  07.30 - 09.15  II  INF  EGAP  A217  gabung SI+PAR
+3  Selasa  14.50 - 17.30  II  INF  IF31013  Sistem Operasi  3  A+B  Januponsa Dio Firizqi, S.Kom., M.Kom.  B301
+4  Rabu  08.25 - 10.10  II  INF  IF30712  Struktur Data  2  B  Refiguifi Patria Avianto, S.Kom., M.Kom.  A216
+5  Rabu  10.15 - 12.00  II  INF  IF30721  Praktikum Struktur Data  1  B  Refiguifi Patria Avianto, S.Kom., M.Kom.  A216
+6  Rabu  13.00 - 15.40  II  INF  IF30913  Aljabar Linier  3  A+B Muhammad Masri, S.Pd., M.Pd.  A306
+7  Rabu  15.45 - 17.30  II  INF  PR10212  Pancasila  2  B  Dr. Aryaning Arya Kresna, M.Hum  A218
+8  Kamis  07.30 - 09.15  II  INF  EGAP  A217  gabung SI+PAR
+9  Kamis  09.20 - 11.05  II  INF  IF30812  Pemrograman Berorientasi Objek  2  B  Alfa Ryano Yohannis, S.T., M.T., Ph.D.  A217
+10  Kamis  11.10 - 12.55  II  INF  IF30821  Praktikum Pemrograman Berorientasi Objek  1  B  Alfa Ryano Yohannis, S.T., M.T., Ph.D.  A217
+11  Kamis  13.55 - 15.40  II  INF  IS31012  Sistem Basis Data  2  B  Master Edison Siregar, S.T., M.Kom.  A217
+12  Kamis  15.45 - 17.30  II  INF  IS31021  Lab. Sistem Basis Data  1  B  Master Edison Siregar, S.T., M.Kom.  A217
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  13.00 - 15.40  IV  INF  IF231303  Arsitektur Perangkat Lunak  3  A  Alfa Ryano Yohannis, S.T., M.T., Ph.D.  B301
+2  Selasa  07.30 - 09.15  IV  INF  EGAP  A216  gabung SI
+A206
+3  Selasa  13.00 - 15.40  IV  INF  IF220603  Pemrograman Web  3  A  Master Edison Siregar, S.T., M.Kom.
+Lab Komp
+4  Rabu  08.25 - 11.05  IV  INF  IF231203  Metode Numerik  3  A  Muhammad Masri, S.Pd., M.Pd.  B301
+5  Rabu  13.00 - 15.40  IV  INF  IF220403  Internet of Things, Konektivitas dan Keamanan  3  A  Refiguifi Patria Avianto, S.Kom., M.Kom.  B301
+6  Kamis  07.30 - 09.15  IV  INF  EGAP  A216  gabung SI
+7  Kamis  10.15 - 12.55  IV  INF  IF231103  Kecerdasan Buatan  3  A  Dr. Eng. Handri Santoso, S.Si., M.Eng.  B301
+8  Kamis  13.55 - 16.35  IV  INF  IS220503  Keamanan Sistem Informasi dan Internet  3  A  Erick Dazki, S.Kom., M.Kom.  B301
+9  Jumat  08.25 - 11.05  IV  INF  IF220703  Rekayasa Perangkat Lunak  3  A  Dr. Haryono, S.Kom., M.Tech  B301
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  09.20 - 12.00  VI  INF  IF232003  Kemampuan Bekerja Antar Sistem  3  A  Master Edison Siregar, S.T., M.Kom.  A216
+2  Senin  13.00 - 14.45  VI  INF  PR010802  Metodologi Penelitian  2  A  Erick Dazki, S.Kom., M.Kom  A217
+3  Rabu  09.20 - 12.00  VI  INF  IF232303  Pemanfaatan Big Data dalam Bisnis  3  A  Arya Sanjaya, S.T., M.Kom.  A217
+Focus Study: Cyber
+4  Rabu  13.00 - 15.40  VI  INF  IF240703  Forensik Digital  3  A  Erick Dazki, S.Kom., M.Kom.  A216
+Security
+Focus Study: Artificial
+5  Rabu  13.00 - 15.40  VI  INF  IF240403  Pemrosesan Bahasa Alami  3  A  Dr. Eng. Handri Santoso, S.Si., M.Eng.  A217
+Intelligence
+6  Rabu  15.45 - 18.25  VI  INF  IF232103  Komputasi Kinerja Tinggi  3  A  Arya Sanjaya, S.T., M.Kom.  A216
+Focus Study: Artificial
+7  Kamis  07.30 - 10.10  VI  INF  IF240503  Visi Komputer  3  A  Dr. Eng. Handri Santoso, S.Si., M.Eng.  AG04
+Intelligence
+
+--- Page 2 ---
+Jadwal Semester Genap 2025/2026
+Program Studi Informatika
+UNIVERSITAS PRADITA
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+Focus Study: Big Data
+8  Kamis  08.25 - 11.05  VI  INF  IF240903  Pengembangan Aplikasi Mobile  3  A  Dr. Haryono, S.Kom., M.Tech  AG08
+and IoT
+A206  Focus Study: Cyber
+9  Kamis  08.25 - 11.05  VI  INF  IF240603  Rekayasa Sosial  3  A  Muhammad, S.Kom., M.Krim.
+Lab Komp  Security
+A206  Focus Study: Big Data
+10  Kamis  13.55 - 16.35  VI  INF  IF240803  Pengembangan Aplikasi IoT 1  3  A  Refgiufi Patria Avrianto, S.Kom., M.Kom.
+Lab Komp  and IoT
+11  Jumat  13.55 - 16.35  VI  INF  IF231903  Jaringan Sensor Nirkabel  3  A  Dr. Haryono, S.Kom., M.Tech  A216
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Rabu  15.45 - 18.25  VIII  INF  IF141603  Block Chain Technology  3  A  Refiguifi Patria Avianto, S.Kom., M.Kom.  A217  Mata Kuliah Pilihan
+Arya Sanjaya, S.T., M.Kom
+2  Kamis  13.55 - 16.35  VIII  INF  IF141403  Digital Transformation in Business and Industry  3  A  Prof. Dr. Ir. Richardus Eko Indrajit, DBA, Dr (Pend), Dr  AG07  Mata Kuliah Pilihan
+(Han), M.Sc., MBA., M.Si., MA., M.IT., M.Phil.
+3  Jumat  07.30 - 12.55  VIII  INF  IF241806  Tugas Akhir  6  A  Erick Dazki, S.Kom., M.Kom.  F00
+4  Jumat  13.00 - 16.35  VIII  INF  IF241704  Kerja Praktik / Exchange  4  A  Januponsa Dio Firizqi, S.Kom., M.Kom.  F00

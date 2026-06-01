@@ -1,0 +1,48 @@
+--- Page 1 ---
+Jadwal Semester Genap 2025/2026
+Program Studi Sistem Informasi
+UNIVERSITAS PRADITA
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  13.55 - 16.35  II  SI  IS31213  Ekosistem Kota Cerdas  3  A  Rido Dwi Kurniawan, SE., M.Kom  Smart Class
+2  Selasa  07.30 - 09.15  II  SI  EGAP  A217  gabung TI+PAR
+3  Selasa  10.15 - 12.55  II  SI  IS30713  Jaringan Komputer  3  A  Master Edison Siregar., ST., M.Kom  Smart Class
+4  Selasa  13.55 - 15.40  II  SI  IS31012  Sistem Basis Data  2  A  Afifah Trista Ayunda, S.Kom., M.Kom.  Smart Class
+5  Selasa  15.45 - 16.35  II  SI  IS31021  Lab. Sistem Basis Data  1  A  Aslab  Smart Class
+6  Rabu  10.15 - 12.55  II  SI  IS31113  Analisa Proses Bisnis  3  A  Syamsu Alang, S.Sos., M.Si  Smart Class
+7  Rabu  15.45 - 17.30  II  SI  PR10212  Pancasila  2  A  Carolino Benedicto, S.Pd., M.Kom.  A306  gabung PAR25
+8  Kamis  07.30 - 09.15  II  SI  EGAP  A216  gabung TI+PAR
+9  Kamis  10.15 - 12.55  II  SI  IS30813  Statistika  3  A  Muh. Masri Sari, S.Pd., M.Pd.  Smart Class
+10  Kamis  13.55 - 15.40  II  SI  IS30912  Pemrograman Dasar  2  A  Dr. Haryono, S.Kom., M.Tech  Smart Class
+11  Kamis  15.45 - 16.35  II  SI  IS30921  Lab. Pemrograman Dasar  1  A  Aslab  Smart Class
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  10.15 - 12.55  IV  SI  IF120503  Pemrograman Mobile  3  A  Alfa Ryano Yohannis, S.T., M.T., Ph.D.  Smart Class
+2  Selasa  07.30 - 09.15  IV  SI  EGAP  A217  gabung TI+PAR
+3  Selasa  10.15 - 12.55  IV  SI  IS220403  Rekayasa Perangkat Lunak  3  A  Belsana Butar Butar, S.Kom., M.Kom.  AG05
+4  Selasa  13.55 - 16.35  IV  SI  IS220503  Keamanan Sistem Informasi dan Internet  3  A  Erick Dazki., S.Kom., M.Kom  AG05
+5  Rabu  10.15 - 12.55  IV  SI  UP220103  Sistem Informasi Geografis  3  A  Hendra Mayatopani, M.M.Si.  AG05
+6  Kamis  07.30 - 09.15  IV  SI  EGAP  A216  gabung TI+PAR
+Afifah Trista Ayunda, S.Kom., M.Kom
+7  Kamis  10.15 - 12.55  IV  SI  IS230903  Arsitektur Perusahaan  3  A  Prof. Dr. Ir. Richardus Eko Indrajit, DBA., Dr. (Pend),  AG05
+Dr. (Han), M.Sc., M.B.A., M.Si., MA, M.I.T, M.Phil.
+8  Kamis  13.55 - 16.35  IV  SI  IF220403  Internet of Things, Konektivitas dan Keamanan  3  A  Theresia Herlina, S.Kom., M.T  AG05
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  10.15 - 12.55  VI  SI  IS241103  Sumber Terbuka dan Teknologi Baru  3  A  Hendra Mayatopani, M.M.Si.  AG06
+2  Senin  13.55 - 16.35  VI  SI  IS241003  Pengambilan Kembali Informasi  3  A  Master Edison Siregar., ST., M.Kom  AG05
+3  Senin  13.55 - 16.35  VI  SI  IS241203  Integrasi Aplikasi Perusahaan  3  A  Wahyu Tisno Atmojo, S.Kom., M.Kom.  AG06
+4  Selasa  10.15 - 12.55  VI  SI  IS240903  Sistem Pendukung Keputusan  3  A  Afifah Trista Ayunda, S.Kom., M.Kom.  AG06
+5  Selasa  13.55 - 16.35  VI  SI  IS142203  Cloud Infrastructure and Computing  3  A  Belsana Butar Butar, S.Kom., M.Kom.  AG06
+6  Rabu  13.55 - 16.35  VI  SI  IS142303  Layanan Berbasis Internet  3  A  Rido Dwi Kurniawan, S.Kom., M.Kom.  Smart Class
+Hendra Mayatopani, M.M.Si
+7  Kamis  13.55 - 15.40  VI  SI  PR010802  Metodologi Penelitian  2  A  AG06
+Dr.Eng. Handri Santoso, S.Si., M.Eng
+8  Kamis  13.55 - 16.35  VI  SI  IS231303  Manajemen Proyek SI  3  A  Januponsa Dio Firizqi., S.Kom., M.Kom  A215
+9  Kamis  10.15 - 12.55  VI  SI  IS231203  Strategi, Manajemen dan Akuisisi SI  3  A  Rintho Rante Rerung, S.Kom., M.Kom  AG06
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Sabtu  07.30 - 09.15  VIII  SI  PR010502  Bahasa Inggris  2  A  Gufron, S.Pd., MHSc.  F00
+Wahyu Tisno Atmojo, S.Kom., M.Kom
+2  Sabtu  13.00 - 18.25  VIII  SI  IS242806  Kerja Praktik  6  A  Hendra Mayatopani, M.M.Si.  F00
+Afifah Trista Ayunda, S.Kom., M.Kom
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+Wahyu Tisno Atmojo, S.Kom., M.Kom
+1  Sabtu  07.30 - 12.55  X, XII, XIV  SI  IS142712  Tugas Akhir  6  A  Hendra Mayatopani, M.M.Si.  F01
+Afifah Trista Ayunda, S.Kom., M.Kom

@@ -1,0 +1,113 @@
+--- Page 1 ---
+Jadwal Semester Genap 2025/2026
+Program Studi Seni Kuliner
+UNIVERSITAS PRADITA
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  07.30 - 09.15  II  SK  CA30811  Bahasa Inggris Komunikasi  1  A+C  Gemala Garibaldi, S.Psi., M.Bus., M.Pd  B101
+2  Senin  09.20 - 14.45  II  SK  CA30821  Praktek Bahasa Inggris Komunikasi  1  A+C  Gemala Garibaldi, S.Psi., M.Bus., M.Pd  B101
+3  Senin  15.45 - 17.30  II  SK  CA30922  Praktek Operasional Restoran  2  A+C  Dikki Zuchradi Choesrani, SST. Par., MM  F01
+4  Selasa  07.30 - 09.15  II  SK  EGAP  A+C  B103
+5  Selasa  09.20 - 12.55  II  SK  CA30712  Antropologi Makanan Indonesia  2  A+C  Kezia Elsty, S.S.T.Par.,M.Par  B101
+6  Selasa  13.00 - 13.50  II  SK  CA31021  Praktek Perencanaan Desain Menu  1  A+C  Rahmat Kusnedi S.Tr.Par.,M.Par  F00  Hanya Enroll
+7  Selasa  13.55 - 15.40  II  SK  CA31011  Perencanaan Desain Menu  1  A+C  Rahmat Kusnedi S.Tr.Par.,M.Par  B101
+8  Selasa  15.45 - 17.30  II  SK  CA30911  Operasional Restoran  1  A+C  Dikki Zuchradi Choesrani, SST. Par., MM  F00  Hanya Enroll
+9  Rabu  07.30 - 09.15  II  SK  EGAP  A+C  B103
+Praktek Pengolahan Patiseri dan Kudapan  Matakuliah Pilihan 1
+10  Rabu  07.30 - 09.15  II  SK  CA40326  6  A+B+C+D  Aan Nurhasanah, S.Pd., M.M  F00
+Indonesia  Pastry (Hanya Enroll)
+Matakuliah Pilihan 1
+11  Rabu  09.20 - 12.55  II  SK  CA40312  Pengolahan Patiseri dan Kudapan Indonesia  2  A+C+B+D  Aan Nurhasanah, S.Pd., M.M  B101
+Pastry
+Matakuliah Pilihan 2
+12  Rabu  13.00 - 14.45  II  SK  CA40411  Pengolahan Patiseri & Bakeri Oriental  1  A+C+B+D  Aan Nurhasanah, S.Pd., M.M  B101
+Pastry
+Matakuliah Pilihan 2
+13  Rabu  15.45 - 17.30  II  SK  CA40422  Praktek Pengolahan Patiseri & Bakeri Oriental  2  A+B+C+D  Aan Nurhasanah, S.Pd., M.M  F01
+Pastry (Hanya Enroll)
+14  Kamis  10.15 -12.00  II  SK  PR10212  Pancasila  2  A+C  Ubed Abdilah Syarif, M.A., Ph.D.  A212
+Matakuliah Pilihan 2
+15  Jumat  07.30 - 11.05  II  SK  CA40112  Pengolahan Masakan Indonesia  2  A+B+C+D  Rahmat Kusnedi S.Tr.Par.,M.Par  B101
+Kitchen
+Matakuliah Pilihan 2
+16  Jumat  11.10 - 12.55  II  SK  CA40126  Praktek Pengolahan Masakan Indonesia  6  A+B+C+D  Rahmat Kusnedi S.Tr.Par.,M.Par  F02
+Kitchen (Hanya Enroll)
+Matakuliah Pilihan 1
+17  Jumat  13.55 - 15.40  II  SK  CA40211  Pengolahan Masakan Oriental  1  A+B+C+D  Lilik Hariyanto, SST.Par., M.Par.  B101
+Kitchen
+Matakuliah Pilihan 1
+18  Jumat  15.45 - 17.30  II  SK  CA40222  Praktek Pengolahan Masakan Oriental  2  A+B+C+D  Lilik Hariyanto, SST.Par., M.Par..  F02
+Kitchen (Hanya Enroll)
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  07.30 - 09.15  II  SK  CA30911  Operasional Restoran  1  B+D  Dikki Zuchradi Choesrani, SST. Par., MM  B102
+2  Senin  09.20 - 11.05  II  SK  CA31011  Perencanaan Desain Menu  1  B+D  Rahmat Kusnedi S.Tr.Par.,M.Par  B102
+3  Senin  11.10 - 12.00  II  SK  CA31021  Praktek Perencanaan Desain Menu  1  B+D  Rahmat Kusnedi S.Tr.Par.,M.Par  F00  Hanya Enroll
+4  Senin  16.40 - 18.25  II  SK  CA30922  Praktek Operasional Restoran  2  B+D  Dikki Zuchradi Choesrani, SST. Par., MM  F02  Hanya Enroll
+5  Selasa  07.30 - 09.15  II  SK  EGAP  B+D  B104
+6  Selasa  13.55 - 17.30  II  SK  CA30712  Antropologi Makanan Indonesia  2  B+D  Kezia Elsty, S.S.T.Par.,M.Par  B102
+7  Rabu  07.30 - 09.15  II  SK  EGAP  B+D  B104
+Praktek Pengolahan Patiseri dan Kudapan  Matakuliah Pilihan 1
+8  Rabu  07.30 - 09.15  II  SK  CA40326  6  A+B+C+D  Aan Nurhasanah, S.Pd., M.M  F00
+Indonesia  Pastry (Hanya Enroll)
+Matakuliah Pilihan 1
+9  Rabu  09.20 - 12.55  II  SK  CA40312  Pengolahan Patiseri dan Kudapan Indonesia  2  A+C+B+D  Aan Nurhasanah, S.Pd., M.M  B101
+Pastry
+Matakuliah Pilihan 2
+10  Rabu  13.00 - 14.45  II  SK  CA40411  Pengolahan Patiseri & Bakeri Oriental  1  A+C+B+D  Aan Nurhasanah, S.Pd., M.M  B101
+Pastry
+Matakuliah Pilihan 2
+11  Rabu  15.45 - 17.30  II  SK  CA40422  Praktek Pengolahan Patiseri & Bakeri Oriental  2  B+D  Aan Nurhasanah, S.Pd., M.M  F01
+Pastry (Hanya Enroll)
+12  Kamis  07.30 - 09.15  II  SK  CA30811  Bahasa Inggris Komunikasi  1  B+D  Gemala Garibaldi, S.Psi., M.Bus., M.Pd  B101
+13  Kamis  09.20 - 14.45  II  SK  CA30821  Praktek Bahasa Inggris Komunikasi  1  B+D  Gemala Garibaldi, S.Psi., M.Bus., M.Pd  B101
+14  Kamis  15.45 - 17.30  II  SK  PR10212  Pancasila  2  B+D  Ubed Abdilah Syarif, M.A., Ph.D.  MH
+Matakuliah Pilihan 2
+15  Jumat  07.30 - 11.05  II  SK  CA40112  Pengolahan Masakan Indonesia  2  A+B+C+D  Rahmat Kusnedi S.Tr.Par.,M.Par  B101
+Kitchen
+Matakuliah Pilihan 2
+16  Jumat  11.10 - 12.55  II  SK  CA40126  Praktek Pengolahan Masakan Indonesia  6  A+B+C+D  Rahmat Kusnedi S.Tr.Par.,M.Par  F02
+Kitchen (Hanya Enroll)
+Matakuliah Pilihan 1
+17  Jumat  13.55 - 15.40  II  SK  CA40211  Pengolahan Masakan Oriental  1  A+B+C+D  Lilik Hariyanto, SST.Par., M.Par.  B101
+Kitchen
+Matakuliah Pilihan 1
+18  Jumat  15.45 - 17.30  II  SK  CA40222  Praktek Pengolahan Masakan Oriental  2  A+B+C+D  Lilik Hariyanto, SST.Par., M.Par..  F02
+Kitchen (Hanya Enroll)
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Selasa  07.30 - 09.15  IV  SK  EGAP  A+C  B101
+2  Rabu  07.30 - 09.15  IV  SK  EGAP  A+C  B101
+3  Senin  10.15 - 12.00  IV  SK  PR010402  Bahasa Indonesia  2  A+C  Friska Melani, M.Si.  Multi Hall  gabung DI24
+4  Senin  13.00 - 14.45  IV  SK  PR010102  Agama  2  A+C  Carolino Benedicto, S.Pd., M.Kom.  A306
+
+--- Page 2 ---
+Jadwal Semester Genap 2025/2026
+Program Studi Seni Kuliner
+UNIVERSITAS PRADITA
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+Maulana Maliq Muhammad,
+5  Senin  14.50 - 17.30  IV  SK  CA232003  Manajemen Laporan Keuangan  3  A  B106
+S.E.,BA(Hons).,MIntlBus
+6  Selasa  09.20 - 12.55  IV  SK  CA231606  Manajemen Usaha Kuliner  6  A+C  Rahmat Kusnedi S.Tr.Par.,M.Par  B102
+7  Selasa  14.50 - 16.35  IV  SK  PR010602  Etika dan Budaya  2  A+C  Dr. Aryaning Arya Kresna, M.Hum  A212
+8  Selasa  16.40 - 18.25  IV  SK  PR010502  Bahasa Inggris  2  A+B+C+D  Gufron, S.Pd., MHSc.  F01
+9  Rabu  09.20 - 11.05  IV  SK  CA231703  Desain Dapur  3  A+C  Lilik Hariyanto, SST.Par., M.Par.  B102
+Maulana Maliq Muhammad,
+10  Rabu  13.00 - 15.40  IV  SK  CA232003  Manajemen Laporan Keuangan  3  C  B106
+S.E.,BA(Hons).,MIntlBus
+11  Kamis  13.00 - 16.35  IV  SK  PR011202  Teknik Penulisan Ilmiah  2  A+C  Muhammad Irfan, Amd.Par., S.ST.Par., M.Par  B102
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Selasa  07.30 - 09.15  IV  SK  EGAP  B+D  B102
+2  Rabu  07.30 - 09.15  IV  SK  EGAP  B+D  B102
+3  Senin  08.25 - 10.10  IV  SK  PR010402  Bahasa Indonesia  2  B+D  Friska Melani, M.Si.  B301
+4  Senin  10.15 - 12.55  IV  SK  CA232003  Manajemen Laporan Keuangan  3  B  Yovita Ariani, S.E.,M.Ak.  B106
+5  Senin  14.50 - 16.35  IV  SK  PR010102  Agama  2  B+D  Carolino Benedicto, S.Pd., M.Kom.  A306
+6  Selasa  09.20 - 12.55  IV  SK  CA231606  Manajemen Usaha Kuliner  6  B+D  Muhammad Irfan, Amd.Par., S.ST.Par., M.Par  B103
+7  Selasa  13.00 - 14.45  IV  SK  PR010602  Etika Budaya  2  B+D  Dr. Aryaning Arya Kresna, M.Hum  A212
+8  Selasa  16.40 - 18.25  IV  SK  PR010502  Bahasa Inggris  2  A+B+C+D  Gufron, S.Pd., MHSc.  F01
+9  Rabu  09.20 - 12.00  IV  SK  CA232003  Manajemen Laporan Keuangan  3  D  Dr. Febryanti Simon, S.E.,M.B.A.,CPA  B106
+10  Rabu  12.05 - 13.50  IV  SK  CA231703  Desain Dapur  3  B+D  Lilik Hariyanto, SST.Par., M.Par.  B102
+11  Jumat  07.30 - 11.05  IV  SK  PR011202  Teknik Penulisan Ilmiah  2  B+D  Roels Ni Made Sri Puspadewi, S.Par., M.Sc.  B102
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Sabtu  07.30 - 12.55  V  SK  CA240309  Praktik Industri Pemantapan  9  A+C  Kezia Elsty, S.S.T.,M.Par  F09
+2  Sabtu  07.30 - 12.55  V  SK  CA240309  Praktik Industri Pemantapan  9  B+D  Muhammad Irfan, Amd.Par., S.ST.Par., M.Par  F010
+3  Sabtu  13.00 - 17.30  V  SK  CA240504  Proyek Akhir  4  A+C  Kezia Elsty, S.S.T.,M.Par  F09
+4  Sabtu  13.00 - 17.30  V  SK  CA240504  Proyek Akhir  4  B+D  Muhammad Irfan, Amd.Par., S.ST.Par., M.Par  F010

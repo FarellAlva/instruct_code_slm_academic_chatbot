@@ -1,0 +1,32 @@
+# ─── Core Web Framework ───────────────────────────────────────
+streamlit>=1.32.0
+
+# ─── PDF Processing ───────────────────────────────────────────
+pypdf>=4.0.0
+
+# ─── Embeddings (local, no API) ───────────────────────────────
+sentence-transformers>=2.7.0
+
+# ─── Vector Store ─────────────────────────────────────────────
+chromadb>=0.5.0
+
+# ─── HTTP (Ollama client + web scraper) ───────────────────────
+requests>=2.31.0
+
+# ─── Notebook dependencies ────────────────────────────────────
+jupyter>=1.0.0
+ipykernel>=6.29.0
+matplotlib>=3.8.0
+numpy>=1.26.0
+scikit-learn>=1.4.0      # for t-SNE, cosine similarity
+
+# ─── Optional: UMAP visualization ────────────────────────────
+# umap-learn>=0.5.5
+
+# ─── Fine-tuning (Colab only — do NOT install locally unless GPU) ─
+# transformers>=4.40.0
+# datasets>=2.19.0
+# peft>=0.10.0
+# accelerate>=0.29.0
+# bitsandbytes>=0.43.0
+# trl>=0.8.0

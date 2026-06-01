@@ -1,0 +1,79 @@
+--- Page 1 ---
+Update tgl 7 Januari 2026
+JADWAL PERKULIAHAN MATA KULIAH DASAR UMUM (MKDU)
+SEMESTER GENAP TAHUN 2025/2026
+Jumlah  Total
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+Mhs  Mhs
+1  Senin  13.55 - 15.40  II  MB  PR10212  Pancasila  2  A  Canggih Gumanky Farunik, M.Phil.  Multi Hall  43
+II  TS  28  gabung DI25
+2  Senin  15.45 - 17.30  PR10212  Pancasila  2  A  Canggih Gumanky Farunik, M.Phil.  A212  56
+II  DI  28  gabung TS25
+3  Selasa  12.05 - 13.50  II  INF  PR10212  Pancasila  2  A  Carolino Benedicto, S.Pd., M.Kom.  B301  33
+II  PWK  22  gabung AR25
+4  Selasa  13.55 - 15.40  PR10212  Pancasila  2  A  Carolino Benedicto, S.Pd., M.Kom.  A304  54
+II  ARS  32  gabung PWK25
+5  Selasa  13.55 - 15.40  II  MB  PR10212  Pancasila  2  B  Ubed Abdilah Syarif, M.A., Ph.D  A306  43
+6  Selasa  15.45 - 17.30  II  AK  PR10212  Pancasila  2  A+B  Ubed Abdilah Syarif, M.A., Ph.D.  A304  53
+7  Rabu  15.45 - 17.30  II  INF  PR10212  Pancasila  2  B  Dr. Aryaning Arya Kresna, M.Hum  A218  33
+II  SI  37  gabung PAR25
+8  Rabu  15.45 - 17.30  PR10212  Pancasila  2  A  Carolino Benedicto, S.Pd., M.Kom.  A306  66
+II  PAR  29  gabung SI25
+9  Kamis  10.15 -12.00  II  SK  PR10212  Pancasila  2  A+C  Ubed Abdilah Syarif, M.A., Ph.D.  A212  59
+II  MR  PR10212  20  gabung F&B24
+10  Kamis  13.55 - 15.40  Pancasila  2  A  Dr. Aryaning Arya Kresna, M.Hum  A305  40
+IV  MR  PR010202  20  gabung F&B 25
+11  Kamis  15.45 - 17.30  II  DKV  PR10212  Pancasila  2  A  Canggih Gumanky Farunik, M.Phil.  A221  31
+12  Kamis  15.45 - 17.30  II  SK  PR10212  Pancasila  2  B+D  Ubed Abdilah Syarif, M.A., Ph.D.  Multi Hall  59
+13  Jumat  13.55 - 15.40  II  MB  PR10212  Pancasila  2  C  Ubed Abdilah Syarif, M.A., Ph.D  A220  43
+14  Jumat  15.45 - 17.30  II  DKV  PR10212  Pancasila  2  B  Ubed Abdilah Syarif, M.A., Ph.D.  A221  30
+1  Selasa  10.15 - 12.00  IV  AK  PR010602  Etika dan Budaya  2  A  Dr. Aryaning Arya Kresna, M.Hum  A218  22
+2  Selasa  13.00 - 14.45  IV  SK  PR010602  Etika dan Budaya  2  B+D  Dr. Aryaning Arya Kresna, M.Hum  A212  46
+3  Selasa  14.50 - 16.35  IV  SK  PR010602  Etika dan Budaya  2  A+C  Dr. Aryaning Arya Kresna, M.Hum  A212  46
+4  Rabu  13.00 - 14.45  VI  ARS  PR010602  Etika dan Budaya  2  A  Dr. Aryaning Arya Kresna, M.Hum  A214  12
+5  Kamis  12.05 - 13:50  VI  MB  PR010602  Etika dan Budaya  2  A  Althien John Pesurnay, M.Phil.  A212  32
+6  Kamis  13.55 - 15.40  VI  MB  PR010602  Etika dan Budaya  2  B  Althien John Pesurnay, M.Phil.  A304  31
+1  Senin  08.25 - 10.10  IV  SK  PR010402  Bahasa Indonesia  2  B+D  Friska Melani, M.Si.  B301  46
+IV  DI  PR10512  A  19  gabung SK24-A
+2  Senin  10.15 - 12.00  Bahasa Indonesia  2  Friska Melani, M.Si.  Multi Hall  65
+IV  SK  PR010402  A+C  46  gabung DI24
+3  Rabu  07.30 - 09.15  II  DKV  PR10512  Bahasa Indonesia  2  B  Friska Melani, M.Si.  A221  30
+II  DKV  PR10512  31  gabung AR23
+4  Rabu  09.20 - 11.05  Bahasa Indonesia  2  A  Friska Melani, M.Si.  A212  43
+VI  ARS  PR010402  12  gabung DKV25-A
+5  Rabu  13.00 - 14.45  VI  AK  PR010402  Bahasa Indonesia  2  A  Friska Melani, M.Si.  A212  17
+1  Senin  13.00 - 14.45  IV  SK  PR010102  Agama  2  A+C  Carolino Benedicto, S.Pd., M.Kom.  A306  46
+2  Senin  14.50 - 16.35  IV  SK  PR010102  Agama  2  B+D  Carolino Benedicto, S.Pd., M.Kom.  A306  46
+3  Jumat  13.55 - 15.40  IV  DKV  PR010102  Agama  2  A+B  Canggih Gumanky Farunik, M.Phil.  A212  62
+1  Senin  09.20 - 11.05  IV  MB  PR011102  Proyek Terintegrasi  2  A  Dr. Andreas Kiky  A218  37
+2  Senin  13.00 - 14.45  IV  AK  PR011102  Proyek Terintegrasi  2  A  Prita Karina Diandra, S.Ak., M.M  AG04  22
+3  Selasa  10.15 - 12.00  IV  TS  PR011102  Proyek Terintegrasi  2  A  Dr. Van Basten, S.T., M.T.  A221  16
+4  Rabu  08.25 - 10.10  IV  MB  PR011102  Proyek Terintegrasi  2  B  Shierli Wijaya, S.E., M.M.  A220  37
+5  Rabu  09.20 - 11.05  IV  ARS  PR011102  Proyek Terintegrasi  2  A  Abdullah Hibrawan Pratala W., ST., MT.  A201  12
+6  Kamis  08.25 - 10.10  IV  PWK  PR011102  Proyek Terintegrasi  2  A  Deasy Olivia, ST., MT.  A215  15
+7  Kamis  14.50 - 16.35  IV  DKV  PR011102  Proyek Terintegrasi  2  A+B  Ardi Makki Pantow Gunawan, B.A., M.F.A.  A212  62
+
+--- Page 2 ---
+Update tgl 7 Januari 2026
+JADWAL PERKULIAHAN MATA KULIAH DASAR UMUM (MKDU)
+SEMESTER GENAP TAHUN 2025/2026
+Jumlah  Total
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+Mhs  Mhs
+1  Senin  10.15 - 12.55  IV  MB  PR010903  Kewirausahaan Mandiri  3  B  Nur Amalyna Yusrin, B.Mgt., M.Sc.  A219  37
+2  Selasa  07.30 - 10.10  VI  ARS  PR010903  Kewirausahaan Mandiri  3  A  Hanugrah Adhi Buwono, ST., MA., IAI.  A205  12
+3  Rabu  07.30 - 10.10  IV  MB  PR010903  Kewirausahaan Mandiri  3  A  Nur Amalyna Yusrin, B.Mgt., M.Sc.  A222  37
+A104
+4  Rabu  10.15 - 12.55  VI  PWK  PR010903  Kewirausahaan Mandiri  3  A  Ir. Andi Muhammad Ahsan Muhklis, S.T., M.Eng.  16
+St. PWK
+5  Kamis  10.15 - 12.55  VI  AK  PR010903  Kewirausahaan Mandiri  3  A  Marco Ashadi, B.Bus., M.M.  A215  17
+1  Senin  07.30 - 09.15  VIII  TS  PR010502  Bahasa Inggris  2  A  Gufron, S.Pd., MHSc.  F00  9
+2  Senin  12.05 - 13.50  VIII  ARS  PR010502  Bahasa Inggris  3  A  Gufron, S.Pd., MHSc.  F00  10
+3  Selasa  07.30 - 09.15  VI  DI  PR010502  Bahasa Inggris  2  A  Gufron, S.Pd., MHSc.  F00  16
+4  Selasa  16.40 - 18.25  IV  SK  PR010502  Bahasa Inggris  2  A+B+C+D Gufron, S.Pd., MHSc.  F01  92
+VIII  SI  A  12
+VI  PWK  A  16
+5  Sabtu  07.30 - 09.15  VI  DKV  PR010502  Bahasa Inggris  2  A+B  Gufron, S.Pd., MHSc.  F00  39  145
+VI  MB  A+B  63
+VIII  AK  A  15
+1  Kamis  15.45 - 17.30  IV  PAR  PR010302  Kewarganegaraan  2  A  Dr. Aryaning Arya Kresna, M.Hum  B104  24

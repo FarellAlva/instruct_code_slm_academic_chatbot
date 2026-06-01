@@ -1,0 +1,87 @@
+--- Page 1 ---
+Jadwal Semester Genap 2025/2026
+Program Studi Desain Interior
+UNIVERSITAS PRADITA
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+A213
+1  Senin  07.30 - 09.15  II  DI  ID31112  Pemasaran Desain Interior  2  A  Boike Janus Anshory, S.Sn., M.Ds.
+St. Gbr
+A213
+2  Senin  10.15 - 12.00  II  DI  ID30712  Desain Interior 01  2  A  Sinta Binary Lazuardi, S.T., M.F.A.
+St. Gbr
+A213
+3  Senin  13.00 - 14.45  II  DI  ID31012  Dekorasi Interior  2  A  Alifia Wida Izzati, S.T., M.Ds.
+St. Gbr
+4  Senin  15.45 - 17.30  II  DI  PR10212  Pancasila  2  A  Canggih Gumanky Farunik, M.Phil.  A212  gabung TS25
+5  Selasa  07.30 - 09.15  II  DI  EGAP  A219  gabung DKV
+A213
+6  Selasa  10.15 - 12.00  II  DI  ID30812  Gambar Rendering  2  A  Bramanta Octa Danu Putra, S.Des., M.Ds.
+St. Gbr
+Bramanta Octa Danu Putra, S.Des., M.Ds.  A213
+7  Selasa  13.00 - 16.35  II  DI  ID30822  Studio Gambar Rendering  2  A
+Widasapta Sutapa, M.Ds.  St. Gbr
+Alifia Wida Izzati, S.T., M.Ds.  A213
+8  Rabu  08.25 - 13.50  II  DI  ID30723  Studio Desain Interior 01  3  A
+Sinta Binary Lazuardi, S.T., M.F.A.  St. Gbr
+A213
+9  Rabu  14.50 - 16.35  II  DI  ID31212  Ergonomi Desain  2  A  Widasapta Sutapa, M.Ds.
+St. Gbr
+10  Kamis  07.30 - 09.15  II  DI  EGAP  A219  gabung DKV
+A213
+11  Kamis  09.20 - 10.10  II  DI  ID30911  Konstruksi Bangunan Interior  1  A  Sinta Binary Lazuardi, S.T., M.F.A.
+St. Gbr
+Sinta Binary Lazuardi, S.T., M.F.A.  A213
+12  Kamis  10.15 - 14.45  II  DI  ID30922  Studio Konstruksi Bangunan Interior  2  A
+Oktavianus M. Nangoy, S.Sn., M.Ds.  St. Gbr
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  07.30 - 09.15  IV  DI  ID31912  Desain Interior 03  2  A  Oktavianus M. Nangoy, S.Sn., M.Ds.  A202
+2  Senin  10.15 - 12.00  IV  DI  PR10512  Bahasa Indonesia  2  A  Friska Melani, M.Si.  Multi Hall  gabung SK24-A
+3  Senin  13.00 - 13.50  IV  DI  ID32211  Desain Mebel Tempat Simpan  1  A  Oktavianus M. Nangoy, S.Sn., M.Ds.  A202
+Widasapta Sutapa, M.Ds.
+4  Senin  13.55 - 17.30  IV  DI  ID32222  Studio Desain Mebel Tempat Simpan  2  A  A202
+Oktavianus M. Nangoy, S.Sn., M.Ds.
+5  Selasa  07.30 - 09.15  IV  DI  EGAP  A218  gabung DKV
+A103
+6  Selasa  10.15 - 11.05  IV  DI  ID32311  Fotografi Interior  1  A  Sinta Binary Lazuardi, S.T., M.F.A.
+St. Foto
+Sinta Binary Lazuardi, S.T., M.F.A.  A103
+7  Selasa  11.10 - 14.45  IV  DI  ID32322  Studio Fotografi Interior  2  A
+Alifia Wida Izzati, S.T., M.Ds.  St. Foto
+Widasapta Sutapa, M.Ds.
+8  Rabu  07.30 - 12.55  IV  DI  ID31923  Studio Desain Interior 03  3  A  A202
+Oktavianus M. Nangoy, S.Sn., M.Ds.
+9  Kamis  07.30 - 09.15  IV  DI  EGAP  A218  gabung DKV
+10  Kamis  09.20 - 10.10  IV  DI  ID32111  3D Digital Modelling Interior  1  A  Alifia Wida Izzati, S.T., M.Ds.  A202
+Alifia Wida Izzati, S.T., M.Ds.
+11  Kamis  10.15 - 14.45  IV  DI  ID32122  Lab 3D Digital Modelling Interior  2  A  A202
+Widasapta Sutapa, M.Ds
+12  Jumat  09.20 - 11.05  IV  DI  ID32412  Manajemen Proyek Interior Lanjut  2  A  Dwi Putranto WJP, S.T., M.T.  A202
+13  Jumat  13.00 - 13.50  IV  DI  ID32011  Desain Interior Keberlanjutan  1  A  Boike Janus Anshory, S.Sn., M.Ds.  A202
+14  Jumat  13.55 - 17.30  IV  DI  ID32022  Studio Desain Interior Keberlanjutan  2  A  Boike Janus Anshory, S.Sn., M.Ds.  A202
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  09.20 - 12.00  VI  DI  ID232703  Simulasi Proyek Desain Interior  3  A  Widasapta Sutapa, M.Ds.  A202
+2  Senin  13.00 - 14.45  VI  DI  ID140102  Pilihan: Studi Futuristik  2  A  Bramanta Octa Danu Putra, S.Des., M.Ds.  A302
+3  Selasa  07.30 - 09.15  VI  DI  PR010502  Bahasa Inggris  2  A  Gufron, S.Pd., MHSc.  F00
+4  Selasa  09.20 - 11.05  VI  DI  ID233002  Warna, Material, dan Finising  2  A  Oktavianus M. Nangoy, S.Sn., M.Ds.  A202
+5  Selasa  11.10 - 12.55  VI  DI  ID240902  Proyek Kolaborasi  2  A  Boike Janus Anshory, S.Sn., M.Ds.  A202
+Berkomunikasi dalam Bahasa Inggris untuk  A211
+6  Rabu  08.25 - 10.10  VI  DI  ID233202  2  A  Greysia Susilo, S.E., S.Sn., M.Hum
+Studi Desain  St. Gbr
+7  Rabu  10.15 - 12.55  VI  DI  ID232805  DI: Desain Interior Pilihan  3  A  Bramanta Octa Danu Putra, S.Des., M.Ds.  AG06
+Mekanikal dan Elektrikal untuk
+8  Rabu  13.00 - 14.45  VI  DI  ID233302  2  A  Oktavianus M. Nangoy, S.Sn., M.Ds.  A202
+Desain Interior
+A103
+9  Rabu  15.45 - 17.30  VI  DI  ID243002  Pilihan: Fotografi Interior  2  A  Sinta Binary Lazuardi, S.T., M.F.A.
+St. Foto
+Bramanta Octa Danu Putra, S.Des., M.Ds.
+Sinta Binary Lazuardi, S.T., M.F.A.
+Oktavianus M. Nangoy S.Sn., M.Ds.
+A213
+10  Jumat  13.00 - 16.35  VI  DI  ID232805  DI: Desain Interior Pilihan  2  A  Dwi Putranto WJP. S.T., M.T.
+St. Gbr
+Widasapta Sutapa, M.Ds.
+Alifia Wida Izzati, S.T., M.Ds.
+Boike Janus Anshory, S.Sn., M.Ds.
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Jumat  07.30 - 14.45  VIII  DI  ID240806  Kerja Praktik  6  A  Widasapta Sutapa, M.Ds.  F01

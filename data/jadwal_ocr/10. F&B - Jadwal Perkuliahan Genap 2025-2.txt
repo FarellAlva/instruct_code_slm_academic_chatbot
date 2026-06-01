@@ -1,0 +1,36 @@
+--- Page 1 ---
+Jadwal Semester Genap 2025/2026
+Program Studi Manajemen (Peminatan Khusus Food & Beverage)
+UNIVERSITAS PRADITA
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  07.30 - 09.15  II  MR  EGAP  A203  gabung AK
+2  Senin  11.10 - 13.50  II  MR  MN00213  Layanan Optimal Bisnis F&B  3  A  Ajeng Andriani Hapsari, S.E., M.M.  A218  gabung F&B24
+3  Senin  13.55 - 16.35  II  MR  MN31613  Analisis Data Bisnis  3  A  Dr. Adryan Rachman, S.IP., M.M.  A215
+4  Selasa  09.20 - 12.00  II  MR  MN00113  Manajemen Talenta dalam Ritel F&B  3  A  Dr. William Widjaja, S.E., M.M., M.Pd  A216
+5  Selasa  13.00 - 15.40  II  MR  TR60313  Mixology dan Barista  3  A  Dikki Z. Choesrani, SST.Par., M.Par  AG01
+6  Rabu  09.20 - 12.00  II  MR  MN30613  Dasar-Dasar Manajemen Pemasaran  3  A  Marco Antonius Ashadi, B.Bus., M.M.  AG01
+7  Rabu  13.55 - 16.35  II  MR  MN30713  Dasar-Dasar Manajemen Keuangan  3  A  Dr. Febryanti Simon, S.E.,M.B.A.,CPA  AG01
+8  Kamis  13.55 - 15.40  II  MR  PR10212  Pancasila  2  A  Dr. Aryaning Arya Kresna, M.Hum  A305  gabung F&B24
+9  Jumat  07.30 - 09.15  II  MR  EGAP  A203  gabung AK
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  07.30 - 09.15  IV  MR  EGAP  A222  gabung AK
+2  Senin  11.10 - 13.50  IV  MR  MN031603  Layanan Optimal Bisnis F&B  3  A  Ajeng Andriani Hapsari, S.E., M.M.  A218  gabung F&B25
+3  Senin  13.55 - 16.35  IV  MR  MN030503  Pengembangan Produk dan Jasa untuk Bisnis Ritel  3  A  Mei Lisa Alvita, S.E., M.M  AG01
+4  Selasa  13.00 - 15.40  IV  MR  MN031703  Manajemen Hubungan Tamu dan Layanan Pelanggan  3  A  Johann W. H. Prawiro BSc., MSc.  AG07
+5  Rabu  13.00 - 15.40  IV  MR  MN040203  Shopper Marketing  3  A  Marco Antonius Ashadi, B.Bus., M.M.  A215
+6  Kamis  13.55 - 15.40  IV  MR  PR010202  Pancasila  2  A  Dr. Aryaning Arya Kresna, M.Hum  A305  gabung F&B25
+7  Jumat  07.30 - 09.15  IV  MR  EGAP  A222  gabung AK
+8  Jumat  09.20 - 12.00  IV  MR  MN221903  Teknologi Finansial  3  A  Dr. Andreas Kiky  AG04  gabung F&B23
+9  Jumat  13.00 - 15.40  IV  MR  MN031003  Visual Merchandising  3  A  Dr. Adryan Rachman, S.IP., M.M.  A215  gabung F&B23
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  10.15 - 12.55  VI  MR  MN030903  Aplikasi dan Analisis Kinerja Bisnis Ritel  3  A  Mei Lisa Alvita, S.E., M.M  AG01
+2  Selasa  10.15 - 12.55  VI  MR  MN223403  Manajemen Acara  3  A  Mei Lisa Alvita, S.E., M.M  AG01
+3  Selasa  13.00 - 15.40  VI  MR  MN030803  Seminar Manajemen Ritel  3  A  Dr. William Widjaja, S.E., M.M., M.Pd  A215
+4  Rabu  13.00 - 15.40  VI  MR  MN224203  Pemasaran Digital  3  A  Ajeng Andriani Hapsari, S.E., M.M.  AG06
+5  Kamis  13.55 - 16.35  VI  MR  MN040303  Elektronik Ritel  3  A  Mei Lisa Alvita, S.E., M.M  AG04  MK Pilihan
+6  Jumat  09.20 - 12.00  VI  MR  MN221903  Teknologi Finansial  3  A  Dr. Andreas Kiky  AG04  gabung F&B24
+7  Jumat  13.00 - 15.40  VI  MR  MN031003  Visual Merchandising  3  A  Dr. Adryan Rachman, S.IP., M.M.  A215  gabung F&B24
+8  Sabtu  13.00 - 14.45  VI  MR  PR011002  Kuliah Kerja Nyata/KKN-PPM  2  A  Dr. Adryan Rachman, S.IP., M.M.  F01
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Kamis  14.50 - 17.30  VIII  MR  MN031303  Komunikasi Bisnis Lanjutan  3  A  Ajeng Andriani Hapsari, S.E., M.M.  AG01
+2  Sabtu  07.30 - 12.55  VIII  MR  MN040506  Kerja Praktik  6  A  Dr. Adryan Rachman, S.IP., M.M.  F06

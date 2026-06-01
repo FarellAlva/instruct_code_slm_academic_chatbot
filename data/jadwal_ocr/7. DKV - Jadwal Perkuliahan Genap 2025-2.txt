@@ -1,0 +1,141 @@
+--- Page 1 ---
+Jadwal Semester Genap 2025/2026
+Program Studi Desain Komunikasi Visual
+UNIVERSITAS PRADITA
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+A101
+1  Senin  13.00 - 14.45  II  DKV  KV30912  Ilustrasi Digital  2  A  Yudi Amboro, M.Sn.
+Lab Mac
+A101
+2  Senin  14.50 - 16.35  II  DKV  KV30921  Studio Ilustrasi Digital  1  A  Mohamad Dzikri Alhamdi, S.Sn., M.Ds.
+Lab Mac
+3  Selasa  07.30 - 09.15  II  DKV  EGAP  A219  gabung DI
+A211
+4  Selasa  10.15 - 12.00  II  DVK  KV31114  DKV: Desain Tata Letak  4  A  Muhammad Iqbal, S.T., M.Ds.
+St. Gbr
+A211
+5  Selasa  12.05 - 17.30  II  DKV  KV31122  Studio DKV: Desain Tata Letak  2  A  Muhammad Iqbal, S.T., M.Ds.
+St. Gbr
+6  Rabu  09.20 - 11.05  II  DKV  PR10512  Bahasa Indonesia  2  A  Friska Melani, M.Si.  A212  gabung AR23
+7  Rabu  13.00 - 14.45  II  DKV  KV30712  Tinjauan DKV  2  A  Ardi Makki Pantow Gunawan, B.A., M.F.A.  A221
+8  Kamis  07.30 - 09.15  II  DKV  EGAP  A219  gabung DI
+A211
+9  Kamis  09.20 - 11.05  II  DKV  KV31012  Tipografi Postmodern  2  A  Irwan Harnoko, S.Sn., M.Ds.
+St. Gbr
+A211
+10  Kamis  11.10 - 12.55  II  DKV  KV31021  Studio Tipografi Postmodern  1  A  Irwan Harnoko, S.Sn., M.Ds.
+St. Gbr
+11  Kamis  15.45 - 17.30  II  DKV  PR10212  Pancasila  2  A  Canggih Gumanky Farunik, M.Phil.  A221
+A101
+12  Jumat  08.25 - 09.15  II  DKV  KV30811  Grafis Pixel  1  A  Aryo Bimo, S.Sn., M.I.Kom.
+Lab Mac
+A101
+13  Jumat  09.20 - 12.00  II  DKV  KV30821  Studio Grafis Pixel  1  A  Aryo Bimo, S.Sn., M.I.Kom.
+Lab Mac
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+A211
+1  Senin  08.25 - 10.10  II  DKV  KV31114  DKV: Desain Tata Letak  4  B  Muhammad Iqbal, S.T., M.Ds.
+St. Gbr
+A211
+2  Senin  10.15 - 15.40  II  DKV  KV31122  Studio DKV: Desain Tata Letak  2  B  Muhammad Iqbal, S.T., M.Ds.
+St. Gbr
+3  Selasa  07.30 - 09.15  II  DKV  EGAP  A219  gabung DI
+A101
+4  Selasa  10.15 - 12.00  II  DKV  KV30912  Ilustrasi Digital  2  B  Yudi Amboro, M.Sn.
+Lab Mac
+A101
+5  Selasa  12.05 - 13.50  II  DKV  KV30921  Studio Ilustrasi Digital  1  B  Mohamad Dzikri Alhamdi, S.Sn., M.Ds.
+Lab Mac
+6  Rabu  07.30 - 09.15  II  DKV  PR10512  Bahasa Indonesia  2  B  Friska Melani, M.Si.  A221
+7  Rabu  14.50 - 16.35  II  DKV  KV30712  Tinjauan DKV  2  B  Ardi Makki Pantow Gunawan, B.A., M.F.A.  A221
+8  Kamis  07.30 - 09.15  II  DKV  EGAP  A219  gabung DI
+A101
+9  Kamis  13.00 - 13.50  II  DKV  KV30811  Grafis Pixel  1  B  Aryo Bimo, S.Sn., M.I.Kom.
+Lab Mac
+A101
+10  Kamis  13.55 - 16.35  II  DKV  KV30821  Studio Grafis Pixel  1  B  Aryo Bimo, S.Sn., M.I.Kom.
+Lab Mac
+A301
+11  Jumat  08.25 - 10.10  II  DKV  KV31012  Tipografi Postmodern  2  B  Irwan Harnoko, S.Sn., M.Ds.
+St. Gbr
+A301
+12  Jumat  10.15 - 12.00  II  DKV  KV31021  Studio Tipografi Postmodern  1  B  Irwan Harnoko, S.Sn., M.Ds.
+St. Gbr
+13  Jumat  15.45 - 17.30  II  DKV  PR10212  Pancasila  2  B  Ubed Abdilah Syarif, M.A., Ph.D.  A221
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+A103
+1  Senin  08.25 - 12.00  IV  DKV  VC232104  Videografi  4  A  Mohamad Dzikri Alhamdi, S.Sn., M.Ds.
+St. Fotografi
+2  Selasa  07.30 - 09.15  IV  DKV  EGAP  A218  gabung DI
+Irwan Harnoko, S.Sn., M.Ds.  A301
+3  Rabu  08.25 - 12.00  IV  DKV  VC232004  Desain Kemasan  4  A
+Nugroho Widya Prio Utomo, M.Sn.  St. Gbr
+Rafael Jonathan S.Sn., M.Ds.  A101
+4  Rabu  13.00 - 18.25  IV  DKV  VC232206  DKV: Desain UI/UX  6  A
+Bramanta Octa Danuputra, S.Des., M.Ds.  Lab Mac
+5  Kamis  07.30 - 09.15  IV  DKV  EGAP  A218  gabung DI
+6  Kamis  10.15 - 12.00  IV  DKV  VC231802  Enterprise Kerja Sama  2  A  Ajeng Andriani Hapsari, S.E., M.M.  A221
+7  Kamis  14.50 - 16.35  IV  DKV  PR011102  Proyek Terintegrasi  2  A+B  Ardi Makki Pantow Gunawan, B.A., M.F.A.  A212
+8  Jumat  13.55 - 15.40  IV  DKV  PR010102  Agama  2  A+B  Carolino Benedicto, S.Pd., M.Kom.  A212
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+Rafael Jonathan S.Sn., M.Ds.  A101
+1  Senin  07.30 - 12.55  IV  DKV  VC232206  DKV: Desain UI/UX  6  B
+Bramanta Octa Danuputra, S.Des., M.Ds.  Lab Mac
+2  Selasa  07.30 - 09.15  IV  DKV  EGAP  A218  gabung DI
+A103
+3  Rabu  08.25 - 12.00  IV  DKV  VC232104  Videografi  4  B  Mohamad Dzikri Alhamdi, S.Sn., M.Ds.
+St. Fotografi
+
+--- Page 2 ---
+Jadwal Semester Genap 2025/2026
+Program Studi Desain Komunikasi Visual
+UNIVERSITAS PRADITA
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+Irwan Harnoko, S.Sn., M.Ds.  A301
+4  Rabu  13.00 - 16.35  IV  DKV  VC232004  Desain Kemasan  4  B
+Nugroho Widya Prio Utomo, M.Sn.  St. Gbr
+5  Kamis  07.30 - 09.15  IV  DKV  EGAP  A218  gabung DI
+6  Kamis  13.00 - 14.45  IV  DKV  VC231802  Enterprise Kerja Sama  2  B  Ajeng Andriani Hapsari, S.E., M.M.  A221
+7  Kamis  14.50 - 16.35  IV  DKV  PR011102  Proyek Terintegrasi  2  A+B  Ardi Makki Pantow Gunawan, B.A., M.F.A.  A212
+8  Jumat  13.55 - 15.40  IV  DKV  PR010102  Agama  2  A+B  Carolino Benedicto, S.Pd., M.Kom.  A212
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  08.25 - 10.10  VI  DKV  PR010802  Metode Penelitian  2  A  Yudi Amboro, M.Sn.  A221
+A101
+2  Selasa  15.45 - 17.30  VI  DKV  VC041102  Animasi Gerak Henti  2  A  Rafael Jonathan S.Sn., M.Ds.
+Lab Mac
+A101
+3  Rabu  08.25 - 10.10  VI  DKV  VC041002  Novel Grafis  2  A  Yudi Amboro, M.Sn.
+Lab Mac
+Nugroho Widya Prio Utomo, M.Sn.  A101
+4  Kamis  09.20 - 12.00  VI  DKV  VC132403  Model 3D  3  A
+Yudi Amboro, M.Sn.  Lab Mac
+Nugroho Widya Prio Utomo, M.Sn.  A301
+5  Kamis  13.00 - 18.25  VI  DKV  VC232706  Proyek DKV Retail  6  A
+Muhammad Iqbal, S.T., M.Ds.  St. Gbr
+Ardi Makki Pantow Gunawan, B.A., M.F.A.  A211
+6  Jumat  13.00 - 16.35  VI  DKV  VC233104  Desain Pamer Pajang  4  A
+Dra. Vera Waradya, M.Ds.  St. Gbr
+7  Sabtu  07.30 - 09.15  VI  DKV  PR011002  Bahasa Inggris  2  A+B  Gufron, S.Pd., MHSc.  F00
+8  Sabtu  09.20 - 11.05  VI  DKV  PR011002  Kuliah Kerja Nyata/KKN-PPM  2  A+B Muhammad Iqbal, S.T., M.Ds.  F00
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  10.15 - 12.00  VI  DKV  PR010802  Metode Penelitian  2  B  Yudi Amboro, M.Sn.  A221
+A101
+2  Selasa  13.55 - 15.40  VI  DKV  VC041102  Animasi Gerak Henti  2  B  Rafael Jonathan S.Sn., M.Ds.
+Lab Mac
+A101
+3  Rabu  10.15 - 12.00  VI  DKV  VC041002  Novel Grafis  2  B  Yudi Amboro, M.Sn.
+Lab Mac
+Ardi Makki Pantow Gunawan, B.A., M.F.A.  A301
+4  Kamis  07.30 - 12.55  VI  DKV  VC232706  Proyek DKV Retail  6  B
+Rafael Jonathan S.Sn., M.Ds.  St. Gbr
+Ardi Makki Pantow Gunawan, B.A., M.F.A.  A211
+5  Jumat  08.25 - 12.00  VI  DKV  VC233104  Desain Pamer Pajang  4  B
+Dra. Vera Waradya, M.Ds.  St. Gbr
+Nugroho Widya Prio Utomo, M.Sn.  A101
+6  Jumat  13.00 - 15.40  VI  DKV  VC132403  Model 3D  3  B
+Yudi Amboro, M.Sn.  Lab Mac
+7  Sabtu  07.30 - 09.15  VI  DKV  PR011002  Bahasa Inggris  2  A+B  Gufron, S.Pd., MHSc.  F00
+8  Sabtu  09.20 - 11.05  VI  DKV  PR011002  Kuliah Kerja Nyata/KKN-PPM  2  A+B Muhammad Iqbal, S.T., M.Ds.  F00
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Sabtu  07.30 - 12.00  VIII  DKV  VC241306  Kerja Praktik  6  A  Ardi Makki Pantow Gunawan, B.A., M.F.A.  F05
+2  Sabtu  12.05 - 17.30  VIII  DKV  VC240508  Tugas Akhir  8  A  Nugroho Widya Prio Utomo, M.Sn.  F05

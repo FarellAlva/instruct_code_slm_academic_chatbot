@@ -1,0 +1,46 @@
+--- Page 1 ---
+Jadwal Semester Genap 2025/2026
+Program Studi Pariwisata
+UNIVERSITAS PRADITA
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+Praktikum Pengantar Tata Hidang Makanan Dan
+1  Senin  07.30 - 10.10  II  PAR  TR30922  2  A  S.Gibran Galeb,B.Sc.,M.Sc  Lab Praktikum  Lab Praktikum
+Minuman
+2  Senin  10.15 - 12.55  II  PAR  TR30822  Praktikum Dasar Pengolahan Makanan  2  A  Rudy Takarianta Karnajaya  Lab Praktikum  Lab Praktikum
+3  Senin  13.00 - 15.40  II  PAR  TR31121  Praktikum Pengelolaan Laundry  1  A  M. Irfan, M.Par  Lab Praktikum  Lab Praktikum
+4  Selasa  07.30 - 09.15  II  PAR  EGAP  A217  gabung TI+SI
+5  Selasa  13.00 - 14.45  II  PAR  TR31312  Dasar Pengetahuan Manajemen  2  A  Johann W. H. Prawiro BSc. MSc.  B103
+6  Selasa  14.50 - 15.40  II  PAR  TR31011  Registrasi Kantor Depan  1  A  Dr.Sri Pujiastuti, S.E., M.Par  B103
+7  Rabu  07.30 - 09.15  II  PAR  TR30812  Dasar Pengolahan Makanan  2  A  Rahmat Kusnedi, S.Tr.Par., M.Par.  B106
+8  Rabu  09.20 - 11.05  II  PAR  TR30712  Bahasa Inggris Komunikasi  2  A  Maybelle Anne Carla  B103
+9  Rabu  13.00 - 14.45  II  PAR  TR30912  Pengantar Tata Hidang Makanan & Minuman  2  A  S.Gibran Galeb,B.Sc.,M.Sc  B103
+10  Rabu  15.45 - 17.30  II  PAR  PR10212  Pancasila  2  A  Carolino Benedicto, S.Pd., M.Kom.  A306  gabung SI25
+11  Kamis  07.30 - 09.15  II  PAR  EGAP  A217  gabung TI+SI
+12  Kamis  09.20 - 11.05  II  PAR  TR31112  Pengelolaan Laundry  2  A  M. Irfan, M.Par  B102
+13  Kamis  13.00 - 13.50  II  PAR  TR31211  Geografi Pariwisata  1  A  Wiwik Nirmala Sari, SST.Par.,M.Par  B103
+14  Jumat  08.25 - 11.05  II  PAR  TR31021  Praktikum Registrasi Kantor Depan  1  A  Dr.Sri Pujiastuti, S.E., M.Par  Lab Praktikum  Lab Praktikum
+15  Jumat  13.00 - 15.40  II  PAR  TR31221  Praktikum Geografi Pariwisata  1  A  Wiwik Nirmala Sari, SST.Par.,M.Par  B102
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  07.30 - 12.55  IV  PAR  TR232003  Teknik Supervisi  2  A  Dr.Sri Pujiastuti, S.E., M.Par  B103
+2  Selasa  07.30 - 09.15  IV  PAR  EGAP  A216  gabung TI+SI
+3  Selasa  09.20 - 12.00  IV  PAR  TR232103  Kemampuan Berkomunikasi  3  A  Wiwik Nirmala Sari, SST.Par.,M.Par  B104
+4  Selasa  13.00 - 13.50  IV  PAR  TR232003  Teknik Supervisi  1  A  Dr.Sri Pujiastuti, S.E., M.Par  B104
+5  Selasa  13.55 - 16.35  IV  PAR  TR232403  Manajemen Pemasaran Hotel  3  A  Dr. Budi Setiawan, A.Md.Par., S.E., M.M  B104
+6  Rabu  07.30 - 09.15  IV  PAR  TR232302  Perilaku Konsumen  2  A  Johann W. H. Prawiro BSc. MSc.  B105
+8  Kamis  07.30 - 09.15  IV  PAR  EGAP  A216  gabung TI+SI
+7  Kamis  09.20 - 11.05  IV  PAR  TR231902  Bahasa Perancis 2  2  A  Ida Ayu Rostini  B103
+9  Kamis  13.00 - 15.40  IV  PAR  TR232503  Manajemen Kualitas Usaha Pariwisata  3  A  Roels Ni Made Sri Puspadewi, S.Par., M.Sc.  B104
+10  Kamis  15.45 - 17.30  IV  PAR  PR010302  Kewarganegaraan  2  A  Dr. Aryaning Arya Kresna, M.Hum  B104
+11  Jumat  09.20 - 11.05  IV  PAR  TR232202  Pengelolaan Resto & Bar  2  A  Dikki Zuchradi Choesrani, SST.Par., MM  B103
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  07.30 - 11.05  VI  PAR  TR241204  Proyek Kolaborasi  4  A  Dr. Budi Setiawan, A.Md.Par., S.E., M.M  B104
+2  Selasa  09.20 - 11.05  VI  PAR  AC220702  Akuntansi Usaha Pariwisata  2  A  Dr. Febryanti Simon, S.E., M.B.A., CPA  B301
+3  Selasa  13.00 - 15.40  VI  PAR  TR241003  Elektif 1: Pengelolaan Perhelatan Destinasi  3  A  Wiwik Nirmala Sari, SST.Par.,M.Par  B302
+4  Selasa  13.00 - 15.40  VI  PAR  TR240903  Elektif 2 : Pengendalian Biaya  3  A  Prita Karina Diandra, S.Ak., M.M.,CFP  B106
+5  Rabu  09.20 - 12.00  VI  PAR  TR240803  Elektif 2 : Pengelolaan Pembelian dan Penyimpanan  3  A  S.Gibran Galeb,B.Sc.,M.Sc  B104
+6  Kamis  09.20 - 11.05  VI  PAR  PR010802  Metodologi Penelitian  2  A  Roels Ni Made Sri Puspadewi, S.Par., M.Sc.  B104
+7  Kamis  13.00 - 15.40  VI  PAR  BM224502  Manajemen Sumber Daya Manusia Pariwisata  2  A  Johann W. H. Prawiro BSc. MSc.  B106
+8  Jumat  09.20 - 11.05  VI  PAR  TR241103  Elektif 1 : Industri Perjalanan Wisata  3  A  Wiwik Nirmala Sari, SST.Par.,M.Par  B104
+9  Jumat  13.00 - 15.40  VI  PAR  IS220703  E Business Tourism  3  A  Dr.Sri Pujiastuti, S.E., M.Par  B103
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Sabtu  07.30 - 12.55  VIII  PAR  TR241306  Kerja Praktik  6  A  Johann W. H. Prawiro BSc. MSc.  F02

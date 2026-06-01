@@ -1,0 +1,74 @@
+--- Page 1 ---
+Jadwal Semester Genap 2025/2026
+Program Studi Perencanaan Wilayah dan Kota
+UNIVERSITAS PRADITA
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  07.30 - 09.15  II  PWK  EGAP  A218  gabung TS+AR
+2  Senin  13.00 - 14.45  II  PWK  UP31112  Prasarana Kota  2  A  Deasy Olivia, ST., MT.  A214
+3  Selasa  10.15 - 12.00  II  PWK  UP31212  Ekonomi Wilayah dan Kota  2  A  Ir. Andi Muhammad Ahsan Muhklis, S.T., M.Eng.  A214
+4  Selasa  13.55 - 15.40  II  PWK  PR10212  Pancasila  2  A  Carolino Benedicto, S.Pd., M.Kom.  A304  gabung AR25
+Ade Firmansyah, ST., MT. (Kord)
+5  Rabu  08.25 - 11.05  II  PWK  UP31013  Tata Guna dan Pengembangan Lahan  3  A  A214
+Softy Nuzzela, Bs.Cp., M.T.
+Rendy Akbar, ST., MPWK (Kord)  A206
+6  Rabu  12.05 - 17.30  II  PWK  UP30823  Sistem Informasi Geografis  3  A
+Softy Nuzzela, Bs.Cp., M.T.  Lab Komp
+Ade Firmansyah, ST., MT. (Kord)
+7  Kamis  08.25 - 11.05  II  PWK  UP30913  Proses Perencanaan  3  A  A214
+Softy Nuzzela, Bs.Cp., M.T.
+Ade Firmansyah, ST., MT. (Kord)  A104
+8  Kamis  12.05 - 17.30  II  PWK  UP31423  Pra Studio Pengembangan Kawasan Urban  3  A
+Softy Nuzzela, Bs.Cp., M.T.  St. PWK
+9  Jumat  07.30 - 09.15  II  PWK  EGAP  A218  gabung TS+AR
+10  Jumat  09.20 - 11.05  II  PWK  UP31312  Struktur dan Morfologi Kota  2  A  Deasy Olivia, ST., MT.  A214
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  07.30 - 09.15  IV  PWK  EGAP  A217  gabung TS+AR
+Deasy Olivia, ST., MT. (Kord)
+2  Senin  09.20 - 12.00  IV  PWK  UP241003  Perumahan Urban  3  A  A214
+Ade Firmansyah, ST., MT.
+Rendy Akbar, ST., MPWK (Kord)  A104
+3  Senin  13.00 - 15.40  IV  PWK  UP232003  Perencanaan Kota & Wilayah  3  A
+Ade Firmansyah, ST., MT.  St. PWK
+Ir. Rachmat Taufick Hardi. MRP (Kord)
+4  Rabu  07.30 - 10.10  IV  PWK  UP241103  Pengantar Pengembangan Property & Real Estate  3  A  A215
+Ir. Andi Muhammad Ahsan Muhklis, S.T., M.Eng.
+5  Kamis  08.25 - 10.10  IV  PWK  PR011102  Proyek Terintegrasi  2  A  Deasy Olivia, ST., MT.  A215
+A206
+6  Selasa  07.30 - 11.05  IV  PWK  UP232202  Penginderaan Jauh  2  A  Rendy Akbar, ST., MPWK
+Lab Komp
+Ade Firmansyah, ST., MT. (Kord)
+7  Rabu  13.00 - 15.40  IV  PWK  UP232103  Metode Analisis Perencanaan  3  A  AG05
+Deasy Olivia, ST., MT.
+8  Jumat  07.30 - 09.15  IV  PWK  EGAP  A217  gabung TS+AR
+Ida Ayu Sawitri, ST., MT. (Kord)
+A104
+9  Jumat  09.20 - 15.40  IV  PWK  UP240904  Studio Perencanaan Tapak  4  A  Ir. Rachmat Taufick Hardi. MRP
+St. PWK
+Imaniar Sofi Asharhani, S.Ars., M.T
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+Ir. Andi Muhammad Ahsan Muhklis, S.T., M.Eng. (Kord)  A104
+1  Selasa  07.30 - 10.10  VI  PWK  UP242103  Manajemen Bangunan dan Estate  3  A
+Ir. Rachmat Taufick Hardi. MRP  St. PWK
+Ida Ayu Sawitri, ST., MT. (Kord)
+Studio Perencanaan Tata Bangunan dan  A104
+2  Selasa  11.10 - 17.30  VI  PWK  UP241804  4  A  Ir. Andi Muhammad Ahsan Muhklis, S.T., M.Eng.
+Lingkungan  St. PWK
+Rendy Akbar, ST., MPWK
+A104
+3  Rabu  10.15 - 12.55  VI  PWK  PR010903  Kewirausahaan Mandiri  3  A  Ir. Andi Muhammad Ahsan Muhklis, S.T., M.Eng.
+St. PWK
+Perencanaan Pengembangan Property dan Real  Ida Ayu Sawitri, ST., MT. (Kord)  A104
+4  Kamis  07.30 - 10.10  VI  PWK  UP242003  3  A
+Estate  Ir. Rachmat Taufick Hardi. MRP  St. PWK
+5  Jumat  07.30 - 09.15  VI  PWK  PR010802  Metodologi Penelitian  2  A  Deasy Olivia, ST., MT.  A214
+6  Jumat  13.00 - 14.45  VI  PWK  UP241902  Urbanisme  2  A  Dr. Dimas Danar Dewa  A214
+7  Jumat  14.50 - 16.35  VI  PWK  UP241702  Manajemen Pembangunan Kota 2  2  A  Dr. Dimas Danar Dewa  A214
+8  Sabtu  07.30 - 09.15  VI  PWK  PR010502  Bahasa Inggris  2  A  Gufron, S.Pd., MHSc.  F00
+NO  Hari  Jam  SMT  Prodi  KMK  Nama Mata Kuliah  SKS  KLS  Dosen  Ruang  Catatan
+1  Senin  15.45 - 17.30  VIII  PWK  UP243102  Perencanaan Pariwisata  2  A  Ade Firmansyah, ST., MT.  A214
+A104
+1  Rabu  15.45 - 17.30  VIII  PWK  UP143002  Perencanaan Partisipatif (matkul pilihan)  2  A  Ade Firmansyah, ST., MT.
+St. PWK
+2  Jumat  13.00 - 15.40  VIII  PWK  UP142303  Seminar Tugas Akhir  3  A  Deasy Olivia, ST., MT.  AG05
+3  Sabtu  09.20 - 12.00  VIII  PWK  UP242203  Kerja Praktik  3  A  Ida Ayu Sawitri, ST., MT.  F03
+4  Sabtu  12.05 - 17.30  VIII  PWK  UP242506  Tugas Akhir  6  A  Ade Firmansyah, ST., MT.  F03
