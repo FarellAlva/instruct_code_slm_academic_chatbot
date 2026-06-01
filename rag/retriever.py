@@ -78,9 +78,9 @@ def get_reranker():
     global _RERANKER_MODEL
     if _RERANKER_MODEL is None:
         from sentence_transformers import CrossEncoder
-        print("[Reranker] Loading CrossEncoder: BAAI/bge-reranker-base (CPU)...")
+        print("[Reranker] Loading CrossEncoder: BAAI/bge-reranker-v2-m3 (CPU)...")
         _RERANKER_MODEL = CrossEncoder(
-            "BAAI/bge-reranker-base",
+            "BAAI/bge-reranker-v2-m3",
             max_length=512,
             device="cpu",
         )
@@ -209,6 +209,12 @@ def _extract_person_name_query(query: str) -> str:
 def _extract_prodi_filter(query: str) -> Optional[str]:
     """Extract prodi code from query for metadata filtering."""
     lowered = query.lower()
+    
+    # Check if this query is likely about schedules
+    schedule_keywords = ["jadwal", "kelas", "ruang", "mata kuliah", "matkul", "semester", "hari", "jam"]
+    if not any(kw in lowered for kw in schedule_keywords):
+        return None
+
     # First try long aliases (substring match is safe for multi-word)
     for alias, code in sorted(PRODI_ALIASES.items(), key=lambda x: -len(x[0])):
         if alias in lowered:

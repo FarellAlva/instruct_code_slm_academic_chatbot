@@ -152,10 +152,7 @@ def _build_retrieval_query(current_prompt: str, messages: list) -> str:
     prompt_lower = prompt.lower()
     compact = re.sub(r"\s+", " ", prompt_lower)
 
-    is_follow_up = (
-        len(prompt.split()) <= 6
-        or any(token in compact for token in FOLLOW_UP_TOKENS)
-    )
+    is_follow_up = any(token in compact for token in FOLLOW_UP_TOKENS)
     if not is_follow_up:
         return prompt
 
@@ -1125,6 +1122,20 @@ with st.sidebar:
             unsafe_allow_html=True,
         )
 
+    st.divider()
+    st.markdown("## Context Memory")
+    
+    # Calculate token estimate from last 6 messages
+    recent_msgs = st.session_state.messages[-6:] if "messages" in st.session_state else []
+    history_str = " ".join(m.get("content", "") for m in recent_msgs)
+    est_tokens = int(len(history_str.split()) * 1.3) + 150 # Base prompt overhead
+    max_ctx = 2048
+    
+    percent = min(est_tokens / max_ctx, 1.0)
+    st.progress(percent)
+    st.caption(f"**{est_tokens}** / {max_ctx} Tokens ({int(percent * 100)}%)")
+
+    st.divider()
     st.caption("Pradita University AI Chatbot v2.0")
 
 
