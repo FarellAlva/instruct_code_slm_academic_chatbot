@@ -22,8 +22,10 @@ class LocalEmbeddingFunction(EmbeddingFunction):
     """
 
     def __init__(self, model_name: str = EMBEDDING_MODEL):
-        print(f"[Embedder] 🔄 Loading embedding model: {model_name}")
-        self._model = SentenceTransformer(model_name)
+        import torch
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        print(f"[Embedder] 🔄 Loading embedding model: {model_name} on {device.upper()}")
+        self._model = SentenceTransformer(model_name, device=device)
         # Detect E5 family by model name so we can prepend the required prefixes
         self._is_e5 = "e5" in model_name.lower()
         print(f"[Embedder] ✅ Model loaded (E5 prefix mode: {self._is_e5}).")

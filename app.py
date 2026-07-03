@@ -1266,7 +1266,14 @@ if prompt := st.chat_input("Tanyakan seputar Pradita University…"):
                     max_tokens   = max_tokens,
                 ):
                     full_response += token
-                    placeholder.markdown(full_response + "▌")
+                    placeholder.markdown(full_response + "◌")
+
+                # If model returned nothing visible (all-think, empty), show fallback
+                if not full_response.strip():
+                    full_response = (
+                        "Maaf sobat, saya tidak bisa menghasilkan respons untuk pertanyaan ini. "
+                        "Coba ulangi atau perjelas pertanyaanmu ya!"
+                    )
 
                 placeholder.markdown(full_response)
 

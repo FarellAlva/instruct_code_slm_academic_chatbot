@@ -78,11 +78,13 @@ def get_reranker():
     global _RERANKER_MODEL
     if _RERANKER_MODEL is None:
         from sentence_transformers import CrossEncoder
-        print("[Reranker] Loading CrossEncoder: BAAI/bge-reranker-v2-m3 (CPU)...")
+        import torch
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        print(f"[Reranker] Loading CrossEncoder: BAAI/bge-reranker-v2-m3 ({device.upper()})...")
         _RERANKER_MODEL = CrossEncoder(
             "BAAI/bge-reranker-v2-m3",
             max_length=512,
-            device="cpu",
+            device=device,
         )
     return _RERANKER_MODEL
 
