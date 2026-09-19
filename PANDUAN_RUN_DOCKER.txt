@@ -1,0 +1,117 @@
+================================================================================
+          PANDUAN MENJALANKAN ADITA RAG CHATBOT DENGAN DOCKER (ALL-IN-ONE)
+================================================================================
+
+Panduan ini digunakan untuk menjalankan sistem di komputer/server baru dari nol.
+Anda TIDAK PERLU menginstal aplikasi Ollama di Windows/Host.
+Cukup gunakan Git dan Docker Desktop.
+
+--------------------------------------------------------------------------------
+1. PRASYARAT DI KOMPUTER BARU
+--------------------------------------------------------------------------------
+Pastikan sudah terpasang:
+- Git              : https://git-scm.com/
+- Docker Desktop   : https://www.docker.com/products/docker-desktop/
+  *(Pastikan aplikasi Docker Desktop sudah dalam keadaan RUNNING / aktif)*
+
+--------------------------------------------------------------------------------
+2. LANGKAH MENJALANKAN (SETUP PERTAMA KALI)
+--------------------------------------------------------------------------------
+
+Langkah 2.1: Clone Repository
+Buka Terminal / PowerShell / Command Prompt, lalu ketik:
+    git clone https://github.com/FarellAlva/instruct_code.git
+    cd instruct_code
+
+Langkah 2.2: Jalankan Docker Compose
+Ketik perintah berikut:
+    docker compose up -d --build
+
+* Catatan:
+  Proses build pertama kali membutuhkan waktu ~2-4 menit karena Docker akan:
+  - Menginstal Python & semua dependensi (Streamlit, ChromaDB, dll).
+  - Mengunduh & menyimpan model embedding (multilingual-e5-base) dan reranker.
+  - Menyalakan container 'adita-ollama' dan container 'adita-rag-app'.
+
+--------------------------------------------------------------------------------
+3. LOGIN OLLAMA CLOUD & PULL MODEL (HANYA SEKALI SEUMUR HIDUP)
+--------------------------------------------------------------------------------
+
+Karena Anda menggunakan model cloud 'gemma4:31b-cloud', lakukan login sekali:
+
+Langkah 3.1: Login ke Akun Ollama
+Jalankan perintah ini di terminal:
+    docker compose exec ollama ollama signin
+
+* Akan muncul tautan login (https://ollama.com/...) di terminal.
+  Buka tautan tersebut di browser Anda, login, lalu klik tombol APPROVE.
+
+Langkah 3.2: Unduh Model Cloud
+Setelah berhasil login, jalankan:
+    docker compose exec ollama ollama pull gemma4:31b-cloud
+
+* Selesai! Data login dan model ini tersimpan permanen di volume Docker
+  (ollama_models). Jika komputer dimatikan atau direstart, Anda TIDAK PERLU
+  login ulang.
+
+--------------------------------------------------------------------------------
+4. AKSES APLIKASI DI BROWSER
+--------------------------------------------------------------------------------
+Buka browser dan kunjungi:
+    http://localhost:8501
+
+- Di menu sidebar sebelah kiri, klik tombol "Check Ollama".
+  Status akan berubah menjadi hijau "Connected".
+- Chatbot Adita siap digunakan untuk menjawab seputar jadwal, dosen,
+  sejarah Pradita University, biaya, fasilitas, dll.
+
+--------------------------------------------------------------------------------
+5. OPSI MODEL LOKAL (100% OFFLINE / TANPA PERLU LOGIN SAMA SEKALI)
+--------------------------------------------------------------------------------
+Jika komputer baru tidak memiliki akun Ollama atau ingin berjalan offline:
+Cukup tarik model open-source lokal dengan perintah:
+    docker compose exec ollama ollama pull gemma2:2b
+
+Lalu di browser (http://localhost:8501), ganti teks pada kolom 'Model' di sidebar:
+    gemma2:2b
+
+--------------------------------------------------------------------------------
+6. PERINTAH PENGELOLAAN HARIAN
+--------------------------------------------------------------------------------
+
+- Melihat log / memantau error secara realtime:
+    docker compose logs -f
+
+- Melihat log khusus aplikasi chat:
+    docker compose logs -f adita-chat
+
+- Melihat log khusus Ollama:
+    docker compose logs -f ollama
+
+- Mematikan seluruh sistem:
+    docker compose down
+
+- Menyalakan kembali di kemudian hari (cepat, tanpa build ulang):
+    docker compose up -d
+
+- Cek status container yang sedang berjalan:
+    docker compose ps
+
+--------------------------------------------------------------------------------
+7. TROUBLESHOOTING / KENDALA UMUM
+--------------------------------------------------------------------------------
+
+Kendala 1: Port 8501 atau 11434 sudah terpakai di komputer host
+Solusi   : Buka file 'docker-compose.yml', ubah bagian ports:
+           Misal dari "8501:8501" menjadi "8502:8501".
+           Lalu akses via http://localhost:8502.
+
+Kendala 2: Docker daemon error / tidak bisa konek
+Solusi   : Pastikan aplikasi Docker Desktop di Windows sudah dibuka dan
+           berstatus "Engine running" di pojok kiri bawah.
+
+Kendala 3: Perubahan data text di folder data/web tidak terbaca
+Solusi   : Karena folder data/ dan chroma_db/ sudah di-mount langsung (volume bind),
+           setiap perubahan file di komputer host otomatis langsung tersinkron
+           ke dalam container.
+================================================================================
