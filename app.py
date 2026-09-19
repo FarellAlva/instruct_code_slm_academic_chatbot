@@ -403,6 +403,23 @@ def _build_direct_schedule_answer(query: str, collection=None) -> str:
     q_lower = query.lower()
     is_asking_schedule = any(k in q_lower for k in ["jadwal", "matkul apa", "kuliah apa", "kelas apa"]) or (hari and (slot_p or slot_s))
 
+    # Disambiguation 1: "teknik" alone without specifying prodi
+    if re.search(r"\bteknik\b", q_lower) and not re.search(r"\b(?:sipil|informatika|infromatika|inf|ti|ts)\b", q_lower):
+        return (
+            "Di Pradita University terdapat program studi **Teknik Sipil** dan **Informatika (Teknik Informatika)**. "
+            "Boleh konfirmasi program studi mana yang kamu maksud, sobat?"
+        )
+
+    # Disambiguation 2: Asking for schedule or lecturers without mentioning prodi or specific entity
+    if not prodi and not entity_idx.match_course(query) and not entity_idx.match_lecturer(query):
+        if any(k in q_lower for k in ["jadwal", "matkul apa", "kuliah apa", "kelas apa"]) and len(query.split()) <= 7:
+            return "Tentu sobat, untuk melihat jadwal perkuliahan, boleh sebutkan program studi (prodi) apa yang kamu maksud?"
+        if any(k in q_lower for k in ["siapa saja dosen", "daftar dosen", "dosen pengampu", "siapa dosen"]) and len(query.split()) <= 7:
+            return (
+                "Tentu sobat, untuk memberikan daftar dosen yang tepat, boleh sebutkan program studi (jurusan) yang kamu maksud? "
+                "(Contoh: Informatika, Sistem Informasi, Teknik Sipil, Desain Komunikasi Visual, dll.)"
+            )
+
     if is_asking_schedule:
         # Check if we have prodi + semester (and optionally hari)
         if prodi and semester:
@@ -413,11 +430,6 @@ def _build_direct_schedule_answer(query: str, collection=None) -> str:
                 table = sched_src.format_markdown_table(records)
                 header = f"Berikut jadwal perkuliahan **{prodi_name}** Semester **{semester}**{hari_info}:"
                 return f"{header}\n\n{table}"
-        
-        # If user explicitly asked for schedule but prodi is missing entirely:
-        if "jadwal" in q_lower and not prodi and not entity_idx.match_course(query) and not entity_idx.match_lecturer(query):
-            if len(query.split()) <= 6:
-                return "Tentu sobat, untuk melihat jadwal perkuliahan, boleh sebutkan program studi (prodi) apa yang kamu maksud?"
 
     # 3. Check for Prodi Lecturers list (e.g. "siapa saja dosen informatika", "daftar dosen sistem informasi")
     is_asking_prodi_lecturers = (
@@ -429,20 +441,33 @@ def _build_direct_schedule_answer(query: str, collection=None) -> str:
     if is_asking_prodi_lecturers:
         records = sched_src.search(prodi=prodi)
         if records:
+            from rag.entity_index import normalize_title
             prodi_name = records[0].get("prodi_full", prodi)
-            lec_to_courses = {}
+            canonical_names: Dict[str, str] = {}
+            lec_to_courses: Dict[str, Set[str]] = {}
+
             for r in records:
+                mk = r.get("mata_kuliah", "").strip(" ,.-")
+                if not mk:
+                    continue
                 for d in r.get("dosen", []):
-                    d_clean = d.strip()
-                    if d_clean and d_clean != "-":
-                        lec_to_courses.setdefault(d_clean, set()).add(r.get("mata_kuliah", ""))
+                    d_clean = d.strip(" ,.-")
+                    if not d_clean or d_clean == "-":
+                        continue
+                    key = normalize_title(d_clean)
+                    if not key or len(key.split()) < 1:
+                        key = d_clean.lower()
+                    if key not in canonical_names or len(d_clean) > len(canonical_names[key]):
+                        canonical_names[key] = d_clean
+                    lec_to_courses.setdefault(key, set()).add(mk)
 
             if lec_to_courses:
                 people = {}
                 labs = {}
                 placeholders = {}
 
-                for lec_name, courses in lec_to_courses.items():
+                for key, courses in lec_to_courses.items():
+                    lec_name = canonical_names[key]
                     n_lower = lec_name.lower()
                     if re.match(r"^[XYZ]\s*\(.*?\)$", lec_name, re.IGNORECASE) or n_lower in ("tba", "tbd", "belum ada"):
                         placeholders[lec_name] = courses

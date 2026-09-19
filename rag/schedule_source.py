@@ -127,11 +127,18 @@ class StructuredFileScheduleSource(ScheduleSource):
 
         if prodi:
             prodi_norm = _normalize_str(prodi)
-            results = [
-                r for r in results
-                if prodi_norm in _normalize_str(r.get("prodi_kode", ""))
-                or prodi_norm in _normalize_str(r.get("prodi_full", ""))
-            ]
+            def _matches_prodi(r: Dict[str, Any]) -> bool:
+                rk = _normalize_str(r.get("prodi_kode", ""))
+                rf = _normalize_str(r.get("prodi_full", ""))
+                if prodi_norm in ("inf", "ti", "informatika"):
+                    return (rk in ("ti", "inf") or rf == "informatika") and "sistem" not in rf
+                if prodi_norm in ("si", "sistem informasi"):
+                    return rk == "si" or rf == "sistem informasi"
+                if prodi_norm in ("ts", "sipil", "teknik sipil"):
+                    return rk == "ts" or "sipil" in rf
+                return prodi_norm == rk or prodi_norm == rf or re.search(r"\b" + re.escape(prodi_norm) + r"\b", rf) is not None
+
+            results = [r for r in results if _matches_prodi(r)]
 
         if semester:
             sem_norm = _normalize_str(semester)
