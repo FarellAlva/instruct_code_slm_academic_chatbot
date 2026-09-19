@@ -68,15 +68,28 @@ def add_documents_to_db(
 
     # Metadata fields to persist (beyond source/page) for pre-retrieval filtering
     _META_KEYS = ("prodi", "prodi_full", "semester", "hari",
-                  "mata_kuliah", "dosen_names", "doc_type")
+                  "mata_kuliah", "dosen_names", "doc_type", "suspicious")
+
+    from rag.sanitize import sanitize_context_chunk
 
     for i in range(0, total, batch_size):
         batch = chunks[i : i + batch_size]
         metadatas = []
+        clean_docs = []
         for c in batch:
-            meta = {"source": c["source"], "page": c["page"]}
+            clean_text, is_suspicious, reasons = sanitize_context_chunk(c["text"])
+            clean_docs.append(clean_text)
+
+            meta = {
+                "source": c["source"],
+                "page": c["page"],
+                "suspicious": "true" if is_suspicious else "false",
+            }
+            if is_suspicious:
+                print(f"[Store] ⚠️ Ingested chunk flagged suspicious ({reasons}): {c.get('source')}")
+
             for key in _META_KEYS:
-                if key in c and c[key]:
+                if key in c and c[key] and key != "suspicious":
                     value = str(c[key])
                     # Store dosen_names lowercased for case-insensitive filtering
                     if key == "dosen_names":
@@ -86,7 +99,7 @@ def add_documents_to_db(
 
         collection.upsert(
             ids        = [c["chunk_id"] for c in batch],
-            documents  = [c["text"]     for c in batch],
+            documents  = clean_docs,
             metadatas  = metadatas,
         )
         print(f"[Store] ✅ Batch {i // batch_size + 1}: inserted {len(batch)} chunks.")

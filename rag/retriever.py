@@ -191,7 +191,7 @@ def _expand_query(query: str) -> str:
 
     if extra_terms:
         expanded = f"{query} {' '.join(extra_terms)}"
-        print(f"[Retriever] 🌐 Query expanded: '{query}' → added: {extra_terms}")
+        print(f"[Retriever] 🌐 Query expanded (len={len(query)}) → added: {extra_terms}")
         return expanded
 
     return query
@@ -464,7 +464,7 @@ def retrieve_context(
         matched = [c for c in chunks if _chunk_matches_person_query(c["text"], person_query)]
         if matched:
             chunks = matched
-            print(f"[Retriever] Person filter kept {len(chunks)} chunks for '{person_query}'")
+            print(f"[Retriever] Person filter kept {len(chunks)} chunks for [ANON]")
 
     # Step 4: Cross-encoder reranking (only if enabled in config)
     if chunks and USE_RERANKER:
@@ -535,8 +535,20 @@ def _build_structured_context(
         context_parts.append(instruction)
         current_tokens += estimate_tokens(instruction)
 
+    from rag.sanitize import sanitize_context_chunk
+
     for idx, chunk in enumerate(chunks, 1):
         meta = chunk.get("meta", {})
+        if meta.get("suspicious") in (True, "true"):
+            print(f"[SECURITY] Omitting chunk marked suspicious from context: {chunk.get('source')}")
+            continue
+
+        raw_chunk_text = chunk.get("text", "")
+        clean_text, is_suspicious, reasons = sanitize_context_chunk(raw_chunk_text)
+        if is_suspicious:
+            print(f"[SECURITY] Omitting chunk with injection pattern {reasons} from context: {chunk.get('source')}")
+            continue
+
         header_parts = [f"Dokumen #{idx}"]
 
         # Add metadata summary if available
@@ -554,7 +566,7 @@ def _build_structured_context(
         if "rerank_score" in chunk:
             score_info = f" | Relevance: {chunk['rerank_score']:.3f}"
 
-        doc_str = f"[{' | '.join(header_parts)}{score_info}]\n{chunk['text']}"
+        doc_str = f"[{' | '.join(header_parts)}{score_info}]\n{clean_text}"
         doc_tokens = estimate_tokens(doc_str) + 4  # delimiter budget
 
         if current_tokens + doc_tokens > max_context_tokens:
@@ -566,7 +578,10 @@ def _build_structured_context(
             break
 
         context_parts.append(doc_str)
-        included_chunks.append(chunk)
+        # Update chunk text in memory with clean text
+        chunk_copy = dict(chunk)
+        chunk_copy["text"] = clean_text
+        included_chunks.append(chunk_copy)
         current_tokens += doc_tokens
 
     return "\n\n---\n\n".join(context_parts), included_chunks

@@ -12,6 +12,7 @@ import html
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+import time
 import streamlit as st
 from config import (
     BASE_DIR,
@@ -21,11 +22,15 @@ from config import (
     DEFAULT_TOP_K,
     TOP_K_RETRIEVAL,
     CHROMA_DIR,
+    MAX_INPUT_CHARS,
+    RATE_LIMIT_PER_MINUTE,
 )
 from rag.retriever       import retrieve_context
 from rag.store           import get_chroma_collection
 from rag.entity_index     import get_entity_index
 from rag.scraper         import FACILITY_IMAGES
+from rag.sanitize        import sanitize_user_input
+from rag.output_guard    import guard_output
 from llm.ollama_client   import stream_chat_with_context, check_ollama_connection
 
 
@@ -1105,13 +1110,40 @@ for msg in st.session_state.messages:
 
         if msg["role"] == "assistant" and msg.get("sources"):
             source_html = " ".join(
-                f'<span class="source-chip">{s}</span>' for s in msg["sources"]
+                f'<span class="source-chip">{html.escape(str(s))}</span>' for s in msg["sources"]
             )
             st.markdown(f"<div style='margin-top:8px'>{source_html}</div>",
                         unsafe_allow_html=True)
 
 # ─── Chat Input ───────────────────────────────────────────────────────────────
 if prompt := st.chat_input("Tanyakan seputar Pradita University…"):
+
+    # Session Rate Limiting (Fase 2.3)
+    if "request_timestamps" not in st.session_state:
+        st.session_state.request_timestamps = []
+
+    now = time.time()
+    st.session_state.request_timestamps = [
+        t for t in st.session_state.request_timestamps if now - t < 60.0
+    ]
+    if len(st.session_state.request_timestamps) >= RATE_LIMIT_PER_MINUTE:
+        st.warning(
+            f"⚠️ Batas permintaan tercapai (maksimal {RATE_LIMIT_PER_MINUTE} pertanyaan per menit). "
+            "Mohon tunggu sebentar sebelum mengirim pertanyaan lagi."
+        )
+        st.stop()
+    st.session_state.request_timestamps.append(now)
+
+    # Input length bounding and sanitization (Fase 2.2 & 2.3)
+    raw_prompt = prompt
+    if len(raw_prompt) > MAX_INPUT_CHARS:
+        st.info(f"ℹ️ Pertanyaan dipotong menjadi maksimal {MAX_INPUT_CHARS} karakter.")
+
+    clean_prompt, is_suspicious, reasons = sanitize_user_input(raw_prompt, max_chars=MAX_INPUT_CHARS)
+    if is_suspicious:
+        print(f"[SECURITY] Input matched suspicious prompt injection patterns: {reasons}")
+
+    prompt = clean_prompt
 
     with st.chat_message("user", avatar=":material/person:"):
         st.markdown(prompt)
@@ -1178,7 +1210,6 @@ if prompt := st.chat_input("Tanyakan seputar Pradita University…"):
         try:
             if direct_response:
                 full_response = direct_response
-                placeholder.markdown(full_response)
             else:
                 for token in stream_chat_with_context(
                     user_query   = prompt,
@@ -1198,12 +1229,14 @@ if prompt := st.chat_input("Tanyakan seputar Pradita University…"):
                         "Coba ulangi atau perjelas pertanyaanmu ya!"
                     )
 
-                placeholder.markdown(full_response)
+            # Output Guardrail (Fase 2.4)
+            full_response = guard_output(full_response, context=rag_result.get("context", ""))
+            placeholder.markdown(full_response)
 
             # Show sources
             if rag_result["sources"]:
                 source_html = " ".join(
-                    f'<span class="source-chip">{s}</span>'
+                    f'<span class="source-chip">{html.escape(str(s))}</span>'
                     for s in rag_result["sources"]
                 )
                 st.markdown(

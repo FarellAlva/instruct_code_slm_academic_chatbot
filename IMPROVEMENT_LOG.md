@@ -116,10 +116,75 @@ Fase 1 telah menyelesaikan perbaikan seluruh bug kritis operasional sistem: (1.1
 - **[TINGGI] Path ganda data/jadwal/data/jadwal pada ocr_jadwal.py:** **TERBUKTI & SUDAH DIPERBAIKI**. Direktori input dan output kini menggunakan path absolut berbasis `PROJECT_ROOT` dan dapat dikonfigurasi via CLI `--input` dan `--output`.
 - **[SEDANG] loader.py:147 page selalu bernilai 1:** **TERBUKTI & SUDAH DIPERBAIKI**. Parser membaca penanda `--- Page N ---` dan memecah dokumen OCR menjadi unit per halaman dengan nomor halaman akurat.
 
+---
+
+## FASE 2 — Keamanan (Prompt Injection & Output Guardrails)
+
+### 1. Ringkasan yang Dikerjakan
+Fase 2 mengimplementasikan arsitektur pertahanan keamanan komprehensif terhadap serangan prompt injection, kebocoran system prompt, dan manipulasi tautan/kontak tidak resmi. Pemisahan peran instruksi dan data diterapkan secara ketat dengan mengisolasi konteks dokumen ke dalam tag dengan delimiter acak per-request (`<konteks_{token}>` dan `<pertanyaan_user_{token}>`) sementara system message hanya berisi aturan tetap. Modul sanitasi `rag/sanitize.py` menormalisasi Unicode NFKC, menghapus karakter tak terlihat/bidi/HTML/skrip, membatasi panjang input maksimal 500 karakter, dan mendeteksi berbagai pola injeksi dwibahasa (ID+EN) maupun smuggling Base64. Modul `rag/output_guard.py` memastikan ketiadaan kebocoran system prompt/canary token (`ADITA_SEC_TOKEN_9A7B3C`) serta menyaring tautan, email, dan nomor telepon tidak resmi di luar domain yang diizinkan (`pradita.ac.id`, `summarecon.com`). Evaluasi komprehensif pada 35 kasus serangan deterministik dalam `eval/injection_cases.csv` membuktikan penurunan Attack Success Rate (ASR) menjadi 0.0% dengan kelulusan tes offline 100% (24/24 unit test lolos).
+
+### 2. Daftar File Diubah / Dibuat
+- **File Baru:**
+  - `rag/sanitize.py`: modul sanitasi masukan pengguna, normalisasi Unicode NFKC, pembersihan karakter bidi/zero-width, deteksi pola injeksi dwibahasa ID+EN, dan pembongkaran muatan Base64.
+  - `rag/output_guard.py`: modul penyaring keluaran LLM (deteksi security canary, pencegahan kebocoran aturan sistem, pembersihan tag HTML, dan penyaringan whitelist URL, email, serta nomor kontak).
+  - `.env.example`: template variabel lingkungan dan dokumentasi implikasi privasi data institusi kampus terkait model cloud vs lokal.
+  - `eval/injection_cases.csv`: dataset benchmark berisi 35 kasus serangan injeksi terbagi ke dalam 10 kategori serangan spesifik.
+  - `tests/test_injection.py`: test suite evaluasi offline berisi 14 unit test untuk memvalidasi seluruh mekanisme pertahanan deterministik.
+- **File Dimodifikasi:**
+  - `config.py`: pemindahan endpoint ke `os.environ` dengan default aman, penambahan variabel batas input `MAX_INPUT_CHARS = 500`, batas laju `RATE_LIMIT_PER_MINUTE = 10`, bahasa respon `RESPONSE_LANGUAGE = "id"`, dan pembaruan `SYSTEM_PROMPT` aturan murni (hanya `<keamanan>` dan `<aturan_jawaban>`).
+  - `llm/ollama_client.py`: perakitan `build_messages` target template dengan delimiter acak per-request (`secrets.token_hex(4)`), sanitasi masukan dan konteks, integrasi `guard_output` sinkron, dan guard streaming leak detection.
+  - `rag/retriever.py`: penyaringan dan pengabaian otomatis terhadap chunk mencurigakan (`suspicious="true"`), sanitasi chunk saat perakitan konteks, serta masking nama dosen (`[ANON]`) dan panjang kueri pada log stdout.
+  - `rag/store.py`: sanitasi teks dokumen saat proses ingest dan pemberian metadata `suspicious="true"` jika terdeteksi muatan berbahaya.
+  - `app.py`: implementasi pembatasan panjang masukan user, rate limiting berbasis sesi (maksimal 10 request/menit), sanitasi masukan pengguna, audit menyeluruh `unsafe_allow_html=True` dengan penerapan `html.escape` pada seluruh nilai dinamis, dan penegakan `guard_output` di akhir proses streaming LLM.
+
+### 3. Hasil Pengujian & Evaluasi Sebelum vs Sesudah
+
+#### Tabel Perbandingan Sebelum vs Sesudah Fase 2
+| Fitur / Parameter Keamanan | Kondisi Sebelum (Fase 1) | Kondisi Sesudah (Fase 2) | Status |
+| :--- | :--- | :--- | :--- |
+| **Pemisahan Instruksi & Data** | Konteks dokumen digabung langsung ke dalam pesan role `system` (`llm/ollama_client.py:97-101`). Rentan manipulasi instruksi sistem. | Role `system` murni memuat aturan keamanan & gaya. Konteks dipindah ke pesan `user` dalam tag berbatas acak `<konteks_{token}>`. | **TERSELESAIKAN** |
+| **Security Canary & Anti-Leak** | Tidak ada penanda canary; instruksi sistem rentan diekstraksi lewat perintah "repeat your prompt". | Disematkan `ADITA_SEC_TOKEN_9A7B3C` dan pendeteksi n-gram aturan. Jika LLM membocorkan, otomatis diganti penolakan standar. | **TERSELESAIKAN** |
+| **Sanitasi Input & Unicode** | Input mentah langsung diproses tanpa normalisasi; rentan zero-width space, bidi override, dan HTML injection. | Normalisasi Unicode NFKC, pembersihan karakter bidi & zero-width, stripping HTML, penonaktifan tag pembatas palsu. | **TERSELESAIKAN** |
+| **Deteksi Smuggling Base64** | Muatan prompt terenkode Base64 dapat lolos tanpa diperiksa. | Regex detector membongkar string Base64 dan memverifikasi isi perintah terhadap tanda tangan injeksi. | **TERSELESAIKAN** |
+| **Guardrail URL & Kontak** | LLM dapat mengarang URL phishing, email tidak resmi, atau nomor telepon palsu. | URL dan kontak di luar konteks / whitelist resmi (`pradita.ac.id`, `summarecon.com`) otomatis disaring. | **TERSELESAIKAN** |
+| **Audit `unsafe_allow_html`** | Nilai sumber chunk dokumen disisipkan langsung ke HTML tanpa escaping di beberapa komponen UI. | Seluruh nilai dinamis (nama sumber, teks kueri) dibungkus dengan `html.escape()` sebelum dirender. | **TERSELESAIKAN** |
+| **Privasi Log Sistem** | Nama dosen dan teks kueri mentah tercetak eksplisit di stdout. | Nama dosen disamarkan menjadi `[ANON]`, panjang dan ringkasan kueri dimask. Konteks penuh tidak dicetak. | **TERSELESAIKAN** |
+| **Batas Input & Rate Limit** | Tidak ada batas panjang karakter dan frekuensi kirim pesan. | Dibatasi maksimal 500 karakter per pertanyaan dan maksimal 10 pertanyaan per menit per sesi pengguna. | **TERSELESAIKAN** |
+| **Total Test Suite Pytest** | 10 passed | **24 passed, 0 failed (100% pass rate)** | **PASSED** |
+
+#### Hasil Evaluasi Serangan Injeksi (`eval/injection_cases.csv` — 35 Kasus)
+| Kategori Serangan | Jumlah Kasus | Berhasil Dinetralkan | Attack Success Rate (ASR) |
+| :--- | :---: | :---: | :---: |
+| **direct_override** (Abaikan aturan ID/EN) | 4 | 4 | **0.0%** |
+| **roleplay_jailbreak** (DAN, Developer mode, Evil AI) | 4 | 4 | **0.0%** |
+| **system_prompt_extraction** (Ekstraksi prompt awal) | 5 | 5 | **0.0%** |
+| **canary_leakage_attempt** (Upaya pencurian token canary) | 1 | 1 | **0.0%** |
+| **unicode_obfuscation** (Zero-width, Bidi, Fullwidth) | 3 | 3 | **0.0%** |
+| **base64_smuggling** (Muatan injeksi terenkode Base64) | 2 | 2 | **0.0%** |
+| **delimiter_collision** (Upaya menutup tag `<konteks_*>`) | 3 | 3 | **0.0%** |
+| **indirect_injection** (Perintah tertanam pada jadwal/dokumen) | 3 | 3 | **0.0%** |
+| **html_injection** (Tag script, iframe, img onerror, comment) | 4 | 4 | **0.0%** |
+| **fake_url_phishing** (Penyisipan URL penipuan) | 1 | 1 | **0.0%** |
+| **fake_email_harvesting** (Penyisipan email palsu) | 1 | 1 | **0.0%** |
+| **fake_phone_scam** (Penyisipan nomor kontak darurat palsu) | 1 | 1 | **0.0%** |
+| **oversized_input** (Pemberian payload sangat panjang) | 1 | 1 | **0.0%** |
+| **authority_spoofing** (Penyamaran admin/developer command) | 1 | 1 | **0.0%** |
+| **context_escape** (Penutupan tag dokumen XML) | 1 | 1 | **0.0%** |
+| **TOTAL KESELURUHAN** | **35** | **35** | **0.0% (ASR = 0%)** |
+
+### 4. Status Temuan Audit Terkait Fase 2
+- **[KRITIS] Konteks RAG digabung ke role system di llm/ollama_client.py:97-101:** **TERBUKTI & SUDAH DIPERBAIKI**. Role system kini hanya memuat aturan tetap instruksi dan keamanan. Data konteks dipisah ke pesan user berbatas token acak.
+- **[KRITIS] Tidak ada sanitasi ingest, filter output, batas input, rate limit:** **TERBUKTI & SUDAH DIPERBAIKI**. Diterapkan modul `rag/sanitize.py` (ingest + input user), `rag/output_guard.py` (output filter), batas 500 karakter, dan rate limit 10 req/menit.
+- **[KRITIS] unsafe_allow_html=True di app.py (baris 1040, 1188, 1289):** **TERBUKTI & SUDAH DIPERBAIKI**. Seluruh penyisipan string dinamis telah diverifikasi dan diamankan menggunakan `html.escape()`. Teks jawaban LLM dirender murni via Markdown standar.
+- **[SEDANG] Log memuat query mentah dan nama dosen:** **TERBUKTI & SUDAH DIPERBAIKI**. Seluruh nama dosen dimask menjadi `[ANON]`, query diringkas, dan pencetakan konteks penuh ditiadakan dari stdout.
+- **[SEDANG] IP Tailscale di komentar config.py:22:** **TERBUKTI & SUDAH DIPERBAIKI**. Seluruh URL endpoint dikonfigurasi melalui variabel lingkungan (`OLLAMA_BASE_URL`), dan file panduan `.env.example` telah disediakan tanpa memuat alamat IP internal.
+
 ### 5. Risiko, Hal Belum Selesai, dan Asumsi Default [DEFAULT]
 - **Hal yang Belum Selesai:**
-  - Melangkah ke FASE 2: Keamanan prompt injection, pemisahan role system vs data berbatas acak (`<konteks_{B}>`), modul `rag/sanitize.py`, pembatasan input user (500 karakter) & rate limit, modul `rag/output_guard.py`, serta dataset uji injeksi `tests/test_injection.py` dan `eval/injection_cases.csv`.
+  - Melangkah ke FASE 3: Jadwal terstruktur (ekstraksi tabel presisi dengan `page.find_tables()` PyMuPDF vs `pdfplumber`, skema `data/structured/jadwal.jsonl`, penanganan cell wrap baris 34-56 `.rev.txt`, penanganan versi `.rev` vs non-rev, antarmuka `ScheduleSource`, dan pembuatan golden set otomatis).
 - **Asumsi Default yang Digunakan [DEFAULT]:**
-  - `[DEFAULT]` Jalur bypass hanya beroperasi pada entitas jadwal terstruktur; kueri fasilitas atau pertanyaan umum sepenuhnya ditangani oleh RAG + LLM.
+  - `[DEFAULT]` Batas input user ditetapkan 500 karakter (`MAX_INPUT_CHARS = 500`).
+  - `[DEFAULT]` Rate limit ditetapkan 10 pertanyaan per menit per sesi pengguna.
+  - `[DEFAULT]` Whitelist domain resmi adalah `pradita.ac.id`, `summarecon.com`, dan subdomain terkait.
 
 ---

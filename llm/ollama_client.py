@@ -4,6 +4,7 @@ llm/ollama_client.py — Thin client for the local Ollama OpenAI-compatible API.
 
 import json
 import re
+import secrets
 import requests
 from typing import Generator, List, Dict, Any, Optional
 
@@ -15,10 +16,17 @@ from config import (
     DEFAULT_MAX_TOKENS,
     DEFAULT_TOP_P,
     DEFAULT_NUM_CTX,
+    MAX_INPUT_CHARS,
     MAX_HISTORY_TURNS,
     MAX_HISTORY_TOKENS,
     estimate_tokens,
     SYSTEM_PROMPT,
+)
+from rag.sanitize import sanitize_user_input, sanitize_context_chunk
+from rag.output_guard import (
+    guard_output,
+    detect_system_prompt_leak,
+    STANDARD_REFUSAL,
 )
 
 
@@ -83,28 +91,49 @@ def _stream_strip_think(tokens: Generator[str, None, None]) -> Generator[str, No
             yield cleaned
 
 
+def _stream_guard_leak(
+    tokens: Generator[str, None, None],
+    context: str = "",
+) -> Generator[str, None, None]:
+    """
+    Defense-in-depth streaming filter:
+    Monitors the incoming token stream for canary phrases or system leakage snippets.
+    If detected, immediately halts leakage and emits standard refusal.
+    """
+    buffer = ""
+    for token in tokens:
+        buffer += token
+        if detect_system_prompt_leak(buffer):
+            yield f"\n\n{STANDARD_REFUSAL}"
+            return
+        yield token
+
+
 # ─── Message building helpers ──────────────────────────────────────────────────
 
 def build_messages(
     user_query:  str,
-    context:     str,
+    context:     str = "",
     chat_history: Optional[List[Dict[str, str]]] = None,
     max_history_turns: int = MAX_HISTORY_TURNS,
     max_history_tokens: int = MAX_HISTORY_TOKENS,
+    delimiter_token: Optional[str] = None,
 ) -> List[Dict[str, str]]:
     """
-    Assemble the message list for the chat completion call.
+    Assemble the message list for the chat completion call following Fase 2 Target Prompt Template.
 
     Order:
-      1. system prompt (with injected context)
+      1. system prompt (rules only, NO injected context)
       2. previous turns from chat history (bounded by turns & token budget)
-      3. current user message
+      3. current user message with request-scoped random delimiter:
+         <konteks_{token}>
+         {sanitized_context}
+         </konteks_{token}>
+         <pertanyaan_user_{token}>
+         {sanitized_user_query}
+         </pertanyaan_user_{token}>
     """
-    system_content = SYSTEM_PROMPT
-    if context.strip():
-        system_content += f"\n\n===== RELEVANT CONTEXT =====\n{context}\n============================="
-
-    messages = [{"role": "system", "content": system_content}]
+    messages = [{"role": "system", "content": SYSTEM_PROMPT}]
 
     if chat_history:
         # Take at most the last max_history_turns
@@ -116,7 +145,25 @@ def build_messages(
             total_tokens -= estimate_tokens(dropped.get("content", ""))
         messages.extend(recent)
 
-    messages.append({"role": "user", "content": user_query})
+    # Generate request-scoped delimiter token
+    b = delimiter_token or secrets.token_hex(4)
+
+    # Sanitize user query
+    clean_query, is_suspicious, reasons = sanitize_user_input(user_query, max_chars=MAX_INPUT_CHARS)
+    if is_suspicious:
+        print(f"[SECURITY] Flagged suspicious prompt injection in user query: {reasons}")
+
+    parts = []
+    if context and context.strip():
+        clean_ctx, ctx_suspicious, ctx_reasons = sanitize_context_chunk(context)
+        if ctx_suspicious:
+            print(f"[SECURITY] Flagged suspicious pattern in context chunk: {ctx_reasons}")
+        parts.append(f"<konteks_{b}>\n{clean_ctx}\n</konteks_{b}>")
+
+    parts.append(f"<pertanyaan_user_{b}>\n{clean_query}\n</pertanyaan_user_{b}>")
+    user_content = "\n\n".join(parts)
+
+    messages.append({"role": "user", "content": user_content})
     return messages
 
 
@@ -132,13 +179,20 @@ def chat_with_context(
     top_p:        float = DEFAULT_TOP_P,
     num_ctx:      int   = DEFAULT_NUM_CTX,
     use_native_api: bool = True,
+    delimiter_token: Optional[str] = None,
 ) -> str:
     """
-    Send a single chat completion request to Ollama and return the full reply.
+    Send a single chat completion request to Ollama and return the guarded reply.
     Uses native /api/chat with explicit options (num_ctx) with fallback to /v1.
     """
-    messages = build_messages(user_query, context, chat_history)
+    messages = build_messages(
+        user_query,
+        context,
+        chat_history,
+        delimiter_token=delimiter_token,
+    )
 
+    raw_content = ""
     if use_native_api:
         try:
             payload = {
@@ -160,30 +214,32 @@ def chat_with_context(
             response.raise_for_status()
             data = response.json()
             raw_content = data.get("message", {}).get("content", "")
-            return _strip_think(raw_content)
         except Exception as exc:
             print(f"[OllamaClient] Native /api/chat failed ({exc}). Falling back to /v1...")
+            raw_content = ""
 
-    # Fallback to OpenAI-compatible /v1 endpoint
-    payload = {
-        "model":       model,
-        "messages":    messages,
-        "temperature": temperature,
-        "max_tokens":  max_tokens,
-        "top_p":       top_p,
-        "stream":      False,
-    }
+    if not raw_content:
+        # Fallback to OpenAI-compatible /v1 endpoint
+        payload = {
+            "model":       model,
+            "messages":    messages,
+            "temperature": temperature,
+            "max_tokens":  max_tokens,
+            "top_p":       top_p,
+            "stream":      False,
+        }
 
-    response = requests.post(
-        OLLAMA_API_URL,
-        json=payload,
-        timeout=120,
-    )
-    response.raise_for_status()
-    data = response.json()
+        response = requests.post(
+            OLLAMA_API_URL,
+            json=payload,
+            timeout=120,
+        )
+        response.raise_for_status()
+        data = response.json()
+        raw_content = data["choices"][0]["message"]["content"]
 
-    raw_content = data["choices"][0]["message"]["content"]
-    return _strip_think(raw_content)
+    cleaned = _strip_think(raw_content)
+    return guard_output(cleaned, context=context)
 
 
 # ─── Streaming call ────────────────────────────────────────────────────────────
@@ -198,12 +254,19 @@ def stream_chat_with_context(
     top_p:        float = DEFAULT_TOP_P,
     num_ctx:      int   = DEFAULT_NUM_CTX,
     use_native_api: bool = True,
+    delimiter_token: Optional[str] = None,
 ) -> Generator[str, None, None]:
     """
     Yield response tokens as they arrive.
     Uses native /api/chat stream with explicit num_ctx options, falling back to /v1 SSE stream.
+    Includes defense-in-depth leak detection during streaming.
     """
-    messages = build_messages(user_query, context, chat_history)
+    messages = build_messages(
+        user_query,
+        context,
+        chat_history,
+        delimiter_token=delimiter_token,
+    )
 
     if use_native_api:
         try:
@@ -238,7 +301,7 @@ def stream_chat_with_context(
                         except (json.JSONDecodeError, KeyError):
                             continue
 
-                yield from _stream_strip_think(_raw_native_tokens())
+                yield from _stream_guard_leak(_stream_strip_think(_raw_native_tokens()), context=context)
                 return
         except Exception as exc:
             print(f"[OllamaClient] Native streaming failed ({exc}). Falling back to /v1...")
@@ -279,7 +342,7 @@ def stream_chat_with_context(
                 except (json.JSONDecodeError, KeyError):
                     continue
 
-        yield from _stream_strip_think(_raw_tokens())
+        yield from _stream_guard_leak(_stream_strip_think(_raw_tokens()), context=context)
 
 
 def check_ollama_connection(model: str = DEFAULT_MODEL) -> Dict[str, Any]:
