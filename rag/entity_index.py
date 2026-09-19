@@ -12,6 +12,7 @@ Under no circumstance may it produce a refusal. If no definitive match
 is found, it returns None, allowing the RAG/LLM pipeline to handle it.
 """
 
+import os
 import re
 import html
 from typing import Dict, List, Optional, Any, Tuple
@@ -184,6 +185,61 @@ class EntityIndex:
         print(f"[EntityIndex] ✅ Indexed {len(self.courses)} courses, "
               f"{len(self.lecturers)} lecturers, {len(self.course_codes)} codes.")
 
+    def build_from_schedule_source(self, source=None) -> None:
+        """Build entity index directly from structured ScheduleSource."""
+        if source is None:
+            from .schedule_source import get_schedule_source
+            source = get_schedule_source()
+
+        records = source.get_all()
+        if not records:
+            return
+
+        self.courses.clear()
+        self.lecturers.clear()
+        self.course_codes.clear()
+        self.rooms.clear()
+        self.all_entries.clear()
+
+        for r in records:
+            entry = dict(r)
+            entry["dosen_list"] = r.get("dosen", [])
+            jm = r.get("jam_mulai", "-")
+            js = r.get("jam_selesai", "-")
+            entry["jam"] = f"{jm} - {js}" if jm != "-" and js != "-" else "-"
+            self.all_entries.append(entry)
+
+            # Index course
+            mk = entry.get("mata_kuliah", "")
+            if mk:
+                norm_mk = normalize_course_name(mk)
+                if norm_mk:
+                    self.courses.setdefault(norm_mk, []).append(entry)
+
+            # Index course code
+            kmk = entry.get("kode_mk", "")
+            if kmk:
+                norm_kmk = normalize_lookup(kmk)
+                if norm_kmk:
+                    self.course_codes.setdefault(norm_kmk, []).append(entry)
+
+            # Index lecturers
+            for d in entry.get("dosen_list", []):
+                norm_d = normalize_title(d)
+                if norm_d and len(norm_d.split()) >= 2:
+                    self.lecturers.setdefault(norm_d, []).append(entry)
+
+            # Index room
+            ruang = entry.get("ruang", "")
+            if ruang:
+                norm_r = normalize_lookup(ruang)
+                if norm_r:
+                    self.rooms.setdefault(norm_r, []).append(entry)
+
+        self._is_indexed = True
+        print(f"[EntityIndex] ✅ Built index from ScheduleSource: {len(self.courses)} courses, "
+              f"{len(self.lecturers)} lecturers, {len(self.course_codes)} codes.")
+
     def match_course(self, query: str) -> Optional[Tuple[str, List[Dict[str, Any]]]]:
         """
         Check if query mentions any known course name.
@@ -244,44 +300,56 @@ class EntityIndex:
         if course_match:
             norm_course, entries = course_match
             # If the user asks who teaches the course (or general course instructor question)
-            if has_instructor_intent:
-                # Find entries with explicit lecturers
+            if has_instructor_intent or has_schedule_intent:
                 entries_with_lecturers = [e for e in entries if e.get("dosen_list")]
-                if entries_with_lecturers:
-                    # Positive answer!
-                    first_mk = entries_with_lecturers[0].get("mata_kuliah", norm_course.title())
+                target_entries = entries_with_lecturers if entries_with_lecturers else entries
+                if target_entries:
+                    first_mk = target_entries[0].get("mata_kuliah", norm_course.title())
                     
-                    # Deduplicate entries by prodi, class, and lecturer
                     seen = set()
                     table_rows = []
-                    for e in entries_with_lecturers:
-                        lecturers_str = ", ".join(e["dosen_list"])
-                        key = (e.get("prodi_full", ""), e.get("semester", ""), e.get("kelas", ""), lecturers_str)
+                    has_needs_review = False
+
+                    for e in target_entries:
+                        lecturers_str = ", ".join(e.get("dosen_list", [])) if e.get("dosen_list") else "-"
+                        key = (e.get("hari", ""), e.get("jam", ""), e.get("mata_kuliah", ""), e.get("kelas", ""), lecturers_str)
                         if key in seen:
                             continue
                         seen.add(key)
+
+                        if e.get("needs_review"):
+                            has_needs_review = True
+
+                        sks_val = str(e.get("sks")) if e.get("sks") is not None else "-"
                         table_rows.append(
-                            f"| {e.get('prodi_full', e.get('prodi', '-'))} | "
-                            f"Semester {e.get('semester', '-')} | "
+                            f"| {e.get('hari', '-')} | "
+                            f"{e.get('jam', '-')} | "
+                            f"{e.get('mata_kuliah', '-')} | "
+                            f"{e.get('kode_mk', '-')} | "
+                            f"{sks_val} | "
                             f"{e.get('kelas', '-')} | "
-                            f"{e.get('hari', '-')} {e.get('jam', '')} | "
                             f"{e.get('ruang', '-')} | "
                             f"**{lecturers_str}** |"
                         )
 
-                    header = f"Berikut dosen pengampu resmi untuk mata kuliah **{first_mk}** berdasarkan jadwal perkuliahan:"
+                    header = f"Berikut data jadwal dan dosen pengampu resmi untuk mata kuliah **{first_mk}**:"
                     table_header = [
-                        "| Program Studi | Semester | Kelas | Hari & Jam | Ruang | Dosen Pengampu |",
-                        "| :--- | :--- | :--- | :--- | :--- | :--- |",
+                        "| Hari | Jam | Mata Kuliah | Kode | SKS | Kelas | Ruang | Dosen |",
+                        "| :--- | :--- | :--- | :--- | :---: | :---: | :--- | :--- |",
                     ]
-                    return f"{header}\n\n" + "\n".join(table_header + table_rows)
+                    result_table = f"{header}\n\n" + "\n".join(table_header + table_rows)
+                    if has_needs_review:
+                        result_table += (
+                            "\n\n*Catatan: Data ini hasil pembacaan otomatis dari dokumen, "
+                            "mohon dicek ulang di jadwal resmi.*"
+                        )
+                    return result_table
 
         # 2. Check Lecturer Match
         lecturer_match = self.match_lecturer(query)
         if lecturer_match:
             norm_lec, entries = lecturer_match
             if has_schedule_intent or has_instructor_intent:
-                # Filter entries explicitly matching this lecturer
                 matched_entries = []
                 for e in entries:
                     for d in e.get("dosen_list", []):
@@ -293,8 +361,8 @@ class EntityIndex:
                     first_dosen = matched_entries[0]["dosen_list"][0]
                     seen = set()
                     table_rows = []
+                    has_needs_review = False
                     
-                    # Sort by day and time
                     matched_entries.sort(
                         key=lambda x: (
                             _DAY_ORDER.get(x.get("hari", ""), 99),
@@ -308,22 +376,35 @@ class EntityIndex:
                         if key in seen:
                             continue
                         seen.add(key)
+
+                        if e.get("needs_review"):
+                            has_needs_review = True
+
+                        sks_val = str(e.get("sks")) if e.get("sks") is not None else "-"
+                        dosen_str = ", ".join(e.get("dosen_list", [])) if e.get("dosen_list") else "-"
                         table_rows.append(
                             f"| {e.get('hari', '-')} | "
                             f"{e.get('jam', '-')} | "
                             f"{e.get('mata_kuliah', '-')} | "
                             f"{e.get('kode_mk', '-')} | "
-                            f"{e.get('prodi_full', e.get('prodi', '-'))} | "
-                            f"{e.get('semester', '-')} | "
-                            f"{e.get('ruang', '-')} |"
+                            f"{sks_val} | "
+                            f"{e.get('kelas', '-')} | "
+                            f"{e.get('ruang', '-')} | "
+                            f"{dosen_str} |"
                         )
 
                     header = f"Jadwal mengajar resmi untuk **{first_dosen}**:"
                     table_header = [
-                        "| Hari | Jam | Mata Kuliah | Kode MK | Program Studi | Semester | Ruang |",
-                        "| :--- | :--- | :--- | :--- | :--- | :--- | :--- |",
+                        "| Hari | Jam | Mata Kuliah | Kode | SKS | Kelas | Ruang | Dosen |",
+                        "| :--- | :--- | :--- | :--- | :---: | :---: | :--- | :--- |",
                     ]
-                    return f"{header}\n\n" + "\n".join(table_header + table_rows)
+                    result_table = f"{header}\n\n" + "\n".join(table_header + table_rows)
+                    if has_needs_review:
+                        result_table += (
+                            "\n\n*Catatan: Data ini hasil pembacaan otomatis dari dokumen, "
+                            "mohon dicek ulang di jadwal resmi.*"
+                        )
+                    return result_table
 
         # No positive match -> return None (NEVER return a refusal)
         return None
@@ -338,11 +419,20 @@ def get_entity_index(collection=None) -> EntityIndex:
     global _GLOBAL_ENTITY_INDEX
     if _GLOBAL_ENTITY_INDEX is None:
         _GLOBAL_ENTITY_INDEX = EntityIndex()
-        if collection is not None:
+        from config import BASE_DIR
+        jsonl_path = os.path.join(BASE_DIR, "data", "structured", "jadwal.jsonl")
+        if os.path.exists(jsonl_path):
+            _GLOBAL_ENTITY_INDEX.build_from_schedule_source()
+        elif collection is not None:
             _GLOBAL_ENTITY_INDEX.build_from_collection(collection)
         else:
             from .store import get_chroma_collection
             _GLOBAL_ENTITY_INDEX.build_from_collection(get_chroma_collection())
-    elif not _GLOBAL_ENTITY_INDEX._is_indexed and collection is not None:
-        _GLOBAL_ENTITY_INDEX.build_from_collection(collection)
+    elif not _GLOBAL_ENTITY_INDEX._is_indexed:
+        from config import BASE_DIR
+        jsonl_path = os.path.join(BASE_DIR, "data", "structured", "jadwal.jsonl")
+        if os.path.exists(jsonl_path):
+            _GLOBAL_ENTITY_INDEX.build_from_schedule_source()
+        elif collection is not None:
+            _GLOBAL_ENTITY_INDEX.build_from_collection(collection)
     return _GLOBAL_ENTITY_INDEX

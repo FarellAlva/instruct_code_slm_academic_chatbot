@@ -9,6 +9,7 @@ import sys
 import os
 import re
 import html
+from typing import Optional, Tuple, List, Dict, Set, Any
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -294,16 +295,92 @@ def _extract_requested_semesters(query: str) -> set[str]:
     return requested
 
 
+def _extract_slots(
+    query: str,
+    current_prodi: Optional[str] = None,
+    current_sem: Optional[str] = None,
+) -> Tuple[Optional[str], Optional[str], Optional[str]]:
+    """Extract prodi, semester, and day slots from query and previous session state."""
+    q_lower = query.lower()
+    
+    # 1. Prodi detection
+    detected_prodi = None
+    from rag.schedule_extractor import PRODI_MAP
+    for code, full in PRODI_MAP.items():
+        if re.search(r"\b" + re.escape(code.lower()) + r"\b", q_lower) or full.lower() in q_lower:
+            detected_prodi = code
+            break
+    prodi = detected_prodi or current_prodi
+
+    # 2. Semester detection
+    detected_sem = None
+    sem_match = re.search(r"\bsemester\s+([ivx]+|\d+)\b", q_lower) or re.search(r"\bsmt\s+([ivx]+|\d+)\b", q_lower)
+    if sem_match:
+        val = sem_match.group(1).upper()
+        if val.isdigit():
+            val = {1: "I", 2: "II", 3: "III", 4: "IV", 5: "V", 6: "VI", 7: "VII", 8: "VIII"}.get(int(val), val)
+        detected_sem = val
+    semester = detected_sem or current_sem
+
+    # 3. Hari detection
+    hari = None
+    for d in ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]:
+        if d.lower() in q_lower:
+            hari = d
+            break
+
+    return prodi, semester, hari
+
+
 def _build_direct_schedule_answer(query: str, collection=None) -> str:
     """
-    Query the entity index for deterministic positive-only answers:
+    Query the entity index / ScheduleSource for deterministic positive-only answers:
     - course instructor lookup
     - lecturer schedule lookup
-    Never returns a refusal; returns "" if not definitively matched so RAG/LLM answers.
+    - prodi + semester + hari schedule lookup with slot tracking
+    - single clarifying question when query is ambiguous
     """
+    # 1. Check EntityIndex for direct course or lecturer match
     entity_idx = get_entity_index(collection)
     ans = entity_idx.answer_direct_query(query)
-    return ans or ""
+    if ans:
+        return ans
+
+    # 2. Check for Schedule lookup with slot memory
+    from rag.schedule_source import get_schedule_source
+    sched_src = get_schedule_source()
+
+    slot_p = st.session_state.get("slot_prodi")
+    slot_s = st.session_state.get("slot_semester")
+
+    prodi, semester, hari = _extract_slots(query, current_prodi=slot_p, current_sem=slot_s)
+
+    # Update session slots if found in query
+    if prodi:
+        st.session_state.slot_prodi = prodi
+    if semester:
+        st.session_state.slot_semester = semester
+
+    q_lower = query.lower()
+    is_asking_schedule = any(k in q_lower for k in ["jadwal", "matkul apa", "kuliah apa", "kelas apa"]) or (hari and (slot_p or slot_s))
+
+    if is_asking_schedule:
+        # Check if we have prodi + semester (and optionally hari)
+        if prodi and semester:
+            records = sched_src.search(prodi=prodi, semester=semester, hari=hari)
+            if records:
+                prodi_name = records[0].get("prodi_full", prodi)
+                hari_info = f" untuk hari **{hari}**" if hari else ""
+                table = sched_src.format_markdown_table(records)
+                header = f"Berikut jadwal perkuliahan **{prodi_name}** Semester **{semester}**{hari_info}:"
+                return f"{header}\n\n{table}"
+        
+        # If user explicitly asked for schedule but prodi is missing entirely:
+        if "jadwal" in q_lower and not prodi and not entity_idx.match_course(query) and not entity_idx.match_lecturer(query):
+            if len(query.split()) <= 6:
+                return "Tentu sobat, untuk melihat jadwal perkuliahan, boleh sebutkan program studi (prodi) apa yang kamu maksud?"
+
+    return ""
 
 
 # ─── Page Config ──────────────────────────────────────────────────────────────

@@ -226,11 +226,10 @@ def _build_schedule_chunk_text(
 
     if lecturers:
         lines.append(f"Dosen pengampu tertulis: {'; '.join(lecturers)}.")
-        for lecturer in lecturers:
-            lines.append(
-                f"Dosen {lecturer} mengajar mata kuliah {course_name} "
-                f"pada Program Studi {prodi_full} semester {semester}."
-            )
+        lines.append(
+            f"Dosen {', '.join(lecturers)} mengajar mata kuliah {course_name} "
+            f"pada Program Studi {prodi_full} semester {semester}."
+        )
     elif is_egap:
         lines.append(
             "Dosen pengampu: belum ditetapkan di jadwal ini karena EGAP bersifat fleksibel."
@@ -336,6 +335,12 @@ def _parse_row(line: str, prodi_full: str, period: str) -> Dict[str, Any] | None
         "prodi_full": prodi_full,
         "hari": hari,
         "jam": jam,
+        "jam_mulai": jam.split("-")[0].strip() if "-" in jam else jam,
+        "kode_mk": kmk,
+        "ruang": room,
+        "kelas": kelas,
+        "periode": period,
+        "needs_review": "false",
         "mata_kuliah": course_name,
         "dosen_names": ";".join(deduped_lecturers) if deduped_lecturers else "",
         "text": _build_schedule_chunk_text(
@@ -371,6 +376,8 @@ def _chunk_table_aware(
     period = _extract_schedule_period(text)
     rows = _assemble_schedule_rows(text)
 
+    source_ver = "rev" if ".rev" in source.lower() else "non-rev"
+
     chunks: List[Dict[str, Any]] = []
     for chunk_index, row in enumerate(rows):
         parsed = _parse_row(row, prodi_name, period)
@@ -389,6 +396,13 @@ def _chunk_table_aware(
                 "prodi_full": parsed.get("prodi_full", ""),
                 "semester": parsed.get("semester", ""),
                 "hari": parsed.get("hari", ""),
+                "jam_mulai": parsed.get("jam_mulai", ""),
+                "kode_mk": parsed.get("kode_mk", ""),
+                "ruang": parsed.get("ruang", ""),
+                "kelas": parsed.get("kelas", ""),
+                "periode": period,
+                "source_version": source_ver,
+                "needs_review": parsed.get("needs_review", "false"),
                 "mata_kuliah": parsed.get("mata_kuliah", ""),
                 "dosen_names": parsed.get("dosen_names", ""),
                 "doc_type": "jadwal",

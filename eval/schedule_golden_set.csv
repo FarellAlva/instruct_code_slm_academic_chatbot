@@ -1,0 +1,101 @@
+id,type,query,target_prodi,target_semester,target_day,target_entity,expected_items
+GOLD-A-001,prodi_sem_day,Jadwal kuliah AK semester II hari Jumat,AK,II,Jumat,,EGAP;Analisis Data Bisnis
+GOLD-A-002,prodi_sem_day,Jadwal kuliah AK semester II hari Kamis,AK,II,Kamis,,Lab. Pengantar Akuntansi 2;Pengantar Akuntansi 2
+GOLD-A-003,prodi_sem_day,Jadwal kuliah AK semester II hari Rabu,AK,II,Rabu,,Hukum dan Etika Bisnis
+GOLD-A-004,prodi_sem_day,Jadwal kuliah AK semester II hari Selasa,AK,II,Selasa,,Manajemen Sistem Informasi;Lab. Manajemen Sistem Informasi;Pancasila;Manajemen Keuangan
+GOLD-A-005,prodi_sem_day,Jadwal kuliah AK semester II hari Senin,AK,II,Senin,,EGAP;Manajemen Keuangan;Pengantar Akuntansi 2
+GOLD-A-006,prodi_sem_day,Jadwal kuliah AK semester IV hari Jumat,AK,IV,Jumat,,EGAP;Lab. Akuntansi Keuangan Lanjutan 1
+GOLD-A-007,prodi_sem_day,Jadwal kuliah AK semester IV hari Kamis,AK,IV,Kamis,,Lab. Akuntansi Keuangan 2;Lab. Akuntansi Manajemen
+GOLD-A-008,prodi_sem_day,Jadwal kuliah AK semester IV hari Rabu,AK,IV,Rabu,,Akuntansi Keuangan 2
+GOLD-A-009,prodi_sem_day,Jadwal kuliah AK semester IV hari Selasa,AK,IV,Selasa,,Etika dan Budaya;Akuntansi Keuangan Lanjutan 1;Perpajakan Bisnis
+GOLD-A-010,prodi_sem_day,Jadwal kuliah AK semester IV hari Senin,AK,IV,Senin,,EGAP;Akuntansi Manajemen;Proyek Terintegrasi;Pemeriksaan Keuangan 2
+GOLD-A-011,prodi_sem_day,Jadwal kuliah AK semester VI hari Jumat,AK,VI,Jumat,,Analisis Bisnis & Big Data
+GOLD-A-012,prodi_sem_day,Jadwal kuliah AK semester VI hari Kamis,AK,VI,Kamis,,Kewirausahaan Mandiri
+GOLD-A-013,prodi_sem_day,Jadwal kuliah AK semester VI hari Rabu,AK,VI,Rabu,,Bahasa Indonesia;Analisa Laporan Keuangan
+GOLD-A-014,prodi_sem_day,Jadwal kuliah AK semester VI hari Sabtu,AK,VI,Sabtu,,Kuliah Kerja Nyata/KKN-PPM
+GOLD-A-015,prodi_sem_day,Jadwal kuliah AK semester VI hari Selasa,AK,VI,Selasa,,Audit Sistem Informasi;Metodologi Penelitian;Akuntansi Perbankan
+GOLD-A-016,prodi_sem_day,Jadwal kuliah AK semester VIII hari Jumat,AK,VIII,Jumat,,Tugas Akhir
+GOLD-A-017,prodi_sem_day,Jadwal kuliah AK semester VIII hari Sabtu,AK,VIII,Sabtu,,Bahasa Inggris;Kerja Praktik
+GOLD-A-018,prodi_sem_day,Jadwal kuliah ARS semester II hari Jumat,ARS,II,Jumat,,EGAP;Sistem Bangunan 1;Studio Sistem Bangunan 1
+GOLD-A-019,prodi_sem_day,Jadwal kuliah ARS semester II hari Kamis,ARS,II,Kamis,,Desain Arsitektur 1;Studio Desain Arsitektur 1
+GOLD-A-020,prodi_sem_day,Jadwal kuliah ARS semester II hari Rabu,ARS,II,Rabu,,Inovasi Arsitektur Hijau;Kelayakan Finansial dan Rencana Anggaran
+GOLD-A-021,prodi_sem_day,Jadwal kuliah ARS semester II hari Selasa,ARS,II,Selasa,,Diakronik Arsitektur Indonesia;Pancasila
+GOLD-A-022,prodi_sem_day,Jadwal kuliah ARS semester II hari Senin,ARS,II,Senin,,EGAP
+GOLD-A-023,prodi_sem_day,Jadwal kuliah ARS semester IV hari Jumat,ARS,IV,Jumat,,EGAP;Sistem Bangunan 3;Pendekatan Arsitektur Komputasional
+GOLD-A-024,prodi_sem_day,Jadwal kuliah ARS semester IV hari Rabu,ARS,IV,Rabu,,Proyek Terintegrasi;Arsitektur Berkelanjutan;Arsitektur dan Permukiman
+GOLD-A-025,prodi_sem_day,Jadwal kuliah ARS semester IV hari Selasa,ARS,IV,Selasa,,Desain Arsitektur 4
+GOLD-A-026,prodi_sem_day,Jadwal kuliah ARS semester IV hari Senin,ARS,IV,Senin,,EGAP;Desain Universal
+GOLD-A-027,prodi_sem_day,Jadwal kuliah ARS semester VI hari Jumat,ARS,VI,Jumat,,Metodologi Penelitian;Manajemen Proyek
+GOLD-A-028,prodi_sem_day,Jadwal kuliah ARS semester VI hari Kamis,ARS,VI,Kamis,,Desain Arsitektur 6
+GOLD-A-029,prodi_sem_day,Jadwal kuliah ARS semester VI hari Rabu,ARS,VI,Rabu,,Bahasa Indonesia;Etika dan Budaya;Perancangan Ruang Dalam
+GOLD-A-030,prodi_sem_day,Jadwal kuliah ARS semester VI hari Selasa,ARS,VI,Selasa,,Kewirausahaan Mandiri
+GOLD-A-031,prodi_sem_day,Jadwal kuliah ARS semester VI hari Senin,ARS,VI,Senin,,Arsitektur Kolaborasi;Media Presentasi Visual;Proyek Independen
+GOLD-A-032,prodi_sem_day,Jadwal kuliah ARS semester VIII hari Jumat,ARS,VIII,Jumat,,Apresiasi Arsitektur;Tugas Akhir
+GOLD-A-033,prodi_sem_day,Jadwal kuliah ARS semester VIII hari Rabu,ARS,VIII,Rabu,,Kerja Praktek
+GOLD-A-034,prodi_sem_day,Jadwal kuliah ARS semester VIII hari Senin,ARS,VIII,Senin,,Bahasa Inggris
+GOLD-A-035,prodi_sem_day,Jadwal kuliah DI semester II hari Kamis,DI,II,Kamis,,EGAP;Konstruksi Bangunan Interior;Studio Konstruksi Bangunan Interior
+GOLD-A-036,prodi_sem_day,Jadwal kuliah DI semester II hari Rabu,DI,II,Rabu,,Studio Desain Interior 01;Ergonomi Desain
+GOLD-A-037,prodi_sem_day,Jadwal kuliah DI semester II hari Selasa,DI,II,Selasa,,EGAP;Gambar Rendering;Studio Gambar Rendering
+GOLD-A-038,prodi_sem_day,Jadwal kuliah DI semester II hari Senin,DI,II,Senin,,Pemasaran Desain Interior;Desain Interior 01;Dekorasi Interior;Pancasila
+GOLD-A-039,prodi_sem_day,Jadwal kuliah DI semester IV hari Jumat,DI,IV,Jumat,,Manajemen Proyek Interior Lanjut;Desain Interior Keberlanjutan;Studio Desain Interior Keberlanjutan
+GOLD-A-040,prodi_sem_day,Jadwal kuliah DI semester IV hari Kamis,DI,IV,Kamis,,EGAP;3D Digital Modelling Interior;Lab 3D Digital Modelling Interior
+GOLD-B-001,lecturer_courses,"Mata kuliah apa saja yang diajar oleh (Han), M.Sc., MBA., M.Si., MA., M.IT., M.Phil.?",,,,"(Han), M.Sc., MBA., M.Si., MA., M.IT., M.Phil.",Digital Transformation in Business and Industry
+GOLD-B-002,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Aan Nurhasanah, S.Pd., M.M?",,,,"Aan Nurhasanah, S.Pd., M.M",Praktek Pengolahan Patiseri dan Kudapan Indonesia;Pengolahan Patiseri dan Kudapan Indonesia;Pengolahan Patiseri & Bakeri Oriental;Praktek Pengolahan Patiseri & Bakeri Oriental
+GOLD-B-003,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Abdullah Hibrawan Pratala W., ST., MT.?",,,,"Abdullah Hibrawan Pratala W., ST., MT.",Desain Arsitektur 4;Proyek Terintegrasi;Proyek Independen;Perancangan Ruang Dalam
+GOLD-B-004,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Ade Firmansyah, ST., MT.?",,,,"Ade Firmansyah, ST., MT.",Perumahan Urban;Perencanaan Kota & Wilayah;Perencanaan Pariwisata;Perencanaan Partisipatif (matkul pilihan);Tugas Akhir
+GOLD-B-005,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Ade Firmansyah, ST., MT. (Kord)?",,,,"Ade Firmansyah, ST., MT. (Kord)",Tata Guna dan Pengembangan Lahan;Proses Perencanaan;Pra Studio Pengembangan Kawasan Urban;Metode Analisis Perencanaan
+GOLD-B-006,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Adriyan Kusuma, ST., M.Arch.?",,,,"Adriyan Kusuma, ST., M.Arch.",Desain Arsitektur 6
+GOLD-B-007,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Adriyan Kusuma, ST., MT.?",,,,"Adriyan Kusuma, ST., MT.",Sistem Bangunan 3;Apresiasi Arsitektur;Tugas Akhir
+GOLD-B-008,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Afifah Trista Ayunda, S.Kom., M.Kom?",,,,"Afifah Trista Ayunda, S.Kom., M.Kom",Arsitektur Perusahaan;Kerja Praktik;Tugas Akhir
+GOLD-B-009,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Afifah Trista Ayunda, S.Kom., M.Kom.?",,,,"Afifah Trista Ayunda, S.Kom., M.Kom.",Manajemen & Visualisasi Data;Sistem Basis Data;Sistem Pendukung Keputusan
+GOLD-B-010,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Ajeng Andriani Hapsari, S.E., M.M.?",,,,"Ajeng Andriani Hapsari, S.E., M.M.",Layanan Optimal Bisnis F&B;Pemasaran Digital;Komunikasi Bisnis Lanjutan;Manajemen Performa;Enterprise Kerja Sama
+GOLD-B-011,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Alfa Ryano Yohannis, S.T., M.T., Ph.D.?",,,,"Alfa Ryano Yohannis, S.T., M.T., Ph.D.",Pemrograman Berorientasi Objek;Praktikum Pemrograman Berorientasi Objek;Arsitektur Perangkat Lunak;Pemrograman Mobile
+GOLD-B-012,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Alifia Wida Izzati, S.T., M.Ds.?",,,,"Alifia Wida Izzati, S.T., M.Ds.",Dekorasi Interior;Studio Desain Interior 01;Studio Fotografi Interior;3D Digital Modelling Interior;Lab 3D Digital Modelling Interior;DI: Desain Interior Pilihan
+GOLD-B-013,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Althien John Pesurnay, M.Phil.?",,,,"Althien John Pesurnay, M.Phil.",Etika dan Budaya
+GOLD-B-014,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Anisza Ratnasari, ST., M.Sc.?",,,,"Anisza Ratnasari, ST., M.Sc.",Inovasi Arsitektur Hijau;Arsitektur Berkelanjutan;Desain Arsitektur 6
+GOLD-B-015,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Ardi Makki Pantow Gunawan, B.A., M.F.A.?",,,,"Ardi Makki Pantow Gunawan, B.A., M.F.A.",Proyek Terintegrasi;Tinjauan DKV;Desain Pamer Pajang;Proyek DKV Retail;Kerja Praktik
+GOLD-B-016,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Arya Sanjaya, S.T., M.Kom?",,,,"Arya Sanjaya, S.T., M.Kom",Digital Transformation in Business and Industry
+GOLD-B-017,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Arya Sanjaya, S.T., M.Kom.?",,,,"Arya Sanjaya, S.T., M.Kom.",Pemanfaatan Big Data dalam Bisnis;Komputasi Kinerja Tinggi
+GOLD-B-018,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Aryo Bimo, S.Sn., M.I.Kom.?",,,,"Aryo Bimo, S.Sn., M.I.Kom.",Grafis Pixel;Studio Grafis Pixel
+GOLD-B-019,lecturer_courses,Mata kuliah apa saja yang diajar oleh Asisten Lab?,,,,Asisten Lab,Lab. Pengantar Akuntansi 2;Lab. Akuntansi Keuangan 2;Lab. Akuntansi Manajemen;Lab. Akuntansi Keuangan Lanjutan 1
+GOLD-B-020,lecturer_courses,Mata kuliah apa saja yang diajar oleh Aslab?,,,,Aslab,Lab. Sistem Basis Data;Lab. Pemrograman Dasar
+GOLD-B-021,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Bayu Laksma Pradana, S.E., M.M.?",,,,"Bayu Laksma Pradana, S.E., M.M.",Teori Ekonomi;Ekonomi Perilaku
+GOLD-B-022,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Belsana Butar Butar, S.Kom., M.Kom.?",,,,"Belsana Butar Butar, S.Kom., M.Kom.",Rekayasa Perangkat Lunak;Cloud Infrastructure and Computing
+GOLD-B-023,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Boike Janus Anshory, S.Sn., M.Ds.?",,,,"Boike Janus Anshory, S.Sn., M.Ds.",Pemasaran Desain Interior;Desain Interior Keberlanjutan;Studio Desain Interior Keberlanjutan;Proyek Kolaborasi;DI: Desain Interior Pilihan
+GOLD-B-024,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Bramanta Octa Danu Putra, S.Des., M.Ds.?",,,,"Bramanta Octa Danu Putra, S.Des., M.Ds.",Gambar Rendering;Studio Gambar Rendering;Pilihan: Studi Futuristik;DI: Desain Interior Pilihan
+GOLD-B-025,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Bramanta Octa Danuputra, S.Des., M.Ds.?",,,,"Bramanta Octa Danuputra, S.Des., M.Ds.",DKV: Desain UI/UX
+GOLD-B-026,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Canggih Gumanky Farunik, M.Phil.?",,,,"Canggih Gumanky Farunik, M.Phil.",Pancasila;Agama
+GOLD-B-027,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Carolino Benedicto, S.Pd., M.Kom.?",,,,"Carolino Benedicto, S.Pd., M.Kom.",Pancasila;Agama
+GOLD-B-028,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Deasy Olivia, ST., MT.?",,,,"Deasy Olivia, ST., MT.",Proyek Terintegrasi;Prasarana Kota;Struktur dan Morfologi Kota;Metode Analisis Perencanaan;Metodologi Penelitian;Seminar Tugas Akhir
+GOLD-B-029,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Deasy Olivia, ST., MT. (Kord)?",,,,"Deasy Olivia, ST., MT. (Kord)",Perumahan Urban
+GOLD-B-030,lecturer_courses,"Mata kuliah apa saja yang diajar oleh Dicke Nazzary Akbar, ST., MT.?",,,,"Dicke Nazzary Akbar, ST., MT.",Sistem Bangunan 1;Studio Sistem Bangunan 1;Pendekatan Arsitektur Komputasional
+GOLD-C-001,code_lookup,Mata kuliah kode AC141306 jadwal dan ruangannya di mana?,,,,AC141306,Tugas Akhir | F01 | Jumat
+GOLD-C-002,code_lookup,Mata kuliah kode AC220702 jadwal dan ruangannya di mana?,,,,AC220702,Akuntansi Usaha Pariwisata | B301 | Selasa
+GOLD-C-003,code_lookup,Mata kuliah kode AC230804 jadwal dan ruangannya di mana?,,,,AC230804,Akuntansi Keuangan 2 | A105 / St. Gbr | Rabu
+GOLD-C-004,code_lookup,Mata kuliah kode AC230904 jadwal dan ruangannya di mana?,,,,AC230904,Akuntansi Keuangan Lanjutan 1 | A105 / St. Gbr | Selasa
+GOLD-C-005,code_lookup,Mata kuliah kode AC231004 jadwal dan ruangannya di mana?,,,,AC231004,Akuntansi Manajemen | AG04 | Senin
+GOLD-C-006,code_lookup,Mata kuliah kode AC231103 jadwal dan ruangannya di mana?,,,,AC231103,Perpajakan Bisnis | A215 | Selasa
+GOLD-C-007,code_lookup,Mata kuliah kode AC231203 jadwal dan ruangannya di mana?,,,,AC231203,Pemeriksaan Keuangan 2 | AG04 | Senin
+GOLD-C-008,code_lookup,Mata kuliah kode AC231703 jadwal dan ruangannya di mana?,,,,AC231703,Analisa Laporan Keuangan | AG08 | Rabu
+GOLD-C-009,code_lookup,Mata kuliah kode AC240803 jadwal dan ruangannya di mana?,,,,AC240803,Audit Sistem Informasi | A215 | Selasa
+GOLD-C-010,code_lookup,Mata kuliah kode AC240903 jadwal dan ruangannya di mana?,,,,AC240903,Akuntansi Perbankan | A217 | Selasa
+GOLD-C-011,code_lookup,Mata kuliah kode AC241206 jadwal dan ruangannya di mana?,,,,AC241206,Kerja Praktik | F07 | Sabtu
+GOLD-C-012,code_lookup,Mata kuliah kode AC30213 jadwal dan ruangannya di mana?,,,,AC30213,Pengantar Akuntansi 2 | A105 / St. Gbr | Senin
+GOLD-C-013,code_lookup,Mata kuliah kode AC30221 jadwal dan ruangannya di mana?,,,,AC30221,Lab. Pengantar Akuntansi 2 | A105 / St. Gbr | Kamis
+GOLD-C-014,code_lookup,Mata kuliah kode AR132202 jadwal dan ruangannya di mana?,,,,AR132202,Media Presentasi Visual | A201 | Senin
+GOLD-C-015,code_lookup,Mata kuliah kode AR140803 jadwal dan ruangannya di mana?,,,,AR140803,Pendekatan Arsitektur Komputasional | A206 / Lab Komp | Jumat
+GOLD-C-016,code_lookup,Mata kuliah kode AR231403 jadwal dan ruangannya di mana?,,,,AR231403,Sistem Bangunan 3 | A201 | Jumat
+GOLD-C-017,code_lookup,Mata kuliah kode AR231502 jadwal dan ruangannya di mana?,,,,AR231502,Arsitektur dan Permukiman | A211 / St. Gbr | Rabu
+GOLD-C-018,code_lookup,Mata kuliah kode AR231602 jadwal dan ruangannya di mana?,,,,AR231602,Desain Universal | A201 | Senin
+GOLD-C-019,code_lookup,Mata kuliah kode AR232302 jadwal dan ruangannya di mana?,,,,AR232302,Manajemen Proyek | A205 | Jumat
+GOLD-C-020,code_lookup,Mata kuliah kode AR232702 jadwal dan ruangannya di mana?,,,,AR232702,Perancangan Ruang Dalam | A201 | Rabu
+GOLD-C-021,code_lookup,Mata kuliah kode AR240406 jadwal dan ruangannya di mana?,,,,AR240406,Desain Arsitektur 4 | A301 / St. Gbr | Selasa
+GOLD-C-022,code_lookup,Mata kuliah kode AR240502 jadwal dan ruangannya di mana?,,,,AR240502,Arsitektur Berkelanjutan | A211 / St. Gbr | Rabu
+GOLD-C-023,code_lookup,Mata kuliah kode AR241106 jadwal dan ruangannya di mana?,,,,AR241106,Desain Arsitektur 6 | A201 | Kamis
+GOLD-C-024,code_lookup,Mata kuliah kode AR242008 jadwal dan ruangannya di mana?,,,,AR242008,Tugas Akhir | A201 | Jumat
+GOLD-C-025,code_lookup,Mata kuliah kode AR242104 jadwal dan ruangannya di mana?,,,,AR242104,Kerja Praktek | F00 | Rabu
+GOLD-C-026,code_lookup,Mata kuliah kode AR242204 jadwal dan ruangannya di mana?,,,,AR242204,Arsitektur Kolaborasi | B302 | Senin
+GOLD-C-027,code_lookup,Mata kuliah kode AR242502 jadwal dan ruangannya di mana?,,,,AR242502,Apresiasi Arsitektur | A201 | Jumat
+GOLD-C-028,code_lookup,Mata kuliah kode AR242602 jadwal dan ruangannya di mana?,,,,AR242602,Proyek Independen | F00 | Senin
+GOLD-C-029,code_lookup,Mata kuliah kode AR30611 jadwal dan ruangannya di mana?,,,,AR30611,Desain Arsitektur 1 | B302 | Kamis
+GOLD-C-030,code_lookup,Mata kuliah kode AR30625 jadwal dan ruangannya di mana?,,,,AR30625,Studio Desain Arsitektur 1 | B302 | Kamis

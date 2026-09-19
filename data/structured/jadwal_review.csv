@@ -1,0 +1,3 @@
+id,source_file,page,row_index,hari,jam_mulai,jam_selesai,prodi_kode,semester,mata_kuliah,ruang,dosen,validation_notes,raw_text
+SCHED-SI-0210,13. MKDU - Jadwal Perkuliahan Genap 2025-2.pdf,1,10,Rabu,-,-,SI,II,,A306,,invalid_time_range:; missing_course_name,8 | Rabu |  | II | SI |  |  |  |  |  | A306 | 37 | 66 | gabung PAR25
+SCHED-SI-0247,13. MKDU - Jadwal Perkuliahan Genap 2025-2.pdf,2,11,Sabtu,07.30,09.15,SI,VIII,,F00,"Gufron, S.Pd., MHSc.",missing_course_name,"5 | Sabtu | 07.30 - 09.15 | VIII | SI |  |  | 2 | A | Gufron, S.Pd., MHSc. | F00 | 12 | 145 | "

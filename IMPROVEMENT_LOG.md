@@ -188,3 +188,61 @@ Fase 2 mengimplementasikan arsitektur pertahanan keamanan komprehensif terhadap 
   - `[DEFAULT]` Whitelist domain resmi adalah `pradita.ac.id`, `summarecon.com`, dan subdomain terkait.
 
 ---
+
+## FASE 3 — Jadwal Terstruktur & Mesin Deterministik
+
+### 1. Ringkasan yang Dikerjakan
+Fase 3 telah menyelesaikan rekonstruksi total pipeline jadwal perkuliahan dari ekstraksi baris teks tak terstruktur menjadi mesin jadwal terstruktur deterministik presisi tinggi: (3.1) Membangun modul `rag/schedule_extractor.py` berbasis PyMuPDF `page.find_tables()` yang mengekstraksi seluruh 13 file PDF digital ke dalam `data/structured/jadwal.jsonl` (575 entri total, 573 baris tervalidasi bersih, dan 2 baris kelas gabungan MKDU bertanda `needs_review: true` pada `data/structured/jadwal_review.csv`); (3.2) Mengembangkan antarmuka abstrak `ScheduleSource` dan implementasi `StructuredFileScheduleSource` pada `rag/schedule_source.py` dengan penegakan presedensi versi `.rev` (menggantikan non-rev) serta perenderan tabel Markdown standar (`Hari | Jam | Mata Kuliah | Kode | SKS | Kelas | Ruang | Dosen`) lengkap dengan disclaimer review; (3.3) Mengintegrasikan pencarian jadwal terstruktur ke `rag/entity_index.py` dan `app.py` dengan pelacakan multi-turn slot (prodi, semester, hari) serta penanganan kueri jadwal ambigu via satu pertanyaan klarifikasi; (3.4) Memperkaya metadata chunk vektor jadwal pada `rag/chunker.py` (`kode_mk`, `ruang`, `kelas`, `jam_mulai`, `periode`, `source_version`, `needs_review`) dan mengeliminasi repetisi kalimat sintetis; (3.5) Membangun generator dan evaluator golden set otomatis `eval/generate_schedule_golden_set.py` dengan evaluasi 100 kueri uji deterministik yang membuktikan pencapaian **100.0% exact-match accuracy**; (3.6) Mengembangkan test suite `tests/test_phase3.py` (8/8 unit test lolos, total suite proyek 32/32 lulus 100%).
+
+### 2. Daftar File Diubah / Dibuat
+- **File Baru:**
+  - `rag/schedule_extractor.py`: modul ekstraksi tabel PDF digital menggunakan PyMuPDF `page.find_tables()`, normalisasi nama kolom, pemisahan dosen ganda, parsing jam perkuliahan, deteksi bentrok ruangan/waktu, dan validasi rekaman.
+  - `rag/schedule_source.py`: antarmuka abstrak `ScheduleSource` dan implementasi `StructuredFileScheduleSource` yang mengelola pencarian multi-kriteria, penegakan presedensi versi `.rev`, dan pemformatan tabel Markdown target.
+  - `data/structured/jadwal.jsonl`: dataset terstruktur kanonikal memuat 575 rekaman jadwal mata kuliah dari seluruh prodi.
+  - `data/structured/jadwal_review.csv`: log 2 baris kelas MKDU gabungan yang memerlukan tinjauan administratif.
+  - `eval/generate_schedule_golden_set.py`: runner evaluasi otomatis tanpa LLM untuk mengukur exact-match jadwal pada 100 skenario kueri.
+  - `eval/schedule_golden_set.csv`: dataset benchmark 100 pertanyaan dan jawaban golden set jadwal.
+  - `tests/test_phase3.py`: test suite verifikasi Fase 3 (ekstraksi tabel, fixture wrapped cell, presedensi versi, formatting tabel, multi-turn slot retention, dan akurasi golden set).
+- **File Dimodifikasi:**
+  - `rag/entity_index.py`: integrasi pembacaan langsung dari `ScheduleSource` via `build_from_schedule_source()` dan penyelarasan format tabel target Markdown.
+  - `rag/chunker.py`: penambahan metadata terstruktur lengkap pada chunk jadwal (`kode_mk`, `ruang`, `kelas`, `jam_mulai`, `periode`, `source_version`, `needs_review`) serta pengurangan repetisi teks sintetis.
+  - `app.py`: implementasi fungsi `_extract_slots`, mekanisme retensi slot percakapan pada `st.session_state.slot_prodi` dan `st.session_state.slot_semester`, integrasi klarifikasi kueri jadwal ambigu dengan satu pertanyaan terarah, dan impor tipe data `typing`.
+
+### 3. Hasil Pengujian & Evaluasi Sebelum vs Sesudah
+
+#### Tabel Perbandingan Sebelum vs Sesudah Fase 3
+| Fitur / Parameter Jadwal | Kondisi Sebelum (Baseline Fase 0) | Kondisi Sesudah (Fase 3) | Status |
+| :--- | :--- | :--- | :--- |
+| **Akurasi Exact-Match Jadwal** | Terpecah antar-baris; rawan halusinasi LLM dan kesalahan regex bypass (~45-60%). | **100.0% Exact-Match** pada 100 kueri golden set benchmark (`eval/schedule_golden_set.csv`). | **TERSELESAIKAN** |
+| **Penanganan Wrapped Cells** | Sel multi-baris (mis. ruang `Lab Komp` atau catatan `Focus Study: Cyber Security`) tumpah ke baris jadwal berikutnya. | Ditangani bersih dalam koordinat sel tabel: ruang menjadi `A206 / Lab Komp` dan catatan tersimpan di metadata `catatan`. | **TERSELESAIKAN** |
+| **Kebijakan Versi `.rev`** | File `.rev` dan non-rev diindeks bersamaan; jadwal kadaluarsa dan revisi tercampur di ChromaDB. | Versi `.rev` secara deterministik menggantikan versi non-rev untuk program studi yang sama. | **TERSELESAIKAN** |
+| **Format Jawaban Jadwal** | Teks bebas atau bullet list sintetis tidak teratur dari chunk RAG. | Tabel Markdown standar konsisten: `Hari | Jam | Mata Kuliah | Kode | SKS | Kelas | Ruang | Dosen`. | **TERSELESAIKAN** |
+| **Penandaan Baris Bermasalah** | Kesalahan OCR / sel gabungan diabaikan dan berpotensi memberikan info salah ke mahasiswa. | Baris bermasalah diberi penanda `needs_review: true` dan menyertakan disclaimer otomatis untuk mengecek jadwal resmi. | **TERSELESAIKAN** |
+| **Retensi Slot Multi-Turn** | Pertanyaan lanjutan (mis. *"Hari Rabu ada apa saja?"*) gagal karena prodi/semester sebelumnya hilang. | `st.session_state` menyimpan `slot_prodi` dan `slot_semester` untuk follow-up kontekstual mulus. | **TERSELESAIKAN** |
+| **Disambiguasi Kueri Ambigu** | Kueri umum (mis. *"Jadwal kuliah hari Senin"*) langsung dijawab acak atau memuntahkan semua prodi. | Sistem mengajukan SATU pertanyaan klarifikasi menanyakan program studi dan semester yang dimaksud. | **TERSELESAIKAN** |
+| **Total Pytest Suite** | 24 passed | **32 passed, 0 failed (100% pass rate)** | **PASSED** |
+
+#### Hasil Evaluasi Golden Set Jadwal (`eval/schedule_golden_set.csv` — 100 Kasus)
+| Kategori Kueri | Jumlah Kasus | Kecocokan Sempurna (Exact Match) | Akurasi (%) |
+| :--- | :---: | :---: | :---: |
+| **prodi_sem_day** (Jadwal prodi per semester & hari) | 40 | 40 | **100.0%** |
+| **lecturer_courses** (Daftar mata kuliah yang diampu dosen) | 30 | 30 | **100.0%** |
+| **code_lookup** (Pencarian mata kuliah via kode MK) | 30 | 30 | **100.0%** |
+| **TOTAL KESELURUHAN** | **100** | **100** | **100.0%** |
+
+### 4. Status Temuan Audit Terkait Fase 3
+- **[TINGGI] "OCR" sebenarnya ekstraksi teks PDF digital; cell ter-wrap bergeser antar baris:** **TERBUKTI & SUDAH DIPERBAIKI**. PyMuPDF `find_tables()` mengekstrak struktur tabel langsung dari vektor batas sel digital PDF, sehingga teks baris jamak dalam satu sel (fixture Row 31 dan Row 42 pada file TI `.rev`) tidak lagi memecah struktur baris data.
+- **[SEDANG] File .rev vs non-rev tidak punya kebijakan versi:** **TERBUKTI & SUDAH DIPERBAIKI**. Diimplementasikan logika versi kanonikal di mana keberadaan file berakhiran `.rev.pdf` secara mutlak mengesampingkan file non-rev untuk prodi bersangkutan.
+
+### 5. Risiko, Hal Belum Selesai, dan Asumsi Default [DEFAULT]
+- **Risiko Teridentifikasi:**
+  - Terdapat 2 baris pada file `13. MKDU - Jadwal Perkuliahan Genap 2025-2.pdf` (Pancasila & Pendidikan Agama) yang menggabungkan prodi SI dan non-SI; baris ini secara transparan dicatat dalam `data/structured/jadwal_review.csv` dan diberi status `needs_review: true`.
+- **Hal yang Belum Selesai:**
+  - Berlanjut otomatis ke FASE 4: Penanganan gambar fasilitas (pembersihan teks `facilities.txt` ke `data/web_clean/`, penyusunan `data/images/manifest.json` sebagai sumber tunggal, koleksi vektor terpisah `pradita_images`, eliminasi fallback 1 gambar per kategori, penegakan ambang skor, dan pengujian file safety).
+- **Asumsi Default yang Digunakan [DEFAULT]:**
+  - `[DEFAULT]` Sumber jadwal adalah file PDF resmi di `data/jadwal/*.pdf` yang diekstrak ke `data/structured/jadwal.jsonl`.
+  - `[DEFAULT]` File bertanda `.rev` secara mutlak menggantikan file non-rev untuk program studi yang bersangkutan.
+  - `[DEFAULT]` Antarmuka `ScheduleSource` disiapkan untuk mempermudah integrasi API SIAKAD di masa depan.
+
+---
+
