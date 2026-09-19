@@ -399,14 +399,50 @@ def _build_direct_schedule_answer(query: str, collection=None) -> str:
                         lec_to_courses.setdefault(d_clean, set()).add(r.get("mata_kuliah", ""))
 
             if lec_to_courses:
-                rows = []
-                for lec in sorted(lec_to_courses.keys()):
-                    courses_str = ", ".join(sorted(lec_to_courses[lec]))
-                    rows.append(f"| **{lec}** | {courses_str} |")
+                people = {}
+                labs = {}
+                placeholders = {}
 
-                header = f"Berikut daftar dosen pengampu di Program Studi **{prodi_name}** beserta mata kuliah yang diajarkan:"
-                table = "| Dosen Pengampu | Mata Kuliah yang Diampu |\n| :--- | :--- |\n" + "\n".join(rows)
-                return f"{header}\n\n{table}"
+                for lec_name, courses in lec_to_courses.items():
+                    n_lower = lec_name.lower()
+                    if re.match(r"^[XYZ]\s*\(.*?\)$", lec_name, re.IGNORECASE) or n_lower in ("tba", "tbd", "belum ada"):
+                        placeholders[lec_name] = courses
+                    elif any(k in n_lower for k in ["laboratorium", "aslab", "asisten lab"]):
+                        labs[lec_name] = courses
+                    else:
+                        people[lec_name] = courses
+
+                sections = [f"Berikut daftar dosen pengampu di Program Studi **{prodi_name}** beserta mata kuliah yang diajarkan:"]
+
+                # 1. Dosen Pengampu Akademik
+                if people:
+                    sections.append("\n### 👨‍🏫 Dosen Pengampu")
+                    p_rows = [
+                        f"| **{p}** | {', '.join(sorted(people[p]))} |"
+                        for p in sorted(people.keys())
+                    ]
+                    sections.append("| Dosen Pengampu | Mata Kuliah yang Diampu |\n| :--- | :--- |\n" + "\n".join(p_rows))
+
+                # 2. Praktikum & Laboratorium
+                if labs:
+                    sections.append("\n### 🔬 Praktikum & Laboratorium")
+                    l_rows = [
+                        f"| **{l}** | {', '.join(sorted(labs[l]))} |"
+                        for l in sorted(labs.keys())
+                    ]
+                    sections.append("| Pengampu / Fasilitas Lab | Mata Kuliah Praktikum |\n| :--- | :--- |\n" + "\n".join(l_rows))
+
+                # 3. Placeholder / Belum Ditentukan
+                if placeholders:
+                    sections.append("\n### ⏳ Belum Ditentukan (TBA / Placeholder)")
+                    pl_rows = [
+                        f"| `{pl}` | {', '.join(sorted(placeholders[pl]))} |"
+                        for pl in sorted(placeholders.keys())
+                    ]
+                    sections.append("| Kode Jadwal | Mata Kuliah |\n| :--- | :--- |\n" + "\n".join(pl_rows))
+                    sections.append("\n*Catatan: Entri bertanda kode huruf seperti `Y (Teknik Lalu Lintas)` adalah placeholder resmi dari fakultas untuk mata kuliah yang dosen pengampunya belum ditetapkan saat jadwal perkuliahan diterbitkan.*")
+
+                return "\n\n".join(sections)
 
     return ""
 

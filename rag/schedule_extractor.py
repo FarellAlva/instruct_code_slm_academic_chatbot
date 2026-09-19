@@ -71,16 +71,18 @@ def parse_time_range(jam_raw: str) -> Tuple[Optional[str], Optional[str], bool]:
 _DEGREE_CONTINUATION_TOKENS = {
     "m.kom", "d.m.s", "dms", "m.th", "m.m", "m.sc", "mba", "m.si", "ma", "m.it", "m.phil",
     "s.kom", "s.t", "m.t", "s.e", "s.si", "s.pd", "m.pd", "ph.d", "phd", "dr", "prof",
-    "ir", "(han)", "han", "ak", "bkp", "cbc", "b.a", "ba", "mhsc", "m.hsc", "m.tech", "m.krim",
+    "ir", "han", "ak", "bkp", "cbc", "b.a", "ba", "hons", "mhsc", "m.hsc", "m.tech", "m.krim",
+    "mintlbus", "m.intlbus", "m.intl.bus", "s", "e", "t", "m", "pend", "kom",
 }
 
 
 def is_degree_continuation(line: str) -> bool:
     """Check if a line in a lecturer table cell is purely wrapped academic degrees/titles."""
-    clean = re.sub(r"[^a-zA-Z0-9().]+", " ", line).strip().lower()
-    if clean.startswith("("):
+    s_strip = line.strip()
+    if s_strip.startswith("(") or s_strip.startswith("/"):
         return True
-    tokens = [t.strip(".") for t in clean.split() if t.strip(".")]
+    clean = re.sub(r"[^a-zA-Z0-9]+", " ", s_strip).strip().lower()
+    tokens = clean.split()
     if not tokens:
         return True
     return all(t in _DEGREE_CONTINUATION_TOKENS or len(t) <= 1 for t in tokens)
