@@ -18,8 +18,9 @@ import html
 from typing import Dict, List, Optional, Any, Tuple
 
 _TITLES_PATTERN = re.compile(
-    r"\b(?:dr|dra|drs|prof|eng|ph\.?d|s\.?kom|m\.?t|m\.?kom|s\.?e|m\.?m|s\.?t|s\.?pd|m\.?pd|"
-    r"m\.?par|m\.?sn|s\.?si|m\.?eng|b\.?a|ak|bkp|cbc|a-cpa|mt\.bnsp|m\.?hum|m\.?tech|m\.?hsc)\b\.?",
+    r"\b(?:dr|dra|drs|prof|ir|eng|ph\.?d|phd|s\.?kom|m\.?t|m\.?kom|s\.?e|m\.?m|s\.?t|s\.?pd|m\.?pd|"
+    r"m\.?par|m\.?sn|s\.?si|m\.?eng|b\.?a|ba|ak|bkp|cbc|a-cpa|mt\.bnsp|m\.?hum|m\.?tech|m\.?hsc|"
+    r"mhsc|m\.?th|d\.?m\.?s|dms|m\.?sc|mba|m\.?si|ma|m\.?it|m\.?phil|s\.?sos|m\.?krim|han)\b\.?",
     re.IGNORECASE,
 )
 
@@ -171,7 +172,8 @@ class EntityIndex:
             # Index lecturers
             for d in parsed.get("dosen_list", []):
                 norm_d = normalize_title(d)
-                if norm_d and len(norm_d.split()) >= 2:
+                tokens = [t for t in norm_d.split() if len(t) >= 2]
+                if norm_d and len(tokens) >= 1 and any(len(t) >= 3 for t in tokens):
                     self.lecturers.setdefault(norm_d, []).append(parsed)
 
             # Index room
@@ -226,7 +228,8 @@ class EntityIndex:
             # Index lecturers
             for d in entry.get("dosen_list", []):
                 norm_d = normalize_title(d)
-                if norm_d and len(norm_d.split()) >= 2:
+                tokens = [t for t in norm_d.split() if len(t) >= 2]
+                if norm_d and len(tokens) >= 1 and any(len(t) >= 3 for t in tokens):
                     self.lecturers.setdefault(norm_d, []).append(entry)
 
             # Index room
@@ -265,18 +268,22 @@ class EntityIndex:
         """
         Check if query mentions any known lecturer name.
         Returns (matched_lecturer_name, entries) or None.
-        Matches longest lecturer name first.
+        Matches longest lecturer name first using strict whole-word token matching.
         """
         norm_q = normalize_title(query)
+        norm_q_words = set(norm_q.split())
         best_match = None
         best_len = 0
 
         for norm_lec, entries in self.lecturers.items():
-            if len(norm_lec) < 5:
+            if len(norm_lec) < 4:
+                continue
+            lec_tokens = [t for t in norm_lec.split() if len(t) >= 2]
+            if not lec_tokens:
                 continue
             # Lecturer matching requires all constituent tokens of the normalized name
-            lec_tokens = norm_lec.split()
-            if all(token in norm_q for token in lec_tokens):
+            # to appear as distinct WHOLE WORDS in the query (not substrings)
+            if all(token in norm_q_words for token in lec_tokens):
                 if len(norm_lec) > best_len:
                     best_match = (norm_lec, entries)
                     best_len = len(norm_lec)

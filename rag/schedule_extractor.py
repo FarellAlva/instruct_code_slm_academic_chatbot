@@ -68,20 +68,45 @@ def parse_time_range(jam_raw: str) -> Tuple[Optional[str], Optional[str], bool]:
         return start, end, False
 
 
+_DEGREE_CONTINUATION_TOKENS = {
+    "m.kom", "d.m.s", "dms", "m.th", "m.m", "m.sc", "mba", "m.si", "ma", "m.it", "m.phil",
+    "s.kom", "s.t", "m.t", "s.e", "s.si", "s.pd", "m.pd", "ph.d", "phd", "dr", "prof",
+    "ir", "(han)", "han", "ak", "bkp", "cbc", "b.a", "ba", "mhsc", "m.hsc", "m.tech", "m.krim",
+}
+
+
+def is_degree_continuation(line: str) -> bool:
+    """Check if a line in a lecturer table cell is purely wrapped academic degrees/titles."""
+    clean = re.sub(r"[^a-zA-Z0-9().]+", " ", line).strip().lower()
+    if clean.startswith("("):
+        return True
+    tokens = [t.strip(".") for t in clean.split() if t.strip(".")]
+    if not tokens:
+        return True
+    return all(t in _DEGREE_CONTINUATION_TOKENS or len(t) <= 1 for t in tokens)
+
+
 def parse_lecturers(dosen_raw: str) -> List[str]:
     """Parse and normalize lecturer names from raw cell string."""
     if not dosen_raw or not dosen_raw.strip():
         return []
 
     lines = [re.sub(r"\s+", " ", l).strip() for l in dosen_raw.split("\n")]
-    lecturers = []
+    lecturers: List[str] = []
     for l in lines:
         if not l or l == "-":
             continue
+        # If this line is purely a continuation of academic titles from previous line
+        if lecturers and is_degree_continuation(l):
+            lecturers[-1] = lecturers[-1].rstrip(", .") + ", " + l.strip()
+            continue
+
         # Split on slash if used as separator between distinct people
         parts = [p.strip() for p in l.split("/") if p.strip()]
         for p in parts:
-            if len(p) > 2 and p not in lecturers:
+            if is_degree_continuation(p) and lecturers:
+                lecturers[-1] = lecturers[-1].rstrip(", .") + ", " + p.strip()
+            elif len(p) > 2 and p not in lecturers:
                 lecturers.append(p)
     return lecturers
 

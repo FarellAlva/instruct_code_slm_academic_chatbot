@@ -380,6 +380,34 @@ def _build_direct_schedule_answer(query: str, collection=None) -> str:
             if len(query.split()) <= 6:
                 return "Tentu sobat, untuk melihat jadwal perkuliahan, boleh sebutkan program studi (prodi) apa yang kamu maksud?"
 
+    # 3. Check for Prodi Lecturers list (e.g. "siapa saja dosen informatika", "daftar dosen sistem informasi")
+    is_asking_prodi_lecturers = (
+        any(w in q_lower for w in ["dosen", "pengajar", "guru"])
+        and prodi
+        and not entity_idx.match_lecturer(query)
+        and not entity_idx.match_course(query)
+    )
+    if is_asking_prodi_lecturers:
+        records = sched_src.search(prodi=prodi)
+        if records:
+            prodi_name = records[0].get("prodi_full", prodi)
+            lec_to_courses = {}
+            for r in records:
+                for d in r.get("dosen", []):
+                    d_clean = d.strip()
+                    if d_clean and d_clean != "-":
+                        lec_to_courses.setdefault(d_clean, set()).add(r.get("mata_kuliah", ""))
+
+            if lec_to_courses:
+                rows = []
+                for lec in sorted(lec_to_courses.keys()):
+                    courses_str = ", ".join(sorted(lec_to_courses[lec]))
+                    rows.append(f"| **{lec}** | {courses_str} |")
+
+                header = f"Berikut daftar dosen pengampu di Program Studi **{prodi_name}** beserta mata kuliah yang diajarkan:"
+                table = "| Dosen Pengampu | Mata Kuliah yang Diampu |\n| :--- | :--- |\n" + "\n".join(rows)
+                return f"{header}\n\n{table}"
+
     return ""
 
 
