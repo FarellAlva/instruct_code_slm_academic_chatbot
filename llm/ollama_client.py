@@ -14,6 +14,10 @@ from config import (
     DEFAULT_TEMPERATURE,
     DEFAULT_MAX_TOKENS,
     DEFAULT_TOP_P,
+    DEFAULT_NUM_CTX,
+    MAX_HISTORY_TURNS,
+    MAX_HISTORY_TOKENS,
+    estimate_tokens,
     SYSTEM_PROMPT,
 )
 
@@ -85,13 +89,15 @@ def build_messages(
     user_query:  str,
     context:     str,
     chat_history: Optional[List[Dict[str, str]]] = None,
+    max_history_turns: int = MAX_HISTORY_TURNS,
+    max_history_tokens: int = MAX_HISTORY_TOKENS,
 ) -> List[Dict[str, str]]:
     """
     Assemble the message list for the chat completion call.
 
     Order:
       1. system prompt (with injected context)
-      2. previous turns from chat history
+      2. previous turns from chat history (bounded by turns & token budget)
       3. current user message
     """
     system_content = SYSTEM_PROMPT
@@ -101,7 +107,14 @@ def build_messages(
     messages = [{"role": "system", "content": system_content}]
 
     if chat_history:
-        messages.extend(chat_history)
+        # Take at most the last max_history_turns
+        recent = list(chat_history[-max_history_turns:])
+        # Trim oldest turns if total history tokens exceed budget
+        total_tokens = sum(estimate_tokens(m.get("content", "")) for m in recent)
+        while recent and total_tokens > max_history_tokens:
+            dropped = recent.pop(0)
+            total_tokens -= estimate_tokens(dropped.get("content", ""))
+        messages.extend(recent)
 
     messages.append({"role": "user", "content": user_query})
     return messages
@@ -117,16 +130,41 @@ def chat_with_context(
     temperature:  float = DEFAULT_TEMPERATURE,
     max_tokens:   int   = DEFAULT_MAX_TOKENS,
     top_p:        float = DEFAULT_TOP_P,
+    num_ctx:      int   = DEFAULT_NUM_CTX,
+    use_native_api: bool = True,
 ) -> str:
     """
     Send a single chat completion request to Ollama and return the full reply.
-
-    Raises:
-        requests.HTTPError  — if Ollama returns 4xx/5xx
-        requests.Timeout    — if Ollama does not respond in time
+    Uses native /api/chat with explicit options (num_ctx) with fallback to /v1.
     """
     messages = build_messages(user_query, context, chat_history)
 
+    if use_native_api:
+        try:
+            payload = {
+                "model":       model,
+                "messages":    messages,
+                "stream":      False,
+                "options": {
+                    "temperature": temperature,
+                    "top_p":       top_p,
+                    "num_predict": max_tokens,
+                    "num_ctx":     num_ctx,
+                },
+            }
+            response = requests.post(
+                f"{OLLAMA_BASE_URL}/api/chat",
+                json=payload,
+                timeout=120,
+            )
+            response.raise_for_status()
+            data = response.json()
+            raw_content = data.get("message", {}).get("content", "")
+            return _strip_think(raw_content)
+        except Exception as exc:
+            print(f"[OllamaClient] Native /api/chat failed ({exc}). Falling back to /v1...")
+
+    # Fallback to OpenAI-compatible /v1 endpoint
     payload = {
         "model":       model,
         "messages":    messages,
@@ -158,13 +196,54 @@ def stream_chat_with_context(
     temperature:  float = DEFAULT_TEMPERATURE,
     max_tokens:   int   = DEFAULT_MAX_TOKENS,
     top_p:        float = DEFAULT_TOP_P,
+    num_ctx:      int   = DEFAULT_NUM_CTX,
+    use_native_api: bool = True,
 ) -> Generator[str, None, None]:
     """
-    Yield response tokens as they arrive (SSE / JSON-lines stream).
-    Suitable for displaying responses word-by-word in Streamlit.
+    Yield response tokens as they arrive.
+    Uses native /api/chat stream with explicit num_ctx options, falling back to /v1 SSE stream.
     """
     messages = build_messages(user_query, context, chat_history)
 
+    if use_native_api:
+        try:
+            payload = {
+                "model":       model,
+                "messages":    messages,
+                "stream":      True,
+                "options": {
+                    "temperature": temperature,
+                    "top_p":       top_p,
+                    "num_predict": max_tokens,
+                    "num_ctx":     num_ctx,
+                },
+            }
+            with requests.post(
+                f"{OLLAMA_BASE_URL}/api/chat",
+                json=payload,
+                timeout=120,
+                stream=True,
+            ) as response:
+                response.raise_for_status()
+
+                def _raw_native_tokens() -> Generator[str, None, None]:
+                    for line in response.iter_lines():
+                        if not line:
+                            continue
+                        try:
+                            chunk = json.loads(line.decode("utf-8"))
+                            token = chunk.get("message", {}).get("content", "")
+                            if token:
+                                yield token
+                        except (json.JSONDecodeError, KeyError):
+                            continue
+
+                yield from _stream_strip_think(_raw_native_tokens())
+                return
+        except Exception as exc:
+            print(f"[OllamaClient] Native streaming failed ({exc}). Falling back to /v1...")
+
+    # Fallback to /v1 SSE streaming
     payload = {
         "model":       model,
         "messages":    messages,
@@ -186,7 +265,6 @@ def stream_chat_with_context(
             for line in response.iter_lines():
                 if not line:
                     continue
-                # Strip "data: " prefix if present (SSE format)
                 raw = line.decode("utf-8")
                 if raw.startswith("data: "):
                     raw = raw[6:]

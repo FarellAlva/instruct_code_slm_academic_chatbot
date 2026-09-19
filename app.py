@@ -24,6 +24,7 @@ from config import (
 )
 from rag.retriever       import retrieve_context
 from rag.store           import get_chroma_collection
+from rag.entity_index     import get_entity_index
 from rag.scraper         import FACILITY_IMAGES
 from llm.ollama_client   import stream_chat_with_context, check_ollama_connection
 
@@ -288,94 +289,16 @@ def _extract_requested_semesters(query: str) -> set[str]:
     return requested
 
 
-def _build_direct_lecturer_schedule_answer(query: str, rag_result: dict) -> str:
-    lecturer_query = _extract_lecturer_query_name(query)
-    if not lecturer_query:
-        return ""
-
-    lowered = query.lower()
-    if not any(token in lowered for token in ("mengajar", "ngajar", "mata kuliah", "ampu", "jadwal", "kelas", "hari", "jam")):
-        return ""
-
-    requested_semesters = _extract_requested_semesters(query)
-    lecturer_target = _normalize_lookup_text(lecturer_query)
-    entries = []
-
-    for chunk in rag_result.get("chunks", []):
-        entry = _parse_schedule_chunk_entry(chunk["text"])
-        if not entry:
-            continue
-        if requested_semesters and entry.get("semester") not in requested_semesters:
-            continue
-
-        matched_lecturer = ""
-        for lecturer in entry.get("lecturers", []):
-            normalized = _normalize_lookup_text(lecturer)
-            if lecturer_target in normalized or normalized in lecturer_target:
-                matched_lecturer = lecturer
-                break
-
-        if not matched_lecturer:
-            continue
-
-        entry["lecturer"] = matched_lecturer
-        entry["source"] = chunk.get("source", "unknown")
-        entry["page"] = chunk.get("page", 0)
-        entries.append(entry)
-
-    if not entries:
-        return (
-            f"Saya belum menemukan entri jadwal yang secara eksplisit menuliskan **{lecturer_query}** "
-            "pada chunk yang berhasil diambil. Jadi saya tidak akan menebak mata kuliahnya."
-        )
-
-    deduped_entries = []
-    seen = set()
-    for entry in entries:
-        key = (
-            entry.get("program_studi", ""),
-            entry.get("semester", ""),
-            entry.get("hari", ""),
-            entry.get("jam", ""),
-            entry.get("mata_kuliah", ""),
-            entry.get("kelas", ""),
-            entry.get("ruang", ""),
-            entry.get("lecturer", ""),
-        )
-        if key in seen:
-            continue
-        seen.add(key)
-        deduped_entries.append(entry)
-
-    deduped_entries.sort(
-        key=lambda item: (
-            _ROMAN_TO_INT.get(item.get("semester", ""), 99),
-            _DAY_ORDER.get(item.get("hari", ""), 99),
-            item.get("jam", ""),
-            item.get("program_studi", ""),
-            item.get("mata_kuliah", ""),
-        )
-    )
-
-    header = (
-        f"Ini data jadwal yang secara eksplisit menuliskan **{deduped_entries[0]['lecturer']}** "
-        "di database saat ini:"
-    )
-    table_lines = [
-        "| Hari | Jam | Mata Kuliah | Program Studi | Semester | Ruang |",
-        "|------|-----|-------------|---------------|----------|-------|",
-    ]
-    for entry in deduped_entries:
-        table_lines.append(
-            f"| {entry.get('hari', '-')} | {entry.get('jam', '-')} | {entry.get('mata_kuliah', '-')} | "
-            f"{entry.get('program_studi', '-')} | {entry.get('semester', '-')} | {entry.get('ruang', '-')} |"
-        )
-
-    note = (
-        "Saya hanya menampilkan entri yang nama dosennya tertulis langsung pada jadwal, "
-        "jadi mata kuliah lain yang tidak menyebut nama tersebut tidak saya masukkan."
-    )
-    return "\n\n".join([header, "\n".join(table_lines), note])
+def _build_direct_schedule_answer(query: str, collection=None) -> str:
+    """
+    Query the entity index for deterministic positive-only answers:
+    - course instructor lookup
+    - lecturer schedule lookup
+    Never returns a refusal; returns "" if not definitively matched so RAG/LLM answers.
+    """
+    entity_idx = get_entity_index(collection)
+    ans = entity_idx.answer_direct_query(query)
+    return ans or ""
 
 
 # ─── Page Config ──────────────────────────────────────────────────────────────
@@ -1250,7 +1173,7 @@ if prompt := st.chat_input("Tanyakan seputar Pradita University…"):
     with st.chat_message("assistant", avatar=":material/support_agent:"):
         placeholder = st.empty()
         full_response = ""
-        direct_response = _build_direct_lecturer_schedule_answer(prompt, rag_result)
+        direct_response = _build_direct_schedule_answer(prompt, st.session_state.collection)
 
         try:
             if direct_response:

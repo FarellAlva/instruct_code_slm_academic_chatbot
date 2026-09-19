@@ -29,8 +29,10 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import pymupdf  # PyMuPDF
 
-JADWAL_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "jadwal")
-OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "jadwal_ocr")
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(SCRIPT_DIR))
+JADWAL_DIR = SCRIPT_DIR
+OUTPUT_DIR = os.path.join(PROJECT_ROOT, "data", "jadwal_ocr")
 
 
 def extract_text_pymupdf(pdf_path: str) -> list[dict]:
@@ -228,13 +230,15 @@ def compare_extraction(pdf_path: str):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="OCR/Extract text from jadwal PDFs")
+    parser.add_argument("--input", type=str, default=JADWAL_DIR, help="Input directory containing jadwal PDFs")
+    parser.add_argument("--output", type=str, default=OUTPUT_DIR, help="Output directory for extracted text files")
     parser.add_argument("--file", type=str, help="Process specific file (partial name match)")
     parser.add_argument("--compare", action="store_true",
                         help="Compare pypdf vs pymupdf extraction on first file")
     args = parser.parse_args()
 
     if args.compare:
-        pdf_files = sorted(Path(JADWAL_DIR).glob("*.pdf"))
+        pdf_files = sorted(Path(args.input).glob("*.pdf"))
         if args.file:
             pdf_files = [f for f in pdf_files if args.file.lower() in f.name.lower()]
         if pdf_files:
@@ -242,4 +246,4 @@ if __name__ == "__main__":
         else:
             print("No PDF files found for comparison")
     else:
-        process_jadwal_pdfs(file_filter=args.file)
+        process_jadwal_pdfs(jadwal_dir=args.input, output_dir=args.output, file_filter=args.file)

@@ -29,6 +29,24 @@ DEFAULT_TEMPERATURE  = 0.4
 DEFAULT_MAX_TOKENS   = 768
 DEFAULT_TOP_K        = 40
 DEFAULT_TOP_P        = 0.95
+DEFAULT_NUM_CTX      = 4096       # Explicit context window sent to Ollama options
+MAX_CONTEXT_TOKENS   = 2500       # Maximum token budget allocated for RAG context
+CONTEXT_MARGIN_TOKENS= 256        # Safety margin for system prompt + response
+MAX_HISTORY_TURNS    = 6          # Max conversational turns retained
+MAX_HISTORY_TOKENS   = 500        # Max tokens dedicated to chat history
+OLLAMA_CHAT_API_URL  = f"{OLLAMA_BASE_URL}/api/chat"
+
+
+def estimate_tokens(text: str) -> int:
+    """
+    Conservative token estimator for Indonesian/multilingual text.
+    1 token ~ 3 characters, with floor based on word count.
+    """
+    if not text:
+        return 0
+    char_est = len(text) // 3 + 1
+    word_est = int(len(text.split()) * 1.3) + 1
+    return max(char_est, word_est)
 
 # ─── Embedding ────────────────────────────────────────────────────────────────
 EMBEDDING_MODEL      = "intfloat/multilingual-e5-base"

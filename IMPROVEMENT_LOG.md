@@ -77,3 +77,49 @@ Fase 0 telah diselesaikan dengan membangun fondasi pengujian offline, mencadangk
   - `[DEFAULT]` Peta/denah kampus dinyatakan tidak tersedia; sistem tidak boleh menampilkan gambar fallback jika entitas denah tidak ditemukan.
 
 ---
+
+## FASE 1 — Bug Kritis
+
+### 1. Ringkasan yang Dikerjakan
+Fase 1 telah menyelesaikan perbaikan seluruh bug kritis operasional sistem: (1.1) Membangun modul `rag/entity_index.py` untuk mengindeks entitas mata kuliah, nama dosen, kode MK, dan ruang dari metadata, serta merefaktor jalur bypass di `app.py` agar secara ketat hanya menghasilkan jawaban terstruktur positif (zero false refusal); (1.2) Memperbaiki bug path ganda pada `data/jadwal/ocr_jadwal.py` serta menambahkan parameter CLI `--input` dan `--output`; (1.3) Mengimplementasikan kontrol anggaran token konteks (`MAX_CONTEXT_TOKENS = 2500`, estimator konservatif, pemotongan per-chunk utuh) pada `rag/retriever.py`, pembatasan token riwayat, dan dukungan native endpoint Ollama `/api/chat` dengan parameter `options.num_ctx` eksplisit di `llm/ollama_client.py`; (1.4) Memperbaiki parser `rag/loader.py` untuk mengekstrak penanda halaman `--- Page N ---` sehingga dokumen PDF jadwal multi-halaman terindeks dengan nomor halaman yang benar (1 dan 2).
+
+### 2. Daftar File Diubah / Dibuat
+- **File Baru:**
+  - `rag/entity_index.py`: modul pembuat indeks entitas (courses, lecturers, codes, rooms) dan resolver kueri langsung positif.
+  - `tests/test_phase1.py`: test suite verifikasi Fase 1 (normalisasi, pencocokan entitas, anti-false refusal, pemotongan anggaran token utuh, parser halaman OCR).
+- **File Dimodifikasi:**
+  - `config.py`: penambahan konstanta `DEFAULT_NUM_CTX = 4096`, `MAX_CONTEXT_TOKENS = 2500`, `CONTEXT_MARGIN_TOKENS = 256`, `MAX_HISTORY_TURNS = 6`, `MAX_HISTORY_TOKENS = 500`, fungsi `estimate_tokens`, dan `OLLAMA_CHAT_API_URL`.
+  - `app.py`: integrasi `_build_direct_schedule_answer` menggunakan `EntityIndex`, eliminasi total logika regex lama yang memicu false refusal.
+  - `data/jadwal/ocr_jadwal.py`: perbaikan resolusi direktori input/output dan penambahan opsi CLI `--input` & `--output`.
+  - `rag/__init__.py`: penambahan isolasi modul NumPy 2.x `bottleneck`/`numexpr` untuk kompatibilitas lingkungan eksekusi lokal.
+  - `rag/loader.py`: parser regex `(?m)^---\s*Page\s+(\d+)\s*---` untuk pemisahan halaman dokumen jadwal multi-halaman.
+  - `rag/retriever.py`: integrasi batas token anggaran `max_context_tokens` pada `_build_structured_context` dengan pemotongan per-chunk utuh dan pencatatan log omisi.
+  - `llm/ollama_client.py`: implementasi pemanggilan native `/api/chat` dengan opsi `num_ctx`, `temperature`, `num_predict`, serta pemangkasan token riwayat percakapan.
+
+### 3. Hasil Pengujian & Evaluasi Sebelum vs Sesudah
+
+#### Tabel Perbandingan Sebelum vs Sesudah Fase 1
+| Skenario Kueri / Kasus Uji | Perilaku Sebelum (Baseline Fase 0) | Perilaku Sesudah (Fase 1) | Status |
+| :--- | :--- | :--- | :--- |
+| **Audit Q1**: *"Siapa dosen pengampu Interaksi Manusia dan Komputer?"* | **False Refusal:** "Saya belum menemukan entri jadwal yang secara eksplisit menuliskan pengampu Interaksi Manusia Komputer..." | **Jawaban Positif:** Tabel terstruktur resmi: Theresia Herlina, S.Kom., M.T (Informatika, Smt II, Kelas A+B, Senin 08.25-11.05, Ruang A306). | **TERSELESAIKAN** |
+| **Variasi Q1a**: *"dosen matkul Interaksi Manusia dan Komputer"* | False Refusal via regex bypass | Jawaban Positif terstruktur seketika (<10ms via entity index) | **TERSELESAIKAN** |
+| **Variasi Q1b**: *"Interaksi Manusia dan Komputer diajar siapa"* | False Refusal via regex bypass | Jawaban Positif terstruktur seketika (<10ms via entity index) | **TERSELESAIKAN** |
+| **Kueri 1**: *"Di mana lokasi kampus Pradita University?"* | **False Refusal:** "Saya belum menemukan entri jadwal... mana lokasi kampus..." | **Bypass = None:** Kueri diteruskan ke RAG & LLM secara bersih tanpa intervensi penolakan palsu. | **TERSELESAIKAN** |
+| **Kueri 14**: *"Apa saja mata kuliah yang diajarkan oleh Theresia Herlina di program Informatika?"* | **False Refusal:** "Saya belum menemukan... diajarkan oleh Theresia Herlina program..." | **Jawaban Positif:** Tabel lengkap 5 jadwal mata kuliah resmi Theresia Herlina. | **TERSELESAIKAN** |
+| **Multi-page OCR Loading**: `data/jadwal_ocr/*.txt` | Semua dokumen jadwal ditandai `page = 1` | Dokumen multi-halaman terurai menjadi halaman 1 dan 2 secara mandiri. | **TERSELESAIKAN** |
+| **Konflik num_ctx & Truncation** | Prompt dapat terpotong di tengah baris teks jika konteks besar; num_ctx diabaikan `/v1`. | Konteks dipotong per chunk utuh (`MAX_CONTEXT_TOKENS`); `options.num_ctx` dikirim ke `/api/chat`. | **TERSELESAIKAN** |
+| **Total Pytest Suite** | 4 passed | **10 passed, 0 failed (100%)** | **PASSED** |
+
+### 4. Status Temuan Audit Terkait Fase 1
+- **[KRITIS] app.py regex nama dosen salah dan bypass LLM dengan penolakan palsu:** **TERBUKTI & SUDAH DIPERBAIKI**. Jalur bypass kini menggunakan indeks entitas eksklusif yang hanya merespons jika terdapat entitas mata kuliah atau dosen resmi; dan hanya memancarkan respons positif. Jika kueri tidak cocok, sistem mengembalikan `None` dan meneruskan ke pipeline RAG/LLM.
+- **[KRITIS] Tidak ada batas token konteks (rag/retriever.py:502-548):** **TERBUKTI & SUDAH DIPERBAIKI**. `_build_structured_context` kini mengestimasi token per chunk dan menghentikan inklusi chunk saat batas 2500 token tercapai tanpa memotong baris jadwal.
+- **[TINGGI] Path ganda data/jadwal/data/jadwal pada ocr_jadwal.py:** **TERBUKTI & SUDAH DIPERBAIKI**. Direktori input dan output kini menggunakan path absolut berbasis `PROJECT_ROOT` dan dapat dikonfigurasi via CLI `--input` dan `--output`.
+- **[SEDANG] loader.py:147 page selalu bernilai 1:** **TERBUKTI & SUDAH DIPERBAIKI**. Parser membaca penanda `--- Page N ---` dan memecah dokumen OCR menjadi unit per halaman dengan nomor halaman akurat.
+
+### 5. Risiko, Hal Belum Selesai, dan Asumsi Default [DEFAULT]
+- **Hal yang Belum Selesai:**
+  - Melangkah ke FASE 2: Keamanan prompt injection, pemisahan role system vs data berbatas acak (`<konteks_{B}>`), modul `rag/sanitize.py`, pembatasan input user (500 karakter) & rate limit, modul `rag/output_guard.py`, serta dataset uji injeksi `tests/test_injection.py` dan `eval/injection_cases.csv`.
+- **Asumsi Default yang Digunakan [DEFAULT]:**
+  - `[DEFAULT]` Jalur bypass hanya beroperasi pada entitas jadwal terstruktur; kueri fasilitas atau pertanyaan umum sepenuhnya ditangani oleh RAG + LLM.
+
+---

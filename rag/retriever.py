@@ -17,9 +17,16 @@ Performance optimizations:
 
 import re
 import time
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
-from config import TOP_K_RETRIEVAL, USE_RERANKER, RERANKER_MODEL, POOL_SIZE_FACTOR
+from config import (
+    TOP_K_RETRIEVAL,
+    USE_RERANKER,
+    RERANKER_MODEL,
+    POOL_SIZE_FACTOR,
+    MAX_CONTEXT_TOKENS,
+    estimate_tokens,
+)
 from .store import get_chroma_collection
 
 _RERANKER_MODEL = None
@@ -489,8 +496,8 @@ def retrieve_context(
         result_limit = min(max(top_k, 10), len(chunks))
     chunks = chunks[:result_limit]
 
-    # Step 5: Build structured context string
-    context = _build_structured_context(chunks, person_query)
+    # Step 5: Build structured context string adhering to token budget
+    context, chunks = _build_structured_context(chunks, person_query)
     sources = list({chunk["source"] for chunk in chunks})
 
     print(f"[Retriever] ✅ Total retrieval time: {(time.perf_counter()-t_start)*1000:.0f}ms "
@@ -502,24 +509,31 @@ def retrieve_context(
 def _build_structured_context(
     chunks: List[Dict[str, Any]],
     person_query: str,
-) -> str:
+    max_context_tokens: int = MAX_CONTEXT_TOKENS,
+) -> Tuple[str, List[Dict[str, Any]]]:
     """
     Build a structured context string that makes it easy for the LLM
     to extract information without hallucinating.
 
-    Improvement from paper: clear document boundaries and metadata headers.
+    Token budget: Chunks are added in rank order until max_context_tokens
+    is reached. Lower-ranked chunks that exceed budget are cleanly omitted
+    as whole chunks without breaking mid-schedule lines.
     """
     if not chunks:
-        return ""
+        return "", []
 
     context_parts = []
+    included_chunks = []
+    current_tokens = 0
 
     if person_query:
-        context_parts.append(
+        instruction = (
             f"[INSTRUKSI KONTEKS] Berikut adalah data jadwal yang ditemukan. "
             f"HANYA gunakan informasi yang TERTULIS EKSPLISIT di bawah. "
             f"Fokus pencarian: dosen '{person_query}'."
         )
+        context_parts.append(instruction)
+        current_tokens += estimate_tokens(instruction)
 
     for idx, chunk in enumerate(chunks, 1):
         meta = chunk.get("meta", {})
@@ -534,14 +548,25 @@ def _build_structured_context(
             if meta.get("hari"):
                 header_parts.append(f"Hari: {meta['hari']}")
         else:
-            header_parts.append(f"Source: {chunk['source']}")
+            header_parts.append(f"Source: {chunk.get('source', 'unknown')}")
 
         score_info = ""
         if "rerank_score" in chunk:
             score_info = f" | Relevance: {chunk['rerank_score']:.3f}"
 
-        context_parts.append(
-            f"[{' | '.join(header_parts)}{score_info}]\n{chunk['text']}"
-        )
+        doc_str = f"[{' | '.join(header_parts)}{score_info}]\n{chunk['text']}"
+        doc_tokens = estimate_tokens(doc_str) + 4  # delimiter budget
 
-    return "\n\n---\n\n".join(context_parts)
+        if current_tokens + doc_tokens > max_context_tokens:
+            omitted_count = len(chunks) - len(included_chunks)
+            print(
+                f"[Retriever] ⚠️ Context budget reached ({current_tokens}/{max_context_tokens} tokens). "
+                f"Omitted {omitted_count} lower-ranked chunks cleanly without mid-chunk truncation."
+            )
+            break
+
+        context_parts.append(doc_str)
+        included_chunks.append(chunk)
+        current_tokens += doc_tokens
+
+    return "\n\n---\n\n".join(context_parts), included_chunks

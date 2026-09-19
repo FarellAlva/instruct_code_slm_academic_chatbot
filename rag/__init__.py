@@ -1,4 +1,9 @@
 # rag/__init__.py
+import sys
+# Workaround for NumPy 2.x optional binary extensions in pandas
+sys.modules['bottleneck'] = None
+sys.modules['numexpr'] = None
+
 from .loader    import load_pdfs, load_web_texts, load_all
 from .chunker   import chunk_documents, SCHEDULE_FILES
 from .embedder  import get_embedding_function

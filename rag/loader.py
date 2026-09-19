@@ -9,6 +9,7 @@ Only the developer runs this; end-users never upload files.
 """
 
 import os
+import re
 from typing import List, Dict, Any
 from pathlib import Path
 
@@ -134,15 +135,42 @@ def load_ocr_texts(ocr_dir: str) -> List[Dict[str, Any]]:
     for txt_path in txt_files:
         print(f"[Loader] 🔍 Reading OCR: {txt_path.name}")
         try:
-            text = txt_path.read_text(encoding="utf-8").strip()
-            if text:
-                # Use the original PDF filename as source for chunker compatibility
-                # e.g. "1. TI - Jadwal Perkuliahan Genap 2025-2.rev.txt"
-                # -> "1. TI - Jadwal Perkuliahan Genap 2025-2.rev.pdf"
-                source_name = txt_path.stem + ".pdf"
+            raw_content = txt_path.read_text(encoding="utf-8").strip()
+            if not raw_content:
+                continue
+
+            source_name = txt_path.stem + ".pdf"
+
+            # Parse page markers: "--- Page N ---"
+            page_splits = re.split(r"(?m)^---\s*Page\s+(\d+)\s*---", raw_content)
+
+            if len(page_splits) > 1:
+                # page_splits format: [preamble, page_num_1, page_text_1, page_num_2, page_text_2, ...]
+                preamble = page_splits[0].strip()
+                if preamble:
+                    documents.append(
+                        {
+                            "text":   preamble,
+                            "source": source_name,
+                            "page":   1,
+                        }
+                    )
+
+                for i in range(1, len(page_splits), 2):
+                    page_num = int(page_splits[i])
+                    page_text = page_splits[i + 1].strip() if i + 1 < len(page_splits) else ""
+                    if page_text:
+                        documents.append(
+                            {
+                                "text":   page_text,
+                                "source": source_name,
+                                "page":   page_num,
+                            }
+                        )
+            else:
                 documents.append(
                     {
-                        "text":   text,
+                        "text":   raw_content,
                         "source": source_name,
                         "page":   1,
                     }
