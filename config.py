@@ -14,15 +14,15 @@ BASE_DIR      = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR      = os.path.join(BASE_DIR, "data")
 CHROMA_DIR    = os.path.join(BASE_DIR, "chroma_db")
 
-# OLLAMA_BASE_URL  = "http://localhost:11434"
-# OLLAMA_API_URL   = f"{OLLAMA_BASE_URL}/v1/chat/completions"
-# DEFAULT_MODEL    = "qwen3:1.7B"
+OLLAMA_BASE_URL  = "http://localhost:11434"
+OLLAMA_API_URL   = f"{OLLAMA_BASE_URL}/v1/chat/completions"
+DEFAULT_MODEL    = "gemma4:31b-cloud"
 
 
-OLLAMA_BASE_URL = "http://100.120.40.112:11434"
-OLLAMA_API_URL = f"{OLLAMA_BASE_URL}/v1/chat/completions"
+# OLLAMA_BASE_URL = "http://100.120.40.112:11434"
+# OLLAMA_API_URL = f"{OLLAMA_BASE_URL}/v1/chat/completions"
 
-DEFAULT_MODEL = "gemma4:12b"
+# DEFAULT_MODEL = "gemma4:12b"
 
 # ─── LLM Defaults ─────────────────────────────────────────────────────────────
 DEFAULT_TEMPERATURE  = 0.4
@@ -38,6 +38,13 @@ CHROMA_COLLECTION    = "pradita_knowledge"
 CHUNK_SIZE       = 500        # characters per chunk
 CHUNK_OVERLAP    = 100        # overlap between chunks
 TOP_K_RETRIEVAL  = 6          # number of docs returned per query
+
+# ─── Reranker ─────────────────────────────────────────────────────────────────
+# Set USE_RERANKER=False untuk skip reranking (lebih cepat, akurasi sedikit turun)
+# Model lebih kecil (MiniLM-L-6-v2) ~6x lebih cepat dari bge-reranker-v2-m3
+USE_RERANKER     = True
+RERANKER_MODEL   = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+POOL_SIZE_FACTOR = 3          # pool_size = TOP_K_RETRIEVAL * POOL_SIZE_FACTOR (was 5)
 
 # ─── System Prompt ────────────────────────────────────────────────────────────
 SYSTEM_PROMPT = (

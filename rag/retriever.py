@@ -6,12 +6,20 @@ Enhanced following the Hendra Lijaya paper methodology:
   - Hybrid retrieval: dense vector search + metadata-boosted ranking
   - Cross-encoder reranking for final precision
   - Structured context injection for reduced hallucination
+
+Performance optimizations:
+  - Singleton ChromaDB collection (store.py)
+  - Lighter reranker model (MiniLM-L-6-v2 vs bge-reranker-v2-m3)
+  - Reduced pool size (POOL_SIZE_FACTOR from config)
+  - Cached collection.count() per-request
+  - Timing instrumentation for profiling
 """
 
 import re
+import time
 from typing import Any, Dict, List, Optional
 
-from config import TOP_K_RETRIEVAL
+from config import TOP_K_RETRIEVAL, USE_RERANKER, RERANKER_MODEL, POOL_SIZE_FACTOR
 from .store import get_chroma_collection
 
 _RERANKER_MODEL = None
@@ -80,12 +88,13 @@ def get_reranker():
         from sentence_transformers import CrossEncoder
         import torch
         device = "cuda" if torch.cuda.is_available() else "cpu"
-        print(f"[Reranker] Loading CrossEncoder: BAAI/bge-reranker-v2-m3 ({device.upper()})...")
+        print(f"[Reranker] Loading CrossEncoder: {RERANKER_MODEL} ({device.upper()})...")
         _RERANKER_MODEL = CrossEncoder(
-            "BAAI/bge-reranker-v2-m3",
+            RERANKER_MODEL,
             max_length=512,
             device=device,
         )
+        print(f"[Reranker] ✅ CrossEncoder ready on {device.upper()}.")
     return _RERANKER_MODEL
 
 
@@ -354,13 +363,18 @@ def retrieve_context(
         "chunks":   List[Dict],
       }
     """
+    t_start = time.perf_counter()
+
     if collection is None:
         collection = get_chroma_collection()
 
-    if collection.count() == 0:
+    # Cache count once per call to avoid two round-trips to ChromaDB
+    doc_count = collection.count()
+    if doc_count == 0:
         return {"context": "", "sources": [], "chunks": []}
 
     # Step 1: Extract query intents
+    t1 = time.perf_counter()
     person_query = _extract_person_name_query(query)
     prodi_code = _extract_prodi_filter(query)
     semester = _extract_semester_filter(query)
@@ -369,17 +383,19 @@ def retrieve_context(
     # Step 1b: Expand query with Indonesian equivalents for cross-lingual retrieval
     retrieval_query = _expand_query(query)
 
-    print(f"[Retriever] Intent — person: {person_query or '-'}, "
+    print(f"[Retriever] Intent ({(time.perf_counter()-t1)*1000:.0f}ms) — "
+          f"person: {person_query or '-'}, "
           f"prodi: {prodi_code or '-'}, sem: {semester or '-'}, day: {day or '-'}")
 
     # Step 2: Pre-retrieval filtering
     where_filter, where_doc_filter = _build_filters(person_query, prodi_code, semester, day)
 
     # Step 3: Dense vector search with optional metadata + document filters
-    pool_size = min(max(top_k * 5, 15), collection.count())
+    pool_size = min(max(top_k * POOL_SIZE_FACTOR, 10), doc_count)
 
     has_filters = where_filter is not None or where_doc_filter is not None
 
+    t2 = time.perf_counter()
     try:
         results = collection.query(
             query_texts=[retrieval_query],   # expanded query for better cross-lingual retrieval
@@ -397,6 +413,7 @@ def retrieve_context(
             n_results=pool_size,
             include=["documents", "metadatas", "distances"],
         )
+    print(f"[Retriever] Dense search ({(time.perf_counter()-t2)*1000:.0f}ms)")
 
     docs = results["documents"][0]
     metadatas = results["metadatas"][0]
@@ -406,6 +423,7 @@ def retrieve_context(
         # Filtered query returned empty, retry without filter
         if has_filters:
             print("[Retriever] ⚠ No results with filter, retrying unfiltered")
+            t_retry = time.perf_counter()
             results = collection.query(
                 query_texts=[query],
                 n_results=pool_size,
@@ -414,6 +432,7 @@ def retrieve_context(
             docs = results["documents"][0]
             metadatas = results["metadatas"][0]
             distances = results["distances"][0]
+            print(f"[Retriever] Fallback search ({(time.perf_counter()-t_retry)*1000:.0f}ms)")
 
     chunks: List[Dict[str, Any]] = []
     seen_texts = set()
@@ -440,11 +459,14 @@ def retrieve_context(
             chunks = matched
             print(f"[Retriever] Person filter kept {len(chunks)} chunks for '{person_query}'")
 
-    # Step 4: Cross-encoder reranking
-    if chunks:
+    # Step 4: Cross-encoder reranking (only if enabled in config)
+    if chunks and USE_RERANKER:
+        t3 = time.perf_counter()
         reranker = get_reranker()
         pairs = [[query, chunk["text"]] for chunk in chunks]
-        scores = reranker.predict(pairs)
+        # batch_size tuned for GPU throughput; convert_to_numpy avoids extra tensor overhead
+        scores = reranker.predict(pairs, batch_size=32, convert_to_numpy=True)
+        print(f"[Retriever] Reranking {len(pairs)} pairs ({(time.perf_counter()-t3)*1000:.0f}ms)")
 
         for i, chunk in enumerate(chunks):
             chunk["rerank_score"] = float(scores[i])
@@ -457,16 +479,22 @@ def retrieve_context(
             ),
             reverse=True,
         )
+    elif chunks and not USE_RERANKER:
+        # No reranker: sort by cosine distance (lower = more similar)
+        chunks.sort(key=lambda item: item["distance"])
 
-        # Take more results for person queries (they may teach many courses)
-        result_limit = top_k
-        if person_query:
-            result_limit = min(max(top_k, 10), len(chunks))
-        chunks = chunks[:result_limit]
+    # Take more results for person queries (they may teach many courses)
+    result_limit = top_k
+    if person_query:
+        result_limit = min(max(top_k, 10), len(chunks))
+    chunks = chunks[:result_limit]
 
     # Step 5: Build structured context string
     context = _build_structured_context(chunks, person_query)
     sources = list({chunk["source"] for chunk in chunks})
+
+    print(f"[Retriever] ✅ Total retrieval time: {(time.perf_counter()-t_start)*1000:.0f}ms "
+          f"| chunks returned: {len(chunks)}")
 
     return {"context": context, "sources": sources, "chunks": chunks}
 

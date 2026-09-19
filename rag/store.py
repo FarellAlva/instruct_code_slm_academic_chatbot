@@ -11,6 +11,9 @@ from typing import List, Dict, Any
 from config import CHROMA_DIR, CHROMA_COLLECTION
 from .embedder import get_embedding_function
 
+# Module-level singleton — client and collection created only once per process
+_chroma_client = None
+_chroma_collection = None
 
 def get_chroma_collection(persist_dir: str = CHROMA_DIR):
     """
@@ -18,15 +21,23 @@ def get_chroma_collection(persist_dir: str = CHROMA_DIR):
 
     The collection uses our local embedding function so queries
     and documents are always embedded with the same model.
+
+    Singleton pattern: client and collection are created once per process
+    to avoid reconnection overhead on every retrieval call.
     """
+    global _chroma_client, _chroma_collection
+
+    if _chroma_collection is not None:
+        return _chroma_collection
+
     embedding_fn = get_embedding_function()
 
-    client = chromadb.PersistentClient(
+    _chroma_client = chromadb.PersistentClient(
         path=persist_dir,
         settings=Settings(anonymized_telemetry=False),
     )
 
-    collection = client.get_or_create_collection(
+    _chroma_collection = _chroma_client.get_or_create_collection(
         name=CHROMA_COLLECTION,
         embedding_function=embedding_fn,
         metadata={"hnsw:space": "cosine"},
@@ -34,9 +45,9 @@ def get_chroma_collection(persist_dir: str = CHROMA_DIR):
 
     print(
         f"[Store] ✅ Collection '{CHROMA_COLLECTION}' ready "
-        f"| docs stored: {collection.count()}"
+        f"| docs stored: {_chroma_collection.count()}"
     )
-    return collection
+    return _chroma_collection
 
 
 def add_documents_to_db(
