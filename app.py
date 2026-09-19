@@ -139,9 +139,10 @@ def _build_facility_context(query: str) -> tuple[str, list[str]]:
 
     for item in matches:
         synthetic_sources.append(f"facility:{item['name']}")
+        # Image paths/URLs are deliberately kept out of the prompt: the UI renders
+        # the photos itself, and feeding them here makes the model echo raw paths.
         context_lines.append(
-            f"- Fasilitas tersedia: {item['name']} | kategori: {item['category']} | "
-            f"path gambar lokal: {item['path']} | url gambar: {item['url']}"
+            f"- Fasilitas tersedia: {item['name']} | kategori: {item['category']}"
         )
 
     context_lines.append(
@@ -1252,13 +1253,13 @@ with st.sidebar:
 
     col_check, col_clear = st.columns(2)
     with col_check:
-        if st.button("Check Ollama", use_container_width=True):
+        if st.button("Check Ollama", width="stretch"):
             result = check_ollama_connection(model_name)
             st.session_state.ollama_ok = result["ok"]
             st.info(result["message"])
 
     with col_clear:
-        if st.button("Clear Chat", use_container_width=True):
+        if st.button("Clear Chat", width="stretch"):
             st.session_state.messages = []
             st.rerun()
 
@@ -1502,10 +1503,12 @@ if prompt := st.chat_input("Tanyakan seputar Pradita University…"):
             cols = st.columns(3)
             for idx, fimg in enumerate(facility_imgs):
                 with cols[idx % 3]:
-                    if os.path.exists(fimg["path"]):
-                        st.image(fimg["path"], caption=fimg["name"], use_column_width=True)
-                    else:
-                        st.image(fimg["url"], caption=fimg["name"], use_column_width=True)
+                    source = fimg["path"] if os.path.exists(fimg["path"]) else fimg["url"]
+                    try:
+                        st.image(source, caption=fimg["name"], width="stretch")
+                    except Exception:
+                        # A single unreadable image must not break the whole answer
+                        st.caption(f"(Foto {fimg['name']} tidak dapat ditampilkan)")
 
     st.session_state.messages.append(
         {

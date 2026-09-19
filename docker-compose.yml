@@ -9,7 +9,42 @@ services:
     volumes:
       - ollama_models:/root/.ollama
 
-  # ─── 2. Web Chat Application (Adita Streamlit + RAG) ────────────────────────
+  # ─── 2. Ingestion Knowledge Base (sekali jalan, lalu berhenti) ──────────────
+  # Membangun ChromaDB dari folder data/ sebelum aplikasi chat menyala.
+  # Tidak butuh Ollama — hanya model embedding yang sudah di-bake ke dalam image.
+  # Idempoten: jika knowledge base sudah terisi, langkah ini otomatis dilewati.
+  adita-ingest:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: adita-chat:latest
+    container_name: adita-ingest
+    restart: "no"
+    volumes:
+      - ./data:/app/data
+      - ./chroma_db:/app/chroma_db
+    command:
+      - sh
+      - -c
+      - |
+        python - <<'PY'
+        import sys
+        from config import DATA_DIR, CHROMA_DIR
+        from rag.store import get_chroma_collection
+        from ingest import run_ingestion
+
+        collection = get_chroma_collection(CHROMA_DIR)
+        existing = collection.count()
+
+        if existing > 0:
+            print(f"[docker-ingest] Knowledge base sudah terisi ({existing} chunks) - ingestion dilewati.")
+            sys.exit(0)
+
+        print("[docker-ingest] Knowledge base kosong - menjalankan ingestion dari folder data/ ...")
+        run_ingestion(DATA_DIR, do_clear=False, do_scrape=False)
+        PY
+
+  # ─── 3. Web Chat Application (Adita Streamlit + RAG) ────────────────────────
   adita-chat:
     build:
       context: .
@@ -29,7 +64,11 @@ services:
       - MAX_CONTEXT_TOKENS=5500
       - TOP_K_RETRIEVAL=8
     depends_on:
-      - ollama
+      ollama:
+        condition: service_started
+      # Chat baru menyala setelah knowledge base siap
+      adita-ingest:
+        condition: service_completed_successfully
     volumes:
       # Mount folder data & database agar sinkron
       - ./data:/app/data

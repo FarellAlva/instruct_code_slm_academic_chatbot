@@ -18,128 +18,104 @@ Gedung kampus Pradita University dilengkapi dengan fasilitas-fasilitas sebagai b
 
 ### Auditorium - Pradita University
 Gambar fasilitas: auditorium_pradita_university.jpg
-Path lokal: D:\LLM\instruct\data\images\auditorium_pradita_university.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/auditorium-pradita-institute__Ceg30.jpg
 
 ### Classroom - Pradita University
 Gambar fasilitas: classroom_pradita_university.jpg
-Path lokal: D:\LLM\instruct\data\images\classroom_pradita_university.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/classroom-pradita-university__Prr80.jpg
 
 ### Mac Laboratorium - Pradita University
 Gambar fasilitas: mac_laboratorium_pradita_university.jpg
-Path lokal: D:\LLM\instruct\data\images\mac_laboratorium_pradita_university.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/mac-laboratorium-pradita-university__XPqH5.jpg
 
 ### Computer Laboratorium - Pradita University
 Gambar fasilitas: computer_laboratorium_pradita_university.jpg
-Path lokal: D:\LLM\instruct\data\images\computer_laboratorium_pradita_university.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/computer-laboratorium-pradita-university__O4clg.jpg
 
 ### Drawing Lab - Pradita University
 Gambar fasilitas: drawing_lab_pradita_university.jpg
-Path lokal: D:\LLM\instruct\data\images\drawing_lab_pradita_university.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/drawing-lab-pradita-university__PCX2s.jpg
 
 ### Library - Pradita University
 Gambar fasilitas: library_pradita_university.jpg
-Path lokal: D:\LLM\instruct\data\images\library_pradita_university.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/library-pradita-university__hIQnG.jpg
 
 ### Pradita Research & Innovation Center
 Gambar fasilitas: pradita_research_innovation_center.jpg
-Path lokal: D:\LLM\instruct\data\images\pradita_research_innovation_center.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/pradita-research-and-innovation-center-pradita-university__e6ISk.jpg
 
 ### Photography Lab - Pradita Research & Innovation Center
 Gambar fasilitas: photography_lab_pradita_research_innovation_center.jpg
-Path lokal: D:\LLM\instruct\data\images\photography_lab_pradita_research_innovation_center.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/photography-lab-pradita-research-innovation-center__7hAQa.jpg
 
 ### Workshop Lab - Pradita Research & Innovation Center
 Gambar fasilitas: workshop_lab_pradita_research_innovation_center.jpg
-Path lokal: D:\LLM\instruct\data\images\workshop_lab_pradita_research_innovation_center.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/workshop-room-pradita-research-innovation-center__6ftRV.jpg
 
 ### Podcast Room - Pradita University
 Gambar fasilitas: podcast_room_pradita_university.jpg
-Path lokal: D:\LLM\instruct\data\images\podcast_room_pradita_university.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/podcast-room-pradita-university__fnlet.jpg
 
 ## HOSPITALITY & TOURISM LABS
 
 ### Front Office Practice Area - Hospitality & Tourism Lab
 Gambar fasilitas: front_office_practice_area_hospitality_tourism_lab.jpg
-Path lokal: D:\LLM\instruct\data\images\front_office_practice_area_hospitality_tourism_lab.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/front-office-practice-area-hospitality-tourism-lab__X5AM5.jpg
 
 ### Hotel Practice Area - Hospitality & Tourism Lab
 Gambar fasilitas: hotel_practice_area_hospitality_tourism_lab.jpg
-Path lokal: D:\LLM\instruct\data\images\hotel_practice_area_hospitality_tourism_lab.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/hotel-practice-area-hospitality-tourism-lab__tlTOd.jpg
 
 ### Kitchen Practice Area - Hospitality & Tourism Lab
 Gambar fasilitas: kitchen_practice_area_hospitality_tourism_lab.jpg
-Path lokal: D:\LLM\instruct\data\images\kitchen_practice_area_hospitality_tourism_lab.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/kitchen-practice-area-hospitality-tourism-lab__4zKez.jpg
 
 ### Kitchen Theater - Hospitality & Tourism Lab
 Gambar fasilitas: kitchen_theater_hospitality_tourism_lab.jpg
-Path lokal: D:\LLM\instruct\data\images\kitchen_theater_hospitality_tourism_lab.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/kitchen-theater-hospitality-tourism-lab__8o2SN.jpg
 
 ### Mixology Laboratorium - Hospitality & Tourism Lab
 Gambar fasilitas: mixology_laboratorium_hospitality_tourism_lab.jpg
-Path lokal: D:\LLM\instruct\data\images\mixology_laboratorium_hospitality_tourism_lab.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/mixology-laboratorium-hospitality-tourism-lab__5zt5w.jpg
 
 ### Wine Laboratory - Hospitality & Tourism Lab
 Gambar fasilitas: wine_laboratory_hospitality_tourism_lab.jpg
-Path lokal: D:\LLM\instruct\data\images\wine_laboratory_hospitality_tourism_lab.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/wine-laboratory-hospitality-tourism-lab__99K1c.jpg
 
 ### Coffee and Tea Laboratory - Hospitality & Tourism Lab
 Gambar fasilitas: coffee_and_tea_laboratory_hospitality_tourism_lab.jpg
-Path lokal: D:\LLM\instruct\data\images\coffee_and_tea_laboratory_hospitality_tourism_lab.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/thumb/coffee-and-tea-laboratory-hospitality-tourism-lab__sYd5s.jpg
 
 ## HOUSING & TRANSPORTATION
 
 ### Student Boarding House District - Cluster Alloggio
 Gambar fasilitas: student_boarding_house_district_cluster_alloggio.jpg
-Path lokal: D:\LLM\instruct\data\images\student_boarding_house_district_cluster_alloggio.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/image/student-boarding-house-district-cluster-alloggio__jcmY2.jpg
 
 ### Bedroom - Student Boarding House District
 Gambar fasilitas: bedroom_student_boarding_house_district.jpg
-Path lokal: D:\LLM\instruct\data\images\bedroom_student_boarding_house_district.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/image/bedroom-student-boarding-house-district__bfnDR.jpg
 
 ### Shuttle Bus - Pradita University
 Gambar fasilitas: shuttle_bus_pradita_university.jpg
-Path lokal: D:\LLM\instruct\data\images\shuttle_bus_pradita_university.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/image/shuttle-bus-pradita-university__40Kq8.jpg
 
 ## SPORT, LEISURE & WELLNESS
 
 ### Sport Court - Pradita University
 Gambar fasilitas: sport_court_pradita_university.jpg
-Path lokal: D:\LLM\instruct\data\images\sport_court_pradita_university.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/image/sport-court-pradita-university__rHK11.jpg
 
 ### Summarecon Mall Serpong
 Gambar fasilitas: summarecon_mall_serpong.jpg
-Path lokal: D:\LLM\instruct\data\images\summarecon_mall_serpong.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/image/summarecon-mall-serpong__2aHbO.jpg
 
 ### Scientia Square Park
 Gambar fasilitas: scientia_square_park.jpg
-Path lokal: D:\LLM\instruct\data\images\scientia_square_park.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/image/scientia-square-park__fzAB9.jpg
 
 ### Swimming Pool - The Springs Club
 Gambar fasilitas: swimming_pool_the_springs_club.jpg
-Path lokal: D:\LLM\instruct\data\images\swimming_pool_the_springs_club.jpg
 URL asli: https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/webpradita/post/image/swimming-pool-the-springs-club__P9qxy.jpg
 
 ## TRANSPORTASI

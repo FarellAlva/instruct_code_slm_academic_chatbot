@@ -274,10 +274,12 @@ def generate_facilities_knowledge(image_dir: str) -> str:
             slug = re.sub(r'[^a-zA-Z0-9]+', '_', item['name']).strip('_').lower()
             ext  = item['url'].rsplit('.', 1)[-1].split('?')[0]
             filename = f"{slug}.{ext}"
-            local_path = os.path.join(image_dir, filename)
             lines.append(f"### {item['name']}")
+            # Only the bare filename is recorded: an absolute path would be
+            # machine-specific, and it ends up inside the LLM's retrieved
+            # context, making the model recite raw filesystem paths to users.
+            # app.py resolves the real path from BASE_DIR at render time.
             lines.append(f"Gambar fasilitas: {filename}")
-            lines.append(f"Path lokal: {local_path}")
             lines.append(f"URL asli: {item['url']}")
             lines.append("")
 
