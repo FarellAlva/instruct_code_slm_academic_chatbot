@@ -15,7 +15,7 @@ from typing import Any, Dict, List
 # Ensure the root directory is on the path so we can import "config" from anywhere
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from config import CHUNK_OVERLAP, CHUNK_SIZE
+from config import CHUNK_OVERLAP, CHUNK_SIZE, SECTION_MAX_CHUNK_SIZE
 
 # Add filenames (case-insensitive match) of PDFs that contain tables/jadwal.
 SCHEDULE_FILES = [
@@ -416,23 +416,60 @@ def _chunk_by_section(
     text: str,
     source: str,
     page: int,
-    max_chunk_size: int = 800,
+    max_chunk_size: int = SECTION_MAX_CHUNK_SIZE,
 ) -> List[Dict[str, Any]]:
     """
     Split text by markdown-style headers (## / ###) to keep sections intact.
 
     Good for web-scraped text that already has natural section boundaries.
-    Falls back to sliding window for sections that are too long.
+    If an individual section exceeds max_chunk_size, cleanly splits by paragraphs
+    or bullet points instead of slicing words mid-character.
     """
     sections = re.split(r"(?=^#{1,3}\s)", text, flags=re.MULTILINE)
     sections = [section.strip() for section in sections if section.strip()]
+
+    def _split_oversized_section(sec_text: str) -> List[str]:
+        """Split a large section cleanly on paragraph or line boundaries."""
+        paragraphs = sec_text.split("\n\n")
+        parts: List[str] = []
+        buf = ""
+        for p in paragraphs:
+            p = p.strip()
+            if not p:
+                continue
+            if len(buf) + len(p) + 2 <= max_chunk_size:
+                buf = f"{buf}\n\n{p}" if buf else p
+            else:
+                if buf:
+                    parts.append(buf.strip())
+                    buf = ""
+                if len(p) <= max_chunk_size:
+                    buf = p
+                else:
+                    lines = p.split("\n")
+                    line_buf = ""
+                    for line in lines:
+                        line = line.strip()
+                        if not line:
+                            continue
+                        if len(line_buf) + len(line) + 1 <= max_chunk_size:
+                            line_buf = f"{line_buf}\n{line}" if line_buf else line
+                        else:
+                            if line_buf:
+                                parts.append(line_buf.strip())
+                            line_buf = line
+                    if line_buf:
+                        buf = line_buf
+        if buf:
+            parts.append(buf.strip())
+        return parts or [sec_text]
 
     chunks = []
     chunk_index = 0
     current_chunk = ""
 
     for section in sections:
-        if len(current_chunk) + len(section) <= max_chunk_size:
+        if len(current_chunk) + len(section) + 2 <= max_chunk_size:
             if current_chunk:
                 current_chunk += "\n\n" + section
             else:
@@ -449,22 +486,25 @@ def _chunk_by_section(
                     }
                 )
                 chunk_index += 1
-
-            if len(section) > max_chunk_size:
-                sub_chunks = _chunk_sliding_window(
-                    section,
-                    source,
-                    page,
-                    chunk_size=max_chunk_size,
-                    chunk_overlap=100,
-                )
-                for sub_chunk in sub_chunks:
-                    sub_chunk["chunk_id"] = f"{source}_p{page}_sec_c{chunk_index}"
-                    chunks.append(sub_chunk)
-                    chunk_index += 1
                 current_chunk = ""
-            else:
+
+            if len(section) <= max_chunk_size:
                 current_chunk = section
+            else:
+                sub_parts = _split_oversized_section(section)
+                for part in sub_parts[:-1]:
+                    chunk_id = f"{source}_p{page}_sec_c{chunk_index}"
+                    chunks.append(
+                        {
+                            "text": part.strip(),
+                            "source": source,
+                            "page": page,
+                            "chunk_id": chunk_id,
+                        }
+                    )
+                    chunk_index += 1
+                if sub_parts:
+                    current_chunk = sub_parts[-1]
 
     if current_chunk:
         chunk_id = f"{source}_p{page}_sec_c{chunk_index}"
@@ -490,7 +530,7 @@ def chunk_documents(
 
     Strategy selection:
       - Schedule/jadwal files -> row-level table-aware chunking
-      - Web-scraped text      -> section-aware chunking
+      - Web-scraped text      -> section-aware chunking (keeps markdown sections intact)
       - Everything else       -> standard sliding window
     """
     chunks: List[Dict[str, Any]] = []
@@ -504,7 +544,9 @@ def chunk_documents(
             doc_chunks = _chunk_table_aware(text, source, page)
             strategy = "table-aware"
         elif source.startswith("web:"):
-            doc_chunks = _chunk_by_section(text, source, page)
+            doc_chunks = _chunk_by_section(
+                text, source, page, max_chunk_size=SECTION_MAX_CHUNK_SIZE
+            )
             strategy = "section-aware"
         else:
             doc_chunks = _chunk_sliding_window(

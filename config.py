@@ -24,17 +24,17 @@ OLLAMA_BASE_URL     = os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434"
 DEFAULT_MODEL       = os.environ.get("DEFAULT_MODEL", "gemma4:31b-cloud")
 OLLAMA_API_URL      = f"{OLLAMA_BASE_URL}/v1/chat/completions"
 OLLAMA_CHAT_API_URL = f"{OLLAMA_BASE_URL}/api/chat"
-MAX_INPUT_CHARS     = int(os.environ.get("MAX_INPUT_CHARS", 500))
+MAX_INPUT_CHARS     = int(os.environ.get("MAX_INPUT_CHARS", 1000))
 RATE_LIMIT_PER_MINUTE = int(os.environ.get("RATE_LIMIT_PER_MINUTE", 10))
 RESPONSE_LANGUAGE   = os.environ.get("RESPONSE_LANGUAGE", "id")
 
 # ─── LLM Defaults ─────────────────────────────────────────────────────────────
 DEFAULT_TEMPERATURE  = 0.4
-DEFAULT_MAX_TOKENS   = 768
+DEFAULT_MAX_TOKENS   = 1536       # Ample room for comprehensive answers (e.g. multi-year timeline)
 DEFAULT_TOP_K        = 40
 DEFAULT_TOP_P        = 0.95
-DEFAULT_NUM_CTX      = 4096       # Explicit context window sent to Ollama options
-MAX_CONTEXT_TOKENS   = 2500       # Maximum token budget allocated for RAG context
+DEFAULT_NUM_CTX      = 8192       # Expanded context window sent to Ollama options (was 4096)
+MAX_CONTEXT_TOKENS   = 5500       # Maximum token budget allocated for RAG context (was 2500)
 CONTEXT_MARGIN_TOKENS= 256        # Safety margin for system prompt + response
 MAX_HISTORY_TURNS    = 6          # Max conversational turns retained
 MAX_HISTORY_TOKENS   = 500        # Max tokens dedicated to chat history
@@ -57,9 +57,10 @@ EMBEDDING_MODEL      = "intfloat/multilingual-e5-base"
 CHROMA_COLLECTION    = "pradita_knowledge"
 
 # ─── RAG ──────────────────────────────────────────────────────────────────────
-CHUNK_SIZE       = 500        # characters per chunk
-CHUNK_OVERLAP    = 100        # overlap between chunks
-TOP_K_RETRIEVAL  = 6          # number of docs returned per query
+CHUNK_SIZE             = 500        # characters per chunk (sliding window)
+CHUNK_OVERLAP          = 100        # overlap between chunks
+SECTION_MAX_CHUNK_SIZE = 2500       # max characters for section-aware web text (keeps sections intact)
+TOP_K_RETRIEVAL        = 8          # number of docs returned per query (was 6)
 
 # ─── Reranker ─────────────────────────────────────────────────────────────────
 # Set USE_RERANKER=False untuk skip reranking (lebih cepat, akurasi sedikit turun)

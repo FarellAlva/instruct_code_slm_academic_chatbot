@@ -373,8 +373,14 @@ Website: https://www.pradita.ac.id/programs/information-technology-s2
 """
 
 
-def generate_about_knowledge() -> str:
-    """Generate structured text about Pradita University overview."""
+def generate_about_knowledge(base_dir: str = "") -> str:
+    """Generate structured text about Pradita University overview (reads existing file if present)."""
+    if base_dir:
+        existing_path = os.path.join(base_dir, "data", "web", "about_pradita.txt")
+        if os.path.exists(existing_path):
+            with open(existing_path, "r", encoding="utf-8") as f:
+                return f.read().strip()
+    # Fallback to base text if file does not exist yet
     return """# Tentang Pradita University
 
 ## SEJARAH DAN LATAR BELAKANG
@@ -520,7 +526,7 @@ def run_scraper(base_dir: str, skip_images: bool = False) -> None:
 
     # 1. Generate and save structured knowledge files
     knowledge_files = {
-        "about_pradita.txt":     generate_about_knowledge(),
+        "about_pradita.txt":     generate_about_knowledge(base_dir),
         "programs.txt":          generate_programs_knowledge(),
         "facilities.txt":        generate_facilities_knowledge(image_dir),
         "scholarship.txt":       generate_scholarship_knowledge(),

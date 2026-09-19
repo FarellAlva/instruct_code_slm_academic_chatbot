@@ -21,6 +21,7 @@ from config import (
     DEFAULT_TEMPERATURE,
     DEFAULT_MAX_TOKENS,
     DEFAULT_TOP_K,
+    DEFAULT_NUM_CTX,
     TOP_K_RETRIEVAL,
     CHROMA_DIR,
     MAX_INPUT_CHARS,
@@ -303,7 +304,7 @@ PRODI_ALIAS_MAP = {
     "teknik sipil": "TS", "sipil": "TS", "ts": "TS",
     "sistem informasi": "SI", "sisfo": "SI", "si": "SI",
     "desain komunikasi visual": "DKV", "dkv": "DKV",
-    "desain interior": "DI", "interior": "DI", "di": "DI",
+    "desain interior": "DI", "interior": "DI",
     "arsitektur": "AR", "arsitek": "AR", "ars": "AR", "ar": "AR",
     "seni kuliner": "SK", "kuliner": "SK", "sk": "SK",
     "akuntansi": "AK", "accounting": "AK", "ak": "AK",
@@ -348,6 +349,23 @@ def _extract_slots(
                 if matches:
                     detected_prodi = FUZZY_PRODI_TARGETS[matches[0]]
                     break
+
+    # Special handling: "DI" abbreviation for Desain Interior (avoid Indonesian preposition "di")
+    # Only match when "di" appears after prodi-indicating context (e.g. "prodi DI", "jurusan di", "dosen di semester")
+    # and NOT when followed by a place/noun (e.g. "di pradita", "di kampus")
+    if not detected_prodi:
+        di_match = re.search(r"\bdi\b", q_lower)
+        if di_match:
+            before = q_lower[:di_match.start()].strip()
+            after = q_lower[di_match.end():].strip()
+            prodi_context_words = {"prodi", "jurusan", "program", "studi"}
+            # "di" is the abbreviation for Desain Interior if preceded by prodi context
+            # OR followed by semester/nothing (not followed by place nouns)
+            place_nouns = {"pradita", "university", "universitas", "kampus", "sini", "sana", "mana", "situ"}
+            has_prodi_context = any(w in before.split() for w in prodi_context_words)
+            followed_by_place = any(after.startswith(p) for p in place_nouns)
+            if has_prodi_context and not followed_by_place:
+                detected_prodi = "DI"
 
     prodi = detected_prodi or current_prodi
 
@@ -412,9 +430,23 @@ def _build_direct_schedule_answer(query: str, collection=None) -> str:
 
     # Disambiguation 2: Asking for schedule or lecturers without mentioning prodi or specific entity
     if not prodi and not entity_idx.match_course(query) and not entity_idx.match_lecturer(query):
-        if any(k in q_lower for k in ["jadwal", "matkul apa", "kuliah apa", "kelas apa"]) and len(query.split()) <= 7:
+        # 2a. Schedule queries without prodi
+        if any(k in q_lower for k in ["jadwal", "matkul apa", "kuliah apa", "kelas apa"]):
             return "Tentu sobat, untuk melihat jadwal perkuliahan, boleh sebutkan program studi (prodi) apa yang kamu maksud?"
-        if any(k in q_lower for k in ["siapa saja dosen", "daftar dosen", "dosen pengampu", "siapa dosen"]) and len(query.split()) <= 7:
+
+        # 2b. Lecturer queries without prodi — broad detection
+        _is_asking_lecturers = (
+            any(k in q_lower for k in [
+                "siapa saja dosen", "daftar dosen", "dosen pengampu", "siapa dosen",
+                "semua dosen", "seluruh dosen", "list dosen", "dosen yang ada",
+                "dosen apa saja", "dosen di", "nama dosen", "dosen pradita",
+                "pengajar di", "pengajar pradita", "dosen universitas",
+            ])
+            or (re.search(r"\bdosen\b", q_lower) and any(k in q_lower for k in [
+                "pradita", "university", "universitas", "kampus", "semua", "seluruh", "semuanya",
+            ]))
+        )
+        if _is_asking_lecturers:
             return (
                 "Tentu sobat, untuk memberikan daftar dosen yang tepat, boleh sebutkan program studi (jurusan) yang kamu maksud? "
                 "(Contoh: Informatika, Sistem Informasi, Teknik Sipil, Desain Komunikasi Visual, dll.)"
@@ -1205,6 +1237,10 @@ with st.sidebar:
         "Top-K Retrieval", 1, 10, TOP_K_RETRIEVAL, 1,
         help="Jumlah dokumen yang ditarik per query"
     )
+    num_ctx = st.slider(
+        "Context Window (num_ctx)", 2048, 16384, DEFAULT_NUM_CTX, 1024,
+        help="Ukuran context window model Ollama (default: 8192)"
+    )
 
     st.divider()
 
@@ -1423,6 +1459,7 @@ if prompt := st.chat_input("Tanyakan seputar Pradita University…"):
                     model        = model_name,
                     temperature  = temperature,
                     max_tokens   = max_tokens,
+                    num_ctx      = num_ctx,
                 ):
                     full_response += token
                     placeholder.markdown(full_response + "◌")
