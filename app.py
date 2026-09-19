@@ -295,6 +295,36 @@ def _extract_requested_semesters(query: str) -> set[str]:
     return requested
 
 
+import difflib
+
+PRODI_ALIAS_MAP = {
+    "teknik informatika": "INF", "informatika": "INF", "infromatika": "INF", "infomatika": "INF",
+    "it": "INF", "ti": "INF", "inf": "INF", "komputer": "INF",
+    "teknik sipil": "TS", "sipil": "TS", "ts": "TS",
+    "sistem informasi": "SI", "sisfo": "SI", "si": "SI",
+    "desain komunikasi visual": "DKV", "dkv": "DKV",
+    "desain interior": "DI", "interior": "DI", "di": "DI",
+    "arsitektur": "AR", "arsitek": "AR", "ars": "AR", "ar": "AR",
+    "seni kuliner": "SK", "kuliner": "SK", "sk": "SK",
+    "akuntansi": "AK", "accounting": "AK", "ak": "AK",
+    "manajemen bisnis": "MB", "manajemen": "MB", "retail": "MR", "mb": "MB", "mr": "MR",
+    "pariwisata": "PAR", "hospitality": "PAR", "hotel": "PAR", "par": "PAR", "f&b": "F&B",
+    "perencanaan wilayah dan kota": "PWK", "pwk": "PWK", "planologi": "PWK",
+    "mkdu": "MKDU",
+}
+
+FUZZY_PRODI_TARGETS = {
+    "informatika": "INF",
+    "sipil": "TS",
+    "arsitektur": "AR",
+    "akuntansi": "AK",
+    "pariwisata": "PAR",
+    "kuliner": "SK",
+    "interior": "DI",
+    "planologi": "PWK",
+}
+
+
 def _extract_slots(
     query: str,
     current_prodi: Optional[str] = None,
@@ -302,14 +332,23 @@ def _extract_slots(
 ) -> Tuple[Optional[str], Optional[str], Optional[str]]:
     """Extract prodi, semester, and day slots from query and previous session state."""
     q_lower = query.lower()
-    
-    # 1. Prodi detection
+
+    # 1. Prodi detection with alias resolution and typo tolerance
     detected_prodi = None
-    from rag.schedule_extractor import PRODI_MAP
-    for code, full in PRODI_MAP.items():
-        if re.search(r"\b" + re.escape(code.lower()) + r"\b", q_lower) or full.lower() in q_lower:
-            detected_prodi = code
+    for alias in sorted(PRODI_ALIAS_MAP.keys(), key=len, reverse=True):
+        if re.search(r"\b" + re.escape(alias) + r"\b", q_lower):
+            detected_prodi = PRODI_ALIAS_MAP[alias]
             break
+
+    if not detected_prodi:
+        words = re.findall(r"[a-z]+", q_lower)
+        for w in words:
+            if len(w) >= 5:
+                matches = difflib.get_close_matches(w, list(FUZZY_PRODI_TARGETS.keys()), n=1, cutoff=0.72)
+                if matches:
+                    detected_prodi = FUZZY_PRODI_TARGETS[matches[0]]
+                    break
+
     prodi = detected_prodi or current_prodi
 
     # 2. Semester detection
