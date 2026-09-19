@@ -31,7 +31,19 @@ Ketik perintah berikut:
   Proses build pertama kali membutuhkan waktu ~2-4 menit karena Docker akan:
   - Menginstal Python & semua dependensi (Streamlit, ChromaDB, dll).
   - Mengunduh & menyimpan model embedding (multilingual-e5-base) dan reranker.
-  - Menyalakan container 'adita-ollama' dan container 'adita-rag-app'.
+  - Menyalakan container 'adita-ollama'.
+  - Menjalankan container 'adita-ingest' untuk membangun knowledge base
+    (ChromaDB) dari folder data/. Container ini otomatis berhenti setelah selesai.
+  - Menyalakan container 'adita-rag-app' setelah ingestion sukses.
+
+* Tentang ingestion otomatis:
+  Knowledge base (folder chroma_db/) TIDAK ikut di dalam repository, jadi pada
+  komputer baru folder itu masih kosong. Service 'adita-ingest' mengisinya
+  secara otomatis dari folder data/ yang sudah tersedia di repo — tanpa perlu
+  koneksi ke website Pradita.
+
+  Langkah ini idempoten: kalau knowledge base sudah terisi, ingestion otomatis
+  dilewati, sehingga 'docker compose up -d' berikutnya tetap cepat.
 
 --------------------------------------------------------------------------------
 3. LOGIN OLLAMA CLOUD & PULL MODEL (HANYA SEKALI SEUMUR HIDUP)
@@ -96,6 +108,21 @@ Lalu di browser (http://localhost:8501), ganti teks pada kolom 'Model' di sideba
 
 - Cek status container yang sedang berjalan:
     docker compose ps
+  *(Container 'adita-ingest' akan tampil berstatus 'Exited (0)'. Itu NORMAL —
+    container ini memang hanya berjalan sekali lalu berhenti.)*
+
+- Melihat log proses ingestion knowledge base:
+    docker compose logs adita-ingest
+
+- Membangun ULANG knowledge base dari folder data/ (tanpa scraping web):
+    docker compose run --rm adita-ingest python ingest.py --clear --skip-scrape
+
+- Mengambil data TERBARU dari website Pradita, lalu bangun ulang knowledge base:
+    docker compose run --rm adita-ingest python ingest.py --clear
+  *(Perintah ini butuh koneksi internet karena melakukan scraping + unduh foto.)*
+
+  Setelah ingest ulang, nyalakan ulang aplikasi chat agar membaca data baru:
+    docker compose restart adita-chat
 
 --------------------------------------------------------------------------------
 7. TROUBLESHOOTING / KENDALA UMUM
@@ -110,8 +137,23 @@ Kendala 2: Docker daemon error / tidak bisa konek
 Solusi   : Pastikan aplikasi Docker Desktop di Windows sudah dibuka dan
            berstatus "Engine running" di pojok kiri bawah.
 
-Kendala 3: Perubahan data text di folder data/web tidak terbaca
+Kendala 3: Chatbot menjawab "tidak memiliki informasi" untuk semua pertanyaan
+Solusi   : Knowledge base kemungkinan kosong / gagal dibangun. Cek log-nya:
+               docker compose logs adita-ingest
+           Lalu bangun ulang secara manual:
+               docker compose run --rm adita-ingest python ingest.py --clear --skip-scrape
+
+Kendala 4: Container 'adita-rag-app' tidak mau menyala
+Solusi   : adita-chat sengaja menunggu 'adita-ingest' selesai dengan sukses.
+           Jika ingestion gagal, aplikasi chat tidak akan dinyalakan supaya
+           tidak melayani jawaban dari knowledge base kosong. Periksa:
+               docker compose logs adita-ingest
+
+Kendala 5: Perubahan data text di folder data/web tidak terbaca
 Solusi   : Karena folder data/ dan chroma_db/ sudah di-mount langsung (volume bind),
            setiap perubahan file di komputer host otomatis langsung tersinkron
-           ke dalam container.
+           ke dalam container. TETAPI file baru belum masuk ke knowledge base
+           sampai di-ingest ulang:
+               docker compose run --rm adita-ingest python ingest.py --clear --skip-scrape
+               docker compose restart adita-chat
 ================================================================================
