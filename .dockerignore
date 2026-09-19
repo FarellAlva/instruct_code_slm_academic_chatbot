@@ -1,0 +1,17 @@
+.git
+.gitignore
+.pytest_cache
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.env
+venv
+.venv
+env
+eval/results
+eval/baseline
+chroma_db_backup_*
+debug
+.system_generated
+*.tar

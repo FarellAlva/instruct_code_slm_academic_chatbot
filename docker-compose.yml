@@ -1,0 +1,42 @@
+services:
+  adita-chat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: adita-chat:latest
+    container_name: adita-rag-app
+    restart: unless-stopped
+    ports:
+      - "8501:8501"
+    environment:
+      # Arahkan ke Ollama di komputer host
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+      - DEFAULT_MODEL=gemma4:31b-cloud
+      - DEFAULT_TEMPERATURE=0.4
+      - DEFAULT_MAX_TOKENS=1536
+      - DEFAULT_NUM_CTX=8192
+      - MAX_CONTEXT_TOKENS=5500
+      - TOP_K_RETRIEVAL=8
+    extra_hosts:
+      # Memungkinkan container menjangkau service Ollama di localhost mesin host (Windows/Mac/Linux)
+      - "host.docker.internal:host-gateway"
+    volumes:
+      # Mount folder data & database agar pembaruan data di host langsung tersinkron
+      - ./data:/app/data
+      - ./chroma_db:/app/chroma_db
+
+  # (Opsional) Service Ollama mandiri jika mesin tujuan belum memiliki Ollama terpasang
+  # Jalankan dengan: docker compose --profile full up -d
+  ollama:
+    image: ollama/ollama:latest
+    container_name: adita-ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+    profiles:
+      - full
+
+volumes:
+  ollama_models:
