@@ -1253,12 +1253,14 @@ with st.sidebar:
 
     col_check, col_clear = st.columns(2)
     with col_check:
+        # pyrefly: ignore [unexpected-keyword]
         if st.button("Check Ollama", width="stretch"):
             result = check_ollama_connection(model_name)
             st.session_state.ollama_ok = result["ok"]
             st.info(result["message"])
 
     with col_clear:
+        # pyrefly: ignore [unexpected-keyword]
         if st.button("Clear Chat", width="stretch"):
             st.session_state.messages = []
             st.rerun()
@@ -1293,17 +1295,19 @@ with st.sidebar:
         )
 
     st.divider()
-    st.markdown("## Context Memory")
+    st.markdown("## Context Usage")
     
-    # Calculate token estimate from last 6 messages
-    recent_msgs = st.session_state.messages[-6:] if "messages" in st.session_state else []
+    # Calculate token estimate dynamically against num_ctx
+    recent_msgs = st.session_state.messages if "messages" in st.session_state else []
     history_str = " ".join(m.get("content", "") for m in recent_msgs)
-    est_tokens = int(len(history_str.split()) * 1.3) + 150 # Base prompt overhead
-    max_ctx = 2048
+    msg_tokens = int(len(history_str.split()) * 1.3)
+    sys_overhead = 300
+    est_tokens = msg_tokens + sys_overhead
     
-    percent = min(est_tokens / max_ctx, 1.0)
+    percent = min(est_tokens / num_ctx, 1.0)
     st.progress(percent)
-    st.caption(f"**{est_tokens}** / {max_ctx} Tokens ({int(percent * 100)}%)")
+    st.caption(f"**{est_tokens:,}** / {num_ctx:,} Tokens ({int(percent * 100)}%)")
+    st.caption("Alokasi dinamis: riwayat chat otomatis memakai sisa kapasitas Context Window.")
 
     st.divider()
     st.caption("Pradita University AI Chatbot v2.0")
@@ -1434,9 +1438,8 @@ if prompt := st.chat_input("Tanyakan seputar Pradita University…"):
                 )
                 st.markdown(chunk_preview_html, unsafe_allow_html=True)
 
-    # Build chat history for multi-turn (limit to last 6 messages to avoid
-    # old topics contaminating new answers)
-    recent_messages = st.session_state.messages[-7:-1]  # last 6 msgs before the new one
+    # Build chat history for multi-turn (passed to dynamic token budgeter in ollama_client)
+    recent_messages = st.session_state.messages[:-1]  # all messages before the current turn
     history = [
         {"role": m["role"], "content": m["content"]}
         for m in recent_messages

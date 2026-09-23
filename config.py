@@ -29,15 +29,15 @@ RATE_LIMIT_PER_MINUTE = int(os.environ.get("RATE_LIMIT_PER_MINUTE", 10))
 RESPONSE_LANGUAGE   = os.environ.get("RESPONSE_LANGUAGE", "id")
 
 # ─── LLM Defaults ─────────────────────────────────────────────────────────────
-DEFAULT_TEMPERATURE  = 0.4
-DEFAULT_MAX_TOKENS   = 1536       # Ample room for comprehensive answers (e.g. multi-year timeline)
+DEFAULT_TEMPERATURE  = float(os.environ.get("DEFAULT_TEMPERATURE", 0.4))
+DEFAULT_MAX_TOKENS   = int(os.environ.get("DEFAULT_MAX_TOKENS", 1536))       # Ample room for comprehensive answers (e.g. multi-year timeline)
 DEFAULT_TOP_K        = 40
 DEFAULT_TOP_P        = 0.95
-DEFAULT_NUM_CTX      = 8192       # Expanded context window sent to Ollama options (was 4096)
-MAX_CONTEXT_TOKENS   = 5500       # Maximum token budget allocated for RAG context (was 2500)
+DEFAULT_NUM_CTX      = int(os.environ.get("DEFAULT_NUM_CTX", 8192))       # Expanded context window sent to Ollama options (was 4096)
+MAX_CONTEXT_TOKENS   = int(os.environ.get("MAX_CONTEXT_TOKENS", 5500))       # Maximum token budget allocated for RAG context (was 2500)
 CONTEXT_MARGIN_TOKENS= 256        # Safety margin for system prompt + response
-MAX_HISTORY_TURNS    = 6          # Max conversational turns retained
-MAX_HISTORY_TOKENS   = 500        # Max tokens dedicated to chat history
+MAX_HISTORY_TURNS    = 20         # Max conversational turns retained (dynamic allocation)
+MAX_HISTORY_TOKENS   = 4096       # Fallback token budget for chat history when dynamic budget is omitted
 OLLAMA_CHAT_API_URL  = f"{OLLAMA_BASE_URL}/api/chat"
 
 
@@ -84,7 +84,9 @@ SYSTEM_PROMPT = (
     "</keamanan>\n\n"
     "<aturan_jawaban>\n"
     "1. Jawab HANYA dari konteks. Jika tidak ada: 'Maaf sobat, saya tidak memiliki informasi tersebut.' "
-    "lalu sarankan menghubungi pihak kampus atau situs resmi pradita.ac.id. Jangan menebak.\n"
+    "lalu sarankan menghubungi pihak kampus atau situs resmi pradita.ac.id. Jangan menebak. "
+    "Khusus pertanyaan mengenai riwayat percakapan kita saat ini (misalnya meminta merangkum atau menyebutkan "
+    "apa saja yang sudah ditanyakan dalam sesi ini), kamu boleh merujuk langsung pada pesan-pesan sebelumnya dalam riwayat obrolan.\n"
     "2. Dosen/jadwal: hanya sebut dosen yang tertulis eksplisit di 'Dosen pengampu tertulis:'. "
     "Jangan tebak dosen EGAP (fleksibel). Jangan campur data antar prodi/semester/periode.\n"
     "3. Data jadwal: tabel Markdown (Hari | Jam | Mata Kuliah | Kode | SKS | Kelas | Ruang | Dosen), "

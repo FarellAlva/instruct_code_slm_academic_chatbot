@@ -11,7 +11,7 @@ Buka Terminal / PowerShell / Command Prompt, lalu ketik:
 
 3. LOGIN OLLAMA CLOUD & PULL MODEL (HANYA SEKALI SEUMUR HIDUP)
 
-
+\
 menggunakan model cloud 'gemma4:31b-cloud', lakukan login sekali:
 
 Langkah 3.1: Login ke Akun Ollama
@@ -24,10 +24,6 @@ Jalankan perintah ini di terminal:
 Langkah 3.2: Unduh Model Cloud
 Setelah berhasil login, jalankan:
     docker compose exec ollama ollama pull gemma4:31b-cloud
-
-* Selesai! Data login dan model ini tersimpan permanen di volume Docker
-  (ollama_models). Jika komputer dimatikan atau direstart, Anda TIDAK PERLU
-  login ulang.
 
 
 4. AKSES APLIKASI DI BROWSER

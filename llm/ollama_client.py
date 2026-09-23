@@ -116,7 +116,9 @@ def build_messages(
     context:     str = "",
     chat_history: Optional[List[Dict[str, str]]] = None,
     max_history_turns: int = MAX_HISTORY_TURNS,
-    max_history_tokens: int = MAX_HISTORY_TOKENS,
+    max_history_tokens: Optional[int] = None,
+    num_ctx: Optional[int] = None,
+    max_tokens: int = DEFAULT_MAX_TOKENS,
     delimiter_token: Optional[str] = None,
 ) -> List[Dict[str, str]]:
     """
@@ -124,7 +126,7 @@ def build_messages(
 
     Order:
       1. system prompt (rules only, NO injected context)
-      2. previous turns from chat history (bounded by turns & token budget)
+      2. previous turns from chat history (bounded by turns & dynamic token budget)
       3. current user message with request-scoped random delimiter:
          <konteks_{token}>
          {sanitized_context}
@@ -135,12 +137,25 @@ def build_messages(
     """
     messages = [{"role": "system", "content": SYSTEM_PROMPT}]
 
+    # Compute effective history token budget dynamically based on Context Window
+    if max_history_tokens is not None:
+        effective_max_history = max_history_tokens
+    elif num_ctx is not None:
+        sys_tokens = estimate_tokens(SYSTEM_PROMPT)
+        ctx_tokens = estimate_tokens(context) if context else 0
+        query_tokens = estimate_tokens(user_query)
+        safety_margin = 150
+        reserved = sys_tokens + ctx_tokens + query_tokens + max_tokens + safety_margin
+        effective_max_history = max(0, num_ctx - reserved)
+    else:
+        effective_max_history = MAX_HISTORY_TOKENS
+
     if chat_history:
         # Take at most the last max_history_turns
         recent = list(chat_history[-max_history_turns:])
-        # Trim oldest turns if total history tokens exceed budget
+        # Trim oldest turns if total history tokens exceed dynamic budget
         total_tokens = sum(estimate_tokens(m.get("content", "")) for m in recent)
-        while recent and total_tokens > max_history_tokens:
+        while recent and total_tokens > effective_max_history:
             dropped = recent.pop(0)
             total_tokens -= estimate_tokens(dropped.get("content", ""))
         messages.extend(recent)
@@ -189,6 +204,8 @@ def chat_with_context(
         user_query,
         context,
         chat_history,
+        num_ctx=num_ctx,
+        max_tokens=max_tokens,
         delimiter_token=delimiter_token,
     )
 
@@ -265,6 +282,8 @@ def stream_chat_with_context(
         user_query,
         context,
         chat_history,
+        num_ctx=num_ctx,
+        max_tokens=max_tokens,
         delimiter_token=delimiter_token,
     )
 
