@@ -1,4 +1,4 @@
-# Adita AI (Docker)
+# Adita AI (Docker Deployed)
 
 ### 1. Clone Repository
 
