@@ -2,32 +2,26 @@
 eval/evaluate.py
 ================
 Script evaluasi multi-model RAG untuk chatbot akademik Pradita University.
-Mengikuti metodologi paper Hendra Lijaya et al. (SISFOKOM 2025):
+Berdasarkan metodologi paper:
+"Performance Comparison of Small Language Models as University Information Service Assistants"
+Farell Alvaro Theriono, Handri Santoso, Wahyu Tisno Atmojo, Erick Dazki (Universitas Pradita)
 
-Metrik:
-  - Semantic Similarity (cosine similarity via embeddings)
-  - LLM-as-a-Judge     (skor 0-100 dari Ollama LLM judge)
-  - RAG Context Diagnostics (context_has_answer, context_similarity)
-  - Latency   (detik per inference)
-  - Throughput (token/detik dari Ollama API)
-  - VRAM peak (MB, dari nvidia-smi)
-
-Model yang dievaluasi:
-  - gemma2:2b
-  - qwen3:1.7B
-  - llama3.2:1b  (alias: meta-llama/Llama-3.2-1B-Instruct @ Ollama)
+Metrik & Parameter (Paper-Aligned):
+  - Models: gemma2:2b, qwen3:1.7B, llama3.2:1b
+  - Ollama options: temperature = 0.4, context length (num_ctx) = 2048, Q4_K_M quantization
+  - Repeated runs: 5 runs per model per question (mengukur variansi run-to-run / Mean ± SD)
+  - RAG: ChromaDB (multilingual-e5-base, HNSW cosine), top_k=6 reranked to 6 with cross-encoder
+  - Semantic Similarity: Cosine similarity via intfloat/multilingual-e5-base (Persamaan 1)
+  - LLM-as-a-Judge: Gemini 3.1 Pro & Claude Sonnet 4.6 (rubrik 40% akurasi, 30% kelengkapan, 20% relevansi, 10% kejelasan)
+  - Performance: Latency (s), Throughput (tok/s), VRAM peak (MB), Completion & Thinking tokens
 
 Output:
-  - eval/results/results_raw.csv   — data mentah per (model, pertanyaan)
-  - eval/results/results_summary.csv — rata-rata per model
-
-Referensi:
-  Hendra Lijaya et al., "Comparative Analysis of RAG-Based Open-Source LLMs
-  for Indonesian Banking Customer Service Optimization Using Simulated Data",
-  Jurnal SISFOKOM, Vol.14, No.03, 2025.
+  - eval/results/results_raw_{timestamp}.csv & results_raw.csv (semua run 1..N)
+  - eval/results/results_per_question_{timestamp}.csv & results_per_question.csv (rerata per soal)
+  - eval/results/results_summary_{timestamp}.csv & results_summary.csv (rerata per model ± SD)
 """
 
-import os, sys, csv, time, json, subprocess, re
+import os, sys, csv, time, json, subprocess, re, statistics
 from datetime import datetime
 
 EVAL_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -43,18 +37,20 @@ MODELS = [
     "llama3.2:1b",
 ]
 
-# LLM Judge model — uses the best available local model for judging
+# LLM Judge model — uses local model placeholder or cloud models (Gemini / Claude)
 LLM_JUDGE_MODEL = "llama3.2:1b"
 
-# Ollama inference params shared
-TEMPERATURE = 0.1    # sangat rendah untuk jawaban deterministik
-TOP_P       = 0.9
+# ─── Ollama Inference Parameters (Paper Section 3.4 & Fig. 2) ──────────────────
+TEMPERATURE = 0.4    # Paper Section 3.4 (temperature 0.4 untuk SLM)
+NUM_CTX     = 2048   # Paper Section 3.4 (maximum context length of 2048 tokens)
+TOP_P       = 0.9    # Sampling top_p
+NUM_RUNS    = 5      # 5 repeated runs per question untuk validitas statistik (Paper Sec. 4.6 & 5)
 
-# Per-model overrides
+# Per-model overrides (all conform to 2048 context & predict window)
 MODEL_CONFIG: dict[str, dict] = {
-    "gemma2:2b":   {"num_predict": 2048},
-    "qwen3:1.7B":  {"num_predict": 2048},
-    "llama3.2:1b": {"num_predict": 2048},
+    "gemma2:2b":   {"num_predict": 2048, "num_ctx": NUM_CTX},
+    "qwen3:1.7B":  {"num_predict": 2048, "num_ctx": NUM_CTX},
+    "llama3.2:1b": {"num_predict": 2048, "num_ctx": NUM_CTX},
 }
 
 OLLAMA_API  = "http://localhost:11434"
@@ -70,7 +66,7 @@ print("[Setup] All libraries loaded.\n")
 _EMBED_MODEL = None
 
 def _get_embed_model():
-    """Lazy-load the embedding model (same as RAG pipeline)."""
+    """Lazy-load the embedding model (same as RAG pipeline: intfloat/multilingual-e5-base)."""
     global _EMBED_MODEL
     if _EMBED_MODEL is None:
         from sentence_transformers import SentenceTransformer
@@ -81,13 +77,6 @@ def _get_embed_model():
 
 
 # ─── Refusal Detection ────────────────────────────────────────────────────────
-# Embedding-based metrics (SemSim, BERTScore) cannot distinguish between
-# "I don't know" and an actual answer because they measure topical proximity,
-# not factual completeness. A refusal and its reference both share the same
-# topic embedding space → inflated scores.
-#
-# Fix: detect refusal patterns and override scores to 0.0.
-
 _REFUSAL_PHRASES = [
     "maaf sobat, saya tidak memiliki informasi",
     "maaf, saya tidak memiliki informasi",
@@ -103,6 +92,7 @@ _REFUSAL_PHRASES = [
     "tidak ada dalam konteks",
     "tidak ada dalam dokumen",
     "tidak ada informasi tentang",
+    "tidak disebutkan dalam dokumen",
 ]
 
 
@@ -110,15 +100,9 @@ def detect_refusal(answer: str) -> bool:
     """
     Detect if the model answered with a refusal/"I don't know" response.
     Returns True if a known refusal pattern is found.
-
-    Why this matters:
-      BERTScore and SemSim measure embedding proximity, not factual accuracy.
-      A refusal like 'Maaf saya tidak tahu jadwal' still scores ~0.90 SemSim
-      against the schedule reference because both texts share the same TOPIC.
-      Detecting refusals lets us assign the correct score of 0.0.
     """
     if not answer:
-        return True  # empty answer is always a refusal
+        return True  # empty answer is treated as refusal
     lower = answer.lower().strip()
     for phrase in _REFUSAL_PHRASES:
         if phrase in lower:
@@ -126,7 +110,29 @@ def detect_refusal(answer: str) -> bool:
     return False
 
 
-def compute_semantic_similarity(text_a: str, text_b: str, penalize_refusal: bool = True) -> float:
+def compute_semantic_similarity(text_a: str, text_b: str, penalize_refusal: bool = False) -> float:
+    """
+    Compute cosine similarity between two texts using the project's
+    embedding model (intfloat/multilingual-e5-base).
+
+    Following paper methodology (Section 3.7, Equation 1):
+      sim(A, B) = cos(theta) = (A . B) / (||A|| * ||B||)
+
+    Note:
+      Default penalize_refusal=False produces pure cosine similarity matching
+      Table 9 in the paper (e.g. Q15 refusal for llama3.2:1b yields ~0.5612).
+      Refusal presence is tracked separately via `refusal_detected`.
+    """
+    if not text_a or not text_b:
+        return 0.0
+
+    if penalize_refusal and detect_refusal(text_a):
+        return 0.0
+
+    model = _get_embed_model()
+    embeddings = model.encode([text_a, text_b], normalize_embeddings=True)
+    similarity = float(embeddings[0] @ embeddings[1])
+    return round(max(0.0, min(1.0, similarity)), 4)
     """
     Compute cosine similarity between two texts using the project's
     embedding model (intfloat/multilingual-e5-base).
