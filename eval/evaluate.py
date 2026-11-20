@@ -1,7 +1,8 @@
 """
 eval/evaluate.py  (versi robust)
 ================================
-Evaluasi multi-model RAG: gemma2:2b, qwen3:1.7B, llama3.2:1b dengan N run per pertanyaan.
+Evaluasi multi-model RAG dengan N run per pertanyaan, 4 kondisi:
+  gemma2:2b | llama3.2:1b | qwen3:1.7B (non-thinking, think=False) | qwen3:1.7B (thinking, think=True)
 
 Prinsip desain
 --------------
@@ -33,14 +34,22 @@ sys.path.insert(0, PROJECT_DIR)
 RESULTS_ROOT = os.path.join(EVAL_DIR, "results")
 
 # ─── Konfigurasi eksperimen ──────────────────────────────────────────────────
-MODELS = ["gemma2:2b", "qwen3:1.7B", "llama3.2:1b"]
-THINKING_MODELS = {"qwen3:1.7B", "qwen3:1.7b"}      # model yang dipanggil dengan think=True (eksplisit)
+# Kondisi eksperimen. `think`: None = model tanpa mode thinking (parameter tidak dikirim),
+# True/False = dikirim eksplisit ke Ollama. Urutan menjaga qwen3 tetap termuat di GPU.
+CONDITIONS = [
+    {"name": "gemma2:2b",          "model": "gemma2:2b",   "think": None},
+    {"name": "llama3.2:1b",        "model": "llama3.2:1b", "think": None},
+    {"name": "qwen3:1.7B-nothink", "model": "qwen3:1.7B",  "think": False},
+    {"name": "qwen3:1.7B-think",   "model": "qwen3:1.7B",  "think": True},
+]
+COND = {c["name"]: c for c in CONDITIONS}
+MODELS = [c["name"] for c in CONDITIONS]
 
 TEMPERATURE = 0.4
-NUM_CTX     = 4096                    # 4k context window (optimal: muat di GPU tanpa spillover)
+NUM_CTX     = 4096                    # periksa dengan `ollama ps` bahwa model 100% di GPU
 NUM_PREDICT = 4096                    # Ruang output sangat longgar (mencegah jawaban terpotong)
 TOP_P       = 0.9
-NUM_RUNS    = 5
+NUM_RUNS    = 3
 SEED_BASE   = 0                       # seed run ke-i = SEED_BASE + i  (1..N)
 KEEP_ALIVE  = "10m"
 TOP_K_RETRIEVAL = 6
@@ -69,12 +78,12 @@ _REFUSAL_PHRASES = [
 ]
 
 RAW_FIELDS = [
-    "model", "question_id", "run_idx", "seed", "attempts", "status",
+    "model", "ollama_model", "think_mode", "question_id", "run_idx", "seed", "attempts", "status",
     "question", "category", "complexity", "answer", "raw_answer", "reference_answer",
     "semantic_similarity", "refusal_detected", "no_final_answer", "truncated", "ctx_overflow",
     "context_has_answer", "context_similarity", "num_chunks_retrieved",
     "latency_s", "throughput_tps", "prompt_tokens", "completion_tokens",
-    "thinking_tokens_est", "answer_tokens_est", "done_reason",
+    "thinking_tokens_est", "answer_tokens_est", "thinking_observed", "done_reason",
     "vram_mb_before", "vram_mb_after", "error", "timestamp",
 ]
 METRICS = ["semantic_similarity", "latency_s", "throughput_tps", "completion_tokens"]
@@ -170,6 +179,16 @@ def strip_thinking(text):
     return _UNCLOSED_THINK_RE.sub("", _THINK_RE.sub("", text)).strip()
 
 
+_THINK_CONTENT_RE = re.compile(r"<think>(.*?)(?:</think>|\Z)", re.DOTALL | re.IGNORECASE)
+
+
+def thinking_chars(result):
+    """Jumlah karakter isi thinking: field `thinking` (API baru) + blok <think> inline (termasuk yang tak tertutup)."""
+    resp = result.get("response") or ""
+    parts = [result.get("thinking") or ""] + _THINK_CONTENT_RE.findall(resp)
+    return sum(len(x.strip()) for x in parts)
+
+
 # ─── Dataset ─────────────────────────────────────────────────────────────────
 def load_dataset():
     with open(os.path.join(EVAL_DIR, "ground_truth.csv"), newline="", encoding="utf-8") as f:
@@ -184,11 +203,16 @@ def build_options(temperature, seed, num_predict=NUM_PREDICT):
             "num_predict": num_predict, "seed": seed}
 
 
-def ollama_generate_once(model, prompt, system, temperature, seed, num_predict=NUM_PREDICT):
+NOTHINK_FALLBACK = False   # True: tambahkan soft-switch "/no_think" ke prompt (untuk Ollama lama)
+
+
+def ollama_generate_once(model, prompt, system, temperature, seed, num_predict=NUM_PREDICT, think=None):
+    if think is False and NOTHINK_FALLBACK:
+        prompt = prompt + "\n/no_think"
     payload = {"model": model, "system": system, "prompt": prompt, "stream": False,
                "keep_alive": KEEP_ALIVE, "options": build_options(temperature, seed, num_predict)}
-    if model in THINKING_MODELS:
-        payload["think"] = True
+    if think is not None:
+        payload["think"] = think
     t0 = time.time()
     result = http_json("/api/generate", payload, timeout=REQUEST_TIMEOUT)
     latency = time.time() - t0
@@ -199,21 +223,45 @@ def ollama_generate_once(model, prompt, system, temperature, seed, num_predict=N
     return result, latency
 
 
-def warm_up(model, temperature):
+def warm_up(cond, temperature):
     """Muat model ke GPU dengan opsi identik (num_ctx sama agar tidak reload). Tidak dicatat."""
     for attempt in range(1, MAX_ATTEMPTS + 1):
         try:
-            ollama_generate_once(model, "Halo", "Jawab singkat.", temperature, 0, num_predict=8)
-            log(f"  [warm-up] {model} siap")
+            ollama_generate_once(cond["model"], "Halo", "Jawab singkat.", temperature, 0,
+                                 num_predict=8, think=cond["think"])
+            log(f"  [warm-up] {cond['name']} siap")
             return
         except Exception as e:
-            log(f"  [warm-up] {model} percobaan {attempt}/{MAX_ATTEMPTS} gagal: {e}")
+            log(f"  [warm-up] {cond['name']} percobaan {attempt}/{MAX_ATTEMPTS} gagal: {e}")
             time.sleep(5 * attempt)
-    raise SystemExit(f"Warm-up gagal untuk {model}; periksa Ollama dan ketersediaan model.")
+    raise SystemExit(f"Warm-up gagal untuk {cond['name']}; periksa Ollama dan ketersediaan model.")
 
 
-def run_cell(model, qa, run_idx, ctx, temperature, retry_no_answer):
+def probe_think_modes(conds, temperature):
+    """Pastikan kondisi think=True benar-benar berpikir dan think=False benar-benar tidak.
+    Ollama lama mengabaikan field `think` secara diam-diam; tanpa probe ini kondisi akan salah label."""
+    report = {}
+    for c in conds:
+        if c["think"] is None:
+            continue
+        res, _ = ollama_generate_once(c["model"], "Sebutkan dua warna primer.", "Jawab singkat.",
+                                      temperature, 0, num_predict=256, think=c["think"])
+        observed = thinking_chars(res) > 0
+        report[c["name"]] = {"expected_thinking": c["think"], "observed_thinking": observed}
+        status = "OK" if observed == c["think"] else "TIDAK SESUAI"
+        log(f"  [probe] {c['name']}: think={c['think']} -> thinking terdeteksi={observed}  [{status}]")
+        if observed != c["think"]:
+            hint = ("Perbarui Ollama (think=False membutuhkan versi yang mendukung parameter `think`), "
+                    "atau jalankan dengan --nothink-fallback untuk memakai soft-switch /no_think."
+                    if c["think"] is False else
+                    "Pastikan model qwen3 dan versi Ollama mendukung thinking.")
+            raise SystemExit(f"Probe gagal untuk {c['name']}. {hint}")
+    return report
+
+
+def run_cell(cond, qa, run_idx, ctx, temperature, retry_no_answer):
     """Hasilkan satu baris data untuk (model, pertanyaan, run). Tidak melempar exception."""
+    model, think = cond["model"], cond["think"]
     base_seed = SEED_BASE + run_idx
     prompt = (f"KONTEKS:\n{ctx['context']}\n\nPERTANYAAN: {qa['question']}\n\n"
               "Jawab pertanyaan di atas berdasarkan konteks yang diberikan.")
@@ -225,7 +273,7 @@ def run_cell(model, qa, run_idx, ctx, temperature, retry_no_answer):
         attempts += 1
         try:
             result, latency = ollama_generate_once(model, prompt, _EVAL_SYSTEM_PROMPT,
-                                                   temperature, seed_used)
+                                                   temperature, seed_used, think=think)
             last_err = ""
         except Exception as e:                       # kegagalan infrastruktur -> retry, seed sama
             last_err = f"{type(e).__name__}: {e}"
@@ -245,7 +293,8 @@ def run_cell(model, qa, run_idx, ctx, temperature, retry_no_answer):
         break
 
     row = {k: "" for k in RAW_FIELDS}
-    row.update({"model": model, "question_id": qa["id"], "run_idx": run_idx, "seed": seed_used,
+    row.update({"model": cond["name"], "ollama_model": model,
+                "think_mode": {True: "on", False: "off", None: "n/a"}[think], "question_id": qa["id"], "run_idx": run_idx, "seed": seed_used,
                 "attempts": attempts, "question": qa["question"], "category": qa["category"],
                 "complexity": qa["complexity"], "reference_answer": qa["reference_answer"],
                 "timestamp": datetime.now().isoformat(timespec="seconds"),
@@ -263,8 +312,8 @@ def run_cell(model, qa, run_idx, ctx, temperature, retry_no_answer):
     completion = int(result.get("eval_count", 0) or 0)
     eval_ns = result.get("eval_duration", 0) or 0
     prompt_tok = int(result.get("prompt_eval_count", 0) or 0)
-    thinking_chars = len(thinking_field) + (len(resp) - len(clean))
-    think_est = thinking_chars // 4                  # ESTIMASI kasar (4 karakter/token)
+    t_chars = thinking_chars(result)
+    think_est = t_chars // 4                         # ESTIMASI kasar (4 karakter/token)
     done_reason = result.get("done_reason", "")
 
     row.update({
@@ -279,6 +328,7 @@ def run_cell(model, qa, run_idx, ctx, temperature, retry_no_answer):
         "throughput_tps": round(completion / (eval_ns / 1e9), 2) if eval_ns > 0 else 0.0,
         "prompt_tokens": prompt_tok, "completion_tokens": completion,
         "thinking_tokens_est": think_est, "answer_tokens_est": max(0, completion - think_est),
+        "thinking_observed": t_chars > 0,
         "done_reason": done_reason, "error": "",
     })
     return row
@@ -346,7 +396,9 @@ def model_summary(rows, models, expected_per_model):
                "truncated": sum(bool(r["truncated"]) for r in mr),
                "ctx_overflow": sum(bool(r["ctx_overflow"]) for r in mr),
                "refusals": sum(bool(r["refusal_detected"]) for r in mr),
-               "retried_cells": sum(int(r["attempts"] or 1) > 1 for r in mr)}
+               "retried_cells": sum(int(r["attempts"] or 1) > 1 for r in mr),
+               "think_mismatch": sum((r["think_mode"] == "on" and not r["thinking_observed"]) or
+                                     (r["think_mode"] == "off" and bool(r["thinking_observed"])) for r in mr)}
         qids = sorted({r["question_id"] for r in mr})
         runs = sorted({r["run_idx"] for r in mr})
         for k in METRICS + ["thinking_tokens_est"]:
@@ -421,14 +473,21 @@ def main():
                     help="berapa kali re-sample jika jawaban kosong setelah <think> dibuang "
                          "(default 0 = dicatat apa adanya)")
     ap.add_argument("--timeout", type=int, default=REQUEST_TIMEOUT)
+    ap.add_argument("--nothink-fallback", action="store_true",
+                    help="untuk Ollama lama: matikan thinking lewat soft-switch /no_think di prompt")
     args = ap.parse_args()
 
+    global NOTHINK_FALLBACK
     REQUEST_TIMEOUT = args.timeout
+    NOTHINK_FALLBACK = args.nothink_fallback
 
     dataset = load_dataset()
     if args.questions:
         dataset = [q for q in dataset if q["id"] in args.questions]
     models = args.models or MODELS
+    unknown = [m for m in models if m not in COND]
+    if unknown:
+        raise SystemExit(f"Kondisi tidak dikenal: {unknown}. Pilihan: {MODELS}")
     runs = list(range(1, args.runs + 1))
     if args.dry_run:
         dataset, models, runs = dataset[:2], models[:1], [1]
@@ -445,13 +504,14 @@ def main():
     options.pop("seed")
     if args.resume and os.path.exists(meta_path):
         old = json.load(open(meta_path, encoding="utf-8"))
-        if old.get("options") != options or old.get("system_prompt") != _EVAL_SYSTEM_PROMPT:
+        if (old.get("options") != options or old.get("system_prompt") != _EVAL_SYSTEM_PROMPT
+                or old.get("conditions") not in (None, CONDITIONS)):
             raise SystemExit("Resume ditolak: opsi/system prompt berbeda dari run awal.")
     meta = {"started": stamp, "options": options, "seed_scheme": f"SEED_BASE({SEED_BASE}) + run_idx",
             "models": models, "runs": runs, "question_ids": qids, "system_prompt": _EVAL_SYSTEM_PROMPT,
-            "thinking_models": sorted(THINKING_MODELS), "retry_no_answer": args.retry_no_answer,
+            "conditions": CONDITIONS, "nothink_fallback": NOTHINK_FALLBACK, "retry_no_answer": args.retry_no_answer,
             "max_attempts_infra": MAX_ATTEMPTS, "embed_prefix": EMBED_PREFIX,
-            "environment": collect_environment(models)}
+            "environment": collect_environment(sorted({COND[m]["model"] for m in models}))}
     log("=" * 78)
     log(f"  Folder hasil : {outdir}")
     log(f"  Models       : {models}")
@@ -459,6 +519,8 @@ def main():
     log(f"  Opsi Ollama  : {options}")
     log(f"  Ollama       : {meta['environment']['ollama_version']}")
     log("=" * 78)
+
+    meta["think_probe"] = probe_think_modes([COND[m] for m in models], args.temperature)
 
     rows = load_rows(jsonl_path)
     done = {k for k, r in rows.items() if r["status"] != "failed"}
@@ -488,14 +550,14 @@ def main():
                 log(f"\n[{model}] semua sel sudah lengkap, dilewati.")
                 continue
             log(f"\n{'='*78}\n  Model: {model}  ({len(pending)} sel)\n{'='*78}")
-            warm_up(model, args.temperature)
+            warm_up(COND[model], args.temperature)
             for run_idx in runs:                                   # run di luar, pertanyaan di dalam
                 for qa in dataset:
                     key = (model, qa["id"], run_idx)
                     if key in done:
                         continue
                     v0 = get_vram_mb()
-                    row = run_cell(model, qa, run_idx, contexts[str(qa["id"])],
+                    row = run_cell(COND[model], qa, run_idx, contexts[str(qa["id"])],
                                    args.temperature, args.retry_no_answer)
                     row["vram_mb_before"], row["vram_mb_after"] = v0, get_vram_mb()
                     append_row(jsonl_path, row)
@@ -515,7 +577,7 @@ def main():
     for s in ms:
         log(f"{s['model']:<13} ok={s['cells_ok']}/{s['cells_expected']} failed={s['cells_failed']} "
             f"no_answer={s['no_final_answer']} trunc={s['truncated']} ctx_over={s['ctx_overflow']} "
-            f"refusal={s['refusals']} retried={s['retried_cells']}")
+            f"refusal={s['refusals']} retried={s['retried_cells']} think_mismatch={s['think_mismatch']}")
         for k in ("semantic_similarity", "latency_s", "throughput_tps", "completion_tokens"):
             log(f"    {k:<20} {s[f'mean_{k}']} (±{s[f'sd_between_questions_{k}']} | ±{s[f'sd_between_runs_{k}']})")
     if missing:
@@ -523,6 +585,9 @@ def main():
             f"    python evaluate.py --resume \"{outdir}\"")
         sys.exit(2)
     log(f"\n[OK] Semua {len(models)*len(qids)*len(runs)} sel lengkap tanpa kegagalan infrastruktur.")
+    if any(s["think_mismatch"] for s in ms):
+        log("[PERINGATAN] Ada baris yang mode thinking-nya tidak sesuai kondisi (kolom thinking_observed). "
+            "Periksa sebelum dipakai.")
     if any(s["no_final_answer"] or s["truncated"] or s["ctx_overflow"] for s in ms):
         log("[PERHATIAN] Ada jawaban kosong / terpotong / ctx overflow. Periksa results_raw.csv dan laporkan di naskah.")
 
