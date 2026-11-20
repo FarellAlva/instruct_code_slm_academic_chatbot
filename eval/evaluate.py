@@ -39,6 +39,8 @@ RESULTS_ROOT = os.path.join(EVAL_DIR, "results")
 CONDITIONS = [
     {"name": "gemma2:2b",          "model": "gemma2:2b",   "think": None},
     {"name": "llama3.2:1b",        "model": "llama3.2:1b", "think": None},
+    {"name": "qwen3:1.7b",         "model": "qwen3:1.7B",  "think": False},
+    {"name": "qwen3:1.7B",         "model": "qwen3:1.7B",  "think": False},
     {"name": "qwen3:1.7B-nothink", "model": "qwen3:1.7B",  "think": False},
     {"name": "qwen3:1.7B-think",   "model": "qwen3:1.7B",  "think": True},
 ]

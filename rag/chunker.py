@@ -469,42 +469,46 @@ def _chunk_by_section(
     current_chunk = ""
 
     for section in sections:
-        if len(current_chunk) + len(section) + 2 <= max_chunk_size:
+        is_major_header = section.startswith("## ") or section.startswith("# ")
+        # Flush current chunk if starting a new major section and current chunk has enough content (>= 200 chars),
+        # or if adding this section exceeds max_chunk_size.
+        should_split = (
+            (is_major_header and len(current_chunk) >= 200)
+            or (len(current_chunk) + len(section) + 2 > max_chunk_size)
+        )
+        if should_split and current_chunk:
+            chunk_id = f"{source}_p{page}_sec_c{chunk_index}"
+            chunks.append(
+                {
+                    "text": current_chunk.strip(),
+                    "source": source,
+                    "page": page,
+                    "chunk_id": chunk_id,
+                }
+            )
+            chunk_index += 1
+            current_chunk = ""
+
+        if len(section) <= max_chunk_size:
             if current_chunk:
                 current_chunk += "\n\n" + section
             else:
                 current_chunk = section
         else:
-            if current_chunk:
+            sub_parts = _split_oversized_section(section)
+            for part in sub_parts[:-1]:
                 chunk_id = f"{source}_p{page}_sec_c{chunk_index}"
                 chunks.append(
                     {
-                        "text": current_chunk.strip(),
+                        "text": part.strip(),
                         "source": source,
                         "page": page,
                         "chunk_id": chunk_id,
                     }
                 )
                 chunk_index += 1
-                current_chunk = ""
-
-            if len(section) <= max_chunk_size:
-                current_chunk = section
-            else:
-                sub_parts = _split_oversized_section(section)
-                for part in sub_parts[:-1]:
-                    chunk_id = f"{source}_p{page}_sec_c{chunk_index}"
-                    chunks.append(
-                        {
-                            "text": part.strip(),
-                            "source": source,
-                            "page": page,
-                            "chunk_id": chunk_id,
-                        }
-                    )
-                    chunk_index += 1
-                if sub_parts:
-                    current_chunk = sub_parts[-1]
+            if sub_parts:
+                current_chunk = sub_parts[-1]
 
     if current_chunk:
         chunk_id = f"{source}_p{page}_sec_c{chunk_index}"

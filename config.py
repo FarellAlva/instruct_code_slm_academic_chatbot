@@ -33,8 +33,8 @@ DEFAULT_TEMPERATURE  = float(os.environ.get("DEFAULT_TEMPERATURE", 0.4))
 DEFAULT_MAX_TOKENS   = int(os.environ.get("DEFAULT_MAX_TOKENS", 1536))       # Ample room for comprehensive answers (e.g. multi-year timeline)
 DEFAULT_TOP_K        = 40
 DEFAULT_TOP_P        = 0.95
-DEFAULT_NUM_CTX      = int(os.environ.get("DEFAULT_NUM_CTX", 8192))       # Expanded context window sent to Ollama options (was 4096)
-MAX_CONTEXT_TOKENS   = int(os.environ.get("MAX_CONTEXT_TOKENS", 5500))       # Maximum token budget allocated for RAG context (was 2500)
+DEFAULT_NUM_CTX      = int(os.environ.get("DEFAULT_NUM_CTX", 4096))       # Default context window sent to Ollama options (4096)
+MAX_CONTEXT_TOKENS   = int(os.environ.get("MAX_CONTEXT_TOKENS", 2500))       # Maximum token budget allocated for RAG context
 CONTEXT_MARGIN_TOKENS= 256        # Safety margin for system prompt + response
 MAX_HISTORY_TURNS    = 20         # Max conversational turns retained (dynamic allocation)
 MAX_HISTORY_TOKENS   = 4096       # Fallback token budget for chat history when dynamic budget is omitted
@@ -59,15 +59,15 @@ CHROMA_COLLECTION    = "pradita_knowledge"
 # ─── RAG ──────────────────────────────────────────────────────────────────────
 CHUNK_SIZE             = 500        # characters per chunk (sliding window)
 CHUNK_OVERLAP          = 100        # overlap between chunks
-SECTION_MAX_CHUNK_SIZE = 2500       # max characters for section-aware web text (keeps sections intact)
-TOP_K_RETRIEVAL        = 8          # number of docs returned per query (was 6)
+SECTION_MAX_CHUNK_SIZE = 1000       # max characters for section-aware web text (keeps sections intact & within 512 tokens)
+TOP_K_RETRIEVAL        = 6          # number of docs returned per query
 
 # ─── Reranker ─────────────────────────────────────────────────────────────────
 # Set USE_RERANKER=False untuk skip reranking (lebih cepat, akurasi sedikit turun)
 # Model lebih kecil (MiniLM-L-6-v2) ~6x lebih cepat dari bge-reranker-v2-m3
 USE_RERANKER     = True
 RERANKER_MODEL   = "cross-encoder/ms-marco-MiniLM-L-6-v2"
-POOL_SIZE_FACTOR = 3          # pool_size = TOP_K_RETRIEVAL * POOL_SIZE_FACTOR (was 5)
+POOL_SIZE_FACTOR = 5          # pool_size = TOP_K_RETRIEVAL * POOL_SIZE_FACTOR
 
 # ─── System Prompt (Target Template - Rules Only, No Injected Context) ─────────
 SYSTEM_PROMPT = (

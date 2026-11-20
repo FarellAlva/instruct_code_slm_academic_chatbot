@@ -109,9 +109,35 @@ def _normalize_text(text: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", text.lower()).strip()
 
 
-# ─── Bilingual Query Expansion ────────────────────────────────────────────────
-# Maps common English question keywords → Indonesian equivalents.
-# Used to boost retrieval when the user asks in English but data is in Indonesian.
+# ─── Bilingual & Domain Query Expansion ───────────────────────────────────────
+# Maps common English keywords → Indonesian, and Indonesian domain queries → document terms.
+# Used to boost retrieval accuracy for both English and Indonesian questions.
+
+_DOMAIN_SYNONYMS: dict[str, str] = {
+    # Housing / Asrama / Tempat tinggal -> Document uses "Student Boarding House", "Cluster Alloggio", "Allogio"
+    "asrama": "student boarding house cluster alloggio hunian tempat tinggal mahasiswa",
+    "tempat tinggal": "student boarding house cluster alloggio hunian asrama sewa",
+    "kost": "student boarding house cluster alloggio asrama hunian",
+    "kos": "student boarding house cluster alloggio asrama hunian",
+    "hunian": "student boarding house cluster alloggio asrama",
+    "allogio": "alloggio student boarding house asrama hunian",
+    "alloggio": "alloggio student boarding house asrama tempat tinggal",
+
+    # Campus Location / Address -> Document uses "Scientia Business Park", "Tower 1", "Menara Satu", "Gading Serpong", "Kelapa Gading"
+    "lokasi": "alamat kampus scientia business park tower 1 gading serpong menara satu kelapa gading tangerang jakarta",
+    "alamat": "lokasi kampus scientia business park tower 1 gading serpong menara satu kelapa gading tangerang jakarta",
+    "dimana": "lokasi alamat kampus scientia business park gading serpong menara satu kelapa gading",
+
+    # Tuition Fees / Biaya -> Document has BPP, SKS, Student Service, Uang Pangkal
+    "biaya kuliah": "bpp sks student service uang pangkal formulir pendaftaran rincian semester",
+    "biaya per semester": "bpp harga sks student service rincian per program studi",
+    "uang kuliah": "bpp sks student service biaya per semester uang pangkal",
+    "uang pangkal": "biaya pendaftaran bpp sks student service perlengkapan",
+
+    # Keunggulan Pradita -> Document uses "Conceptual Study", "Action Learning", "Real Case", "Enterprise University"
+    "keunggulan utama": "conceptual study action learning real case direct access holistic learning infrastructure enterprise university",
+    "keunggulan": "conceptual study action learning real case industry enterprise university",
+}
 
 _EN_TO_ID_TERMS: dict[str, str] = {
     # Location / campus
@@ -167,32 +193,43 @@ _EN_TO_ID_TERMS: dict[str, str] = {
 
 def _expand_query(query: str) -> str:
     """
-    Expand the query with Indonesian equivalents if English keywords are detected.
+    Expand the query with domain synonyms and Indonesian/English equivalents.
     Returns the enriched query string used ONLY for embedding/retrieval.
     The original query is preserved for the LLM.
     """
     lowered = query.lower()
-    # Detect if query is likely English (has common English question words or terms)
+    extra_terms = []
+
+    # 1. Domain-specific Indonesian synonyms
+    for kw, expansion in _DOMAIN_SYNONYMS.items():
+        if kw in lowered:
+            extra_terms.append(expansion)
+
+    # 2. English -> Indonesian equivalents if English detected
     en_indicators = {"where", "what", "how", "when", "who", "does", "is", "are",
                      "located", "location", "tuition", "fee", "cost", "schedule",
                      "facility", "facilities", "major", "program", "scholarship",
                      "register", "enrollment", "admission", "campus", "lecturer",
                      "about", "contact", "dormitory", "housing", "boarding"}
-
     tokens = set(re.findall(r"[a-z]+", lowered))
-    matches = tokens & en_indicators
-    if not matches:
-        return query  # Already Indonesian, no expansion needed
-
-    extra_terms = []
-    for token, translation in _EN_TO_ID_TERMS.items():
-        if token in lowered:
-            extra_terms.append(translation)
+    if tokens & en_indicators:
+        for token, translation in _EN_TO_ID_TERMS.items():
+            if token in lowered:
+                extra_terms.append(translation)
 
     if extra_terms:
-        expanded = f"{query} {' '.join(extra_terms)}"
-        print(f"[Retriever] 🌐 Query expanded (len={len(query)}) → added: {extra_terms}")
-        return expanded
+        # Deduplicate words while preserving order
+        unique_words = []
+        seen = set()
+        for phrase in extra_terms:
+            for word in phrase.split():
+                if word not in seen and word not in lowered:
+                    seen.add(word)
+                    unique_words.append(word)
+        if unique_words:
+            expanded = f"{query} {' '.join(unique_words)}"
+            print(f"[Retriever] 🌐 Query expanded (len={len(query)}) → added: {' '.join(unique_words[:8])}...")
+            return expanded
 
     return query
 
@@ -470,7 +507,8 @@ def retrieve_context(
     if chunks and USE_RERANKER:
         t3 = time.perf_counter()
         reranker = get_reranker()
-        pairs = [[query, chunk["text"]] for chunk in chunks]
+        # Use expanded retrieval_query for cross-encoder so cross-lingual/domain keywords are matched
+        pairs = [[retrieval_query, chunk["text"]] for chunk in chunks]
         # batch_size tuned for GPU throughput; convert_to_numpy avoids extra tensor overhead
         scores = reranker.predict(pairs, batch_size=32, convert_to_numpy=True)
         print(f"[Retriever] Reranking {len(pairs)} pairs ({(time.perf_counter()-t3)*1000:.0f}ms)")
