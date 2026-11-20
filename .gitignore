@@ -48,3 +48,8 @@ finetuning_colab/pradita-lora-output/
 finetuning_colab/pradita-lora-adapter/
 finetuning_colab/pradita-merged-model/
 finetuning_colab/pradita_dataset.jsonl
+
+# Paper & evaluation docs
+eval/paper_sebelumnya/
+*.docx
+

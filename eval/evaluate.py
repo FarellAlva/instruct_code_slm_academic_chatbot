@@ -37,8 +37,8 @@ MODELS = ["gemma2:2b", "qwen3:1.7B", "llama3.2:1b"]
 THINKING_MODELS = {"qwen3:1.7B", "qwen3:1.7b"}      # model yang dipanggil dengan think=True (eksplisit)
 
 TEMPERATURE = 0.4
-NUM_CTX     = 8192                    # 8k context window (mencegah context overflow)
-NUM_PREDICT = 4096                    # Ruang output sangat longgar (safety ceiling)
+NUM_CTX     = 4096                    # 4k context window (optimal: muat di GPU tanpa spillover)
+NUM_PREDICT = 4096                    # Ruang output sangat longgar (mencegah jawaban terpotong)
 TOP_P       = 0.9
 NUM_RUNS    = 5
 SEED_BASE   = 0                       # seed run ke-i = SEED_BASE + i  (1..N)
