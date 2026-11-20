@@ -1,7 +1,5 @@
 model,cells_expected,cells_ok,cells_failed,no_final_answer,truncated,ctx_overflow,refusals,retried_cells,think_mismatch,mean_semantic_similarity,sd_between_questions_semantic_similarity,sd_between_runs_semantic_similarity,mean_latency_s,sd_between_questions_latency_s,sd_between_runs_latency_s,mean_throughput_tps,sd_between_questions_throughput_tps,sd_between_runs_throughput_tps,mean_completion_tokens,sd_between_questions_completion_tokens,sd_between_runs_completion_tokens,mean_thinking_tokens_est,sd_between_questions_thinking_tokens_est,sd_between_runs_thinking_tokens_est
 gemma2:2b,45,45,0,0,0,0,2,0,0,0.9105,0.0345,0.0076,11.6458,7.2513,1.4104,10.1384,0.2407,0.1317,87.4889,71.1758,2.1678,0.0,0.0,0.0
 llama3.2:1b,45,45,0,0,1,1,6,0,0,0.9006,0.0259,0.0017,21.2451,18.4549,6.4627,18.8871,0.2207,0.3758,358.5556,346.6863,152.4053,0.0,0.0,0.0
-qwen3:1.7b,45,45,0,0,0,0,6,0,0,0.9169,0.026,0.0025,10.0077,5.4834,2.4013,17.1069,0.6012,0.5666,128.4667,94.1459,2.8355,0.0,0.0,0.0
-qwen3:1.7B,45,45,0,0,0,0,6,0,0,0.9178,0.0258,0.0012,8.9849,5.9674,0.9583,17.0122,0.6369,0.5457,133.4667,99.56,10.7722,0.0,0.0,0.0
 qwen3:1.7B-nothink,45,45,0,0,0,0,6,0,0,0.9178,0.0258,0.0012,8.6989,5.7464,0.7129,17.434,0.6007,0.1408,133.4667,99.56,10.7722,0.0,0.0,0.0
 qwen3:1.7B-think,45,45,0,0,0,0,6,0,0,0.912,0.0214,0.0007,29.9378,12.1236,1.5423,17.2349,0.4893,0.2652,488.6222,200.2729,23.1468,360.4444,133.2104,27.8416

@@ -137,6 +137,20 @@ _DOMAIN_SYNONYMS: dict[str, str] = {
     # Keunggulan Pradita -> Document uses "Conceptual Study", "Action Learning", "Real Case", "Enterprise University"
     "keunggulan utama": "conceptual study action learning real case direct access holistic learning infrastructure enterprise university",
     "keunggulan": "conceptual study action learning real case industry enterprise university",
+
+    # Program Studi / Jurusan -> Document uses "programs.txt" listing S1, D3, S2
+    "program studi": "daftar program studi jurusan s1 d3 s2 teknik informatika sistem informasi arsitektur perhotelan akuntansi manajemen",
+    "jurusan": "daftar program studi jurusan s1 d3 s2 teknik informatika sistem informasi arsitektur manajemen akuntansi",
+    "prodi": "daftar program studi jurusan s1 d3 s2 teknik informatika sistem informasi arsitektur",
+
+    # Contact / Hubungi Kampus -> Document has ## KONTAK in about_pradita.txt
+    "menghubungi": "kontak email info@pradita.ac.id telepon 021 5568 9999 whatsapp website",
+    "hubungi": "kontak email info@pradita.ac.id telepon 021 5568 9999 whatsapp website",
+    "kontak": "email info@pradita.ac.id telepon 021 5568 9999 whatsapp website sosial media",
+
+    # Visi Misi
+    "visi": "visi dan misi berwawasan global berbudi pekerti luhur berkompetensi integritas",
+    "misi": "visi dan misi berwawasan global berbudi pekerti luhur berkompetensi integritas",
 }
 
 _EN_TO_ID_TERMS: dict[str, str] = {
@@ -600,11 +614,7 @@ def _build_structured_context(
         else:
             header_parts.append(f"Source: {chunk.get('source', 'unknown')}")
 
-        score_info = ""
-        if "rerank_score" in chunk:
-            score_info = f" | Relevance: {chunk['rerank_score']:.3f}"
-
-        doc_str = f"[{' | '.join(header_parts)}{score_info}]\n{clean_text}"
+        doc_str = f"[{' | '.join(header_parts)}]\n{clean_text}"
         doc_tokens = estimate_tokens(doc_str) + 4  # delimiter budget
 
         if current_tokens + doc_tokens > max_context_tokens:

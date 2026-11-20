@@ -1,0 +1,45 @@
+model,ollama_model,think_mode,question_id,run_idx,seed,attempts,status,question,category,complexity,answer,raw_answer,reference_answer,semantic_similarity,refusal_detected,no_final_answer,truncated,ctx_overflow,context_has_answer,context_similarity,num_chunks_retrieved,latency_s,throughput_tps,prompt_tokens,completion_tokens,thinking_tokens_est,answer_tokens_est,thinking_observed,done_reason,vram_mb_before,vram_mb_after,error,timestamp
+gemma2:2b,gemma2:2b,n/a,1,1,1,1,ok,Di mana lokasi kampus Pradita University?,Informasi Kampus,Sederhana,"Lokasi kampus Pradita University ada di 2 tempat: Jakarta Campus dan Gading Serpong Campus.  
+* **Jakarta Campus:** Menara Satu Building, Jl. Boulevard Raya LA 3 No.1, Sentra Kelapa Gading, Jakarta Utara, DKI Jakarta 14240
+* **Gading Serpong Campus (Kampus Utama):** Scientia Business Park, Tower 1, Jalan Raya Boulevard Blok 0/1, Summarecon Serpong, Kabupaten Tangerang, Banten 15810.","Lokasi kampus Pradita University ada di 2 tempat: Jakarta Campus dan Gading Serpong Campus.  
+* **Jakarta Campus:** Menara Satu Building, Jl. Boulevard Raya LA 3 No.1, Sentra Kelapa Gading, Jakarta Utara, DKI Jakarta 14240
+* **Gading Serpong Campus (Kampus Utama):** Scientia Business Park, Tower 1, Jalan Raya Boulevard Blok 0/1, Summarecon Serpong, Kabupaten Tangerang, Banten 15810.","Pradita University memiliki dua kampus. Kampus utama (Gading Serpong) berlokasi di Scientia Business Park, Tower 1, Jalan Raya Boulevard Blok O/1, Summarecon Serpong, Kabupaten Tangerang, Banten 15810. Kampus Jakarta berlokasi di Menara Satu Building, Jl. Boulevard Raya LA 3 No.1, Sentra Kelapa Gading, Jakarta Utara, DKI Jakarta 14240.",0.9716,False,False,False,False,True,0.929,6,15.105,10.63,1179,113,0,113,False,stop,2630.0,2634.0,,2026-11-20T13:54:07
+gemma2:2b,gemma2:2b,n/a,2,1,1,1,ok,Apa saja program studi yang tersedia di Pradita University?,Informasi Akademik,Sederhana,"Pradita University menawarkan berbagai program studi, yaitu:
+
+**Jenjang Sarjana (S1):**
+- Arsitektur (Architecture)
+- Perencanaan Wilayah dan Kota / Perencanaan Kota (Urban Planning)
+- Teknik Sipil (Civil Engineering)
+- Desain Interior (Interior Design)
+- Desain Komunikasi Visual (DKV / Visual Communication Design)
+- Akuntansi (Accounting)
+- Manajemen / Manajemen Bisnis (Business Management)
+- Teknik Informatika / Informatika (Informatics / Information Technology)
+- Sistem Informasi Bisnis / Sistem Informasi (Business Information System)
+- Perhotelan & Pariwisata / Hospitality & Tourism
+- Food & Beverage
+
+**Jenjang Diploma (D3):**
+- Seni Kuliner (Culinary Arts)
+
+**Jenjang Magister (S2):**
+- Teknologi Informasi (Information Technology)","Pradita University menawarkan berbagai program studi, yaitu:
+
+**Jenjang Sarjana (S1):**
+- Arsitektur (Architecture)
+- Perencanaan Wilayah dan Kota / Perencanaan Kota (Urban Planning)
+- Teknik Sipil (Civil Engineering)
+- Desain Interior (Interior Design)
+- Desain Komunikasi Visual (DKV / Visual Communication Design)
+- Akuntansi (Accounting)
+- Manajemen / Manajemen Bisnis (Business Management)
+- Teknik Informatika / Informatika (Informatics / Information Technology)
+- Sistem Informasi Bisnis / Sistem Informasi (Business Information System)
+- Perhotelan & Pariwisata / Hospitality & Tourism
+- Food & Beverage
+
+**Jenjang Diploma (D3):**
+- Seni Kuliner (Culinary Arts)
+
+**Jenjang Magister (S2):**
+- Teknologi Informasi (Information Technology)","Pradita University menawarkan berbagai program studi, antara lain: Teknik Informatika, Sistem Informasi, Pariwisata, Perencanaan Wilayah dan Kota, Arsitektur, Teknik Sipil, Desain Komunikasi Visual, Desain Interior, Seni Kuliner, Manajemen Bisnis, Akuntansi, dan Food & Beverage.",0.9375,False,False,False,False,True,0.9,6,21.923,10.68,1337,179,0,179,False,stop,2634.0,2634.0,,2026-11-20T13:54:29

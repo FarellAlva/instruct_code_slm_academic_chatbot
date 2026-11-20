@@ -34,15 +34,11 @@ sys.path.insert(0, PROJECT_DIR)
 RESULTS_ROOT = os.path.join(EVAL_DIR, "results")
 
 # ─── Konfigurasi eksperimen ──────────────────────────────────────────────────
-# Kondisi eksperimen. `think`: None = model tanpa mode thinking (parameter tidak dikirim),
-# True/False = dikirim eksplisit ke Ollama. Urutan menjaga qwen3 tetap termuat di GPU.
+# Kondisi eksperimen: 3 model SLM lokal (Gemma 2 2B, Llama 3.2 1B, Qwen 2.5/3 1.7B non-thinking).
 CONDITIONS = [
-    {"name": "gemma2:2b",          "model": "gemma2:2b",   "think": None},
-    {"name": "llama3.2:1b",        "model": "llama3.2:1b", "think": None},
-    {"name": "qwen3:1.7b",         "model": "qwen3:1.7B",  "think": False},
-    {"name": "qwen3:1.7B",         "model": "qwen3:1.7B",  "think": False},
-    {"name": "qwen3:1.7B-nothink", "model": "qwen3:1.7B",  "think": False},
-    {"name": "qwen3:1.7B-think",   "model": "qwen3:1.7B",  "think": True},
+    {"name": "gemma2:2b",   "model": "gemma2:2b",   "think": None},
+    {"name": "llama3.2:1b", "model": "llama3.2:1b", "think": None},
+    {"name": "qwen3:1.7b",  "model": "qwen3:1.7b",  "think": False},
 ]
 COND = {c["name"]: c for c in CONDITIONS}
 MODELS = [c["name"] for c in CONDITIONS]
@@ -66,6 +62,7 @@ EMBED_PREFIX = ""
 _EVAL_SYSTEM_PROMPT = (
     "Kamu adalah asisten akademik AI Pradita University.\n"
     "Tugas: Jawab PERTANYAAN YANG DIAJUKAN berdasarkan KONTEKS yang diberikan.\n"
+    "Untuk pertanyaan yang memuat skenario perhitungan matematis atau angka pada pertanyaan, hitung sesuai angka yang tertera di pertanyaan.\n"
     "Jika informasi tidak ada di konteks, jawab: 'Maaf sobat, saya tidak memiliki informasi tersebut.'\n"
     "Jawab langsung dan ringkas. Bahasa Indonesia. Gunakan tabel Markdown jika ada banyak data."
 )

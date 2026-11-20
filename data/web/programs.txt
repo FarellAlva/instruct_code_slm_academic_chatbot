@@ -1,51 +1,25 @@
 # Program Studi Pradita University
 
-## JENJANG SARJANA (S1) - BACHELOR'S DEGREE
+## DAFTAR LENGKAP PROGRAM STUDI (JURUSAN)
+Pradita University menawarkan berbagai program studi pada jenjang Sarjana (S1), Diploma (D3), dan Magister (S2):
 
-Pradita University menawarkan program studi S1 berikut:
+### Jenjang Sarjana (S1):
+1. Arsitektur (Architecture)
+2. Perencanaan Wilayah dan Kota / Perencanaan Kota (Urban Planning)
+3. Teknik Sipil (Civil Engineering)
+4. Desain Interior (Interior Design)
+5. Desain Komunikasi Visual (DKV / Visual Communication Design)
+6. Akuntansi (Accounting)
+7. Manajemen / Manajemen Bisnis (Business Management)
+8. Teknik Informatika / Informatika (Informatics / Information Technology)
+9. Sistem Informasi Bisnis / Sistem Informasi (Business Information System)
+10. Perhotelan & Pariwisata / Hospitality & Tourism
+11. Food & Beverage
 
-### 1. Architecture (Arsitektur)
-Website: https://www.pradita.ac.id/programs/architecture
+### Jenjang Diploma (D3):
+1. Seni Kuliner (Culinary Arts)
 
-### 2. Urban Planning (Perencanaan Kota)
-Website: https://www.pradita.ac.id/programs/urban-planning
+### Jenjang Magister (S2):
+1. Teknologi Informasi (Information Technology)
 
-### 3. Civil Engineering (Teknik Sipil)
-Website: https://www.pradita.ac.id/programs/civil-enginer
-
-### 4. Interior Design (Desain Interior)
-Website: https://www.pradita.ac.id/programs/interior-design
-
-### 5. Visual Communication Design (Desain Komunikasi Visual / DKV)
-Website: https://www.pradita.ac.id/programs/visual-communication-design
-
-### 6. Accounting (Akuntansi)
-Website: https://www.pradita.ac.id/programs/accounting
-
-### 7. Management (Manajemen)
-Website: https://www.pradita.ac.id/programs/bussiness-management
-
-### 8. Informatics (Informatika / Teknik Informatika)
-Website: https://www.pradita.ac.id/programs/information-technology
-
-### 9. Business Information System (Sistem Informasi Bisnis)
-Website: https://www.pradita.ac.id/programs/business-information-system
-
-### 10. Hospitality & Tourism (Perhotelan & Pariwisata)
-Website: https://www.pradita.ac.id/programs/hospitality-tourism
-
-## JENJANG DIPLOMA (D3) - DIPLOMA DEGREE
-
-### 1. Culinary Arts (Seni Kuliner)
-Website: https://www.pradita.ac.id/programs/culinary-arts
-
-## JENJANG MAGISTER (S2) - MASTER DEGREE
-
-### 1. Information Technology (Teknologi Informasi)
-Website: https://www.pradita.ac.id/programs/information-technology-s2
-
-## TOTAL PROGRAM STUDI
-- S1 (Bachelor's): 10 program studi
-- D3 (Diploma): 1 program studi
-- S2 (Master): 1 program studi
-- Total: 12 program studi
+Total program studi di Pradita University mencakup program S1 (Sarjana), D3 (Diploma), dan S2 (Magister).

@@ -10,6 +10,10 @@ if sys.platform == 'win32':
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
     sys.stderr.reconfigure(encoding='utf-8', errors='replace')
 
+# Disable online HuggingFace checks to prevent connection timeouts / lag
+os.environ.setdefault("HF_HUB_OFFLINE", "1")
+os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
+
 try:
     from dotenv import load_dotenv
     load_dotenv()

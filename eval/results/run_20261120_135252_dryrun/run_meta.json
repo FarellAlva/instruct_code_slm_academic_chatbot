@@ -1,0 +1,50 @@
+{
+  "started": "20261120_135252",
+  "options": {
+    "temperature": 0.4,
+    "top_p": 0.9,
+    "num_ctx": 4096,
+    "num_predict": 4096
+  },
+  "seed_scheme": "SEED_BASE(0) + run_idx",
+  "models": [
+    "gemma2:2b"
+  ],
+  "runs": [
+    1
+  ],
+  "question_ids": [
+    1,
+    2
+  ],
+  "system_prompt": "Kamu adalah asisten akademik AI Pradita University.\nTugas: Jawab PERTANYAAN YANG DIAJUKAN berdasarkan KONTEKS yang diberikan.\nUntuk pertanyaan yang memuat skenario perhitungan matematis atau angka pada pertanyaan, hitung sesuai angka yang tertera di pertanyaan.\nJika informasi tidak ada di konteks, jawab: 'Maaf sobat, saya tidak memiliki informasi tersebut.'\nJawab langsung dan ringkas. Bahasa Indonesia. Gunakan tabel Markdown jika ada banyak data.",
+  "conditions": [
+    {
+      "name": "gemma2:2b",
+      "model": "gemma2:2b",
+      "think": null
+    },
+    {
+      "name": "llama3.2:1b",
+      "model": "llama3.2:1b",
+      "think": null
+    },
+    {
+      "name": "qwen3:1.7b",
+      "model": "qwen3:1.7b",
+      "think": false
+    }
+  ],
+  "nothink_fallback": false,
+  "retry_no_answer": 0,
+  "max_attempts_infra": 3,
+  "embed_prefix": "",
+  "environment": {
+    "ollama_version": "0.30.9",
+    "model_digests": {
+      "gemma2:2b": "8ccf136fdd5298f3ffe2d69862750ea7fb56555fa4d5b18c04e3fa4d82ee09d7"
+    }
+  },
+  "think_probe": {},
+  "missing_cells": []
+}
