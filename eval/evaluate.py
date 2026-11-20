@@ -34,11 +34,11 @@ RESULTS_ROOT = os.path.join(EVAL_DIR, "results")
 
 # ─── Konfigurasi eksperimen ──────────────────────────────────────────────────
 MODELS = ["gemma2:2b", "qwen3:1.7B", "llama3.2:1b"]
-THINKING_MODELS = {"qwen3:1.7B"}      # model yang dipanggil dengan think=True (eksplisit)
+THINKING_MODELS = {"qwen3:1.7B", "qwen3:1.7b"}      # model yang dipanggil dengan think=True (eksplisit)
 
 TEMPERATURE = 0.4
-NUM_CTX     = 2048
-NUM_PREDICT = 2048
+NUM_CTX     = 8192                    # 8k context window (mencegah context overflow)
+NUM_PREDICT = 4096                    # Ruang output sangat longgar (safety ceiling)
 TOP_P       = 0.9
 NUM_RUNS    = 5
 SEED_BASE   = 0                       # seed run ke-i = SEED_BASE + i  (1..N)
@@ -47,7 +47,7 @@ TOP_K_RETRIEVAL = 6
 
 MAX_ATTEMPTS    = 3                   # untuk kegagalan infrastruktur
 REQUEST_TIMEOUT = 300                 # detik
-OLLAMA_API = os.environ.get("OLLAMA_API", "http://localhost:11434")
+OLLAMA_API = os.environ.get("OLLAMA_API", "http://127.0.0.1:11434")
 
 # Jika retriever memakai prefix E5 ("query: " / "passage: "), samakan di sini.
 EMBED_PREFIX = ""
@@ -397,9 +397,11 @@ def collect_environment(models):
     except Exception as e:
         env["ollama_version"] = f"unavailable ({e})"
     try:
+        lower_models = {m.lower() for m in models}
         for t in http_json("/api/tags", timeout=10).get("models", []):
-            if t.get("name") in models or t.get("model") in models:
-                env["model_digests"][t.get("name")] = t.get("digest")
+            name = t.get("name", "")
+            if name.lower() in lower_models or t.get("model", "").lower() in lower_models:
+                env["model_digests"][name] = t.get("digest")
     except Exception:
         pass
     return env
